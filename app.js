@@ -16,6 +16,7 @@
     timeLeft: 6000,      // 100 min in seconds
     totalTime: 6000,
     history: [],
+    seenQuestions: new Set(),
     currentScore: null,
     toastTimer: null
   };
@@ -42,10 +43,17 @@
     } catch {
       state.history = [];
     }
+    try {
+      const seen = JSON.parse(localStorage.getItem('az104_seen') || '[]');
+      state.seenQuestions = new Set(seen);
+    } catch {
+      state.seenQuestions = new Set();
+    }
   }
 
   function saveHistory() {
     localStorage.setItem('az104_history', JSON.stringify(state.history.slice(-20)));
+    localStorage.setItem('az104_seen', JSON.stringify(Array.from(state.seenQuestions)));
   }
 
   // ── Screen switching ──
@@ -166,21 +174,29 @@
     let filtered = getFilteredQuestions();
     if (filtered.length === 0) return;
 
-    // ponytail: shuffle for variety
-    filtered = shuffle(filtered);
-    
-    // Apply count setting
+    let limit = filtered.length;
     if (state.mode === 'practice' || state.mode === 'notes') {
       if (state.questionCount !== 'all') {
-        const limit = parseInt(state.questionCount, 10);
-        if (!isNaN(limit) && limit > 0) {
-          filtered = filtered.slice(0, limit);
-        }
+        const parsedLimit = parseInt(state.questionCount, 10);
+        if (!isNaN(parsedLimit) && parsedLimit > 0) limit = parsedLimit;
       }
     } else if (state.mode === 'exam') {
-      // Exam mode is 50 max (simulating the real exam)
-      filtered = filtered.slice(0, 50);
+      limit = 50;
     }
+
+    let unseen = filtered.filter(q => !state.seenQuestions.has(q.id));
+    
+    if (unseen.length < limit) {
+      const filteredIds = new Set(filtered.map(q => q.id));
+      state.seenQuestions = new Set([...state.seenQuestions].filter(id => !filteredIds.has(id)));
+      saveHistory(); // persist the cleared subset
+      unseen = filtered;
+      showToast('You have seen all available questions in this module. Pool has been reset!');
+    }
+
+    // ponytail: shuffle for variety
+    unseen = shuffle(unseen);
+    filtered = unseen.slice(0, limit);
 
     state.questions = filtered;
     state.index = 0;
@@ -440,6 +456,10 @@
       answers: [...state.answers],
       flagged: Array.from(state.flagged)
     };
+    
+    // Add to seen questions
+    state.questions.forEach(q => state.seenQuestions.add(q.id));
+
     state.history.push(attempt);
     saveHistory();
   }
