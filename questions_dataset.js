@@ -1,8 +1,16 @@
+const DOMAINS = {
+  identity:   { name: 'Identities & Governance', short: 'Identity' },
+  storage:    { name: 'Implement & Manage Storage', short: 'Storage' },
+  compute:    { name: 'Deploy & Manage Compute', short: 'Compute' },
+  networking: { name: 'Virtual Networking', short: 'Networking' },
+  monitor:    { name: 'Monitor & Maintain', short: 'Monitor' }
+};
+
 const QUESTIONS = [
   {
     "id": "topic1_q1",
     "number": "1",
-    "question": "Your company has serval departments. Each department has a number of virtual machines (VMs).\nThe company has an Azure subscription that contains a resource group named RG1.\nAll VMs are located in RG1.\nYou want to associate each VM with its respective department.\nWhat should you do?",
+    "question": "Your company has serval departments. Each department has a number of virtual machines (VMs).\nThe company has an Azure subscription that contains a resource group named RG1.\nAll VMs are located in RG1.\nYou want to associate each VM with its respective department.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Create Azure Management Groups for each department.",
@@ -17,7 +25,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q2",
     "number": "2",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou want to implement an Microsoft Entra ID conditional access policy.\nThe policy must be configured to require members of the Global Administrators group to use Multi-Factor Authentication and an Microsoft Entra ID-joined\ndevice when they connect to Microsoft Entra ID from untrusted locations.\nSolution: You access the multi-factor authentication page to alter the user settings.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou want to implement an Microsoft Entra ID conditional access policy.\nThe policy must be configured to require members of the Global Administrators group to use Multi-Factor Authentication and an Microsoft Entra ID-joined\ndevice when they connect to Microsoft Entra ID from untrusted locations.\n\nSolution: You access the multi-factor authentication page to alter the user settings.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -30,7 +38,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q3",
     "number": "3",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou want to implement an Microsoft Entra ID conditional access policy.\nThe policy must be configured to require members of the Global Administrators group to use Multi-Factor Authentication and an Microsoft Entra ID-joined\ndevice when they connect to Microsoft Entra ID from untrusted locations.\nSolution: You access the Azure portal to alter the session control of the Microsoft Entra ID conditional access policy.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou want to implement an Microsoft Entra ID conditional access policy.\nThe policy must be configured to require members of the Global Administrators group to use Multi-Factor Authentication and an Microsoft Entra ID-joined\ndevice when they connect to Microsoft Entra ID from untrusted locations.\n\nSolution: You access the Azure portal to alter the session control of the Microsoft Entra ID conditional access policy.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -43,7 +51,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q4",
     "number": "4",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou want to implement an Microsoft Entra ID conditional access policy.\nThe policy must be configured to require members of the Global Administrators group to use Multi-Factor Authentication and an Microsoft Entra ID-joined\ndevice when they connect to Microsoft Entra ID from untrusted locations.\nSolution: You access the Azure portal to alter the grant control of the Microsoft Entra ID conditional access policy.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou want to implement an Microsoft Entra ID conditional access policy.\nThe policy must be configured to require members of the Global Administrators group to use Multi-Factor Authentication and an Microsoft Entra ID-joined\ndevice when they connect to Microsoft Entra ID from untrusted locations.\n\nSolution: You access the Azure portal to alter the grant control of the Microsoft Entra ID conditional access policy.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -56,7 +64,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q5",
     "number": "5",
-    "question": "You are planning to deploy an Ubuntu Server virtual machine to your company's Azure subscription.\nYou are required to implement a custom deployment that includes adding a particular trusted root certification authority (CA).\nWhich of the following should you use to create the virtual machine?",
+    "question": "You are planning to deploy an Ubuntu Server virtual machine to your company's Azure subscription.\nYou are required to implement a custom deployment that includes adding a particular trusted root certification authority (CA).\n\nWhich of the following should you use to create the virtual machine?",
     "domain": "compute",
     "choices": [
       "A. The New-AzureRmVm cmdlet.",
@@ -71,7 +79,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q6",
     "number": "6",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company makes use of Multi-Factor Authentication for when users are not in the office. The Per Authentication option has been configured\nas the usage model.\nAfter the acquisition of a smaller business and the addition of the new staff to Microsoft Entra ID (Microsoft Entra ID) obtains a different company and\nadding the new employees to Microsoft Entra ID (Microsoft Entra ID), you are informed that these employees should also make use of Multi-Factor\nAuthentication.\nTo achieve this, the Per Enabled User setting must be set for the usage model.\nSolution: You reconfigure the existing usage model via the Azure portal.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company makes use of Multi-Factor Authentication for when users are not in the office. The Per Authentication option has been configured\nas the usage model.\nAfter the acquisition of a smaller business and the addition of the new staff to Microsoft Entra ID (Microsoft Entra ID) obtains a different company and\nadding the new employees to Microsoft Entra ID (Microsoft Entra ID), you are informed that these employees should also make use of Multi-Factor\nAuthentication.\nTo achieve this, the Per Enabled User setting must be set for the usage model.\n\nSolution: You reconfigure the existing usage model via the Azure portal.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -84,7 +92,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q7",
     "number": "7",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure solution makes use of Multi-Factor Authentication for when users are not in the office. The Per Authentication option has\nbeen configured as the usage model.\nAfter the acquisition of a smaller business and the addition of the new staff to Microsoft Entra ID (Microsoft Entra ID) obtains a different company and\nadding the new employees to Microsoft Entra ID (Microsoft Entra ID), you are informed that these employees should also make use of Multi-Factor\nAuthentication.\nTo achieve this, the Per Enabled User setting must be set for the usage model.\nSolution: You reconfigure the existing usage model via the Azure CLI.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure solution makes use of Multi-Factor Authentication for when users are not in the office. The Per Authentication option has\nbeen configured as the usage model.\nAfter the acquisition of a smaller business and the addition of the new staff to Microsoft Entra ID (Microsoft Entra ID) obtains a different company and\nadding the new employees to Microsoft Entra ID (Microsoft Entra ID), you are informed that these employees should also make use of Multi-Factor\nAuthentication.\nTo achieve this, the Per Enabled User setting must be set for the usage model.\n\nSolution: You reconfigure the existing usage model via the Azure CLI.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -97,7 +105,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q8",
     "number": "8",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure solution makes use of Multi-Factor Authentication for when users are not in the office. The Per Authentication option has\nbeen configured as the usage model.\nAfter the acquisition of a smaller business and the addition of the new staff to Microsoft Entra ID (Microsoft Entra ID) obtains a different company and\nadding the new employees to Microsoft Entra ID (Microsoft Entra ID), you are informed that these employees should also make use of Multi-Factor\nAuthentication.\nTo achieve this, the Per Enabled User setting must be set for the usage model.\nSolution: You create a new Multi-Factor Authentication provider with a backup from the existing Multi-Factor Authentication provider data.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure solution makes use of Multi-Factor Authentication for when users are not in the office. The Per Authentication option has\nbeen configured as the usage model.\nAfter the acquisition of a smaller business and the addition of the new staff to Microsoft Entra ID (Microsoft Entra ID) obtains a different company and\nadding the new employees to Microsoft Entra ID (Microsoft Entra ID), you are informed that these employees should also make use of Multi-Factor\nAuthentication.\nTo achieve this, the Per Enabled User setting must be set for the usage model.\n\nSolution: You create a new Multi-Factor Authentication provider with a backup from the existing Multi-Factor Authentication provider data.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -110,7 +118,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q9",
     "number": "9",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) tenant named weyland.com that is configured for hybrid coexistence with the on-\npremises Active\nDirectory domain.\nYou have a server named DirSync1 that is configured as a DirSync server.\nYou create a new user account in the on-premise Active Directory. You now need to replicate the user information to Microsoft Entra ID immediately.\nSolution: You run the Start-ADSyncSyncCycle -PolicyType Initial PowerShell cmdlet.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) tenant named weyland.com that is configured for hybrid coexistence with the on-\npremises Active\nDirectory domain.\nYou have a server named DirSync1 that is configured as a DirSync server.\nYou create a new user account in the on-premise Active Directory. You now need to replicate the user information to Microsoft Entra ID immediately.\n\nSolution: You run the Start-ADSyncSyncCycle -PolicyType Initial PowerShell cmdlet.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -123,7 +131,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q10",
     "number": "10",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) tenant named weyland.com that is configured for hybrid coexistence with the on-\npremises Active\nDirectory domain.\nYou have a server named DirSync1 that is configured as a DirSync server.\nYou create a new user account in the on-premise Active Directory. You now need to replicate the user information to Microsoft Entra ID immediately.\nSolution: You use Active Directory Sites and Services to force replication of the Global Catalog on a domain controller.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) tenant named weyland.com that is configured for hybrid coexistence with the on-\npremises Active\nDirectory domain.\nYou have a server named DirSync1 that is configured as a DirSync server.\nYou create a new user account in the on-premise Active Directory. You now need to replicate the user information to Microsoft Entra ID immediately.\n\nSolution: You use Active Directory Sites and Services to force replication of the Global Catalog on a domain controller.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -136,7 +144,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q11",
     "number": "11",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) tenant named weyland.com that is configured for hybrid coexistence with the on-\npremises Active\nDirectory domain.\nYou have a server named DirSync1 that is configured as a DirSync server.\nYou create a new user account in the on-premise Active Directory. You now need to replicate the user information to Microsoft Entra ID immediately.\nSolution: You restart the NetLogon service on a domain controller.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an Microsoft Entra ID (Microsoft Entra ID) tenant named weyland.com that is configured for hybrid coexistence with the on-\npremises Active\nDirectory domain.\nYou have a server named DirSync1 that is configured as a DirSync server.\nYou create a new user account in the on-premise Active Directory. You now need to replicate the user information to Microsoft Entra ID immediately.\n\nSolution: You restart the NetLogon service on a domain controller.\n\nDoes the solution meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -149,7 +157,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q12",
     "number": "12",
-    "question": "Your company has a Microsoft Azure subscription.\nThe company has datacenters in Los Angeles and New York.\nYou are configuring the two datacenters as geo-clustered sites for site resiliency.\nYou need to recommend an Azure storage redundancy option.\nYou have the following data storage requirements:\nData must be stored on multiple nodes.\n\u2711\nData must be stored on nodes in separate geographic locations.\n\u2711\nData can be read from the secondary location as well as from the primary location.\n\u2711\nWhich of the following Azure stored redundancy options should you recommend?",
+    "question": "Your company has a Microsoft Azure subscription.\nThe company has datacenters in Los Angeles and New York.\nYou are configuring the two datacenters as geo-clustered sites for site resiliency.\nYou need to recommend an Azure storage redundancy option.\nYou have the following data storage requirements:\nData must be stored on multiple nodes.\n-\nData must be stored on nodes in separate geographic locations.\n-\nData can be read from the secondary location as well as from the primary location.\n-\n\nWhich of the following Azure stored redundancy options should you recommend?",
     "domain": "storage",
     "choices": [
       "A. Geo-redundant storage",
@@ -164,7 +172,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q13",
     "number": "13",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an azure subscription that includes a storage account, a resource group, a blob container and a file share.\nA colleague named Jon Ross makes use of a solitary Azure Resource Manager (ARM) template to deploy a virtual machine and an additional\nAzure Storage account.\nYou want to review the ARM template that was used by Jon Ross.\nSolution: You access the Virtual Machine blade.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an azure subscription that includes a storage account, a resource group, a blob container and a file share.\nA colleague named Jon Ross makes use of a solitary Azure Resource Manager (ARM) template to deploy a virtual machine and an additional\nAzure Storage account.\nYou want to review the ARM template that was used by Jon Ross.\n\nSolution: You access the Virtual Machine blade.\n\nDoes the solution meet the goal?",
     "domain": "storage",
     "choices": [
       "A. Yes",
@@ -177,7 +185,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q14",
     "number": "14",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an azure subscription that includes a storage account, a resource group, a blob container and a file share.\nA colleague named Jon Ross makes use of a solitary Azure Resource Manager (ARM) template to deploy a virtual machine and an additional\nAzure Storage account.\nYou want to review the ARM template that was used by Jon Ross.\nSolution: You access the Resource Group blade.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an azure subscription that includes a storage account, a resource group, a blob container and a file share.\nA colleague named Jon Ross makes use of a solitary Azure Resource Manager (ARM) template to deploy a virtual machine and an additional\nAzure Storage account.\nYou want to review the ARM template that was used by Jon Ross.\n\nSolution: You access the Resource Group blade.\n\nDoes the solution meet the goal?",
     "domain": "storage",
     "choices": [
       "A. Yes",
@@ -190,7 +198,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q15",
     "number": "15",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an azure subscription that includes a storage account, a resource group, a blob container and a file share.\nA colleague named Jon Ross makes use of a solitary Azure Resource Manager (ARM) template to deploy a virtual machine and an additional\nAzure Storage account.\nYou want to review the ARM template that was used by Jon Ross.\nSolution: You access the Container blade.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has an azure subscription that includes a storage account, a resource group, a blob container and a file share.\nA colleague named Jon Ross makes use of a solitary Azure Resource Manager (ARM) template to deploy a virtual machine and an additional\nAzure Storage account.\nYou want to review the ARM template that was used by Jon Ross.\n\nSolution: You access the Container blade.\n\nDoes the solution meet the goal?",
     "domain": "storage",
     "choices": [
       "A. Yes",
@@ -203,7 +211,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q16",
     "number": "16",
-    "question": "Your company has three virtual machines (VMs) that are included in an availability set.\nYou try to resize one of the VMs, which returns an allocation failure message.\nIt is imperative that the VM is resized.\nWhich of the following actions should you take?",
+    "question": "Your company has three virtual machines (VMs) that are included in an availability set.\nYou try to resize one of the VMs, which returns an allocation failure message.\nIt is imperative that the VM is resized.\n\nWhich of the following actions should you take?",
     "domain": "compute",
     "choices": [
       "A. You should only stop one of the VMs.",
@@ -218,7 +226,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q17",
     "number": "17",
-    "question": "You have an Azure virtual machine (VM) that has a single data disk. You have been tasked with attaching this data disk to another Azure VM.\nYou need to make sure that your strategy allows for the virtual machines to be ofiine for the least amount of time possible.\nWhich of the following is the action you should take FIRST?",
+    "question": "You have an Azure virtual machine (VM) that has a single data disk. You have been tasked with attaching this data disk to another Azure VM.\nYou need to make sure that your strategy allows for the virtual machines to be ofiine for the least amount of time possible.\n\nWhich of the following is the action you should take FIRST?",
     "domain": "compute",
     "choices": [
       "A. Stop the VM that includes the data disk.",
@@ -233,7 +241,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q18",
     "number": "18",
-    "question": "Your company has an Azure subscription.\nYou need to deploy a number of Azure virtual machines (VMs) using Azure Resource Manager (ARM) templates. You have been informed that the\nVMs will be included in a single availability set.\nYou are required to make sure that the ARM template you configure allows for as many VMs as possible to remain accessible in the event of fabric\nfailure or maintenance.\nWhich of the following is the value that you should configure for the platformFaultDomainCount property?",
+    "question": "Your company has an Azure subscription.\nYou need to deploy a number of Azure virtual machines (VMs) using Azure Resource Manager (ARM) templates. You have been informed that the\nVMs will be included in a single availability set.\nYou are required to make sure that the ARM template you configure allows for as many VMs as possible to remain accessible in the event of fabric\nfailure or maintenance.\n\nWhich of the following is the value that you should configure for the platformFaultDomainCount property?",
     "domain": "compute",
     "choices": [
       "A. 10",
@@ -248,7 +256,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q19",
     "number": "19",
-    "question": "Your company has an Azure subscription.\nYou need to deploy a number of Azure virtual machines (VMs) using Azure Resource Manager (ARM) templates. You have been informed that the\nVMs will be included in a single availability set.\nYou are required to make sure that the ARM template you configure allows for as many VMs as possible to remain accessible in the event of fabric\nfailure or maintenance.\nWhich of the following is the value that you should configure for the platformUpdateDomainCount property?",
+    "question": "Your company has an Azure subscription.\nYou need to deploy a number of Azure virtual machines (VMs) using Azure Resource Manager (ARM) templates. You have been informed that the\nVMs will be included in a single availability set.\nYou are required to make sure that the ARM template you configure allows for as many VMs as possible to remain accessible in the event of fabric\nfailure or maintenance.\n\nWhich of the following is the value that you should configure for the platformUpdateDomainCount property?",
     "domain": "compute",
     "choices": [
       "A. 10",
@@ -263,7 +271,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q21",
     "number": "21",
-    "question": "Your company has an Microsoft Entra ID (Microsoft Entra ID) tenant that is configured for hybrid coexistence with the on-premises Active Directory\ndomain.\nThe on-premise virtual environment consists of virtual machines (VMs) running on Windows Server 2012 R2 Hyper-V host servers.\nYou have created some PowerShell scripts to automate the configuration of newly created VMs. You plan to create several new VMs.\nYou need a solution that ensures the scripts are run on the new VMs.\nWhich of the following is the best solution?",
+    "question": "Your company has an Microsoft Entra ID (Microsoft Entra ID) tenant that is configured for hybrid coexistence with the on-premises Active Directory\ndomain.\nThe on-premise virtual environment consists of virtual machines (VMs) running on Windows Server 2012 R2 Hyper-V host servers.\nYou have created some PowerShell scripts to automate the configuration of newly created VMs. You plan to create several new VMs.\nYou need a solution that ensures the scripts are run on the new VMs.\n\nWhich of the following is the best solution?",
     "domain": "identity",
     "choices": [
       "A. Configure a SetupComplete.cmd batch file in the %windir%\\setup\\scripts directory.",
@@ -278,7 +286,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q22",
     "number": "22",
-    "question": "Your company has an Microsoft Entra ID (Microsoft Entra ID) tenant that is configured for hybrid coexistence with the on-premises Active Directory\ndomain.\nYou plan to deploy several new virtual machines (VMs) in Azure. The VMs will have the same operating system and custom software\nrequirements.\nYou configure a reference VM in the on-premise virtual environment. You then generalize the VM to create an image.\nYou need to upload the image to Azure to ensure that it is available for selection when you create the new Azure VMs.\nWhich PowerShell cmdlets should you use?",
+    "question": "Your company has an Microsoft Entra ID (Microsoft Entra ID) tenant that is configured for hybrid coexistence with the on-premises Active Directory\ndomain.\nYou plan to deploy several new virtual machines (VMs) in Azure. The VMs will have the same operating system and custom software\nrequirements.\nYou configure a reference VM in the on-premise virtual environment. You then generalize the VM to create an image.\nYou need to upload the image to Azure to ensure that it is available for selection when you create the new Azure VMs.\n\nWhich PowerShell cmdlets should you use?",
     "domain": "identity",
     "choices": [
       "A. Add-AzVM",
@@ -293,7 +301,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q24",
     "number": "24",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure subscription includes two Azure networks named VirtualNetworkA and VirtualNetworkB.\nVirtualNetworkA includes a VPN gateway that is configured to make use of static routing. Also, a site-to-site VPN connection exists between your\ncompany's on- premises network and VirtualNetworkA.\nYou have configured a point-to-site VPN connection to VirtualNetworkA from a workstation running Windows 10. After configuring virtual network\npeering between\nVirtualNetworkA and VirtualNetworkB, you confirm that you are able to access VirtualNetworkB from the company's on-premises network.\nHowever, you find that you cannot establish a connection to VirtualNetworkB from the Windows 10 workstation.\nYou have to make sure that a connection to VirtualNetworkB can be established from the Windows 10 workstation.\nSolution: You choose the Allow gateway transit setting on VirtualNetworkA.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure subscription includes two Azure networks named VirtualNetworkA and VirtualNetworkB.\nVirtualNetworkA includes a VPN gateway that is configured to make use of static routing. Also, a site-to-site VPN connection exists between your\ncompany's on- premises network and VirtualNetworkA.\nYou have configured a point-to-site VPN connection to VirtualNetworkA from a workstation running Windows 10. After configuring virtual network\npeering between\nVirtualNetworkA and VirtualNetworkB, you confirm that you are able to access VirtualNetworkB from the company's on-premises network.\nHowever, you find that you cannot establish a connection to VirtualNetworkB from the Windows 10 workstation.\nYou have to make sure that a connection to VirtualNetworkB can be established from the Windows 10 workstation.\n\nSolution: You choose the Allow gateway transit setting on VirtualNetworkA.\n\nDoes the solution meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -306,7 +314,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q25",
     "number": "25",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure subscription includes two Azure networks named VirtualNetworkA and VirtualNetworkB.\nVirtualNetworkA includes a VPN gateway that is configured to make use of static routing. Also, a site-to-site VPN connection exists between your\ncompany's on- premises network and VirtualNetworkA.\nYou have configured a point-to-site VPN connection to VirtualNetworkA from a workstation running Windows 10. After configuring virtual network\npeering between\nVirtualNetworkA and VirtualNetworkB, you confirm that you are able to access VirtualNetworkB from the company's on-premises network.\nHowever, you find that you cannot establish a connection to VirtualNetworkB from the Windows 10 workstation.\nYou have to make sure that a connection to VirtualNetworkB can be established from the Windows 10 workstation.\nSolution: You choose the Allow gateway transit setting on VirtualNetworkB.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure subscription includes two Azure networks named VirtualNetworkA and VirtualNetworkB.\nVirtualNetworkA includes a VPN gateway that is configured to make use of static routing. Also, a site-to-site VPN connection exists between your\ncompany's on- premises network and VirtualNetworkA.\nYou have configured a point-to-site VPN connection to VirtualNetworkA from a workstation running Windows 10. After configuring virtual network\npeering between\nVirtualNetworkA and VirtualNetworkB, you confirm that you are able to access VirtualNetworkB from the company's on-premises network.\nHowever, you find that you cannot establish a connection to VirtualNetworkB from the Windows 10 workstation.\nYou have to make sure that a connection to VirtualNetworkB can be established from the Windows 10 workstation.\n\nSolution: You choose the Allow gateway transit setting on VirtualNetworkB.\n\nDoes the solution meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -319,7 +327,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q26",
     "number": "26",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure subscription includes two Azure networks named VirtualNetworkA and VirtualNetworkB.\nVirtualNetworkA includes a VPN gateway that is configured to make use of static routing. Also, a site-to-site VPN connection exists between your\ncompany's on- premises network and VirtualNetworkA.\nYou have configured a point-to-site VPN connection to VirtualNetworkA from a workstation running Windows 10. After configuring virtual network\npeering between\nVirtualNetworkA and VirtualNetworkB, you confirm that you are able to access VirtualNetworkB from the company's on-premises network.\nHowever, you find that you cannot establish a connection to VirtualNetworkB from the Windows 10 workstation.\nYou have to make sure that a connection to VirtualNetworkB can be established from the Windows 10 workstation.\nSolution: You download and re-install the VPN client configuration package on the Windows 10 workstation.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company's Azure subscription includes two Azure networks named VirtualNetworkA and VirtualNetworkB.\nVirtualNetworkA includes a VPN gateway that is configured to make use of static routing. Also, a site-to-site VPN connection exists between your\ncompany's on- premises network and VirtualNetworkA.\nYou have configured a point-to-site VPN connection to VirtualNetworkA from a workstation running Windows 10. After configuring virtual network\npeering between\nVirtualNetworkA and VirtualNetworkB, you confirm that you are able to access VirtualNetworkB from the company's on-premises network.\nHowever, you find that you cannot establish a connection to VirtualNetworkB from the Windows 10 workstation.\nYou have to make sure that a connection to VirtualNetworkB can be established from the Windows 10 workstation.\n\nSolution: You download and re-install the VPN client configuration package on the Windows 10 workstation.\n\nDoes the solution meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -332,7 +340,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q27",
     "number": "27",
-    "question": "Your company has virtual machines (VMs) hosted in Microsoft Azure. The VMs are located in a single Azure virtual network named VNet1.\nThe company has users that work remotely. The remote workers require access to the VMs on VNet1.\nYou need to provide access for the remote workers.\nWhat should you do?",
+    "question": "Your company has virtual machines (VMs) hosted in Microsoft Azure. The VMs are located in a single Azure virtual network named VNet1.\nThe company has users that work remotely. The remote workers require access to the VMs on VNet1.\nYou need to provide access for the remote workers.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Configure a Site-to-Site (S2S) VPN.",
@@ -348,7 +356,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q28",
     "number": "28",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has a Microsoft SQL Server Always On availability group configured on their Azure virtual machines (VMs).\nYou need to configure an Azure internal load balancer as a listener for the availability group.\nSolution: You create an HTTP health probe on port 1433.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has a Microsoft SQL Server Always On availability group configured on their Azure virtual machines (VMs).\nYou need to configure an Azure internal load balancer as a listener for the availability group.\n\nSolution: You create an HTTP health probe on port 1433.\n\nDoes the solution meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -361,7 +369,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q29",
     "number": "29",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has a Microsoft SQL Server Always On availability group configured on their Azure virtual machines (VMs).\nYou need to configure an Azure internal load balancer as a listener for the availability group.\nSolution: You set Session persistence to Client IP.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has a Microsoft SQL Server Always On availability group configured on their Azure virtual machines (VMs).\nYou need to configure an Azure internal load balancer as a listener for the availability group.\n\nSolution: You set Session persistence to Client IP.\n\nDoes the solution meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -374,7 +382,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q30",
     "number": "30",
-    "question": "Note: The question is included in a number of questions that depicts the identical set-up. However, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has a Microsoft SQL Server Always On availability group configured on their Azure virtual machines (VMs).\nYou need to configure an Azure internal load balancer as a listener for the availability group.\nSolution: You enable Floating IP.\nDoes the solution meet the goal?",
+    "question": "Note: The question is included in a number of questions that depicts the identical set-up.\n\nHowever, every question has a distinctive result.\nEstablish if the solution satisfies the requirements.\nYour company has a Microsoft SQL Server Always On availability group configured on their Azure virtual machines (VMs).\nYou need to configure an Azure internal load balancer as a listener for the availability group.\n\nSolution: You enable Floating IP.\n\nDoes the solution meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -387,7 +395,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q31",
     "number": "31",
-    "question": "Your company has two on-premises servers named SRV01 and SRV02. Developers have created an application that runs on SRV01. The\napplication calls a service on SRV02 by IP address.\nYou plan to migrate the application on Azure virtual machines (VMs). You have configured two VMs on a single subnet in an Azure virtual network.\nYou need to configure the two VMs with static internal IP addresses.\nWhat should you do?",
+    "question": "Your company has two on-premises servers named SRV01 and SRV02. Developers have created an application that runs on SRV01. The\napplication calls a service on SRV02 by IP address.\nYou plan to migrate the application on Azure virtual machines (VMs). You have configured two VMs on a single subnet in an Azure virtual network.\nYou need to configure the two VMs with static internal IP addresses.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Run the New-AzureRMVMConfig PowerShell cmdlet.",
@@ -403,7 +411,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q32",
     "number": "32",
-    "question": "Your company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou need to deploy five virtual machines (VMs) to your company's virtual network subnet.\nThe VMs will each have both a public and private IP address. Inbound and outbound security rules for all of these virtual machines must be\nidentical.\nWhich of the following is the least amount of network interfaces needed for this configuration?",
+    "question": "Your company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou need to deploy five virtual machines (VMs) to your company's virtual network subnet.\nThe VMs will each have both a public and private IP address. Inbound and outbound security rules for all of these virtual machines must be\nidentical.\n\nWhich of the following is the least amount of network interfaces needed for this configuration?",
     "domain": "identity",
     "choices": [
       "A. 5",
@@ -418,7 +426,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q33",
     "number": "33",
-    "question": "Your company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou need to deploy five virtual machines (VMs) to your company's virtual network subnet.\nThe VMs will each have both a public and private IP address. Inbound and outbound security rules for all of these virtual machines must be\nidentical.\nWhich of the following is the least amount of security groups needed for this configuration?",
+    "question": "Your company has an Microsoft Entra ID (Microsoft Entra ID) subscription.\nYou need to deploy five virtual machines (VMs) to your company's virtual network subnet.\nThe VMs will each have both a public and private IP address. Inbound and outbound security rules for all of these virtual machines must be\nidentical.\n\nWhich of the following is the least amount of security groups needed for this configuration?",
     "domain": "identity",
     "choices": [
       "A. 4",
@@ -433,7 +441,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q34",
     "number": "34",
-    "question": "Your company's Azure subscription includes Azure virtual machines (VMs) that run Windows Server 2016.\nOne of the VMs is backed up every day using Azure Backup Instant Restore.\nWhen the VM becomes infected with data encrypting ransomware, you decide to recover the VM's files.\nWhich of the following is TRUE in this scenario?",
+    "question": "Your company's Azure subscription includes Azure virtual machines (VMs) that run Windows Server 2016.\nOne of the VMs is backed up every day using Azure Backup Instant Restore.\nWhen the VM becomes infected with data encrypting ransomware, you decide to recover the VM's files.\n\nWhich of the following is TRUE in this scenario?",
     "domain": "storage",
     "choices": [
       "A. You can only recover the files to the infected VM.",
@@ -448,7 +456,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q35",
     "number": "35",
-    "question": "Your company's Azure subscription includes Azure virtual machines (VMs) that run Windows Server 2016.\nOne of the VMs is backed up every day using Azure Backup Instant Restore.\nWhen the VM becomes infected with data encrypting ransomware, you are required to restore the VM.\nWhich of the following actions should you take?",
+    "question": "Your company's Azure subscription includes Azure virtual machines (VMs) that run Windows Server 2016.\nOne of the VMs is backed up every day using Azure Backup Instant Restore.\nWhen the VM becomes infected with data encrypting ransomware, you are required to restore the VM.\n\nWhich of the following actions should you take?",
     "domain": "storage",
     "choices": [
       "A. You should restore the VM after deleting the infected VM.",
@@ -463,7 +471,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q36",
     "number": "36",
-    "question": "You administer a solution in Azure that is currently having performance issues.\nYou need to find the cause of the performance issues pertaining to metrics on the Azure infrastructure.\nWhich of the following is the tool you should use?",
+    "question": "You administer a solution in Azure that is currently having performance issues.\nYou need to find the cause of the performance issues pertaining to metrics on the Azure infrastructure.\n\nWhich of the following is the tool you should use?",
     "domain": "compute",
     "choices": [
       "A. Azure Traffic Analytics",
@@ -494,7 +502,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q38",
     "number": "38",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\nSolution: You create a PowerShell script that runs the New-AzureADUser cmdlet for each user.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\n\nSolution: You create a PowerShell script that runs the New-AzureADUser cmdlet for each user.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -507,7 +515,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q39",
     "number": "39",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\nSolution: From Microsoft Entra ID in the Azure portal, you use the Bulk create user operation.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\n\nSolution: From Microsoft Entra ID in the Azure portal, you use the Bulk create user operation.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -520,7 +528,7 @@ const QUESTIONS = [
   {
     "id": "topic1_q40",
     "number": "40",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\nSolution: You create a PowerShell script that runs the New-AzureADMSInvitation cmdlet for each external user.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\n\nSolution: You create a PowerShell script that runs the New-AzureADMSInvitation cmdlet for each external user.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -579,7 +587,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q8",
     "number": "8",
-    "question": "You have an Azure subscription named AZPT1 that contains the resources shown in the following table:\nYou create a new Azure subscription named AZPT2.\nYou need to identify which resources can be moved to AZPT2.\nWhich resources should you identify?",
+    "question": "You have an Azure subscription named AZPT1 that contains the resources shown in the following table:\nYou create a new Azure subscription named AZPT2.\nYou need to identify which resources can be moved to AZPT2.\n\nWhich resources should you identify?",
     "domain": "compute",
     "choices": [
       "A. VM1, storage1, VNET1, and VM1Managed only",
@@ -594,7 +602,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q9",
     "number": "9",
-    "question": "You recently created a new Azure subscription that contains a user named Admin1.\nAdmin1 attempts to deploy an Azure Marketplace resource by using an Azure Resource Manager template. Admin1 deploys the template by using\nAzure\nPowerShell and receives the following error message: `User failed validation to purchase resources. Error message: `Legal terms have not been\naccepted for this item on this subscription. To accept legal terms, please go to the Azure portal (http://go.microsoft.com/fwlink/?LinkId=534873)\nand configure programmatic deployment for the Marketplace item or create it there for the first time.`\nYou need to ensure that Admin1 can deploy the Marketplace resource successfully.\nWhat should you do?",
+    "question": "You recently created a new Azure subscription that contains a user named Admin1.\nAdmin1 attempts to deploy an Azure Marketplace resource by using an Azure Resource Manager template. Admin1 deploys the template by using\nAzure\nPowerShell and receives the following error message: `User failed validation to purchase resources. Error message: `Legal terms have not been\naccepted for this item on this subscription. To accept legal terms, please go to the Azure portal (http://go.microsoft.com/fwlink/?LinkId=534873)\nand configure programmatic deployment for the Marketplace item or create it there for the first time.`\nYou need to ensure that Admin1 can deploy the Marketplace resource successfully.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. From Azure PowerShell, run the Set-AzApiManagementSubscription cmdlet",
@@ -623,7 +631,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q11",
     "number": "11",
-    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.onmicrosoft.com that contains 100 user accounts.\nYou purchase 10 Microsoft Entra ID Premium P2 licenses for the tenant.\nYou need to ensure that 10 users can use all the Microsoft Entra ID Premium features.\nWhat should you do?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.onmicrosoft.com that contains 100 user accounts.\nYou purchase 10 Microsoft Entra ID Premium P2 licenses for the tenant.\nYou need to ensure that 10 users can use all the Microsoft Entra ID Premium features.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. From the Licenses blade of Microsoft Entra ID, assign a license",
@@ -683,7 +691,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q16",
     "number": "16",
-    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\nReader\n\u2711\nSecurity Admin\n\u2711\nSecurity Reader\n\u2711\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\nReader\n-\nSecurity Admin\n-\nSecurity Reader\n-\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Remove User1 from the Security Reader and Reader roles for Subscription1.",
@@ -698,7 +706,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q17",
     "number": "17",
-    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contosocloud.onmicrosoft.com.\nYour company has a public DNS zone for contoso.com.\nYou add contoso.com as a custom domain name to Microsoft Entra ID.\nYou need to ensure that Azure can verify the domain name.\nWhich type of DNS record should you create?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contosocloud.onmicrosoft.com.\nYour company has a public DNS zone for contoso.com.\nYou add contoso.com as a custom domain name to Microsoft Entra ID.\nYou need to ensure that Azure can verify the domain name.\n\nWhich type of DNS record should you create?",
     "domain": "identity",
     "choices": [
       "A. MX",
@@ -713,7 +721,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q18",
     "number": "18",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure Directory (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named\nDevelopers.\nSubscription1 contains a resource group named Dev.\nYou need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.\nSolution: On Subscription1, you assign the DevTest Labs User role to the Developers group.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure Directory (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named\nDevelopers.\nSubscription1 contains a resource group named Dev.\nYou need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.\n\nSolution: On Subscription1, you assign the DevTest Labs User role to the Developers group.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -726,7 +734,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q19",
     "number": "19",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure Directory (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named\nDevelopers.\nSubscription1 contains a resource group named Dev.\nYou need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.\nSolution: On Subscription1, you assign the Logic App Operator role to the Developers group.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure Directory (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named\nDevelopers.\nSubscription1 contains a resource group named Dev.\nYou need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.\n\nSolution: On Subscription1, you assign the Logic App Operator role to the Developers group.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -739,7 +747,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q22",
     "number": "22",
-    "question": "You have an Azure subscription named Subscription1 that contains an Azure Log Analytics workspace named Workspace1.\nYou need to view the error events from a table named Event.\nWhich query should you run in Workspace1?",
+    "question": "You have an Azure subscription named Subscription1 that contains an Azure Log Analytics workspace named Workspace1.\nYou need to view the error events from a table named Event.\n\nWhich query should you run in Workspace1?",
     "domain": "monitor",
     "choices": [
       "A. Get-Event Event | where {$_.EventType == \"error\"}",
@@ -785,7 +793,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q27",
     "number": "27",
-    "question": "You have an Azure subscription.\nYou have 100 Azure virtual machines.\nYou need to quickly identify underutilized virtual machines that can have their service tier changed to a less expensive offering.\nWhich blade should you use?",
+    "question": "You have an Azure subscription.\nYou have 100 Azure virtual machines.\nYou need to quickly identify underutilized virtual machines that can have their service tier changed to a less expensive offering.\n\nWhich blade should you use?",
     "domain": "compute",
     "choices": [
       "A. Monitor",
@@ -800,7 +808,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q29",
     "number": "29",
-    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.onmicrosoft.com.\nThe User administrator role is assigned to a user named Admin1.\nAn external partner has a Microsoft account that uses the user1@outlook.com sign in.\nAdmin1 attempts to invite the external partner to sign in to the Microsoft Entra ID tenant and receives the following error message: `Unable to invite user\nuser1@outlook.com `\" Generic authorization exception.`\nYou need to ensure that Admin1 can invite the external partner to sign in to the Microsoft Entra ID tenant.\nWhat should you do?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.onmicrosoft.com.\nThe User administrator role is assigned to a user named Admin1.\nAn external partner has a Microsoft account that uses the user1@outlook.com sign in.\nAdmin1 attempts to invite the external partner to sign in to the Microsoft Entra ID tenant and receives the following error message: `Unable to invite user\nuser1@outlook.com `\" Generic authorization exception.`\nYou need to ensure that Admin1 can invite the external partner to sign in to the Microsoft Entra ID tenant.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. From the Users settings blade, modify the External collaboration settings.",
@@ -815,7 +823,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q30",
     "number": "30",
-    "question": "You have an Azure subscription linked to an Microsoft Entra ID tenant. The tenant includes a user account named User1.\nYou need to ensure that User1 can assign a policy to the tenant root management group.\nWhat should you do?",
+    "question": "You have an Azure subscription linked to an Microsoft Entra ID tenant. The tenant includes a user account named User1.\nYou need to ensure that User1 can assign a policy to the tenant root management group.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. Assign the Owner role for the Azure Subscription to User1, and then modify the default conditional access policies.",
@@ -830,7 +838,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q33",
     "number": "33",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an\nAzure subscription.\nSolution: You assign the Network Contributor role at the subscription level to Admin1.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an\nAzure subscription.\n\nSolution: You assign the Network Contributor role at the subscription level to Admin1.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -843,7 +851,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q34",
     "number": "34",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an\nAzure subscription.\nSolution: You assign the Owner role at the subscription level to Admin1.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an\nAzure subscription.\n\nSolution: You assign the Owner role at the subscription level to Admin1.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -856,7 +864,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q35",
     "number": "35",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an\nAzure subscription.\nSolution: You assign the Reader role at the subscription level to Admin1.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an\nAzure subscription.\n\nSolution: You assign the Reader role at the subscription level to Admin1.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -869,7 +877,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q36",
     "number": "36",
-    "question": "You have an Azure subscription that contains a user named User1.\nYou need to ensure that User1 can deploy virtual machines and manage virtual networks. The solution must use the principle of least privilege.\nWhich role-based access control (RBAC) role should you assign to User1?",
+    "question": "You have an Azure subscription that contains a user named User1.\nYou need to ensure that User1 can deploy virtual machines and manage virtual networks. The solution must use the principle of least privilege.\n\nWhich role-based access control (RBAC) role should you assign to User1?",
     "domain": "identity",
     "choices": [
       "A. Owner",
@@ -914,7 +922,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q40",
     "number": "40",
-    "question": "You have an Azure DNS zone named adatum.com.\nYou need to delegate a subdomain named research.adatum.com to a different DNS server in Azure.\nWhat should you do?",
+    "question": "You have an Azure DNS zone named adatum.com.\nYou need to delegate a subdomain named research.adatum.com to a different DNS server in Azure.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Create an NS record named research in the adatum.com zone.",
@@ -929,7 +937,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q42",
     "number": "42",
-    "question": "You have an Azure subscription named Subscription1 that contains an Azure Log Analytics workspace named Workspace1.\nYou need to view the error events from a table named Event.\nWhich query should you run in Workspace1?",
+    "question": "You have an Azure subscription named Subscription1 that contains an Azure Log Analytics workspace named Workspace1.\nYou need to view the error events from a table named Event.\n\nWhich query should you run in Workspace1?",
     "domain": "monitor",
     "choices": [
       "A. Get-Event Event | where {$_.EventType == \"error\"}",
@@ -944,7 +952,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q43",
     "number": "43",
-    "question": "You have a registered DNS domain named contoso.com.\nYou create a public Azure DNS zone named contoso.com.\nYou need to ensure that records created in the contoso.com zone are resolvable from the internet.\nWhat should you do?",
+    "question": "You have a registered DNS domain named contoso.com.\nYou create a public Azure DNS zone named contoso.com.\nYou need to ensure that records created in the contoso.com zone are resolvable from the internet.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Create NS records in contoso.com.",
@@ -959,7 +967,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q47",
     "number": "47",
-    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant.\nYou plan to delete multiple users by using Bulk delete in the Microsoft Entra ID admin center.\nYou need to create and upload a file for the bulk delete.\nWhich user attributes should you include in the file?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant.\nYou plan to delete multiple users by using Bulk delete in the Microsoft Entra ID admin center.\nYou need to create and upload a file for the bulk delete.\n\nWhich user attributes should you include in the file?",
     "domain": "identity",
     "choices": [
       "A. The user principal name and usage location of each user only",
@@ -975,7 +983,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q48",
     "number": "48",
-    "question": "HOTSPOT -\nYou have an Azure subscription named Sub1 that contains the Azure resources shown in the following table.\nYou assign an Azure policy that has the following settings:\nScope: Sub1\n\u2711\nExclusions: Sub1/RG1/VNET1\n\u2711\nPolicy definition: Append a tag and its value to resources\n\u2711\nPolicy enforcement: Enabled\n\u2711\nTag name: Tag4\n\u2711\nTag value: value4\n\u2711\nYou assign tags to the resources as shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.\nHot Area:",
+    "question": "HOTSPOT: You have an Azure subscription named Sub1 that contains the Azure resources shown in the following table.\nYou assign an Azure policy that has the following settings:\nScope: Sub1\n-\nExclusions: Sub1/RG1/VNET1\n-\nPolicy definition: Append a tag and its value to resources\n-\nPolicy enforcement: Enabled\n-\nTag name: Tag4\n-\nTag value: value4\n-\nYou assign tags to the resources as shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.\nHot Area:",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -988,7 +996,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q49",
     "number": "49",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an\nAzure subscription.\nSolution: You assign the Traffic Manager Contributor role at the subscription level to Admin1.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an\nAzure subscription.\n\nSolution: You assign the Traffic Manager Contributor role at the subscription level to Admin1.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1001,7 +1009,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q50",
     "number": "50",
-    "question": "You have three offices and an Azure subscription that contains an Microsoft Entra ID (Microsoft Entra ID) tenant.\nYou need to grant user management permissions to a local administrator in each office.\nWhat should you use?",
+    "question": "You have three offices and an Azure subscription that contains an Microsoft Entra ID (Microsoft Entra ID) tenant.\nYou need to grant user management permissions to a local administrator in each office.\n\nWhat should you use?",
     "domain": "identity",
     "choices": [
       "A. Microsoft Entra ID roles",
@@ -1016,7 +1024,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q51",
     "number": "51",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure Directory (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named\nDevelopers.\nSubscription1 contains a resource group named Dev.\nYou need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.\nSolution: On Dev, you assign the Logic App Contributor role to the Developers group.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure Directory (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named\nDevelopers.\nSubscription1 contains a resource group named Dev.\nYou need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.\n\nSolution: On Dev, you assign the Logic App Contributor role to the Developers group.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1029,7 +1037,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q53",
     "number": "53",
-    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\nReader\n\u2711\nSecurity Admin\n\u2711\nSecurity Reader\n\u2711\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\nReader\n-\nSecurity Admin\n-\nSecurity Reader\n-\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Remove User1 from the Security Reader role for Subscription1. Assign User1 the Contributor role for RG1.",
@@ -1059,7 +1067,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q56",
     "number": "56",
-    "question": "You have 15 Azure subscriptions.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant that contains a security group named Group1.\nYou plan to purchase additional Azure subscription.\nYou need to ensure that Group1 can manage role assignments for the existing subscriptions and the planned subscriptions. The solution must\nmeet the following requirements:\nUse the principle of least privilege.\n\u2711\nMinimize administrative effort.\n\u2711\nWhat should you do?",
+    "question": "You have 15 Azure subscriptions.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant that contains a security group named Group1.\nYou plan to purchase additional Azure subscription.\nYou need to ensure that Group1 can manage role assignments for the existing subscriptions and the planned subscriptions. The solution must\nmeet the following requirements:\nUse the principle of least privilege.\n-\nMinimize administrative effort.\n-\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. Assign Group1 the Owner role for the root management group.",
@@ -1074,7 +1082,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q58",
     "number": "58",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following users in an Microsoft Entra ID tenant named contoso.onmicrosoft.com:\nUser1 creates a new Microsoft Entra ID tenant named external.contoso.onmicrosoft.com.\nYou need to create new user accounts in external.contoso.onmicrosoft.com.\nSolution: You instruct User2 to create the user accounts.\nDoes that meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following users in an Microsoft Entra ID tenant named contoso.onmicrosoft.com:\nUser1 creates a new Microsoft Entra ID tenant named external.contoso.onmicrosoft.com.\nYou need to create new user accounts in external.contoso.onmicrosoft.com.\n\nSolution: You instruct User2 to create the user accounts.\nDoes that meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1087,7 +1095,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q59",
     "number": "59",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following users in an Microsoft Entra ID tenant named contoso.onmicrosoft.com:\nUser1 creates a new Microsoft Entra ID tenant named external.contoso.onmicrosoft.com.\nYou need to create new user accounts in external.contoso.onmicrosoft.com.\nSolution: You instruct User4 to create the user accounts.\nDoes that meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following users in an Microsoft Entra ID tenant named contoso.onmicrosoft.com:\nUser1 creates a new Microsoft Entra ID tenant named external.contoso.onmicrosoft.com.\nYou need to create new user accounts in external.contoso.onmicrosoft.com.\n\nSolution: You instruct User4 to create the user accounts.\nDoes that meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1100,7 +1108,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q60",
     "number": "60",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following users in an Microsoft Entra ID tenant named contoso.onmicrosoft.com:\nUser1 creates a new Microsoft Entra ID tenant named external.contoso.onmicrosoft.com.\nYou need to create new user accounts in external.contoso.onmicrosoft.com.\nSolution: You instruct User3 to create the user accounts.\nDoes that meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following users in an Microsoft Entra ID tenant named contoso.onmicrosoft.com:\nUser1 creates a new Microsoft Entra ID tenant named external.contoso.onmicrosoft.com.\nYou need to create new user accounts in external.contoso.onmicrosoft.com.\n\nSolution: You instruct User3 to create the user accounts.\nDoes that meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1113,7 +1121,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q61",
     "number": "61",
-    "question": "You have two Azure subscriptions named Sub1 and Sub2.\nAn administrator creates a custom role that has an assignable scope to a resource group named RG1 in Sub1.\nYou need to ensure that you can apply the custom role to any resource group in Sub1 and Sub2. The solution must minimize administrative effort.\nWhat should you do?",
+    "question": "You have two Azure subscriptions named Sub1 and Sub2.\nAn administrator creates a custom role that has an assignable scope to a resource group named RG1 in Sub1.\nYou need to ensure that you can apply the custom role to any resource group in Sub1 and Sub2. The solution must minimize administrative effort.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Select the custom role and add Sub1 and Sub2 to the assignable scopes. Remove RG1 from the assignable scopes.",
@@ -1144,7 +1152,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q63",
     "number": "63",
-    "question": "You have an Azure subscription named Subscription1 that contains an Azure Log Analytics workspace named Workspace1.\nYou need to view the error events from a table named Event.\nWhich query should you run in Workspace1?",
+    "question": "You have an Azure subscription named Subscription1 that contains an Azure Log Analytics workspace named Workspace1.\nYou need to view the error events from a table named Event.\n\nWhich query should you run in Workspace1?",
     "domain": "monitor",
     "choices": [
       "A. select * from Event where EventType == \"error\"",
@@ -1159,7 +1167,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q64",
     "number": "64",
-    "question": "You have an Azure App Services web app named App1.\nYou plan to deploy App1 by using Web Deploy.\nYou need to ensure that the developers of App1 can use their Microsoft Entra ID credentials to deploy content to App1. The solution must use the principle\nof least privilege.\nWhat should you do?",
+    "question": "You have an Azure App Services web app named App1.\nYou plan to deploy App1 by using Web Deploy.\nYou need to ensure that the developers of App1 can use their Microsoft Entra ID credentials to deploy content to App1. The solution must use the principle\nof least privilege.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. Assign the Owner role to the developers",
@@ -1174,7 +1182,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q65",
     "number": "65",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\nSolution: From Microsoft Entra ID in the Azure portal, you use the Bulk invite users operation.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\n\nSolution: From Microsoft Entra ID in the Azure portal, you use the Bulk invite users operation.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1201,7 +1209,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q69",
     "number": "69",
-    "question": "You have an Microsoft Entra ID tenant named adatum.com that contains the groups shown in the following table.\nAdatum.com contains the users shown in the following table.\nYou assign the Microsoft Entra ID Premium Plan 2 license to Group1 and User4.\nWhich users are assigned the Microsoft Entra ID Premium Plan 2 license?",
+    "question": "You have an Microsoft Entra ID tenant named adatum.com that contains the groups shown in the following table.\nAdatum.com contains the users shown in the following table.\nYou assign the Microsoft Entra ID Premium Plan 2 license to Group1 and User4.\n\nWhich users are assigned the Microsoft Entra ID Premium Plan 2 license?",
     "domain": "identity",
     "choices": [
       "A. User4 only",
@@ -1216,7 +1224,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q71",
     "number": "71",
-    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\n\u2022 Reader\n\u2022 Security Admin\n\u2022 Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\n- Reader\n- Security Admin\n- Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Assign User1 the Network Contributor role for VNet1.",
@@ -1231,7 +1239,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q73",
     "number": "73",
-    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\n\u2022 Reader\n\u2022 Security Admin\n\u2022 Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\n- Reader\n- Security Admin\n- Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Remove User1 from the Security Reader role for Subscript on 1. Assign User1 the Contributor role for RG1.",
@@ -1246,7 +1254,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q74",
     "number": "74",
-    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\nWhat should you configure?",
+    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. Azure Application Gateway",
@@ -1261,7 +1269,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q76",
     "number": "76",
-    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\n\u2022 Reader\n\u2022 Security Admin\n\u2022 Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\n- Reader\n- Security Admin\n- Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Remove User1 from the Security Reader role for Subscription1. Assign User1 the Contributor role for RG1.",
@@ -1291,7 +1299,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q79",
     "number": "79",
-    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\n\u2022 Reader\n\u2022 Security Admin\n\u2022 Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1.\nSubscription1 has a user named User1. User1 has the following roles:\n- Reader\n- Security Admin\n- Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Remove User1 from the Security Reader role for Subscription1. Assign User1 the Contributor role for RG1.",
@@ -1306,7 +1314,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q82",
     "number": "82",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\nSolution: You create a PowerShell script that runs the New-MgUser cmdlet for each external user.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\n\nSolution: You create a PowerShell script that runs the New-MgUser cmdlet for each external user.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1319,7 +1327,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q83",
     "number": "83",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\nSolution: You create a PowerShell script that runs the New-MgInvitation cmdlet for each external user.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\n\nSolution: You create a PowerShell script that runs the New-MgInvitation cmdlet for each external user.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1332,7 +1340,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q84",
     "number": "84",
-    "question": "You have an Azure subscription named Subscription1 that contains virtual network named VNet1. VNet1 is in a resource group named RG1.\nA user named User1 has the following roles for Subscription1:\n\u2022 Reader\n\u2022 Security Admin\n\u2022 Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains virtual network named VNet1. VNet1 is in a resource group named RG1.\nA user named User1 has the following roles for Subscription1:\n- Reader\n- Security Admin\n- Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Assign User1 the Contributor role for VNet1.",
@@ -1347,7 +1355,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q85",
     "number": "85",
-    "question": "You have an Azure subscription named Subscription1 that contains virtual network named VNet1. VNet1 is in a resource group named RG1.\nUser named User1 has the following roles for Subscription1:\n\u2022 Reader\n\u2022 Security Admin\n\u2022 Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains virtual network named VNet1. VNet1 is in a resource group named RG1.\nUser named User1 has the following roles for Subscription1:\n- Reader\n- Security Admin\n- Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Remove User1 from the Security Reader and Reader roles for Subscription1. Assign User1 the Contributor role for Subscription1.",
@@ -1362,7 +1370,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q88",
     "number": "88",
-    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to assign Workspace1 a role to allow read, write, and delete operations for the data stored in the containers of storage1.\nWhich role should you assign?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to assign Workspace1 a role to allow read, write, and delete operations for the data stored in the containers of storage1.\n\nWhich role should you assign?",
     "domain": "storage",
     "choices": [
       "A. Storage Account Contributor",
@@ -1377,7 +1385,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q89",
     "number": "89",
-    "question": "You have an Azure subscription named Subscription1 that contains virtual network named VNet1. VNet1 is in a resource group named RG1.\nA user named User1 has the following roles for Subscription1:\n\u2022 Reader\n\u2022 Security Admin\n\u2022 Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains virtual network named VNet1. VNet1 is in a resource group named RG1.\nA user named User1 has the following roles for Subscription1:\n- Reader\n- Security Admin\n- Security Reader\nYou need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Remove User1 from the Security Reader and Reader roles for Subscription1. Assign User1 the Contributor role for Subscription1.",
@@ -1392,7 +1400,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q90",
     "number": "90",
-    "question": "You have an Microsoft Entra ID tenant that contains the groups shown in the following table.\nYou purchase Microsoft Entra ID Premium P2 licenses.\nTo which groups can you assign a license?",
+    "question": "You have an Microsoft Entra ID tenant that contains the groups shown in the following table.\nYou purchase Microsoft Entra ID Premium P2 licenses.\nTo\n\nwhich groups can you assign a license?",
     "domain": "identity",
     "choices": [
       "A. Group1 only",
@@ -1408,7 +1416,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q94",
     "number": "94",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\nSolution: You create a PowerShell script that runs the New-MgUser cmdlet for each user.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou have a CSV file that contains the names and email addresses of 500 external users.\nYou need to create a guest user account in contoso.com for each of the 500 external users.\n\nSolution: You create a PowerShell script that runs the New-MgUser cmdlet for each user.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -1421,7 +1429,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q95",
     "number": "95",
-    "question": "HOTSPOT\n-\nYou purchase a new Azure subscription.\nYou create an Azure Resource Manager (ARM) template named deploy.json as shown in the following exhibit.\nYou connect to the subscription and run the following command.\nNew-AzDeployment \u2013Location westus \u2013TemplateFile \u201cdeploy.json\u201d\n\n\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "question": "HOTSPOT: You purchase a new Azure subscription.\nYou create an Azure Resource Manager (ARM) template named deploy.json as shown in the following exhibit.\nYou connect to the subscription and run the following command.\nNew-AzDeployment -Location westus -TemplateFile \"deploy.json\"\n\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -1434,7 +1442,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q96",
     "number": "96",
-    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\nWhat should you configure?",
+    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. Microsoft Entra ID Application Proxy",
@@ -1449,7 +1457,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q97",
     "number": "97",
-    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\nWhat should you configure?",
+    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. Microsoft Entra ID Application Proxy",
@@ -1464,7 +1472,7 @@ const QUESTIONS = [
   {
     "id": "topic2_q98",
     "number": "98",
-    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\nWhat should you configure?",
+    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. Azure Application Gateway",
@@ -1524,7 +1532,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q3",
     "number": "3",
-    "question": "You have Azure subscription that includes data in following locations:\nYou plan to export data by using Azure import/export job named Export1.\nYou need to identify the data that can be exported by using Export1.\nWhich data should you identify?",
+    "question": "You have Azure subscription that includes data in following locations:\nYou plan to export data by using Azure import/export job named Export1.\nYou need to identify the data that can be exported by using Export1.\n\nWhich data should you identify?",
     "domain": "compute",
     "choices": [
       "A. DB1",
@@ -1570,7 +1578,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q16",
     "number": "16",
-    "question": "You have an Azure subscription that contains a storage account named account1.\nYou plan to upload the disk files of a virtual machine to account1 from your on-premises network. The on-premises network uses a public IP\naddress space of\n131.107.1.0/24.\nYou plan to use the disk files to provision an Azure virtual machine named VM1. VM1 will be attached to a virtual network named VNet1. VNet1\nuses an IP address space of 192.168.0.0/24.\nYou need to configure account1 to meet the following requirements:\nEnsure that you can upload the disk files to account1.\n\u2711\nEnsure that you can attach the disks to VM1.\n\u2711\nPrevent all other access to account1.\n\u2711\nWhich two actions should you perform? Each correct answer presents part of the solution.\nNOTE: Each correct selection is worth one point.",
+    "question": "You have an Azure subscription that contains a storage account named account1.\nYou plan to upload the disk files of a virtual machine to account1 from your on-premises network. The on-premises network uses a public IP\naddress space of\n131.107.1.0/24.\nYou plan to use the disk files to provision an Azure virtual machine named VM1. VM1 will be attached to a virtual network named VNet1. VNet1\nuses an IP address space of 192.168.0.0/24.\nYou need to configure account1 to meet the following requirements:\nEnsure that you can upload the disk files to account1.\n-\nEnsure that you can attach the disks to VM1.\n-\nPrevent all other access to account1.\n-\nWhich two actions should you perform? Each correct answer presents part of the solution.\nNOTE: Each correct selection is worth one point.",
     "domain": "storage",
     "choices": [
       "A. From the Networking blade of account1, select Selected networks.",
@@ -1617,7 +1625,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q24",
     "number": "24",
-    "question": "You have an Azure Storage account named storage1.\nYou plan to use AzCopy to copy data to storage1.\nYou need to identify the storage services in storage1 to which you can copy the data.\nWhich storage services should you identify?",
+    "question": "You have an Azure Storage account named storage1.\nYou plan to use AzCopy to copy data to storage1.\nYou need to identify the storage services in storage1 to which you can copy the data.\n\nWhich storage services should you identify?",
     "domain": "storage",
     "choices": [
       "A. blob, file, table, and queue",
@@ -1633,7 +1641,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q26",
     "number": "26",
-    "question": "You have an Azure subscription that contains an Azure Storage account.\nYou plan to create an Azure container instance named container1 that will use a Docker image named Image1. Image1 contains a Microsoft SQL\nServer instance that requires persistent storage.\nYou need to configure a storage service for Container1.\nWhat should you use?",
+    "question": "You have an Azure subscription that contains an Azure Storage account.\nYou plan to create an Azure container instance named container1 that will use a Docker image named Image1. Image1 contains a Microsoft SQL\nServer instance that requires persistent storage.\nYou need to configure a storage service for Container1.\n\nWhat should you use?",
     "domain": "storage",
     "choices": [
       "A. Azure Files",
@@ -1708,7 +1716,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q36",
     "number": "36",
-    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nYou plan to manage the data stored in the accounts by using lifecycle management rules.\nTo which storage accounts can you apply lifecycle management rules?",
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nYou plan to manage the data stored in the accounts by using lifecycle management rules.\nTo\n\nwhich storage accounts can you apply lifecycle management rules?",
     "domain": "storage",
     "choices": [
       "A. storage1 only",
@@ -1724,7 +1732,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q37",
     "number": "37",
-    "question": "You create an Azure Storage account named contosostorage.\nYou plan to create a file share named data.\nUsers need to map a drive to the data file share from home computers that run Windows 10.\nWhich outbound port should you open between the home computers and the data file share?",
+    "question": "You create an Azure Storage account named contosostorage.\nYou plan to create a file share named data.\nUsers need to map a drive to the data file share from home computers that run Windows 10.\n\nWhich outbound port should you open between the home computers and the data file share?",
     "domain": "storage",
     "choices": [
       "A. 80",
@@ -1754,7 +1762,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q40",
     "number": "40",
-    "question": "You have an Azure subscription that contains a storage account named storage1.\nYou have the devices shown in the following table.\nFrom which devices can you use AzCopy to copy data to storage1?",
+    "question": "You have an Azure subscription that contains a storage account named storage1.\nYou have the devices shown in the following table.\nFrom\n\nwhich devices can you use AzCopy to copy data to storage1?",
     "domain": "storage",
     "choices": [
       "A. Device 1 only",
@@ -1769,7 +1777,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q41",
     "number": "41",
-    "question": "You have an Azure Storage account named storage1 that contains a blob container named container1.\nYou need to prevent new content added to container1 from being modified for one year.\nWhat should you configure?",
+    "question": "You have an Azure Storage account named storage1 that contains a blob container named container1.\nYou need to prevent new content added to container1 from being modified for one year.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. the access tier",
@@ -1800,7 +1808,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q45",
     "number": "45",
-    "question": "You have an on-premises server that contains a folder named D:\\Folder1.\nYou need to copy the contents of D:\\Folder1 to the public container in an Azure Storage account named contosodata.\nWhich command should you run?",
+    "question": "You have an on-premises server that contains a folder named D:\\Folder1.\nYou need to copy the contents of D:\\Folder1 to the public container in an Azure Storage account named contosodata.\n\nWhich command should you run?",
     "domain": "storage",
     "choices": [
       "A. https://contosodata.blob.core.windows.net/public",
@@ -1815,7 +1823,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q46",
     "number": "46",
-    "question": "You have an Azure subscription.\nIn the Azure portal, you plan to create a storage account named storage1 that will have the following settings:\nPerformance: Standard\n\u2711\nReplication: Zone-redundant storage (ZRS)\n\u2711\nAccess tier (default): Cool\n\u2711\nHierarchical namespace: Disabled\n\u2711\nYou need to ensure that you can set Account kind for storage1 to BlockBlobStorage.\nWhich setting should you modify first?",
+    "question": "You have an Azure subscription.\nIn the Azure portal, you plan to create a storage account named storage1 that will have the following settings:\nPerformance: Standard\n-\nReplication: Zone-redundant storage (ZRS)\n-\nAccess tier (default): Cool\n-\nHierarchical namespace: Disabled\n-\nYou need to ensure that you can set Account kind for storage1 to BlockBlobStorage.\n\nWhich setting should you modify first?",
     "domain": "storage",
     "choices": [
       "A. Performance",
@@ -1845,7 +1853,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q51",
     "number": "51",
-    "question": "You have an on-premises server that contains a folder named D:\\Folder1.\nYou need to copy the contents of D:\\Folder1 to the public container in an Azure Storage account named contosodata.\nWhich command should you run?",
+    "question": "You have an on-premises server that contains a folder named D:\\Folder1.\nYou need to copy the contents of D:\\Folder1 to the public container in an Azure Storage account named contosodata.\n\nWhich command should you run?",
     "domain": "storage",
     "choices": [
       "A. az storage blob copy start D:\\Folder1 https://contosodata.blob.core.windows.net/public",
@@ -1875,7 +1883,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q55",
     "number": "55",
-    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to perform the tasks shown in the following table.\nWhich tasks can you perform by using Azure Storage Explorer?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to perform the tasks shown in the following table.\n\nWhich tasks can you perform by using Azure Storage Explorer?",
     "domain": "storage",
     "choices": [
       "A. Task1 and Task3 only",
@@ -1891,7 +1899,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q57",
     "number": "57",
-    "question": "You have an Azure subscription that contains a storage account named storage1.\nYou plan to create a blob container named container1.\nYou need to use customer-managed key encryption for container1.\nWhich key should you use?",
+    "question": "You have an Azure subscription that contains a storage account named storage1.\nYou plan to create a blob container named container1.\nYou need to use customer-managed key encryption for container1.\n\nWhich key should you use?",
     "domain": "storage",
     "choices": [
       "A. an EC key that uses the P-384 curve only",
@@ -1967,7 +1975,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q66",
     "number": "66",
-    "question": "You plan to create an Azure Storage account named storage1 that will contain a file share named share1.\nYou need to ensure that share1 can support SMB Multichannel. The solution must minimize costs.\nHow should you configure storage?",
+    "question": "You plan to create an Azure Storage account named storage1 that will contain a file share named share1.\nYou need to ensure that share1 can support SMB Multichannel. The solution must minimize costs.\n\nHow should you configure storage?",
     "domain": "storage",
     "choices": [
       "A. Premium performance with locally-redundant storage (LRS)",
@@ -1997,7 +2005,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q68",
     "number": "68",
-    "question": "You have an Azure subscription that contains a storage account named storage1.\nYou plan to use conditions when assigning role-based access control (RBAC) roles to storage1.\nWhich storage1 services support conditions when assigning roles?",
+    "question": "You have an Azure subscription that contains a storage account named storage1.\nYou plan to use conditions when assigning role-based access control (RBAC) roles to storage1.\n\nWhich storage1 services support conditions when assigning roles?",
     "domain": "identity",
     "choices": [
       "A. containers only",
@@ -2013,7 +2021,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q70",
     "number": "70",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. the Publish-AzVMDscConfiguration cmdlet",
@@ -2043,7 +2051,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q74",
     "number": "74",
-    "question": "You have an Azure Storage account named storage1.\nFor storage1, you create an encryption scope named Scope1.\nWhich storage types can you encrypt by using Scope?",
+    "question": "You have an Azure Storage account named storage1.\nFor storage1, you create an encryption scope named Scope1.\n\nWhich storage types can you encrypt by using Scope?",
     "domain": "storage",
     "choices": [
       "A. file shares only",
@@ -2090,7 +2098,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q79",
     "number": "79",
-    "question": "You have an Azure subscription that contains a virtual machine named VM1 and an Azure key vault named KV1.\nYou need to configure encryption for VM1. The solution must meet the following requirements:\n\u2022 Store and use the encryption key in KV1.\n\u2022 Maintain encryption if VM1 is downloaded from Azure.\n\u2022 Encrypt both the operating system disk and the data disks.\nWhich encryption method should you use?",
+    "question": "You have an Azure subscription that contains a virtual machine named VM1 and an Azure key vault named KV1.\nYou need to configure encryption for VM1. The solution must meet the following requirements:\n- Store and use the encryption key in KV1.\n- Maintain encryption if VM1 is downloaded from Azure.\n- Encrypt both the operating system disk and the data disks.\n\nWhich encryption method should you use?",
     "domain": "compute",
     "choices": [
       "A. customer-managed keys",
@@ -2105,7 +2113,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q81",
     "number": "81",
-    "question": "You have an Azure subscription that contains a storage account named storage1. The storage1 account contains a container named container1.\nYou need to configure access to container1. The solution must meet the following requirements:\n\u2022 Only allow read access.\n\u2022 Allow both HTTP and HTTPS protocols.\n\u2022 Apply access permissions to all the content in the container.\nWhat should you use?",
+    "question": "You have an Azure subscription that contains a storage account named storage1. The storage1 account contains a container named container1.\nYou need to configure access to container1. The solution must meet the following requirements:\n- Only allow read access.\n- Allow both HTTP and HTTPS protocols.\n- Apply access permissions to all the content in the container.\n\nWhat should you use?",
     "domain": "storage",
     "choices": [
       "A. an access policy",
@@ -2120,7 +2128,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q82",
     "number": "82",
-    "question": "You need to create an Azure Storage account named storage1. The solution must meet the following requirements:\n\u2022 Support Azure Data Lake Storage.\n\u2022 Minimize costs for infrequently accessed data.\n\u2022 Automatically replicate data to a secondary Azure region.\nWhich three options should you configure for storage1? Each correct answer presents part of the solution.\nNOTE: Each correct answer is worth one point.",
+    "question": "You need to create an Azure Storage account named storage1. The solution must meet the following requirements:\n- Support Azure Data Lake Storage.\n- Minimize costs for infrequently accessed data.\n- Automatically replicate data to a secondary Azure region.\nWhich three options should you configure for storage1? Each correct answer presents part of the solution.\nNOTE: Each correct answer is worth one point.",
     "domain": "storage",
     "choices": [
       "A. zone-redundant storage (ZRS)",
@@ -2136,7 +2144,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q84",
     "number": "84",
-    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nWhich storage account can be converted to zone-redundant storage (ZRS) replication?",
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\n\nWhich storage account can be converted to zone-redundant storage (ZRS) replication?",
     "domain": "storage",
     "choices": [
       "A. storage1",
@@ -2151,7 +2159,7 @@ const QUESTIONS = [
   {
     "id": "topic3_q85",
     "number": "85",
-    "question": "You have an Azure subscription that contains the devices shown in the following table.\nOn which devices can you install Azure Storage Explorer?",
+    "question": "You have an Azure subscription that contains the devices shown in the following table.\nOn\n\nwhich devices can you install Azure Storage Explorer?",
     "domain": "storage",
     "choices": [
       "A. Device1 only",
@@ -2167,7 +2175,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q1",
     "number": "1",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou deploy an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to deploy a YAML file to AKS1.\nSolution: From Azure CLI, you run az aks.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou deploy an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to deploy a YAML file to AKS1.\n\nSolution: From Azure CLI, you run az aks.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2180,7 +2188,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q2",
     "number": "2",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou deploy an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to deploy a YAML file to AKS1.\nSolution: From Azure CLI, you run the kubectl client.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou deploy an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to deploy a YAML file to AKS1.\n\nSolution: From Azure CLI, you run the kubectl client.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2193,7 +2201,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q3",
     "number": "3",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou deploy an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to deploy a YAML file to AKS1.\nSolution: From Azure CLI, you run azcopy.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou deploy an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to deploy a YAML file to AKS1.\n\nSolution: From Azure CLI, you run azcopy.\nDoes this meet the goal?",
     "domain": "storage",
     "choices": [
       "A. Yes",
@@ -2206,7 +2214,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q4",
     "number": "4",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\nSolution: You create an Azure storage account and configure shared access signatures (SASs). You install the Microsoft Monitoring Agent on\nVM1. You create an alert in Azure Monitor and specify the storage account as the source.\nDoes that meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\n\nSolution: You create an Azure storage account and configure shared access signatures (SASs). You install the Microsoft Monitoring Agent on\nVM1. You create an alert in Azure Monitor and specify the storage account as the source.\nDoes that meet the goal?",
     "domain": "storage",
     "choices": [
       "A. Yes",
@@ -2250,7 +2258,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q12",
     "number": "12",
-    "question": "You have an Azure Resource Manager template named Template1 that is used to deploy an Azure virtual machine.\nTemplate1 contains the following text:\nThe variables section in Template1 contains the following text:\n\"location\": \"westeurope\"\nThe resources section in Template1 contains the following text:\nYou need to deploy the virtual machine to the West US location by using Template1.\nWhat should you do?",
+    "question": "You have an Azure Resource Manager template named Template1 that is used to deploy an Azure virtual machine.\nTemplate1 contains the following text:\nThe variables section in Template1 contains the following text:\n\"location\": \"westeurope\"\nThe resources section in Template1 contains the following text:\nYou need to deploy the virtual machine to the West US location by using Template1.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Modify the location in the resources section to westus",
@@ -2279,7 +2287,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q14",
     "number": "14",
-    "question": "You plan to move a distributed on-premises app named App1 to an Azure subscription.\nAfter the planned move, App1 will be hosted on several Azure virtual machines.\nYou need to ensure that App1 always runs on at least eight virtual machines during planned Azure maintenance.\nWhat should you create?",
+    "question": "You plan to move a distributed on-premises app named App1 to an Azure subscription.\nAfter the planned move, App1 will be hosted on several Azure virtual machines.\nYou need to ensure that App1 always runs on at least eight virtual machines during planned Azure maintenance.\n\nWhat should you create?",
     "domain": "compute",
     "choices": [
       "A. one virtual machine scale set that has 10 virtual machines instances",
@@ -2294,7 +2302,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q15",
     "number": "15",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\nSolution: You create an event subscription on VM1. You create an alert in Azure Monitor and specify VM1 as the source\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\n\nSolution: You create an event subscription on VM1. You create an alert in Azure Monitor and specify VM1 as the source\nDoes this meet the goal?",
     "domain": "monitor",
     "choices": [
       "A. Yes",
@@ -2307,7 +2315,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q16",
     "number": "16",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json.\nYou receive a notification that VM1 will be affected by maintenance.\nYou need to move VM1 to a different host immediately.\nSolution: From the Overview blade, you move the virtual machine to a different subscription.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json.\nYou receive a notification that VM1 will be affected by maintenance.\nYou need to move VM1 to a different host immediately.\n\nSolution: From the Overview blade, you move the virtual machine to a different subscription.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2320,7 +2328,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q17",
     "number": "17",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json.\nYou receive a notification that VM1 will be affected by maintenance.\nYou need to move VM1 to a different host immediately.\nSolution: From the Redeploy blade, you click Redeploy.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json.\nYou receive a notification that VM1 will be affected by maintenance.\nYou need to move VM1 to a different host immediately.\n\nSolution: From the Redeploy blade, you click Redeploy.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2333,7 +2341,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q18",
     "number": "18",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json.\nYou receive a notification that VM1 will be affected by maintenance.\nYou need to move VM1 to a different host immediately.\nSolution: From the Update management blade, you click Enable.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json.\nYou receive a notification that VM1 will be affected by maintenance.\nYou need to move VM1 to a different host immediately.\n\nSolution: From the Update management blade, you click Enable.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2361,7 +2369,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q21",
     "number": "21",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the resources shown in the following table.\nVM1 connects to VNET1.\nYou need to connect VM1 to VNET2.\nSolution: You delete VM1. You recreate VM1, and then you create a new network interface for VM1 and connect it to VNET2.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the resources shown in the following table.\nVM1 connects to VNET1.\nYou need to connect VM1 to VNET2.\n\nSolution: You delete VM1. You recreate VM1, and then you create a new network interface for VM1 and connect it to VNET2.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -2374,7 +2382,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q22",
     "number": "22",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the resources shown in the following table.\nVM1 connects to VNET1.\nYou need to connect VM1 to VNET2.\nSolution: You turn off VM1, and then you add a new network interface to VM1.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the resources shown in the following table.\nVM1 connects to VNET1.\nYou need to connect VM1 to VNET2.\n\nSolution: You turn off VM1, and then you add a new network interface to VM1.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -2387,7 +2395,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q25",
     "number": "25",
-    "question": "You deploy an Azure Kubernetes Service (AKS) cluster named Cluster1 that uses the IP addresses shown in the following table.\nYou need to provide internet users with access to the applications that run in Cluster1.\nWhich IP address should you include in the DNS record for Cluster1?",
+    "question": "You deploy an Azure Kubernetes Service (AKS) cluster named Cluster1 that uses the IP addresses shown in the following table.\nYou need to provide internet users with access to the applications that run in Cluster1.\n\nWhich IP address should you include in the DNS record for Cluster1?",
     "domain": "networking",
     "choices": [
       "A. 131.107.2.1",
@@ -2418,7 +2426,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q28",
     "number": "28",
-    "question": "You have an Azure subscription that contains a virtual machine named VM1. VM1 hosts a line-of-business application that is available 24 hours a\nday. VM1 has one network interface and one managed disk. VM1 uses the D4s v3 size.\nYou plan to make the following changes to VM1:\nChange the size to D8s v3.\n\u2711\nAdd a 500-GB managed disk.\n\u2711\nAdd the Puppet Agent extension.\n\u2711\nEnable Desired State Configuration Management.\n\u2711\nWhich change will cause downtime for VM1?",
+    "question": "You have an Azure subscription that contains a virtual machine named VM1. VM1 hosts a line-of-business application that is available 24 hours a\nday. VM1 has one network interface and one managed disk. VM1 uses the D4s v3 size.\nYou plan to make the following changes to VM1:\nChange the size to D8s v3.\n-\nAdd a 500-GB managed disk.\n-\nAdd the Puppet Agent extension.\n-\nEnable Desired State Configuration Management.\n-\n\nWhich change will cause downtime for VM1?",
     "domain": "compute",
     "choices": [
       "A. Enable Desired State Configuration Management",
@@ -2449,7 +2457,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q30",
     "number": "30",
-    "question": "You have an Azure subscription named Subscription1 that has the following providers registered:\nAuthorization\n\u2711\nAutomation\n\u2711\nResources\n\u2711\nCompute\n\u2711\nKeyVault\n\u2711\nNetwork\n\u2711\nStorage\n\u2711\nBilling\n\u2711\nWeb\n\u2711\nSubscription1 contains an Azure virtual machine named VM1 that has the following configurations:\nPrivate IP address: 10.0.0.4 (dynamic)\n\u2711\nNetwork security group (NSG): NSG1\n\u2711\nPublic IP address: None\n\u2711\nAvailability set: AVSet\n\u2711\nSubnet: 10.0.0.0/24\n\u2711\nManaged disks: No\n\u2711\nLocation: East US\n\u2711\nYou need to record all the successful and failed connection attempts to VM1.\nWhich three actions should you perform? Each correct answer presents part of the solution.\nNOTE: Each correct selection is worth one point.",
+    "question": "You have an Azure subscription named Subscription1 that has the following providers registered:\nAuthorization\n-\nAutomation\n-\nResources\n-\nCompute\n-\nKeyVault\n-\nNetwork\n-\nStorage\n-\nBilling\n-\nWeb\n-\nSubscription1 contains an Azure virtual machine named VM1 that has the following configurations:\nPrivate IP address: 10.0.0.4 (dynamic)\n-\nNetwork security group (NSG): NSG1\n-\nPublic IP address: None\n-\nAvailability set: AVSet\n-\nSubnet: 10.0.0.0/24\n-\nManaged disks: No\n-\nLocation: East US\n-\nYou need to record all the successful and failed connection attempts to VM1.\nWhich three actions should you perform? Each correct answer presents part of the solution.\nNOTE: Each correct selection is worth one point.",
     "domain": "storage",
     "choices": [
       "A. Enable Azure Network Watcher in the East US Azure region.",
@@ -2465,7 +2473,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q31",
     "number": "31",
-    "question": "You need to deploy an Azure virtual machine scale set that contains five instances as quickly as possible.\nWhat should you do?",
+    "question": "You need to deploy an Azure virtual machine scale set that contains five instances as quickly as possible.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Deploy five virtual machines. Modify the Availability Zones settings for each virtual machine.",
@@ -2495,7 +2503,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q34",
     "number": "34",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1. Subscription1 contains a resource group named RG1. RG1 contains resources that were\ndeployed by using templates.\nYou need to view the date and time when the resources were created in RG1.\nSolution: From the Subscriptions blade, you select the subscription, and then click Programmatic deployment.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1. Subscription1 contains a resource group named RG1. RG1 contains resources that were\ndeployed by using templates.\nYou need to view the date and time when the resources were created in RG1.\n\nSolution: From the Subscriptions blade, you select the subscription, and then click Programmatic deployment.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2508,7 +2516,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q35",
     "number": "35",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the resources shown in the following table.\nVM1 connects to VNET1.\nYou need to connect VM1 to VNET2.\nSolution: You create a new network interface, and then you add the network interface to VM1.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the resources shown in the following table.\nVM1 connects to VNET1.\nYou need to connect VM1 to VNET2.\n\nSolution: You create a new network interface, and then you add the network interface to VM1.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -2521,7 +2529,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q36",
     "number": "36",
-    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named adatum.com that contains the users shown in the following table.\nAdatum.com has the following configurations:\nUsers may join devices to Microsoft Entra ID is set to User1.\n\u2711\nAdditional local administrators on Microsoft Entra ID joined devices is set to None.\n\u2711\nYou deploy Windows 10 to a computer named Computer1. User1 joins Computer1 to adatum.com.\nYou need to identify the local Administrator group membership on Computer1.\nWhich users are members of the local Administrators group?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named adatum.com that contains the users shown in the following table.\nAdatum.com has the following configurations:\nUsers may join devices to Microsoft Entra ID is set to User1.\n-\nAdditional local administrators on Microsoft Entra ID joined devices is set to None.\n-\nYou deploy Windows 10 to a computer named Computer1. User1 joins Computer1 to adatum.com.\nYou need to identify the local Administrator group membership on Computer1.\n\nWhich users are members of the local Administrators group?",
     "domain": "identity",
     "choices": [
       "A. User1 only",
@@ -2537,7 +2545,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q40",
     "number": "40",
-    "question": "You have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nYou create virtual machines in Subscription1 as shown in the following table.\nYou plan to use Vault1 for the backup of as many virtual machines as possible.\nWhich virtual machines can be backed up to Vault1?",
+    "question": "You have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nYou create virtual machines in Subscription1 as shown in the following table.\nYou plan to use Vault1 for the backup of as many virtual machines as possible.\n\nWhich virtual machines can be backed up to Vault1?",
     "domain": "storage",
     "choices": [
       "A. VM1 only",
@@ -2569,7 +2577,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q42",
     "number": "42",
-    "question": "You create the following resources in an Azure subscription:\nAn Azure Container Registry instance named Registry1\n\u2711\nAn Azure Kubernetes Service (AKS) cluster named Cluster1\n\u2711\nYou create a container image named App1 on your administrative workstation.\nYou need to deploy App1 to Cluster1.\nWhat should you do first?",
+    "question": "You create the following resources in an Azure subscription:\nAn Azure Container Registry instance named Registry1\n-\nAn Azure Kubernetes Service (AKS) cluster named Cluster1\n-\nYou create a container image named App1 on your administrative workstation.\nYou need to deploy App1 to Cluster1.\nWhat should you do first?",
     "domain": "compute",
     "choices": [
       "A. Run the docker push command.",
@@ -2584,7 +2592,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q43",
     "number": "43",
-    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to configure a proximity placement group for VMSS1.\nWhich proximity placement groups should you use?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to configure a proximity placement group for VMSS1.\n\nWhich proximity placement groups should you use?",
     "domain": "compute",
     "choices": [
       "A. Proximity2 only",
@@ -2599,7 +2607,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q44",
     "number": "44",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1. Subscription1 contains a resource group named RG1. RG1 contains resources that were\ndeployed by using templates.\nYou need to view the date and time when the resources were created in RG1.\nSolution: From the Subscriptions blade, you select the subscription, and then click Resource providers.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1. Subscription1 contains a resource group named RG1. RG1 contains resources that were\ndeployed by using templates.\nYou need to view the date and time when the resources were created in RG1.\n\nSolution: From the Subscriptions blade, you select the subscription, and then click Resource providers.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2612,7 +2620,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q45",
     "number": "45",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1. Subscription1 contains a resource group named RG1. RG1 contains resources that were\ndeployed by using templates.\nYou need to view the date and time when the resources were created in RG1.\nSolution: From the RG1 blade, you click Automation script.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1. Subscription1 contains a resource group named RG1. RG1 contains resources that were\ndeployed by using templates.\nYou need to view the date and time when the resources were created in RG1.\n\nSolution: From the RG1 blade, you click Automation script.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2625,7 +2633,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q46",
     "number": "46",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1. Subscription1 contains a resource group named RG1. RG1 contains resources that were\ndeployed by using templates.\nYou need to view the date and time when the resources were created in RG1.\nSolution: From the RG1 blade, you click Deployments.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1. Subscription1 contains a resource group named RG1. RG1 contains resources that were\ndeployed by using templates.\nYou need to view the date and time when the resources were created in RG1.\n\nSolution: From the RG1 blade, you click Deployments.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2638,7 +2646,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q47",
     "number": "47",
-    "question": "You have an Azure subscription named Subscription1.\nYou deploy a Linux virtual machine named VM1 to Subscription1.\nYou need to monitor the metrics and the logs of VM1.\nWhat should you use?",
+    "question": "You have an Azure subscription named Subscription1.\nYou deploy a Linux virtual machine named VM1 to Subscription1.\nYou need to monitor the metrics and the logs of VM1.\n\nWhat should you use?",
     "domain": "monitor",
     "choices": [
       "A. Azure HDInsight",
@@ -2699,7 +2707,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q52",
     "number": "52",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. Deployment Center in Azure App Service",
@@ -2714,7 +2722,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q55",
     "number": "55",
-    "question": "You have an Azure virtual machine named VM1 that runs Windows Server 2019. The VM was deployed using default drive settings.\nYou sign in to VM1 as a user named User1 and perform the following actions:\nCreate files on drive C.\n\u2711\nCreate files on drive D.\n\u2711\nModify the screen saver timeout.\n\u2711\nChange the desktop background.\n\u2711\nYou plan to redeploy VM1.\nWhich changes will be lost after you redeploy VM1?",
+    "question": "You have an Azure virtual machine named VM1 that runs Windows Server 2019. The VM was deployed using default drive settings.\nYou sign in to VM1 as a user named User1 and perform the following actions:\nCreate files on drive C.\n-\nCreate files on drive D.\n-\nModify the screen saver timeout.\n-\nChange the desktop background.\n-\nYou plan to redeploy VM1.\n\nWhich changes will be lost after you redeploy VM1?",
     "domain": "compute",
     "choices": [
       "A. the modified screen saver timeout",
@@ -2745,7 +2753,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q58",
     "number": "58",
-    "question": "You have an Azure subscription named Subscription1 that is used by several departments at your company. Subscription1 contains the resources\nin the following table:\nAnother administrator deploys a virtual machine named VM1 and an Azure Storage account named storage2 by using a single Azure Resource\nManager template.\nYou need to view the template used for the deployment.\nFrom which blade can you view the template that was used for the deployment?",
+    "question": "You have an Azure subscription named Subscription1 that is used by several departments at your company. Subscription1 contains the resources\nin the following table:\nAnother administrator deploys a virtual machine named VM1 and an Azure Storage account named storage2 by using a single Azure Resource\nManager template.\nYou need to view the template used for the deployment.\nFrom\n\nwhich blade can you view the template that was used for the deployment?",
     "domain": "storage",
     "choices": [
       "A. VM1",
@@ -2760,7 +2768,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q59",
     "number": "59",
-    "question": "You have an Azure web app named App1. App1 has the deployment slots shown in the following table:\nIn webapp1-test, you test several changes to App1.\nYou back up App1.\nYou swap webapp1-test for webapp1-prod and discover that App1 is experiencing performance issues.\nYou need to revert to the previous version of App1 as quickly as possible.\nWhat should you do?",
+    "question": "You have an Azure web app named App1. App1 has the deployment slots shown in the following table:\nIn webapp1-test, you test several changes to App1.\nYou back up App1.\nYou swap webapp1-test for webapp1-prod and discover that App1 is experiencing performance issues.\nYou need to revert to the previous version of App1 as quickly as possible.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Redeploy App1",
@@ -2790,7 +2798,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q62",
     "number": "62",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json.\nYou receive a notification that VM1 will be affected by maintenance.\nYou need to move VM1 to a different host immediately.\nSolution: From the Overview blade, you move the virtual machine to a different resource group.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json.\nYou receive a notification that VM1 will be affected by maintenance.\nYou need to move VM1 to a different host immediately.\n\nSolution: From the Overview blade, you move the virtual machine to a different resource group.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2803,7 +2811,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q64",
     "number": "64",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\nSolution: You create an Azure Log Analytics workspace and configure the Agent configuration settings. You install the Microsoft Monitoring Agent\non VM1. You create an alert in Azure Monitor and specify the Log Analytics workspace as the source.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\n\nSolution: You create an Azure Log Analytics workspace and configure the Agent configuration settings. You install the Microsoft Monitoring Agent\non VM1. You create an alert in Azure Monitor and specify the Log Analytics workspace as the source.\nDoes this meet the goal?",
     "domain": "monitor",
     "choices": [
       "A. Yes",
@@ -2831,7 +2839,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q67",
     "number": "67",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. the New-AzConfigurationAssignment cmdlet",
@@ -2846,7 +2854,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q69",
     "number": "69",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some questions sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou deploy an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to deploy a YAML file to AKS1.\nSolution: From Azure Cloud Shell, you run az aks.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some questions sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou deploy an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to deploy a YAML file to AKS1.\n\nSolution: From Azure Cloud Shell, you run az aks.\nDoes this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -2859,7 +2867,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q70",
     "number": "70",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\nSolution: You create an Azure Log Analytics workspace and configure the data settings. You add the Microsoft Monitoring Agent VM extension to\nVM1. You create an alert in Azure Monitor and specify the Log Analytics workspace as the source.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\n\nSolution: You create an Azure Log Analytics workspace and configure the data settings. You add the Microsoft Monitoring Agent VM extension to\nVM1. You create an alert in Azure Monitor and specify the Log Analytics workspace as the source.\nDoes this meet the goal?",
     "domain": "monitor",
     "choices": [
       "A. Yes",
@@ -2872,7 +2880,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q71",
     "number": "71",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\nSolution: You create an Azure Log Analytics workspace and configure the data settings. You install the Microsoft Monitoring Agent on VM1. You\ncreate an alert in\nAzure Monitor and specify the Log Analytics workspace as the source.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure virtual machine named VM1 that runs Windows Server 2016.\nYou need to create an alert in Azure when more than two error events are logged to the System event log on VM1 within an hour.\n\nSolution: You create an Azure Log Analytics workspace and configure the data settings. You install the Microsoft Monitoring Agent on VM1. You\ncreate an alert in\nAzure Monitor and specify the Log Analytics workspace as the source.\nDoes this meet the goal?",
     "domain": "monitor",
     "choices": [
       "A. Yes",
@@ -2900,7 +2908,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q74",
     "number": "74",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nSubscription1 also includes a virtual network named VNET2. VM1 connects to a virtual network named VNET2 by using a network interface\nnamed NIC1.\nYou need to create a new network interface named NIC2 for VM1.\nSolution: You create NIC2 in RG1 and West US.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nSubscription1 also includes a virtual network named VNET2. VM1 connects to a virtual network named VNET2 by using a network interface\nnamed NIC1.\nYou need to create a new network interface named NIC2 for VM1.\n\nSolution: You create NIC2 in RG1 and West US.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -2913,7 +2921,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q75",
     "number": "75",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nSubscription1 also includes a virtual network named VNET2. VM1 connects to a virtual network named VNET2 by using a network interface\nnamed NIC1.\nYou need to create a new network interface named NIC2 for VM1.\nSolution: You create NIC2 in RG2 and Central US.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nSubscription1 also includes a virtual network named VNET2. VM1 connects to a virtual network named VNET2 by using a network interface\nnamed NIC1.\nYou need to create a new network interface named NIC2 for VM1.\n\nSolution: You create NIC2 in RG2 and Central US.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -2926,7 +2934,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q76",
     "number": "76",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nSubscription1 also includes a virtual network named VNET2. VM1 connects to a virtual network named VNET2 by using a network interface\nnamed NIC1.\nYou need to create a new network interface named NIC2 for VM1.\nSolution: You create NIC2 in RG2 and West US.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nSubscription1 also includes a virtual network named VNET2. VM1 connects to a virtual network named VNET2 by using a network interface\nnamed NIC1.\nYou need to create a new network interface named NIC2 for VM1.\n\nSolution: You create NIC2 in RG2 and West US.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -2939,7 +2947,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q77",
     "number": "77",
-    "question": "You develop the following Azure Resource Manager (ARM) template to create a resource group and deploy an Azure Storage account to the\nresource group.\nWhich cmdlet should you run to deploy the template?",
+    "question": "You develop the following Azure Resource Manager (ARM) template to create a resource group and deploy an Azure Storage account to the\nresource group.\n\nWhich cmdlet should you run to deploy the template?",
     "domain": "storage",
     "choices": [
       "A. New-AzResource",
@@ -2954,7 +2962,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q79",
     "number": "79",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. the Publish-AzVMDscConfiguration cmdlet",
@@ -2969,7 +2977,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q85",
     "number": "85",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. Azure Custom Script Extension",
@@ -2984,7 +2992,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q88",
     "number": "88",
-    "question": "You have an Azure subscription.\nYou plan to deploy the Azure container instances shown in the following table.\nWhich instances can you deploy to a container group?",
+    "question": "You have an Azure subscription.\nYou plan to deploy the Azure container instances shown in the following table.\n\nWhich instances can you deploy to a container group?",
     "domain": "compute",
     "choices": [
       "A. Instance1 only",
@@ -2999,7 +3007,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q89",
     "number": "89",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. Azure Custom Script Extension",
@@ -3014,7 +3022,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q90",
     "number": "90",
-    "question": "You have an Azure subscription that has the public IP addresses shown in the following table.\nYou plan to deploy an Instance of Azure Firewall Premium named FW1.\nWhich IP addresses can you use?",
+    "question": "You have an Azure subscription that has the public IP addresses shown in the following table.\nYou plan to deploy an Instance of Azure Firewall Premium named FW1.\n\nWhich IP addresses can you use?",
     "domain": "networking",
     "choices": [
       "A. IP2 only",
@@ -3059,7 +3067,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q99",
     "number": "99",
-    "question": "You have an Azure subscription.\nYou plan to deploy the resources shown in the following table.\nYou need to create a single Azure Resource Manager (ARM) template that will be used to deploy the resources.\nWhich resource should be added to the dependsOn section for VM1?",
+    "question": "You have an Azure subscription.\nYou plan to deploy the resources shown in the following table.\nYou need to create a single Azure Resource Manager (ARM) template that will be used to deploy the resources.\n\nWhich resource should be added to the dependsOn section for VM1?",
     "domain": "compute",
     "choices": [
       "A. VNET1",
@@ -3074,7 +3082,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q100",
     "number": "100",
-    "question": "You have an Azure subscription.\nYou create the following Azure Resource Manager (ARM) template named Template.json.\nYou need to deploy Template.json.\nWhich PowerShell cmdlet should you run from Azure Cloud Shell?",
+    "question": "You have an Azure subscription.\nYou create the following Azure Resource Manager (ARM) template named Template.json.\nYou need to deploy Template.json.\n\nWhich PowerShell cmdlet should you run from Azure Cloud Shell?",
     "domain": "compute",
     "choices": [
       "A. New-AzSubscriptionDeployment",
@@ -3089,7 +3097,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q101",
     "number": "101",
-    "question": "You have an Azure subscription that contains a resource group named RG1.\nYou plan to create a storage account named storage1.\nYou have a Bicep file named File1.\nYou need to modify File1 so that it can be used to automate the deployment of storage1 to RG1.\nWhich property should you modify?",
+    "question": "You have an Azure subscription that contains a resource group named RG1.\nYou plan to create a storage account named storage1.\nYou have a Bicep file named File1.\nYou need to modify File1 so that it can be used to automate the deployment of storage1 to RG1.\n\nWhich property should you modify?",
     "domain": "storage",
     "choices": [
       "A. kind",
@@ -3104,7 +3112,7 @@ const QUESTIONS = [
   {
     "id": "topic4_q106",
     "number": "106",
-    "question": "You have an Azure subscription that contains an Azure container registry named ContReg1.\nYou enable the Admin user for ContReg1.\nWhich username can you use to sign in to ContReg1?",
+    "question": "You have an Azure subscription that contains an Azure container registry named ContReg1.\nYou enable the Admin user for ContReg1.\n\nWhich username can you use to sign in to ContReg1?",
     "domain": "compute",
     "choices": [
       "A. root",
@@ -3119,7 +3127,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q2",
     "number": "2",
-    "question": "Your company has three offices. The offices are located in Miami, Los Angeles, and New York. Each office contains datacenter.\nYou have an Azure subscription that contains resources in the East US and West US Azure regions. Each region contains a virtual network. The\nvirtual networks are peered.\nYou need to connect the datacenters to the subscription. The solution must minimize network latency between the datacenters.\nWhat should you create?",
+    "question": "Your company has three offices. The offices are located in Miami, Los Angeles, and New York. Each office contains datacenter.\nYou have an Azure subscription that contains resources in the East US and West US Azure regions. Each region contains a virtual network. The\nvirtual networks are peered.\nYou need to connect the datacenters to the subscription. The solution must minimize network latency between the datacenters.\n\nWhat should you create?",
     "domain": "compute",
     "choices": [
       "A. three Azure Application Gateways and one On-premises data gateway",
@@ -3134,7 +3142,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q4",
     "number": "4",
-    "question": "You have an Azure subscription that contains the resources shown in the following table.\nLB1 is configured as shown in the following table.\nYou plan to create new inbound NAT rules that meet the following requirements:\nProvide Remote Desktop access to VM1 from the internet by using port 3389.\n\u2711\nProvide Remote Desktop access to VM2 from the internet by using port 3389.\n\u2711\nWhat should you create on LB1 before you can create the new inbound NAT rules?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nLB1 is configured as shown in the following table.\nYou plan to create new inbound NAT rules that meet the following requirements:\nProvide Remote Desktop access to VM1 from the internet by using port 3389.\n-\nProvide Remote Desktop access to VM2 from the internet by using port 3389.\n-\nWhat should you create on LB1 before you can create the new inbound NAT rules?",
     "domain": "compute",
     "choices": [
       "A. a frontend IP address",
@@ -3149,7 +3157,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q7",
     "number": "7",
-    "question": "You have the Azure virtual networks shown in the following table.\nTo which virtual networks can you establish a peering connection from VNet1?",
+    "question": "You have the Azure virtual networks shown in the following table.\nTo\n\nwhich virtual networks can you establish a peering connection from VNet1?",
     "domain": "networking",
     "choices": [
       "A. VNet2 andVNet3 only",
@@ -3164,7 +3172,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q8",
     "number": "8",
-    "question": "You have an Azure subscription that contains a virtual network named VNet1. VNet1 contains four subnets named Gateway, Perimeter, NVA, and\nProduction.\nThe NVA subnet contains two network virtual appliances (NVAs) that will perform network trafic inspection between the Perimeter subnet and the\nProduction subnet.\nYou need to implement an Azure load balancer for the NVAs. The solution must meet the following requirements:\nThe NVAs must run in an active-active configuration that uses automatic failover.\n\u2711\nThe load balancer must load balance trafic to two services on the Production subnet. The services have different IP addresses.\n\u2711\nWhich three actions should you perform? Each correct answer presents part of the solution.\nNOTE: Each correct selection is worth one point.",
+    "question": "You have an Azure subscription that contains a virtual network named VNet1. VNet1 contains four subnets named Gateway, Perimeter, NVA, and\nProduction.\nThe NVA subnet contains two network virtual appliances (NVAs) that will perform network trafic inspection between the Perimeter subnet and the\nProduction subnet.\nYou need to implement an Azure load balancer for the NVAs. The solution must meet the following requirements:\nThe NVAs must run in an active-active configuration that uses automatic failover.\n-\nThe load balancer must load balance trafic to two services on the Production subnet. The services have different IP addresses.\n-\nWhich three actions should you perform? Each correct answer presents part of the solution.\nNOTE: Each correct selection is worth one point.",
     "domain": "networking",
     "choices": [
       "A. Deploy a basic load balancer",
@@ -3180,7 +3188,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q9",
     "number": "9",
-    "question": "You have an Azure subscription named Subscription1 that contains two Azure virtual networks named VNet1 and VNet2. VNet1 contains a VPN\ngateway named\nVPNGW1 that uses static routing. There is a site-to-site VPN connection between your on-premises network and VNet1.\nOn a computer named Client1 that runs Windows 10, you configure a point-to-site VPN connection to VNet1.\nYou configure virtual network peering between VNet1 and VNet2. You verify that you can connect to VNet2 from the on-premises network. Client1\nis unable to connect to VNet2.\nYou need to ensure that you can connect Client1 to VNet2.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains two Azure virtual networks named VNet1 and VNet2. VNet1 contains a VPN\ngateway named\nVPNGW1 that uses static routing. There is a site-to-site VPN connection between your on-premises network and VNet1.\nOn a computer named Client1 that runs Windows 10, you configure a point-to-site VPN connection to VNet1.\nYou configure virtual network peering between VNet1 and VNet2. You verify that you can connect to VNet2 from the on-premises network. Client1\nis unable to connect to VNet2.\nYou need to ensure that you can connect Client1 to VNet2.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Download and re-install the VPN client configuration package on Client1.",
@@ -3195,7 +3203,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q11",
     "number": "11",
-    "question": "You have an Azure subscription that contains the resources in the following table.\nTo which subnets can you apply NSG1?",
+    "question": "You have an Azure subscription that contains the resources in the following table.\nTo\n\nwhich subnets can you apply NSG1?",
     "domain": "networking",
     "choices": [
       "A. the subnets on VNet1 only",
@@ -3211,7 +3219,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q14",
     "number": "14",
-    "question": "You have an Azure web app named webapp1.\nYou have a virtual network named VNET1 and an Azure virtual machine named VM1 that hosts a MySQL database. VM1 connects to VNET1.\nYou need to ensure that webapp1 can access the data hosted on VM1.\nWhat should you do?",
+    "question": "You have an Azure web app named webapp1.\nYou have a virtual network named VNET1 and an Azure virtual machine named VM1 that hosts a MySQL database. VM1 connects to VNET1.\nYou need to ensure that webapp1 can access the data hosted on VM1.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Deploy an internal load balancer",
@@ -3241,7 +3249,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q16",
     "number": "16",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Floating IP (direct server return) to Disabled",
@@ -3256,7 +3264,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q17",
     "number": "17",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following resources:\nA virtual network that has a subnet named Subnet1\n\u2711\nTwo network security groups (NSGs) named NSG-VM1 and NSG-Subnet1\n\u2711\nA virtual machine named VM1 that has the required Windows Server configurations to allow Remote Desktop connections\n\u2711\nNSG-Subnet1 has the default inbound security rules only.\nNSG-VM1 has the default inbound security rules and the following custom inbound security rule:\nPriority: 100\n\u2711\nSource: Any\n\u2711\nSource port range: *\n\u2711\nDestination: *\n\u2711\nDestination port range: 3389\n\u2711\nProtocol: UDP\n\u2711\nAction: Allow\n\u2711\nVM1 has a public IP address and is connected to Subnet1. NSG-VM1 is associated to the network interface of VM1. NSG-Subnet1 is associated to\nSubnet1.\nYou need to be able to establish Remote Desktop connections from the internet to VM1.\nSolution: You add an inbound security rule to NSG-Subnet1 that allows connections from the Any source to the *destination for port range 3389\nand uses the TCP protocol. You remove NSG-VM1 from the network interface of VM1.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following resources:\nA virtual network that has a subnet named Subnet1\n-\nTwo network security groups (NSGs) named NSG-VM1 and NSG-Subnet1\n-\nA virtual machine named VM1 that has the required Windows Server configurations to allow Remote Desktop connections\n-\nNSG-Subnet1 has the default inbound security rules only.\nNSG-VM1 has the default inbound security rules and the following custom inbound security rule:\nPriority: 100\n-\nSource: Any\n-\nSource port range: *\n-\nDestination: *\n-\nDestination port range: 3389\n-\nProtocol: UDP\n-\nAction: Allow\n-\nVM1 has a public IP address and is connected to Subnet1. NSG-VM1 is associated to the network interface of VM1. NSG-Subnet1 is associated to\nSubnet1.\nYou need to be able to establish Remote Desktop connections from the internet to VM1.\n\nSolution: You add an inbound security rule to NSG-Subnet1 that allows connections from the Any source to the *destination for port range 3389\nand uses the TCP protocol. You remove NSG-VM1 from the network interface of VM1.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3269,7 +3277,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q18",
     "number": "18",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following resources:\nA virtual network that has a subnet named Subnet1\n\u2711\nTwo network security groups (NSGs) named NSG-VM1 and NSG-Subnet1\n\u2711\nA virtual machine named VM1 that has the required Windows Server configurations to allow Remote Desktop connections\n\u2711\nNSG-Subnet1 has the default inbound security rules only.\nNSG-VM1 has the default inbound security rules and the following custom inbound security rule:\nPriority: 100\n\u2711\nSource: Any\n\u2711\nSource port range: *\n\u2711\nDestination: *\n\u2711\nDestination port range: 3389\n\u2711\nProtocol: UDP -\nAction: Allow\n\u2711\nVM1 has a public IP address and is connected to Subnet1. NSG-VM1 is associated to the network interface of VM1. NSG-Subnet1 is associated to\nSubnet1.\nYou need to be able to establish Remote Desktop connections from the internet to VM1.\nSolution: You add an inbound security rule to NSG-Subnet1 that allows connections from the internet source to the VirtualNetwork destination for\nport range 3389 and uses the UDP protocol.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following resources:\nA virtual network that has a subnet named Subnet1\n-\nTwo network security groups (NSGs) named NSG-VM1 and NSG-Subnet1\n-\nA virtual machine named VM1 that has the required Windows Server configurations to allow Remote Desktop connections\n-\nNSG-Subnet1 has the default inbound security rules only.\nNSG-VM1 has the default inbound security rules and the following custom inbound security rule:\nPriority: 100\n-\nSource: Any\n-\nSource port range: *\n-\nDestination: *\n-\nDestination port range: 3389\n-\nProtocol: UDP -\nAction: Allow\n-\nVM1 has a public IP address and is connected to Subnet1. NSG-VM1 is associated to the network interface of VM1. NSG-Subnet1 is associated to\nSubnet1.\nYou need to be able to establish Remote Desktop connections from the internet to VM1.\n\nSolution: You add an inbound security rule to NSG-Subnet1 that allows connections from the internet source to the VirtualNetwork destination for\nport range 3389 and uses the UDP protocol.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3282,7 +3290,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q19",
     "number": "19",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following resources:\nA virtual network that has a subnet named Subnet1\n\u2711\nTwo network security groups (NSGs) named NSG-VM1 and NSG-Subnet1\n\u2711\nA virtual machine named VM1 that has the required Windows Server configurations to allow Remote Desktop connections\n\u2711\nNSG-Subnet1 has the default inbound security rules only.\nNSG-VM1 has the default inbound security rules and the following custom inbound security rule:\nPriority: 100\n\u2711\nSource: Any\n\u2711\nSource port range: *\n\u2711\nDestination: *\n\u2711\nDestination port range: 3389\n\u2711\nProtocol: UDP\n\u2711\nAction: Allow\n\u2711\nVM1 has a public IP address and is connected to Subnet1. NSG-VM1 is associated to the network interface of VM1. NSG-Subnet1 is associated to\nSubnet1.\nYou need to be able to establish Remote Desktop connections from the internet to VM1.\nSolution: You add an inbound security rule to NSG-Subnet1 and NSG-VM1 that allows connections from the internet source to the VirtualNetwork\ndestination for port range 3389 and uses the TCP protocol.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following resources:\nA virtual network that has a subnet named Subnet1\n-\nTwo network security groups (NSGs) named NSG-VM1 and NSG-Subnet1\n-\nA virtual machine named VM1 that has the required Windows Server configurations to allow Remote Desktop connections\n-\nNSG-Subnet1 has the default inbound security rules only.\nNSG-VM1 has the default inbound security rules and the following custom inbound security rule:\nPriority: 100\n-\nSource: Any\n-\nSource port range: *\n-\nDestination: *\n-\nDestination port range: 3389\n-\nProtocol: UDP\n-\nAction: Allow\n-\nVM1 has a public IP address and is connected to Subnet1. NSG-VM1 is associated to the network interface of VM1. NSG-Subnet1 is associated to\nSubnet1.\nYou need to be able to establish Remote Desktop connections from the internet to VM1.\n\nSolution: You add an inbound security rule to NSG-Subnet1 and NSG-VM1 that allows connections from the internet source to the VirtualNetwork\ndestination for port range 3389 and uses the TCP protocol.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3295,7 +3303,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q21",
     "number": "21",
-    "question": "You have an Azure subscription that contains a virtual network named VNET1. VNET1 contains the subnets shown in the following table.\nEach virtual machine uses a static IP address.\nYou need to create network security groups (NSGs) to meet following requirements:\nAllow web requests from the internet to VM3, VM4, VM5, and VM6.\n\u2711\nAllow all connections between VM1 and VM2.\n\u2711\nAllow Remote Desktop connections to VM1.\n\u2711\nPrevent all other network trafic to VNET1.\n\u2711\nWhat is the minimum number of NSGs you should create?",
+    "question": "You have an Azure subscription that contains a virtual network named VNET1. VNET1 contains the subnets shown in the following table.\nEach virtual machine uses a static IP address.\nYou need to create network security groups (NSGs) to meet following requirements:\nAllow web requests from the internet to VM3, VM4, VM5, and VM6.\n-\nAllow all connections between VM1 and VM2.\n-\nAllow Remote Desktop connections to VM1.\n-\nPrevent all other network trafic to VNET1.\n-\nWhat is the minimum number of NSGs you should create?",
     "domain": "networking",
     "choices": [
       "A. 1",
@@ -3325,7 +3333,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q24",
     "number": "24",
-    "question": "You have a public load balancer that balances ports 80 and 443 across three virtual machines named VM1, VM2, and VM3.\nYou need to direct all the Remote Desktop Protocol (RDP) connections to VM3 only.\nWhat should you configure?",
+    "question": "You have a public load balancer that balances ports 80 and 443 across three virtual machines named VM1, VM2, and VM3.\nYou need to direct all the Remote Desktop Protocol (RDP) connections to VM3 only.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. an inbound NAT rule",
@@ -3340,7 +3348,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q28",
     "number": "28",
-    "question": "You have an Azure subscription that contains the resources in the following table.\nVM1 and VM2 are deployed from the same template and host line-of-business applications.\nYou configure the network security group (NSG) shown in the exhibit. (Click the Exhibit tab.)\nYou need to prevent users of VM1 and VM2 from accessing websites on the Internet over TCP port 80.\nWhat should you do?",
+    "question": "You have an Azure subscription that contains the resources in the following table.\nVM1 and VM2 are deployed from the same template and host line-of-business applications.\nYou configure the network security group (NSG) shown in the exhibit. (Click the Exhibit tab.)\nYou need to prevent users of VM1 and VM2 from accessing websites on the Internet over TCP port 80.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Disassociate the NSG from a network interface",
@@ -3370,7 +3378,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q30",
     "number": "30",
-    "question": "You plan to create an Azure virtual machine named VM1 that will be configured as shown in the following exhibit.\nThe planned disk configurations for VM1 are shown in the following exhibit.\n\n\nYou need to ensure that VM1 can be created in an Availability Zone.\nWhich two settings should you modify? Each correct answer presents part of the solution.\nNOTE: Each correct selection is worth one point.",
+    "question": "You plan to create an Azure virtual machine named VM1 that will be configured as shown in the following exhibit.\nThe planned disk configurations for VM1 are shown in the following exhibit.\n\nYou need to ensure that VM1 can be created in an Availability Zone.\nWhich two settings should you modify? Each correct answer presents part of the solution.\nNOTE: Each correct selection is worth one point.",
     "domain": "compute",
     "choices": [
       "A. Use managed disks",
@@ -3386,7 +3394,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q33",
     "number": "33",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have a computer named Computer1 that has a point-to-site VPN connection to an Azure virtual network named VNet1. The point-to-site\nconnection uses a self-signed certificate.\nFrom Azure, you download and install the VPN client configuration package on a computer named Computer2.\nYou need to ensure that you can establish a point-to-site VPN connection to VNet1 from Computer2.\nSolution: You modify the Microsoft Entra ID (Microsoft Entra ID) authentication policies.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have a computer named Computer1 that has a point-to-site VPN connection to an Azure virtual network named VNet1. The point-to-site\nconnection uses a self-signed certificate.\nFrom Azure, you download and install the VPN client configuration package on a computer named Computer2.\nYou need to ensure that you can establish a point-to-site VPN connection to VNet1 from Computer2.\n\nSolution: You modify the Microsoft Entra ID (Microsoft Entra ID) authentication policies.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -3399,7 +3407,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q34",
     "number": "34",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have a computer named Computer1 that has a point-to-site VPN connection to an Azure virtual network named VNet1. The point-to-site\nconnection uses a self-signed certificate.\nFrom Azure, you download and install the VPN client configuration package on a computer named Computer2.\nYou need to ensure that you can establish a point-to-site VPN connection to VNet1 from Computer2.\nSolution: You join Computer2 to Microsoft Entra ID (Microsoft Entra ID).\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have a computer named Computer1 that has a point-to-site VPN connection to an Azure virtual network named VNet1. The point-to-site\nconnection uses a self-signed certificate.\nFrom Azure, you download and install the VPN client configuration package on a computer named Computer2.\nYou need to ensure that you can establish a point-to-site VPN connection to VNet1 from Computer2.\n\nSolution: You join Computer2 to Microsoft Entra ID (Microsoft Entra ID).\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -3412,7 +3420,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q35",
     "number": "35",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups.\nAnother administrator plans to create several network security groups (NSGs) in the subscription.\nYou need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\nSolution: You create a resource lock, and then you assign the lock to the subscription.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups.\nAnother administrator plans to create several network security groups (NSGs) in the subscription.\nYou need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\n\nSolution: You create a resource lock, and then you assign the lock to the subscription.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3440,7 +3448,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q37",
     "number": "37",
-    "question": "You have the Azure virtual machines shown in the following table.\nA DNS service is installed on VM1.\nYou configure the DNS servers settings for each virtual network as shown in the following exhibit.\nYou need to ensure that all the virtual machines can resolve DNS names by using the DNS service on VM1.\nWhat should you do?",
+    "question": "You have the Azure virtual machines shown in the following table.\nA DNS service is installed on VM1.\nYou configure the DNS servers settings for each virtual network as shown in the following exhibit.\nYou need to ensure that all the virtual machines can resolve DNS names by using the DNS service on VM1.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Configure a conditional forwarder on VM1",
@@ -3455,7 +3463,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q39",
     "number": "39",
-    "question": "You have the Azure virtual network named VNet1 that contains a subnet named Subnet1. Subnet1 contains three Azure virtual machines. Each\nvirtual machine has a public IP address.\nThe virtual machines host several applications that are accessible over port 443 to users on the Internet.\nYour on-premises network has a site-to-site VPN connection to VNet1.\nYou discover that the virtual machines can be accessed by using the Remote Desktop Protocol (RDP) from the Internet and from the on-premises\nnetwork.\nYou need to prevent RDP access to the virtual machines from the Internet, unless the RDP connection is established from the on-premises\nnetwork. The solution must ensure that all the applications can still be accessed by the Internet users.\nWhat should you do?",
+    "question": "You have the Azure virtual network named VNet1 that contains a subnet named Subnet1. Subnet1 contains three Azure virtual machines. Each\nvirtual machine has a public IP address.\nThe virtual machines host several applications that are accessible over port 443 to users on the Internet.\nYour on-premises network has a site-to-site VPN connection to VNet1.\nYou discover that the virtual machines can be accessed by using the Remote Desktop Protocol (RDP) from the Internet and from the on-premises\nnetwork.\nYou need to prevent RDP access to the virtual machines from the Internet, unless the RDP connection is established from the on-premises\nnetwork. The solution must ensure that all the applications can still be accessed by the Internet users.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Modify the address space of the local network gateway",
@@ -3470,7 +3478,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q40",
     "number": "40",
-    "question": "You have an Azure subscription that contains the resources in the following table.\nSubnet1 is associated to VNet1. NIC1 attaches VM1 to Subnet1.\nYou need to apply ASG1 to VM1.\nWhat should you do?",
+    "question": "You have an Azure subscription that contains the resources in the following table.\nSubnet1 is associated to VNet1. NIC1 attaches VM1 to Subnet1.\nYou need to apply ASG1 to VM1.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Associate NIC1 to ASG1",
@@ -3500,7 +3508,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q45",
     "number": "45",
-    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to create a network interface named NIC1.\nIn which location can you create NIC1?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to create a network interface named NIC1.\nIn\n\nwhich location can you create NIC1?",
     "domain": "compute",
     "choices": [
       "A. East US and North Europe only",
@@ -3515,7 +3523,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q46",
     "number": "46",
-    "question": "You have Azure virtual machines that run Windows Server 2019 and are configured as shown in the following table.\nYou create a public Azure DNS zone named adatum.com and a private Azure DNS zone named contoso.com.\nFor controso.com, you create a virtual network link named link1 as shown in the exhibit. (Click the Exhibit tab.)\nYou discover that VM1 can resolve names in contoso.com but cannot resolve names in adatum.com. VM1 can resolve other hosts on the Internet.\nYou need to ensure that VM1 can resolve host names in adatum.com.\nWhat should you do?",
+    "question": "You have Azure virtual machines that run Windows Server 2019 and are configured as shown in the following table.\nYou create a public Azure DNS zone named adatum.com and a private Azure DNS zone named contoso.com.\nFor controso.com, you create a virtual network link named link1 as shown in the exhibit. (Click the Exhibit tab.)\nYou discover that VM1 can resolve names in contoso.com but cannot resolve names in adatum.com. VM1 can resolve other hosts on the Internet.\nYou need to ensure that VM1 can resolve host names in adatum.com.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Update the DNS sufix on VM1 to be adatum.com",
@@ -3530,7 +3538,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q50",
     "number": "50",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the virtual machines shown in the following table.\nYou deploy a load balancer that has the following configurations:\nName: LB1\n\u2711\nType: Internal\n\u2711\nSKU: Standard\n\u2711\nVirtual network: VNET1\n\u2711\nYou need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\nSolution: You create a Basic SKU public IP address, associate the address to the network interface of VM1, and then start VM1.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the virtual machines shown in the following table.\nYou deploy a load balancer that has the following configurations:\nName: LB1\n-\nType: Internal\n-\nSKU: Standard\n-\nVirtual network: VNET1\n-\nYou need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\n\nSolution: You create a Basic SKU public IP address, associate the address to the network interface of VM1, and then start VM1.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3543,7 +3551,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q51",
     "number": "51",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the virtual machines shown in the following table.\nYou deploy a load balancer that has the following configurations:\nName: LB1\n\u2711\nType: Internal\n\u2711\nSKU: Standard\n\u2711\nVirtual network: VNET1\n\u2711\nYou need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\nSolution: You create a Standard SKU public IP address, associate the address to the network interface of VM1, and then stop VM2.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the virtual machines shown in the following table.\nYou deploy a load balancer that has the following configurations:\nName: LB1\n-\nType: Internal\n-\nSKU: Standard\n-\nVirtual network: VNET1\n-\nYou need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\n\nSolution: You create a Standard SKU public IP address, associate the address to the network interface of VM1, and then stop VM2.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3556,7 +3564,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q52",
     "number": "52",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the virtual machines shown in the following table.\nYou deploy a load balancer that has the following configurations:\nName: LB1\n\u2711\nType: Internal\n\u2711\nSKU: Standard\n\u2711\nVirtual network: VNET1\n\u2711\nYou need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\nSolution: You create two Standard SKU public IP addresses and associate a Standard SKU public IP address to the network interface of each\nvirtual machine.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the virtual machines shown in the following table.\nYou deploy a load balancer that has the following configurations:\nName: LB1\n-\nType: Internal\n-\nSKU: Standard\n-\nVirtual network: VNET1\n-\nYou need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\n\nSolution: You create two Standard SKU public IP addresses and associate a Standard SKU public IP address to the network interface of each\nvirtual machine.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3569,7 +3577,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q53",
     "number": "53",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have a computer named Computer1 that has a point-to-site VPN connection to an Azure virtual network named VNet1. The point-to-site\nconnection uses a self-signed certificate.\nFrom Azure, you download and install the VPN client configuration package on a computer named Computer2.\nYou need to ensure that you can establish a point-to-site VPN connection to VNet1 from Computer2.\nSolution: You export the client certificate from Computer1 and install the certificate on Computer2.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have a computer named Computer1 that has a point-to-site VPN connection to an Azure virtual network named VNet1. The point-to-site\nconnection uses a self-signed certificate.\nFrom Azure, you download and install the VPN client configuration package on a computer named Computer2.\nYou need to ensure that you can establish a point-to-site VPN connection to VNet1 from Computer2.\n\nSolution: You export the client certificate from Computer1 and install the certificate on Computer2.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3582,7 +3590,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q54",
     "number": "54",
-    "question": "You have an Azure virtual machine named VM1.\nThe network interface for VM1 is configured as shown in the exhibit. (Click the Exhibit tab.)\nYou deploy a web server on VM1, and then create a secure website that is accessible by using the HTTPS protocol. VM1 is used as a web server\nonly.\nYou need to ensure that users can connect to the website from the Internet.\nWhat should you do?",
+    "question": "You have an Azure virtual machine named VM1.\nThe network interface for VM1 is configured as shown in the exhibit. (Click the Exhibit tab.)\nYou deploy a web server on VM1, and then create a secure website that is accessible by using the HTTPS protocol. VM1 is used as a web server\nonly.\nYou need to ensure that users can connect to the website from the Internet.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Modify the protocol of Rule4",
@@ -3597,7 +3605,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q55",
     "number": "55",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups.\nAnother administrator plans to create several network security groups (NSGs) in the subscription.\nYou need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\nSolution: From the Resource providers blade, you unregister the Microsoft.ClassicNetwork provider.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups.\nAnother administrator plans to create several network security groups (NSGs) in the subscription.\nYou need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\n\nSolution: From the Resource providers blade, you unregister the Microsoft.ClassicNetwork provider.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3610,7 +3618,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q57",
     "number": "57",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\nSolution: You create an inbound security rule that denies all trafic from the 131.107.100.50 source and has a cost of 64999.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\n\nSolution: You create an inbound security rule that denies all trafic from the 131.107.100.50 source and has a cost of 64999.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3623,7 +3631,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q58",
     "number": "58",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\nSolution: You delete the BlockAllOther443 inbound security rule.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\n\nSolution: You delete the BlockAllOther443 inbound security rule.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3636,7 +3644,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q59",
     "number": "59",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\nSolution: You modify the priority of the Allow_131.107.100.50 inbound security rule.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\n\nSolution: You modify the priority of the Allow_131.107.100.50 inbound security rule.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3649,7 +3657,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q60",
     "number": "60",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups.\nAnother administrator plans to create several network security groups (NSGs) in the subscription.\nYou need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\nSolution: You assign a built-in policy definition to the subscription.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups.\nAnother administrator plans to create several network security groups (NSGs) in the subscription.\nYou need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\n\nSolution: You assign a built-in policy definition to the subscription.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -3677,7 +3685,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q62",
     "number": "62",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the virtual machines shown in the following table.\nYou deploy a load balancer that has the following configurations:\nName: LB1\n\u2711\nType: Internal\n\u2711\nSKU: Standard\n\u2711\nVirtual network: VNET1\n\u2711\nYou need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\nSolution: You disassociate the public IP address from the network interface of VM2.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the virtual machines shown in the following table.\nYou deploy a load balancer that has the following configurations:\nName: LB1\n-\nType: Internal\n-\nSKU: Standard\n-\nVirtual network: VNET1\n-\nYou need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\n\nSolution: You disassociate the public IP address from the network interface of VM2.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3690,7 +3698,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q63",
     "number": "63",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups.\nAnother administrator plans to create several network security groups (NSGs) in the subscription.\nYou need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\nSolution: You configure a custom policy definition, and then you assign the policy to the subscription.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups.\nAnother administrator plans to create several network security groups (NSGs) in the subscription.\nYou need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\n\nSolution: You configure a custom policy definition, and then you assign the policy to the subscription.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -3703,7 +3711,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q64",
     "number": "64",
-    "question": "You have two Azure virtual networks named VNet1 and VNet2. VNet1 contains an Azure virtual machine named VM1. VNet2 contains an Azure\nvirtual machine named VM2.\nVM1 hosts a frontend application that connects to VM2 to retrieve data.\nUsers report that the frontend application is slower than usual.\nYou need to view the average round-trip time (RTT) of the packets from VM1 to VM2.\nWhich Azure Network Watcher feature should you use?",
+    "question": "You have two Azure virtual networks named VNet1 and VNet2. VNet1 contains an Azure virtual machine named VM1. VNet2 contains an Azure\nvirtual machine named VM2.\nVM1 hosts a frontend application that connects to VM2 to retrieve data.\nUsers report that the frontend application is slower than usual.\nYou need to view the average round-trip time (RTT) of the packets from VM1 to VM2.\n\nWhich Azure Network Watcher feature should you use?",
     "domain": "networking",
     "choices": [
       "A. IP flow verify",
@@ -3718,7 +3726,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q67",
     "number": "67",
-    "question": "You have an Azure subscription that contains two virtual machines as shown in the following table.\nYou perform a reverse DNS lookup for 10.0.0.4 from VM2.\nWhich FQDN will be returned?",
+    "question": "You have an Azure subscription that contains two virtual machines as shown in the following table.\nYou perform a reverse DNS lookup for 10.0.0.4 from VM2.\n\nWhich FQDN will be returned?",
     "domain": "networking",
     "choices": [
       "A. vm1.core.windows.net",
@@ -3733,7 +3741,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q68",
     "number": "68",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\nSolution: You create an inbound security rule that allows any trafic from the AzureLoadBalancer source and has a cost of 150.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\n\nSolution: You create an inbound security rule that allows any trafic from the AzureLoadBalancer source and has a cost of 150.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3762,7 +3770,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q73",
     "number": "73",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou manage a virtual network named VNet1 that is hosted in the West US Azure region.\nVNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server.\nYou need to inspect all the network trafic from VM1 to VM2 for a period of three hours.\nSolution: From Azure Network Watcher, you create a packet capture.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou manage a virtual network named VNet1 that is hosted in the West US Azure region.\nVNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server.\nYou need to inspect all the network trafic from VM1 to VM2 for a period of three hours.\n\nSolution: From Azure Network Watcher, you create a packet capture.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3775,7 +3783,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q74",
     "number": "74",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou manage a virtual network named VNet1 that is hosted in the West US Azure region.\nVNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server.\nYou need to inspect all the network trafic from VM1 to VM2 for a period of three hours.\nSolution: From Azure Network Watcher, you create a connection monitor.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou manage a virtual network named VNet1 that is hosted in the West US Azure region.\nVNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server.\nYou need to inspect all the network trafic from VM1 to VM2 for a period of three hours.\n\nSolution: From Azure Network Watcher, you create a connection monitor.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3788,7 +3796,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q75",
     "number": "75",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou manage a virtual network named VNet1 that is hosted in the West US Azure region.\nVNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server.\nYou need to inspect all the network trafic from VM1 to VM2 for a period of three hours.\nSolution: From Performance Monitor, you create a Data Collector Set (DCS).\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou manage a virtual network named VNet1 that is hosted in the West US Azure region.\nVNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server.\nYou need to inspect all the network trafic from VM1 to VM2 for a period of three hours.\n\nSolution: From Performance Monitor, you create a Data Collector Set (DCS).\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3801,7 +3809,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q77",
     "number": "77",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou manage a virtual network named VNet1 that is hosted in the West US Azure region.\nVNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server.\nYou need to inspect all the network trafic from VM1 to VM2 for a period of three hours.\nSolution: From Azure Monitor, you create a metric on Network In and Network Out.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou manage a virtual network named VNet1 that is hosted in the West US Azure region.\nVNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server.\nYou need to inspect all the network trafic from VM1 to VM2 for a period of three hours.\n\nSolution: From Azure Monitor, you create a metric on Network In and Network Out.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3814,7 +3822,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q78",
     "number": "78",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\nSolution: You create an inbound security rule that denies all trafic from the 131.107.100.50 source and has a priority of 64999.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load\nBalancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\n\nSolution: You create an inbound security rule that denies all trafic from the 131.107.100.50 source and has a priority of 64999.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -3842,7 +3850,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q82",
     "number": "82",
-    "question": "You have the Azure virtual machines shown in the following table.\nVNET1 is linked to a private DNS zone named contoso.com that contains the records shown in the following table.\nYou need to ping VM2 from VM1.\nWhich DNS names can you use to ping VM2?",
+    "question": "You have the Azure virtual machines shown in the following table.\nVNET1 is linked to a private DNS zone named contoso.com that contains the records shown in the following table.\nYou need to ping VM2 from VM1.\n\nWhich DNS names can you use to ping VM2?",
     "domain": "networking",
     "choices": [
       "A. comp2.contoso.com and comp4.contoso.com only",
@@ -3858,7 +3866,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q84",
     "number": "84",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have a computer named Computer1 that has a point-to-site VPN connection to an Azure virtual network named VNet1. The point-to-site\nconnection uses a self-signed certificate.\nFrom Azure, you download and install the VPN client configuration package on a computer named Computer2.\nYou need to ensure that you can establish a point-to-site VPN connection to VNet1 from Computer2.\nSolution: On Computer2, you set the Startup type for the IPSec Policy Agent service to Automatic.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have a computer named Computer1 that has a point-to-site VPN connection to an Azure virtual network named VNet1. The point-to-site\nconnection uses a self-signed certificate.\nFrom Azure, you download and install the VPN client configuration package on a computer named Computer2.\nYou need to ensure that you can establish a point-to-site VPN connection to VNet1 from Computer2.\n\nSolution: On Computer2, you set the Startup type for the IPSec Policy Agent service to Automatic.\nDoes this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -3871,7 +3879,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q85",
     "number": "85",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Session persistence to Client IP and protocol",
@@ -3886,7 +3894,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q86",
     "number": "86",
-    "question": "You have an Azure subscription that uses the public IP addresses shown in the following table.\nYou need to create a public Azure Standard Load Balancer.\nWhich public IP addresses can you use?",
+    "question": "You have an Azure subscription that uses the public IP addresses shown in the following table.\nYou need to create a public Azure Standard Load Balancer.\n\nWhich public IP addresses can you use?",
     "domain": "networking",
     "choices": [
       "A. IP1, IP2, and IP3",
@@ -3916,7 +3924,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q89",
     "number": "89",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Floating IP (direct server return) to Enabled",
@@ -3947,7 +3955,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q92",
     "number": "92",
-    "question": "You have an on-premises network that contains a database server named dbserver1.\nYou have an Azure subscription.\nYou plan to deploy three Azure virtual machines. Each virtual machine will be deployed to a separate availability zone.\nYou need to configure an Azure VPN gateway for a site-to-site VPN. The solution must ensure that the virtual machines can connect to dbserver1.\nWhich type of public IP address SKU and assignment should you use for the gateway?",
+    "question": "You have an on-premises network that contains a database server named dbserver1.\nYou have an Azure subscription.\nYou plan to deploy three Azure virtual machines. Each virtual machine will be deployed to a separate availability zone.\nYou need to configure an Azure VPN gateway for a site-to-site VPN. The solution must ensure that the virtual machines can connect to dbserver1.\n\nWhich type of public IP address SKU and assignment should you use for the gateway?",
     "domain": "networking",
     "choices": [
       "A. a basic SKU and a static IP address assignment",
@@ -3961,7 +3969,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q95",
     "number": "95",
-    "question": "You have an on-premises datacenter and an Azure subscription.\nYou plan to connect the datacenter to Azure by using ExpressRoute.\nYou need to deploy an ExpressRoute gateway. The solution must meet the following requirements:\nSupport up to 10 Gbps of trafic.\n\u2711\nSupport availability zones.\n\u2711\nSupport FastPath.\n\u2711\nMinimize costs.\n\u2711\nWhich SKU should you deploy?",
+    "question": "You have an on-premises datacenter and an Azure subscription.\nYou plan to connect the datacenter to Azure by using ExpressRoute.\nYou need to deploy an ExpressRoute gateway. The solution must meet the following requirements:\nSupport up to 10 Gbps of trafic.\n-\nSupport availability zones.\n-\nSupport FastPath.\n-\nMinimize costs.\n-\n\nWhich SKU should you deploy?",
     "domain": "compute",
     "choices": [
       "A. ERGw1AZ",
@@ -3976,7 +3984,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q98",
     "number": "98",
-    "question": "Your on-premises network contains an SMB share named Share1.\nYou have an Azure subscription that contains the following resources:\nA web app named webapp1\n\u2711\nA virtual network named VNET1\n\u2711\nYou need to ensure that webapp1 can connect to Share1.\nWhat should you deploy?",
+    "question": "Your on-premises network contains an SMB share named Share1.\nYou have an Azure subscription that contains the following resources:\nA web app named webapp1\n-\nA virtual network named VNET1\n-\nYou need to ensure that webapp1 can connect to Share1.\nWhat should you deploy?",
     "domain": "networking",
     "choices": [
       "A. an Azure Application Gateway",
@@ -3990,7 +3998,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q99",
     "number": "99",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. the Publish-AzVMDscConfiguration cmdlet",
@@ -4005,7 +4013,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q100",
     "number": "100",
-    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\nWhat should you configure?",
+    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. a network security group (NSG)",
@@ -4020,7 +4028,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q101",
     "number": "101",
-    "question": "You plan to deploy route-based Site-to-Site VPN connections between several on-premises locations and an Azure virtual network.\nWhich tunneling protocol should you use?",
+    "question": "You plan to deploy route-based Site-to-Site VPN connections between several on-premises locations and an Azure virtual network.\n\nWhich tunneling protocol should you use?",
     "domain": "networking",
     "choices": [
       "A. IKEv1",
@@ -4035,7 +4043,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q102",
     "number": "102",
-    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou configure Azure Site Recovery to replicate VM1 between the US East and West US regions.\nYou perform a test failover of VM1 and specify VNET2 as the target virtual network.\nWhen the test version of VM1 is created, to which subnet will the virtual machine be connected?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou configure Azure Site Recovery to replicate VM1 between the US East and West US regions.\nYou perform a test failover of VM1 and specify VNET2 as the target virtual network.\nWhen the test version of VM1 is created, to\n\nwhich subnet will the virtual machine be connected?",
     "domain": "networking",
     "choices": [
       "A. TestSubnet1",
@@ -4050,7 +4058,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q103",
     "number": "103",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Protocol to UDP",
@@ -4065,7 +4073,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q104",
     "number": "104",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. the Publish-AzVMDscConfiguration cmdlet",
@@ -4080,7 +4088,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q105",
     "number": "105",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Floating IP (direct server return) to Disabled",
@@ -4095,7 +4103,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q106",
     "number": "106",
-    "question": "You have an Azure subscription that contains 20 virtual machines, a network security group (NSG) named NSG1, and two virtual networks named\nVNET1 and VNET2 that are peered.\nYou plan to deploy an Azure Bastion Basic SKU host named Bastion1 to VNET1.\nYou need to configure NSG1 to allow inbound access to the virtual machines via Bastion1.\nWhich port should you configure for the inbound security rule?",
+    "question": "You have an Azure subscription that contains 20 virtual machines, a network security group (NSG) named NSG1, and two virtual networks named\nVNET1 and VNET2 that are peered.\nYou plan to deploy an Azure Bastion Basic SKU host named Bastion1 to VNET1.\nYou need to configure NSG1 to allow inbound access to the virtual machines via Bastion1.\n\nWhich port should you configure for the inbound security rule?",
     "domain": "networking",
     "choices": [
       "A. 22",
@@ -4110,7 +4118,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q108",
     "number": "108",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Session persistence to None",
@@ -4125,7 +4133,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q109",
     "number": "109",
-    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nYou need to deploy an Azure firewall named AF1 to RG1 in the West US Azure region.\nTo which virtual networks can you deploy AF1?",
+    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nYou need to deploy an Azure firewall named AF1 to RG1 in the West US Azure region.\nTo\n\nwhich virtual networks can you deploy AF1?",
     "domain": "networking",
     "choices": [
       "A. VNET1, VNET2, VNET3, and VNET4",
@@ -4156,7 +4164,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q112",
     "number": "112",
-    "question": "You have an Azure subscription that contains a storage account. The account stores website data.\nYou need to ensure that inbound user trafic uses the Microsoft point-of-presence (POP) closest to the user's location.\nWhat should you configure?",
+    "question": "You have an Azure subscription that contains a storage account. The account stores website data.\nYou need to ensure that inbound user trafic uses the Microsoft point-of-presence (POP) closest to the user's location.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. private endpoints",
@@ -4171,7 +4179,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q113",
     "number": "113",
-    "question": "You have two Azure virtual machines named VM1 and VM2 that run Windows Server. The virtual machines are in a subnet named Subnet1.\nSubnet1 is in a virtual network named VNet1.\nYou need to prevent VM1 from accessing VM2 on port 3389.\nWhat should you do?",
+    "question": "You have two Azure virtual machines named VM1 and VM2 that run Windows Server. The virtual machines are in a subnet named Subnet1.\nSubnet1 is in a virtual network named VNet1.\nYou need to prevent VM1 from accessing VM2 on port 3389.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Create a network security group (NSG) that has an outbound security rule to deny destination port 3389 and apply the NSG to the network\ninterface of VM1.",
@@ -4225,7 +4233,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q115",
     "number": "115",
-    "question": "You have an Azure subscription that contains the resources shown in the following table.\nAll the resources connect to a virtual network named VNet1.\nYou plan to deploy an Azure Bastion host named Bastion1 to VNet1.\nWhich resources can be protected by using Bastion1?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nAll the resources connect to a virtual network named VNet1.\nYou plan to deploy an Azure Bastion host named Bastion1 to VNet1.\n\nWhich resources can be protected by using Bastion1?",
     "table": {
       "headers": [
         "Name",
@@ -4261,7 +4269,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q116",
     "number": "116",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Session persistence to None",
@@ -4276,7 +4284,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q117",
     "number": "117",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. a health probe",
@@ -4306,7 +4314,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q119",
     "number": "119",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Session persistence to Client IP and protocol",
@@ -4321,7 +4329,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q121",
     "number": "121",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Floating IP (direct server return) to Enabled",
@@ -4336,7 +4344,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q122",
     "number": "122",
-    "question": "You have an Azure subscription that has the public IP addresses shown in the following table.\nYou plan to deploy an Azure Bastion Basic SKU host named Bastion1.\nWhich IP addresses can you use?",
+    "question": "You have an Azure subscription that has the public IP addresses shown in the following table.\nYou plan to deploy an Azure Bastion Basic SKU host named Bastion1.\n\nWhich IP addresses can you use?",
     "domain": "compute",
     "choices": [
       "A. IP1 only",
@@ -4352,7 +4360,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q123",
     "number": "123",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Floating IP (direct server return) to Disabled",
@@ -4367,7 +4375,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q124",
     "number": "124",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Floating IP (direct server return) to Enabled",
@@ -4382,7 +4390,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q125",
     "number": "125",
-    "question": "You have two Azure subscriptions named Sub1 and Sub2.\nSub1 contains a virtual machine named VM1 and a storage account named storage1.\nVM1 is associated to the resources shown in the following table.\nYou need to move VM1 to Sub2.\nWhich resources should you move to Sub2?",
+    "question": "You have two Azure subscriptions named Sub1 and Sub2.\nSub1 contains a virtual machine named VM1 and a storage account named storage1.\nVM1 is associated to the resources shown in the following table.\nYou need to move VM1 to Sub2.\n\nWhich resources should you move to Sub2?",
     "domain": "storage",
     "choices": [
       "A. VM1, Disk1, and NetInt1 only",
@@ -4397,7 +4405,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q126",
     "number": "126",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Session persistence to Client IP and protocol",
@@ -4412,7 +4420,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q127",
     "number": "127",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Floating IP (direct server return) to Disabled",
@@ -4427,7 +4435,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q128",
     "number": "128",
-    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\nWhat should you configure?",
+    "question": "You have five Azure virtual machines that run Windows Server 2016. The virtual machines are configured as web servers.\nYou have an Azure load balancer named LB1 that provides load balancing services for the virtual machines.\nYou need to ensure that visitors are serviced by the same web server for each request.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. Session persistence to Client IP",
@@ -4442,7 +4450,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q129",
     "number": "129",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. the Publish-AzVMDscConfiguration cmdlet",
@@ -4457,7 +4465,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q130",
     "number": "130",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. Azure Custom Script Extension",
@@ -4472,7 +4480,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q131",
     "number": "131",
-    "question": "You have an Azure subscription that contains a Recovery Services vault named Vault1.\nYou need to enable multi-user authorization (MAU) for Vault1.\nWhich resource should you create first?",
+    "question": "You have an Azure subscription that contains a Recovery Services vault named Vault1.\nYou need to enable multi-user authorization (MAU) for Vault1.\n\nWhich resource should you create first?",
     "domain": "compute",
     "choices": [
       "A. an administrative unit",
@@ -4487,7 +4495,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q132",
     "number": "132",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load Balancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\nSolution: You create an inbound security rule that allows any trafic from the AzureLoadBalancer source and has a priority of 150.\nDoes this meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using\nan Azure Load Balancer.\nThe effective network security configurations for VM2 are shown in the following exhibit.\nYou discover that connections to App1 from 131.107.100.50 over TCP port 443 fail.\nYou verify that the Load Balancer rules are configured correctly.\nYou need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\n\nSolution: You create an inbound security rule that allows any trafic from the AzureLoadBalancer source and has a priority of 150.\nDoes this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -4500,7 +4508,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q133",
     "number": "133",
-    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\nWhat should you configure?",
+    "question": "Your on-premises network contains a VPN gateway.\nYou have an Azure subscription that contains the resources shown in the following table.\nYou need to ensure that all the trafic from VM1 to storage1 travels across the Microsoft backbone network.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. Azure Application Gateway",
@@ -4530,7 +4538,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q139",
     "number": "139",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. the New-AzConfigurationAssignment cmdlet",
@@ -4560,7 +4568,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q143",
     "number": "143",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. a Desired State Configuration (DSC) extension",
@@ -4575,7 +4583,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q144",
     "number": "144",
-    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nThe subscription contains the virtual machines shown in the following table.\nAll the virtual machines have only private IP addresses.\nYou deploy an Azure Bastion host named Bastion1 to VNet1.\nTo which virtual machines can you connect through Bastion1?",
+    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nThe subscription contains the virtual machines shown in the following table.\nAll the virtual machines have only private IP addresses.\nYou deploy an Azure Bastion host named Bastion1 to VNet1.\nTo\n\nwhich virtual machines can you connect through Bastion1?",
     "domain": "networking",
     "choices": [
       "A. VM1 only",
@@ -4590,7 +4598,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q145",
     "number": "145",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. a Microsoft Intune device configuration profile",
@@ -4620,7 +4628,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q148",
     "number": "148",
-    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nYou need to ensure that all the trafic between VNet1 and VNet2 traverses the Microsoft backbone network.\nWhat should you configure?",
+    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nYou need to ensure that all the trafic between VNet1 and VNet2 traverses the Microsoft backbone network.\n\nWhat should you configure?",
     "domain": "networking",
     "choices": [
       "A. a private endpoint",
@@ -4635,7 +4643,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q149",
     "number": "149",
-    "question": "You have the Azure virtual networks shown in the following table.\nWhich virtual networks can you peer with VNet1?",
+    "question": "You have the Azure virtual networks shown in the following table.\n\nWhich virtual networks can you peer with VNet1?",
     "domain": "networking",
     "choices": [
       "A. VNet2, VNet3, and VNet4",
@@ -4650,7 +4658,7 @@ const QUESTIONS = [
   {
     "id": "topic5_q150",
     "number": "150",
-    "question": "You have an Azure subscription.\nYou are creating a new Azure container instance that will have the following settings:\n\u2022 Container name: cont1\n\u2022 SKU: Standard\n\u2022 OS type: Windows\n\u2022 Networking type: Public\n\u2022 Memory (GiB): 2.5\n\u2022 Number of CPU cores: 2\nYou discover that the Private setting for Networking type is unavailable.\nYou need to ensure that cont1 can be configured to use private networking.\nWhich setting should you change?",
+    "question": "You have an Azure subscription.\nYou are creating a new Azure container instance that will have the following settings:\n- Container name: cont1\n- SKU: Standard\n- OS type: Windows\n- Networking type: Public\n- Memory (GiB): 2.5\n- Number of CPU cores: 2\nYou discover that the Private setting for Networking type is unavailable.\nYou need to ensure that cont1 can be configured to use private networking.\n\nWhich setting should you change?",
     "domain": "compute",
     "choices": [
       "A. Memory (GiB)",
@@ -4666,7 +4674,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q1",
     "number": "1",
-    "question": "You have an Azure subscription that has a Recovery Services vault named Vault1. The subscription contains the virtual machines shown in the\nfollowing table:\nYou plan to schedule backups to occur every night at 23:00.\nWhich virtual machines can you back up by using Azure Backup?",
+    "question": "You have an Azure subscription that has a Recovery Services vault named Vault1. The subscription contains the virtual machines shown in the\nfollowing table:\nYou plan to schedule backups to occur every night at 23:00.\n\nWhich virtual machines can you back up by using Azure Backup?",
     "domain": "storage",
     "choices": [
       "A. VM1 and VM3 only",
@@ -4726,7 +4734,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q8",
     "number": "8",
-    "question": "You have an Azure virtual machine named VM1.\nYou use Azure Backup to create a backup of VM1 named Backup1.\nAfter creating Backup1, you perform the following changes to VM1:\nModify the size of VM1.\n\u2711\nCopy a file named Budget.xls to a folder named Data.\n\u2711\nReset the password for the built-in administrator account.\n\u2711\nAdd a data disk to VM1.\n\u2711\nAn administrator uses the Replace existing option to restore VM1 from Backup1.\nYou need to ensure that all the changes to VM1 are restored.\nWhich change should you perform again?",
+    "question": "You have an Azure virtual machine named VM1.\nYou use Azure Backup to create a backup of VM1 named Backup1.\nAfter creating Backup1, you perform the following changes to VM1:\nModify the size of VM1.\n-\nCopy a file named Budget.xls to a folder named Data.\n-\nReset the password for the built-in administrator account.\n-\nAdd a data disk to VM1.\n-\nAn administrator uses the Replace existing option to restore VM1 from Backup1.\nYou need to ensure that all the changes to VM1 are restored.\n\nWhich change should you perform again?",
     "domain": "storage",
     "choices": [
       "A. Modify the size of VM1.",
@@ -4741,7 +4749,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q10",
     "number": "10",
-    "question": "Your company has a main office in London that contains 100 client computers.\nThree years ago, you migrated to Microsoft Entra ID (Microsoft Entra ID).\nThe company's security policy states that all personal devices and corporate-owned devices must be registered or joined to Microsoft Entra ID.\nA remote user named User1 is unable to join a personal device to Microsoft Entra ID from a home network.\nYou verify that User1 was able to join devices to Microsoft Entra ID in the past.\nYou need to ensure that User1 can join the device to Microsoft Entra ID.\nWhat should you do?",
+    "question": "Your company has a main office in London that contains 100 client computers.\nThree years ago, you migrated to Microsoft Entra ID (Microsoft Entra ID).\nThe company's security policy states that all personal devices and corporate-owned devices must be registered or joined to Microsoft Entra ID.\nA remote user named User1 is unable to join a personal device to Microsoft Entra ID from a home network.\nYou verify that User1 was able to join devices to Microsoft Entra ID in the past.\nYou need to ensure that User1 can join the device to Microsoft Entra ID.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. Assign the User administrator role to User1.",
@@ -4756,7 +4764,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q13",
     "number": "13",
-    "question": "Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following users in an Microsoft Entra ID tenant named contoso.onmicrosoft.com:\nUser1 creates a new Microsoft Entra ID tenant named external.contoso.onmicrosoft.com.\nYou need to create new user accounts in external.contoso.onmicrosoft.com.\nSolution: You instruct User1 to create the user accounts.\nDoes that meet the goal?",
+    "question": "Note: This question is part of a series of questions that present the same scenario.\n\nEach question in the series contains a unique solution that\nmight meet the stated goals. Some question sets might have more than one correct solution, while others might not have a correct solution.\nAfter you answer a question in this section, you will NOT be able to return to it. As a result, these questions will not appear in the review screen.\nYou have an Azure subscription that contains the following users in an Microsoft Entra ID tenant named contoso.onmicrosoft.com:\nUser1 creates a new Microsoft Entra ID tenant named external.contoso.onmicrosoft.com.\nYou need to create new user accounts in external.contoso.onmicrosoft.com.\n\nSolution: You instruct User1 to create the user accounts.\nDoes that meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -4769,7 +4777,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q14",
     "number": "14",
-    "question": "You have an existing Azure subscription that contains 10 virtual machines.\nYou need to monitor the latency between your on-premises network and the virtual machines.\nWhat should you use?",
+    "question": "You have an existing Azure subscription that contains 10 virtual machines.\nYou need to monitor the latency between your on-premises network and the virtual machines.\n\nWhat should you use?",
     "domain": "monitor",
     "choices": [
       "A. Service Map",
@@ -4784,7 +4792,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q18",
     "number": "18",
-    "question": "You have an Azure virtual machine named VM1.\nAzure collects events from VM1.\nYou are creating an alert rule in Azure Monitor to notify an administrator when an error is logged in the System event log of VM1.\nWhich target resource should you monitor in the alert rule?",
+    "question": "You have an Azure virtual machine named VM1.\nAzure collects events from VM1.\nYou are creating an alert rule in Azure Monitor to notify an administrator when an error is logged in the System event log of VM1.\n\nWhich target resource should you monitor in the alert rule?",
     "domain": "monitor",
     "choices": [
       "A. virtual machine extension",
@@ -4799,7 +4807,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q19",
     "number": "19",
-    "question": "You have an Azure subscription that contains 100 virtual machines.\nYou regularly create and delete virtual machines.\nYou need to identify unattached disks that can be deleted.\nWhat should you do?",
+    "question": "You have an Azure subscription that contains 100 virtual machines.\nYou regularly create and delete virtual machines.\nYou need to identify unattached disks that can be deleted.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. From Azure Cost Management, view Cost Analysis",
@@ -4829,7 +4837,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q28",
     "number": "28",
-    "question": "You have an Azure subscription named Subscription1 that contains two Azure virtual networks named VNet1 and VNet2. VNet1 contains a VPN\ngateway named\nVPNGW1 that uses static routing. There is a site-to-site VPN connection between your on-premises network and VNet1.\nOn a computer named Client1 that runs Windows 10, you configure a point-to-site VPN connection to VNet1.\nYou configure virtual network peering between VNet1 and VNet2. You verify that you can connect to VNet2 from the on-premises network. Client1\nis unable to connect to VNet2.\nYou need to ensure that you can connect Client1 to VNet2.\nWhat should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains two Azure virtual networks named VNet1 and VNet2. VNet1 contains a VPN\ngateway named\nVPNGW1 that uses static routing. There is a site-to-site VPN connection between your on-premises network and VNet1.\nOn a computer named Client1 that runs Windows 10, you configure a point-to-site VPN connection to VNet1.\nYou configure virtual network peering between VNet1 and VNet2. You verify that you can connect to VNet2 from the on-premises network. Client1\nis unable to connect to VNet2.\nYou need to ensure that you can connect Client1 to VNet2.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Select Use the remote virtual network's gateway or Route Server on VNet1 to VNet2 peering.",
@@ -4844,7 +4852,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q30",
     "number": "30",
-    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant that is linked to 10 Azure subscriptions.\nYou need to centrally monitor user activity across all the subscriptions.\nWhat should you use?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant that is linked to 10 Azure subscriptions.\nYou need to centrally monitor user activity across all the subscriptions.\n\nWhat should you use?",
     "domain": "identity",
     "choices": [
       "A. Azure Application Insights Profiler",
@@ -4874,7 +4882,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q33",
     "number": "33",
-    "question": "You have an Azure subscription named Subscription1 that contains an Azure Log Analytics workspace named Workspace1.\nYou need to view the error events from a table named Event.\nWhich query should you run in Workspace1?",
+    "question": "You have an Azure subscription named Subscription1 that contains an Azure Log Analytics workspace named Workspace1.\nYou need to view the error events from a table named Event.\n\nWhich query should you run in Workspace1?",
     "domain": "monitor",
     "choices": [
       "A. search in (Event) \"error\"",
@@ -4889,7 +4897,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q34",
     "number": "34",
-    "question": "You have an Azure App Service web app named App1.\nYou need to collect performance traces for App1.\nWhat should you use?",
+    "question": "You have an Azure App Service web app named App1.\nYou need to collect performance traces for App1.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. Azure Application Insights Profiler",
@@ -4904,7 +4912,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q35",
     "number": "35",
-    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nYou deploy a web app named App1 to the West US Azure region.\nYou need to back up App1. The solution must minimize costs.\nWhich storage account should you use as the target for the backup?",
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nYou deploy a web app named App1 to the West US Azure region.\nYou need to back up App1. The solution must minimize costs.\n\nWhich storage account should you use as the target for the backup?",
     "domain": "storage",
     "choices": [
       "A. storage1",
@@ -4919,7 +4927,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q37",
     "number": "37",
-    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\nWhat should you use?",
+    "question": "You plan to deploy several Azure virtual machines that will run Windows Server 2019 in a virtual machine scale set by using an Azure Resource\nManager template.\nYou need to ensure that NGINX is available on all the virtual machines after they are deployed.\n\nWhat should you use?",
     "domain": "compute",
     "choices": [
       "A. a Desired State Configuration (DSC) extension",
@@ -4934,7 +4942,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q38",
     "number": "38",
-    "question": "You have an Azure subscription that contains eight virtual machines and the resources shown in the following table.\nYou need to configure access for VNET1. The solution must meet the following requirements:\n\u2022 The virtual machines connected to VNET1 must be able to communicate with the virtual machines connected to VNET2 by using the Microsoft\nbackbone.\n\u2022 The virtual machines connected to VNET1 must be able to access storage1, storage2, and Microsoft Entra ID by using the Microsoft backbone.\nWhat is the minimum number of service endpoints you should add to VNET1?",
+    "question": "You have an Azure subscription that contains eight virtual machines and the resources shown in the following table.\nYou need to configure access for VNET1. The solution must meet the following requirements:\n- The virtual machines connected to VNET1 must be able to communicate with the virtual machines connected to VNET2 by using the Microsoft\nbackbone.\n- The virtual machines connected to VNET1 must be able to access storage1, storage2, and Microsoft Entra ID by using the Microsoft backbone.\nWhat is the minimum number of service endpoints you should add to VNET1?",
     "domain": "identity",
     "choices": [
       "A. 1",
@@ -4979,7 +4987,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q42",
     "number": "42",
-    "question": "You have an Azure subscription that contains a storage account named storage1 in the North Europe Azure region.\nYou need to ensure that when blob data is added to storage1, a secondary copy is created in the East US region. The solution must minimize\nadministrative effort.\nWhat should you configure?",
+    "question": "You have an Azure subscription that contains a storage account named storage1 in the North Europe Azure region.\nYou need to ensure that when blob data is added to storage1, a secondary copy is created in the East US region. The solution must minimize\nadministrative effort.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. operational backup",
@@ -4994,7 +5002,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q43",
     "number": "43",
-    "question": "You have an Azure subscription that contains two Log Analytics workspaces named Workspace1 and Workspace2 and 100 virtual machines that\nrun Windows Server.\nYou need to collect performance data and events from the virtual machines. The solution must meet the following requirements:\n\u2022 Logs must be sent to Workspace1 and Workspace 2.\n\u2022 All Windows events must be captured.\n\u2022 All security events must be captured.\nWhat should you install and configure on each virtual machine?",
+    "question": "You have an Azure subscription that contains two Log Analytics workspaces named Workspace1 and Workspace2 and 100 virtual machines that\nrun Windows Server.\nYou need to collect performance data and events from the virtual machines. The solution must meet the following requirements:\n- Logs must be sent to Workspace1 and Workspace 2.\n- All Windows events must be captured.\n- All security events must be captured.\nWhat should you install and configure on each virtual machine?",
     "domain": "monitor",
     "choices": [
       "A. the Azure Monitor agent",
@@ -5023,7 +5031,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q45",
     "number": "45",
-    "question": "You have an Azure subscription that contains a virtual network named VNet1.\nVNet1 uses two ExpressRoute circuits that connect to two separate on-premises datacenters.\nYou need to create a dashboard to display detailed metrics and a visual representation of the network topology.\nWhat should you use?",
+    "question": "You have an Azure subscription that contains a virtual network named VNet1.\nVNet1 uses two ExpressRoute circuits that connect to two separate on-premises datacenters.\nYou need to create a dashboard to display detailed metrics and a visual representation of the network topology.\n\nWhat should you use?",
     "domain": "networking",
     "choices": [
       "A. Azure Monitor Network Insights",
@@ -5084,7 +5092,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q53",
     "number": "53",
-    "question": "You have an Azure subscription that contains an Azure Stream Analytics job named Job1.\nYou need to monitor input events for Job1 to identify the number of events that were NOT processed.\nWhich metric should you use?",
+    "question": "You have an Azure subscription that contains an Azure Stream Analytics job named Job1.\nYou need to monitor input events for Job1 to identify the number of events that were NOT processed.\n\nWhich metric should you use?",
     "domain": "monitor",
     "choices": [
       "A. Out-of-Order Events",
@@ -5099,7 +5107,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q54",
     "number": "54",
-    "question": "You have an Azure subscription that contains an Azure SQL database named DB1.\nYou plan to use Azure Monitor to monitor the performance of DB1. You must be able to run queries to analyze log data.\nWhich destination should you configure in the Diagnostic settings of DB1?",
+    "question": "You have an Azure subscription that contains an Azure SQL database named DB1.\nYou plan to use Azure Monitor to monitor the performance of DB1. You must be able to run queries to analyze log data.\n\nWhich destination should you configure in the Diagnostic settings of DB1?",
     "domain": "monitor",
     "choices": [
       "A. Send to a Log Analytics workspace.",
@@ -5113,7 +5121,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q55",
     "number": "55",
-    "question": "You have an Azure subscription. The subscription contains virtual machines that run Windows Server.\nYou have a data collection rule (DCR) named Rule1.\nYou plan to use the Azure Monitor Agent to collect events from Windows System event logs.\nYou only need to collect system events that have an ID of 1001.\nWhich type of query should you use for the data source in Rule1?",
+    "question": "You have an Azure subscription. The subscription contains virtual machines that run Windows Server.\nYou have a data collection rule (DCR) named Rule1.\nYou plan to use the Azure Monitor Agent to collect events from Windows System event logs.\nYou only need to collect system events that have an ID of 1001.\n\nWhich type of query should you use for the data source in Rule1?",
     "domain": "monitor",
     "choices": [
       "A. SQL",
@@ -5142,7 +5150,7 @@ const QUESTIONS = [
   {
     "id": "topic6_q57",
     "number": "57",
-    "question": "You have an Azure subscription that has Traffic Analytics configured.\nYou deploy a new virtual machine named VM1 that has the following settings:\n\u2022 Region: East US\n\u2022 Virtual network: VNet1\n\u2022 NIC network security group: NSG1\nYou need to monitor VM1 trafic by using Traffic Analytics.\nWhich settings should you configure?",
+    "question": "You have an Azure subscription that has Traffic Analytics configured.\nYou deploy a new virtual machine named VM1 that has the following settings:\n- Region: East US\n- Virtual network: VNet1\n- NIC network security group: NSG1\nYou need to monitor VM1 trafic by using Traffic Analytics.\n\nWhich settings should you configure?",
     "domain": "networking",
     "choices": [
       "A. Diagnostic settings for VM1",
@@ -5180,7 +5188,7 @@ const QUESTIONS = [
       "B. an Azure Monitor workbook",
       "C. a storage account",
       "D. a Microsoft Sentinel workspace",
-      "E. a Data Collection Rule (DCR) in Azure Monitor\n\n\nTopic 7 - Testlet 1"
+      "E. a Data Collection Rule (DCR) in Azure Monitor\n\nTopic 7 - Testlet 1"
     ],
     "explanation": "**Fact-Check Note:** The question explicitly asks to select two resources. The provided JSON key only includes one index (`0`). Traffic Analytics requires both a Log Analytics Workspace to store and analyze the data, and an Azure Storage account to capture the NSG flow logs. The correct answer should be an array `[0, 2]` corresponding to A and C.\n\nOriginal: Traffic Analytics analyzes NSG flow logs to provide insights into network traffic. To use it, you must have a Log Analytics workspace to store and analyze the flow data, and an Azure Storage account to temporarily store the raw NSG flow logs.",
     "correct": 0,
@@ -5189,13 +5197,13 @@ const QUESTIONS = [
   {
     "id": "topic7_q2",
     "number": "2",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a manufacturing company that has offices worldwide. Contoso works with partner organizations to bring products to market.\nContoso products are manufactured by using blueprint files that the company authors and maintains.\nExisting Environment -\nCurrently, Contoso uses multiple types of servers for business operations, including the following:\nFile servers\nDomain controllers\nMicrosoft SQL Server servers\nYour network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory.\nYou have a public-facing application named App1. App1 is comprised of the following three tiers:\nA SQL database\nA web front end\nA processing middle tier -\nEach tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes to the infrastructure:\nMove all the tiers of App1 to Azure.\nMove the existing product blueprint files to Azure Blob storage.\nCreate a hybrid directory to support an upcoming Microsoft 365 migration project.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nMove all the virtual machines for App1 to Azure.\nMinimize the number of open ports between the App1 tiers.\nEnsure that all the virtual machines for App1 are protected by backups.\nCopy the blueprint files to Azure over the Internet.\nEnsure that the blueprint files are stored in the archive storage tier.\nEnsure that partner access to the blueprint files is secured and temporary.\nPrevent user passwords or hashes of passwords from being stored in Azure.\nUse unmanaged standard storage for the hard disks of the virtual machines.\nEnsure that when users join devices to Microsoft Entra ID (Microsoft Entra ID), the users use a mobile phone to verify their identity.\nMinimize administrative effort whenever possible.\n\n\nUser Requirements -\nContoso identifies the following requirements for users:\nEnsure that only users who are part of a group named Pilot can join devices to Microsoft Entra ID.\nDesignate a new user named Admin1 as the service admin for the Azure subscription.\nAdmin1 must receive email alerts regarding service outages.\nEnsure that a new user named User3 can create network objects for the Azure subscription.\nQuestion\nYou need to meet the user requirement for Admin1.\nWhat should you do?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a manufacturing company that has offices worldwide. Contoso works with partner organizations to bring products to market.\nContoso products are manufactured by using blueprint files that the company authors and maintains.\nExisting Environment -\nCurrently, Contoso uses multiple types of servers for business operations, including the following:\nFile servers\nDomain controllers\nMicrosoft SQL Server servers\nYour network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory.\nYou have a public-facing application named App1. App1 is comprised of the following three tiers:\nA SQL database\nA web front end\nA processing middle tier -\nEach tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes to the infrastructure:\nMove all the tiers of App1 to Azure.\nMove the existing product blueprint files to Azure Blob storage.\nCreate a hybrid directory to support an upcoming Microsoft 365 migration project.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nMove all the virtual machines for App1 to Azure.\nMinimize the number of open ports between the App1 tiers.\nEnsure that all the virtual machines for App1 are protected by backups.\nCopy the blueprint files to Azure over the Internet.\nEnsure that the blueprint files are stored in the archive storage tier.\nEnsure that partner access to the blueprint files is secured and temporary.\nPrevent user passwords or hashes of passwords from being stored in Azure.\nUse unmanaged standard storage for the hard disks of the virtual machines.\nEnsure that when users join devices to Microsoft Entra ID (Microsoft Entra ID), the users use a mobile phone to verify their identity.\nMinimize administrative effort whenever possible.\n\nUser Requirements -\nContoso identifies the following requirements for users:\nEnsure that only users who are part of a group named Pilot can join devices to Microsoft Entra ID.\nDesignate a new user named Admin1 as the service admin for the Azure subscription.\nAdmin1 must receive email alerts regarding service outages.\nEnsure that a new user named User3 can create network objects for the Azure subscription.\nQuestion\nYou need to meet the user requirement for Admin1.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. From the Microsoft Entra ID blade, modify the Groups",
       "B. From the Microsoft Entra ID blade, modify the Properties",
       "C. From the Subscriptions blade, select the subscription, and then modify the Access control (IAM) settings",
-      "D. From the Subscriptions blade, select the subscription, and then modify the Properties\n\n\nTopic 8 - Testlet 10"
+      "D. From the Subscriptions blade, select the subscription, and then modify the Properties\n\nTopic 8 - Testlet 10"
     ],
     "explanation": "**Fact-Check Note:** The classic Service Administrator role for an Azure subscription is managed at the subscription level, not in Azure AD. To designate a user as the Service Admin, you must navigate to the Subscriptions blade, select the specific subscription, and modify its Properties to change the Service Administrator.\n\nOriginal: To designate Admin1 as a service admin for the subscription, you must manage subscription-level permissions. Modifying the Groups from the Microsoft Entra ID blade allows you to add Admin1 to an administrative role or group with the necessary access.",
     "correct": 3,
@@ -5204,22 +5212,32 @@ const QUESTIONS = [
   {
     "id": "topic9_q2",
     "number": "2",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nGeneral Overview -\nContoso, Ltd. is a consulting company that has a main office in Montreal and branch offices in Seattle and New York.\nEnvironment -\nExisting Environment -\nContoso has an Azure subscription named Sub1 that is linked to an Microsoft Entra ID (Microsoft Entra ID) tenant. The network contains an on-\npremises Active\nDirectory domain that syncs to the Microsoft Entra ID tenant.\nThe Microsoft Entra ID tenant contains the users shown in the following table.\nSub1 contains two resource groups named RG1 and RG2 and the virtual networks shown in the following table.\nUser1 manages the resources in RG1. User4 manages the resources in RG2.\nSub1 contains virtual machines that run Windows Server 2019 as shown in the following table\nNo network security groups (NSGs) are associated to the network interfaces or the subnets.\nSub1 contains the storage accounts shown in the following table.\n\n\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes:\nCreate a blob container named container1 and a file share named share1 that will use the Cool storage tier.\nCreate a storage account named storage5 and configure storage replication for the Blob service.\nCreate an NSG named NSG1 that will have the custom inbound security rules shown in the following table.\nAssociate NSG1 to the network interface of VM1.\nCreate an NSG named NSG2 that will have the custom outbound security rules shown in the following table.\nAssociate NSG2 to VNET1/Subnet2.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nCreate container1 and share1.\nUse the principle of least privilege.\nCreate an Microsoft Entra ID security group named Group4.\nBack up the Azure file shares and virtual machines by using Azure Backup.\nTrigger an alert if VM1 or VM2 has less than 20 GB of free space on volume C.\nEnable User1 to create Azure policy definitions and User2 to assign Azure policies to RG1.\nCreate an internal Basic Azure Load Balancer named LB1 and connect the load balancer to VNET1/Subnet1\nEnable flow logging for IP trafic from VM5 and retain the flow logs for a period of eight months.\nWhenever possible, grant Group4 Azure role-based access control (Azure RBAC) read-only permissions to the Azure file shares.\nQuestion\nYou need to ensure that you can grant Group4 Azure RBAC read only permissions to all the Azure file shares.\nWhat should you do?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nGeneral Overview -\nContoso, Ltd. is a consulting company that has a main office in Montreal and branch offices in Seattle and New York.\nEnvironment -\nExisting Environment -\nContoso has an Azure subscription named Sub1 that is linked to an Microsoft Entra ID (Microsoft Entra ID) tenant. The network contains an on-\npremises Active\nDirectory domain that syncs to the Microsoft Entra ID tenant.\nThe Microsoft Entra ID tenant contains the users shown in the following table.\nSub1 contains two resource groups named RG1 and RG2 and the virtual networks shown in the following table.\nUser1 manages the resources in RG1. User4 manages the resources in RG2.\nSub1 contains virtual machines that run Windows Server 2019 as shown in the following table\nNo network security groups (NSGs) are associated to the network interfaces or the subnets.\nSub1 contains the storage accounts shown in the following table.\n\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes:\nCreate a blob container named container1 and a file share named share1 that will use the Cool storage tier.\nCreate a storage account named storage5 and configure storage replication for the Blob service.\nCreate an NSG named NSG1 that will have the custom inbound security rules shown in the following table.\nAssociate NSG1 to the network interface of VM1.\nCreate an NSG named NSG2 that will have the custom outbound security rules shown in the following table.\nAssociate NSG2 to VNET1/Subnet2.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nCreate container1 and share1.\nUse the principle of least privilege.\nCreate an Microsoft Entra ID security group named Group4.\nBack up the Azure file shares and virtual machines by using Azure Backup.\nTrigger an alert if VM1 or VM2 has less than 20 GB of free space on volume C.\nEnable User1 to create Azure policy definitions and User2 to assign Azure policies to RG1.\nCreate an internal Basic Azure Load Balancer named LB1 and connect the load balancer to VNET1/Subnet1\nEnable flow logging for IP trafic from VM5 and retain the flow logs for a period of eight months.\nWhenever possible, grant Group4 Azure role-based access control (Azure RBAC) read-only permissions to the Azure file shares.\nQuestion\nYou need to ensure that you can grant Group4 Azure RBAC read only permissions to all the Azure file shares.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. On storage2, enable identity-based access for the file shares.",
       "B. Recreate storage2 and set Hierarchical namespace to Enabled.",
       "C. On storage1 and storage4, change the Account kind type to StorageV2 (general purpose v2).",
-      "D. Create a shared access signature (SAS) for storage1, storage2, and storage4.\n\n\nTopic 10 - Testlet 3"
+      "D. Create a shared access signature (SAS) for storage1, storage2, and storage4.\n\nTopic 10 - Testlet 3"
     ],
     "explanation": "To grant an Microsoft Entra ID group RBAC permissions to Azure file shares, the storage account must be integrated with Microsoft Entra ID Domain Services or on-premises AD DS. Enabling identity-based access on storage2 allows you to assign share-level permissions to Group4.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Question #1 Topic 7"
+      ],
+      "rows": [
+        [
+          "Introductory Info Case study - This is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions included on this exam in the time provided. To answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might contain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is independent of the other questions in this case study. At the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to the next section of the exam. After you begin a new section, you cannot return to this section. To start the case study - To display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study before you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question. Overview - Contoso, Ltd. is a manufacturing company that has oces worldwide. Contoso works with partner organizations to bring products to market. Contoso products are manufactured by using blueprint files that the company authors and maintains. Existing Environment - Currently, Contoso uses multiple types of servers for business operations, including the following: File servers Domain controllers Microsoft SQL Server servers Your network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory. You have a public-facing application named App1. App1 is comprised of the following three tiers: A SQL database A web front end A processing middle tier - Each tier is comprised of five virtual machines. Users access the web front end by using HTTPS only. Requirements - Planned Changes - Contoso plans to implement the following changes to the infrastructure: Move all the tiers of App1 to Azure. Move the existing product blueprint files to Azure Blob storage. Create a hybrid directory to support an upcoming Microsoft 365 migration project. Technical Requirements - Contoso must meet the following technical requirements: Move all the virtual machines for App1 to Azure. Minimize the number of open ports between the App1 tiers. Ensure that all the virtual machines for App1 are protected by backups. Copy the blueprint files to Azure over the Internet. Ensure that the blueprint files are stored in the archive storage tier. Ensure that partner access to the blueprint files is secured and temporary. Prevent user passwords or hashes of passwords from being stored in Azure."
+        ]
+      ]
+    }
   },
   {
     "id": "topic10_q1",
     "number": "1",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a manufacturing company that has offices worldwide. Contoso works with partner organizations to bring products to market.\nContoso products are manufactured by using blueprint files that the company authors and maintains.\nExisting Environment -\nCurrently, Contoso uses multiple types of servers for business operations, including the following:\nFile servers\nDomain controllers\nMicrosoft SQL Server servers\nYour network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory.\nYou have a public-facing application named App1. App1 is comprised of the following three tiers:\nA SQL database\nA web front end\nA processing middle tier -\nEach tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes to the infrastructure:\nMove all the tiers of App1 to Azure.\nMove the existing product blueprint files to Azure Blob storage.\nCreate a hybrid directory to support an upcoming Microsoft 365 migration project.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nMove all the virtual machines for App1 to Azure.\nMinimize the number of open ports between the App1 tiers.\nEnsure that all the virtual machines for App1 are protected by backups.\nCopy the blueprint files to Azure over the Internet.\nEnsure that the blueprint files are stored in the archive storage tier.\nEnsure that partner access to the blueprint files is secured and temporary.\nPrevent user passwords or hashes of passwords from being stored in Azure.\n\n\nUse unmanaged standard storage for the hard disks of the virtual machines.\nEnsure that when users join devices to Microsoft Entra ID (Microsoft Entra ID), the users use a mobile phone to verify their identity.\nMinimize administrative effort whenever possible.\nUser Requirements -\nContoso identifies the following requirements for users:\nEnsure that only users who are part of a group named Pilot can join devices to Microsoft Entra ID.\nDesignate a new user named Admin1 as the service admin for the Azure subscription.\nAdmin1 must receive email alerts regarding service outages.\nEnsure that a new user named User3 can create network objects for the Azure subscription.\nQuestion\nYou need to implement a backup solution for App1 after the application is moved.\nWhat should you create first?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a manufacturing company that has offices worldwide. Contoso works with partner organizations to bring products to market.\nContoso products are manufactured by using blueprint files that the company authors and maintains.\nExisting Environment -\nCurrently, Contoso uses multiple types of servers for business operations, including the following:\nFile servers\nDomain controllers\nMicrosoft SQL Server servers\nYour network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory.\nYou have a public-facing application named App1. App1 is comprised of the following three tiers:\nA SQL database\nA web front end\nA processing middle tier -\nEach tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes to the infrastructure:\nMove all the tiers of App1 to Azure.\nMove the existing product blueprint files to Azure Blob storage.\nCreate a hybrid directory to support an upcoming Microsoft 365 migration project.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nMove all the virtual machines for App1 to Azure.\nMinimize the number of open ports between the App1 tiers.\nEnsure that all the virtual machines for App1 are protected by backups.\nCopy the blueprint files to Azure over the Internet.\nEnsure that the blueprint files are stored in the archive storage tier.\nEnsure that partner access to the blueprint files is secured and temporary.\nPrevent user passwords or hashes of passwords from being stored in Azure.\n\nUse unmanaged standard storage for the hard disks of the virtual machines.\nEnsure that when users join devices to Microsoft Entra ID (Microsoft Entra ID), the users use a mobile phone to verify their identity.\nMinimize administrative effort whenever possible.\nUser Requirements -\nContoso identifies the following requirements for users:\nEnsure that only users who are part of a group named Pilot can join devices to Microsoft Entra ID.\nDesignate a new user named Admin1 as the service admin for the Azure subscription.\nAdmin1 must receive email alerts regarding service outages.\nEnsure that a new user named User3 can create network objects for the Azure subscription.\nQuestion\nYou need to implement a backup solution for App1 after the application is moved.\nWhat should you create first?",
     "domain": "identity",
     "choices": [
       "A. a recovery plan",
@@ -5234,7 +5252,7 @@ const QUESTIONS = [
   {
     "id": "topic10_q2",
     "number": "2",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a manufacturing company that has offices worldwide. Contoso works with partner organizations to bring products to market.\nContoso products are manufactured by using blueprint files that the company authors and maintains.\nExisting Environment -\nCurrently, Contoso uses multiple types of servers for business operations, including the following:\nFile servers\nDomain controllers\nMicrosoft SQL Server servers\nYour network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory.\nYou have a public-facing application named App1. App1 is comprised of the following three tiers:\nA SQL database\nA web front end\nA processing middle tier -\nEach tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes to the infrastructure:\nMove all the tiers of App1 to Azure.\nMove the existing product blueprint files to Azure Blob storage.\nCreate a hybrid directory to support an upcoming Microsoft 365 migration project.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nMove all the virtual machines for App1 to Azure.\nMinimize the number of open ports between the App1 tiers.\nEnsure that all the virtual machines for App1 are protected by backups.\nCopy the blueprint files to Azure over the Internet.\nEnsure that the blueprint files are stored in the archive storage tier.\nEnsure that partner access to the blueprint files is secured and temporary.\nPrevent user passwords or hashes of passwords from being stored in Azure.\nUse unmanaged standard storage for the hard disks of the virtual machines.\nEnsure that when users join devices to Microsoft Entra ID (Microsoft Entra ID), the users use a mobile phone to verify their identity.\nMinimize administrative effort whenever possible.\n\n\nUser Requirements -\nContoso identifies the following requirements for users:\nEnsure that only users who are part of a group named Pilot can join devices to Microsoft Entra ID.\nDesignate a new user named Admin1 as the service admin for the Azure subscription.\nAdmin1 must receive email alerts regarding service outages.\nEnsure that a new user named User3 can create network objects for the Azure subscription.\nQuestion\nYou need to move the blueprint files to Azure.\nWhat should you do?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a manufacturing company that has offices worldwide. Contoso works with partner organizations to bring products to market.\nContoso products are manufactured by using blueprint files that the company authors and maintains.\nExisting Environment -\nCurrently, Contoso uses multiple types of servers for business operations, including the following:\nFile servers\nDomain controllers\nMicrosoft SQL Server servers\nYour network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory.\nYou have a public-facing application named App1. App1 is comprised of the following three tiers:\nA SQL database\nA web front end\nA processing middle tier -\nEach tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes to the infrastructure:\nMove all the tiers of App1 to Azure.\nMove the existing product blueprint files to Azure Blob storage.\nCreate a hybrid directory to support an upcoming Microsoft 365 migration project.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nMove all the virtual machines for App1 to Azure.\nMinimize the number of open ports between the App1 tiers.\nEnsure that all the virtual machines for App1 are protected by backups.\nCopy the blueprint files to Azure over the Internet.\nEnsure that the blueprint files are stored in the archive storage tier.\nEnsure that partner access to the blueprint files is secured and temporary.\nPrevent user passwords or hashes of passwords from being stored in Azure.\nUse unmanaged standard storage for the hard disks of the virtual machines.\nEnsure that when users join devices to Microsoft Entra ID (Microsoft Entra ID), the users use a mobile phone to verify their identity.\nMinimize administrative effort whenever possible.\n\nUser Requirements -\nContoso identifies the following requirements for users:\nEnsure that only users who are part of a group named Pilot can join devices to Microsoft Entra ID.\nDesignate a new user named Admin1 as the service admin for the Azure subscription.\nAdmin1 must receive email alerts regarding service outages.\nEnsure that a new user named User3 can create network objects for the Azure subscription.\nQuestion\nYou need to move the blueprint files to Azure.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. Generate an access key. Map a drive, and then copy the files by using File Explorer.",
@@ -5249,38 +5267,58 @@ const QUESTIONS = [
   {
     "id": "topic11_q3",
     "number": "3",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nGeneral Overview -\nContoso, Ltd. is a consulting company that has a main office in Montreal and branch offices in Seattle and New York.\nEnvironment -\nExisting Environment -\nContoso has an Azure subscription named Sub1 that is linked to an Microsoft Entra ID (Microsoft Entra ID) tenant. The network contains an on-\npremises Active\nDirectory domain that syncs to the Microsoft Entra ID tenant.\nThe Microsoft Entra ID tenant contains the users shown in the following table.\nSub1 contains two resource groups named RG1 and RG2 and the virtual networks shown in the following table.\nUser1 manages the resources in RG1. User4 manages the resources in RG2.\nSub1 contains virtual machines that run Windows Server 2019 as shown in the following table\nNo network security groups (NSGs) are associated to the network interfaces or the subnets.\nSub1 contains the storage accounts shown in the following table.\n\n\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes:\nCreate a blob container named container1 and a file share named share1 that will use the Cool storage tier.\nCreate a storage account named storage5 and configure storage replication for the Blob service.\nCreate an NSG named NSG1 that will have the custom inbound security rules shown in the following table.\nAssociate NSG1 to the network interface of VM1.\nCreate an NSG named NSG2 that will have the custom outbound security rules shown in the following table.\nAssociate NSG2 to VNET1/Subnet2.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nCreate container1 and share1.\nUse the principle of least privilege.\nCreate an Microsoft Entra ID security group named Group4.\nBack up the Azure file shares and virtual machines by using Azure Backup.\nTrigger an alert if VM1 or VM2 has less than 20 GB of free space on volume C.\nEnable User1 to create Azure policy definitions and User2 to assign Azure policies to RG1.\nCreate an internal Basic Azure Load Balancer named LB1 and connect the load balancer to VNET1/Subnet1\nEnable flow logging for IP trafic from VM5 and retain the flow logs for a period of eight months.\nWhenever possible, grant Group4 Azure role-based access control (Azure RBAC) read-only permissions to the Azure file shares.\nQuestion\nYou need to identify which storage account to use for the flow logging of IP trafic from VM5. The solution must meet the retention requirements.\nWhich storage account should you identify?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nGeneral Overview -\nContoso, Ltd. is a consulting company that has a main office in Montreal and branch offices in Seattle and New York.\nEnvironment -\nExisting Environment -\nContoso has an Azure subscription named Sub1 that is linked to an Microsoft Entra ID (Microsoft Entra ID) tenant. The network contains an on-\npremises Active\nDirectory domain that syncs to the Microsoft Entra ID tenant.\nThe Microsoft Entra ID tenant contains the users shown in the following table.\nSub1 contains two resource groups named RG1 and RG2 and the virtual networks shown in the following table.\nUser1 manages the resources in RG1. User4 manages the resources in RG2.\nSub1 contains virtual machines that run Windows Server 2019 as shown in the following table\nNo network security groups (NSGs) are associated to the network interfaces or the subnets.\nSub1 contains the storage accounts shown in the following table.\n\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes:\nCreate a blob container named container1 and a file share named share1 that will use the Cool storage tier.\nCreate a storage account named storage5 and configure storage replication for the Blob service.\nCreate an NSG named NSG1 that will have the custom inbound security rules shown in the following table.\nAssociate NSG1 to the network interface of VM1.\nCreate an NSG named NSG2 that will have the custom outbound security rules shown in the following table.\nAssociate NSG2 to VNET1/Subnet2.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nCreate container1 and share1.\nUse the principle of least privilege.\nCreate an Microsoft Entra ID security group named Group4.\nBack up the Azure file shares and virtual machines by using Azure Backup.\nTrigger an alert if VM1 or VM2 has less than 20 GB of free space on volume C.\nEnable User1 to create Azure policy definitions and User2 to assign Azure policies to RG1.\nCreate an internal Basic Azure Load Balancer named LB1 and connect the load balancer to VNET1/Subnet1\nEnable flow logging for IP trafic from VM5 and retain the flow logs for a period of eight months.\nWhenever possible, grant Group4 Azure role-based access control (Azure RBAC) read-only permissions to the Azure file shares.\nQuestion\nYou need to identify which storage account to use for the flow logging of IP trafic from VM5. The solution must meet the retention requirements.\n\nWhich storage account should you identify?",
     "domain": "identity",
     "choices": [
       "A. storage1",
       "B. storage2",
       "C. storage3",
-      "D. storage4\n\n\nTopic 12 - Testlet 5"
+      "D. storage4\n\nTopic 12 - Testlet 5"
     ],
     "explanation": "When choosing a storage account for backups or logging, selecting the one in the same region as the resource minimizes latency and avoids data egress charges. Storage1 meets the regional and cost-efficiency requirements.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Question #1 Topic 7"
+      ],
+      "rows": [
+        [
+          "Introductory Info Case study - This is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions included on this exam in the time provided. To answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might contain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is independent of the other questions in this case study. At the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to the next section of the exam. After you begin a new section, you cannot return to this section. To start the case study - To display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study before you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question. Overview - Contoso, Ltd. is a manufacturing company that has oces worldwide. Contoso works with partner organizations to bring products to market. Contoso products are manufactured by using blueprint files that the company authors and maintains. Existing Environment - Currently, Contoso uses multiple types of servers for business operations, including the following: File servers Domain controllers Microsoft SQL Server servers Your network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory. You have a public-facing application named App1. App1 is comprised of the following three tiers: A SQL database A web front end A processing middle tier - Each tier is comprised of five virtual machines. Users access the web front end by using HTTPS only. Requirements - Planned Changes - Contoso plans to implement the following changes to the infrastructure: Move all the tiers of App1 to Azure. Move the existing product blueprint files to Azure Blob storage. Create a hybrid directory to support an upcoming Microsoft 365 migration project. Technical Requirements - Contoso must meet the following technical requirements: Move all the virtual machines for App1 to Azure. Minimize the number of open ports between the App1 tiers. Ensure that all the virtual machines for App1 are protected by backups. Copy the blueprint files to Azure over the Internet. Ensure that the blueprint files are stored in the archive storage tier. Ensure that partner access to the blueprint files is secured and temporary. Prevent user passwords or hashes of passwords from being stored in Azure."
+        ]
+      ]
+    }
   },
   {
     "id": "topic12_q1",
     "number": "1",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a consulting company that has a main office in Montreal and two branch offices in Seattle and New York.\nThe Montreal office has 2,000 employees. The Seattle office has 1,000 employees. The New York office has 200 employees.\nAll the resources used by Litware are hosted on-premises.\nLitware creates a new Azure subscription. The Microsoft Entra ID (Microsoft Entra ID) tenant uses a domain named litware.onmicrosoft.com. The\ntenant uses the\nPremium P1 pricing tier.\nExisting Environment -\nThe network contains an Active Directory forest named litware.com. All domain controllers are configured as DNS servers and host the\nlitware.com DNS zone.\nLitware has finance, human resources, sales, research, and information technology departments. Each department has an organizational unit (OU)\nthat contains all the accounts of that respective department. All the user accounts have the department attribute set to their respective\ndepartment. New users are added frequently.\nLitware.com contains a user named User1.\nAll the offices connect by using private connections.\nLitware has data centers in the Montreal and Seattle offices. Each office has a firewall that can be configured as a VPN device.\nAll infrastructure servers are virtualized. The virtualization environment contains the servers in the following table.\nLitware uses two web applications named App1 and App2. Each instance on each web application requires 1 GB of memory.\nThe Azure subscription contains the resources in the following table.\nThe network security team implements several network security groups (NSGs)\nRequirements -\nPlanned Changes -\nLitware plans to implement the following changes:\nDeploy Azure ExpressRoute to the Montreal office.\nMigrate the virtual machines hosted on Server1 and Server2 to Azure.\nSynchronize on-premises Active Directory to Microsoft Entra ID (Microsoft Entra ID).\n\n\nMigrate App1 and App2 to two Azure web apps named WebApp1 and WebApp2.\nTechnical Requirements -\nLitware must meet the following technical requirements:\nEnsure that WebApp1 can adjust the number of instances automatically based on the load and can scale up to five instances.\nEnsure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office.\nEnsure that routing information is exchanged automatically between Azure and the routers in the Montreal office.\nEnable Azure Multi-Factor Authentication (MFA) for the users in the finance department only.\nEnsure that webapp2.azurewebsites.net can be accessed by using the name app2.litware.com.\nConnect the New York office to VNet1 over the Internet by using an encrypted connection.\nCreate a workflow to send an email message when the settings of VM4 are modified.\nCreate a custom Azure role named Role1 that is based on the Reader role.\nMinimize costs whenever possible.\nQuestion\nYou discover that VM3 does NOT meet the technical requirements.\nYou need to verify whether the issue relates to the NSGs.\nWhat should you use?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a consulting company that has a main office in Montreal and two branch offices in Seattle and New York.\nThe Montreal office has 2,000 employees. The Seattle office has 1,000 employees. The New York office has 200 employees.\nAll the resources used by Litware are hosted on-premises.\nLitware creates a new Azure subscription. The Microsoft Entra ID (Microsoft Entra ID) tenant uses a domain named litware.onmicrosoft.com. The\ntenant uses the\nPremium P1 pricing tier.\nExisting Environment -\nThe network contains an Active Directory forest named litware.com. All domain controllers are configured as DNS servers and host the\nlitware.com DNS zone.\nLitware has finance, human resources, sales, research, and information technology departments. Each department has an organizational unit (OU)\nthat contains all the accounts of that respective department. All the user accounts have the department attribute set to their respective\ndepartment. New users are added frequently.\nLitware.com contains a user named User1.\nAll the offices connect by using private connections.\nLitware has data centers in the Montreal and Seattle offices. Each office has a firewall that can be configured as a VPN device.\nAll infrastructure servers are virtualized. The virtualization environment contains the servers in the following table.\nLitware uses two web applications named App1 and App2. Each instance on each web application requires 1 GB of memory.\nThe Azure subscription contains the resources in the following table.\nThe network security team implements several network security groups (NSGs)\nRequirements -\nPlanned Changes -\nLitware plans to implement the following changes:\nDeploy Azure ExpressRoute to the Montreal office.\nMigrate the virtual machines hosted on Server1 and Server2 to Azure.\nSynchronize on-premises Active Directory to Microsoft Entra ID (Microsoft Entra ID).\n\nMigrate App1 and App2 to two Azure web apps named WebApp1 and WebApp2.\nTechnical Requirements -\nLitware must meet the following technical requirements:\nEnsure that WebApp1 can adjust the number of instances automatically based on the load and can scale up to five instances.\nEnsure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office.\nEnsure that routing information is exchanged automatically between Azure and the routers in the Montreal office.\nEnable Azure Multi-Factor Authentication (MFA) for the users in the finance department only.\nEnsure that webapp2.azurewebsites.net can be accessed by using the name app2.litware.com.\nConnect the New York office to VNet1 over the Internet by using an encrypted connection.\nCreate a workflow to send an email message when the settings of VM4 are modified.\nCreate a custom Azure role named Role1 that is based on the Reader role.\nMinimize costs whenever possible.\nQuestion\nYou discover that VM3 does NOT meet the technical requirements.\nYou need to verify whether the issue relates to the NSGs.\n\nWhat should you use?",
     "domain": "identity",
     "choices": [
       "A. Diagram in VNet1",
       "B. Diagnostic settings in Azure Monitor",
       "C. Diagnose and solve problems in Traffic Manager profiles",
       "D. The security recommendations in Azure Advisor",
-      "E. IP flow verify in Azure Network Watcher\n\n\nTopic 13 - Testlet 6"
+      "E. IP flow verify in Azure Network Watcher\n\nTopic 13 - Testlet 6"
     ],
     "explanation": "The VNet diagram feature in Azure Network Watcher provides a visual representation of the network topology, including NSGs associated with subnets and network interfaces. Reviewing the diagram in VNet1 helps quickly verify if NSG rules are blocking VM3's outbound traffic.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Question #1 Topic 7"
+      ],
+      "rows": [
+        [
+          "Introductory Info Case study - This is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions included on this exam in the time provided. To answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might contain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is independent of the other questions in this case study. At the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to the next section of the exam. After you begin a new section, you cannot return to this section. To start the case study - To display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study before you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question. Overview - Contoso, Ltd. is a manufacturing company that has oces worldwide. Contoso works with partner organizations to bring products to market. Contoso products are manufactured by using blueprint files that the company authors and maintains. Existing Environment - Currently, Contoso uses multiple types of servers for business operations, including the following: File servers Domain controllers Microsoft SQL Server servers Your network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory. You have a public-facing application named App1. App1 is comprised of the following three tiers: A SQL database A web front end A processing middle tier - Each tier is comprised of five virtual machines. Users access the web front end by using HTTPS only. Requirements - Planned Changes - Contoso plans to implement the following changes to the infrastructure: Move all the tiers of App1 to Azure. Move the existing product blueprint files to Azure Blob storage. Create a hybrid directory to support an upcoming Microsoft 365 migration project. Technical Requirements - Contoso must meet the following technical requirements: Move all the virtual machines for App1 to Azure. Minimize the number of open ports between the App1 tiers. Ensure that all the virtual machines for App1 are protected by backups. Copy the blueprint files to Azure over the Internet. Ensure that the blueprint files are stored in the archive storage tier. Ensure that partner access to the blueprint files is secured and temporary. Prevent user passwords or hashes of passwords from being stored in Azure."
+        ]
+      ]
+    }
   },
   {
     "id": "topic13_q1",
     "number": "1",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a consulting company that has a main office in Montreal and two branch offices in Seattle and New York.\nThe Montreal office has 2,000 employees. The Seattle office has 1,000 employees. The New York office has 200 employees.\nAll the resources used by Litware are hosted on-premises.\nLitware creates a new Azure subscription. The Microsoft Entra ID (Microsoft Entra ID) tenant uses a domain named litware.onmicrosoft.com. The\ntenant uses the\nPremium P1 pricing tier.\nExisting Environment -\nThe network contains an Active Directory forest named litware.com. All domain controllers are configured as DNS servers and host the\nlitware.com DNS zone.\nLitware has finance, human resources, sales, research, and information technology departments. Each department has an organizational unit (OU)\nthat contains all the accounts of that respective department. All the user accounts have the department attribute set to their respective\ndepartment. New users are added frequently.\nLitware.com contains a user named User1.\nAll the offices connect by using private connections.\nLitware has data centers in the Montreal and Seattle offices. Each office has a firewall that can be configured as a VPN device.\nAll infrastructure servers are virtualized. The virtualization environment contains the servers in the following table.\nLitware uses two web applications named App1 and App2. Each instance on each web application requires 1 GB of memory.\nThe Azure subscription contains the resources in the following table.\nThe network security team implements several network security groups (NSGs)\nRequirements -\nPlanned Changes -\nLitware plans to implement the following changes:\nDeploy Azure ExpressRoute to the Montreal office.\nMigrate the virtual machines hosted on Server1 and Server2 to Azure.\nSynchronize on-premises Active Directory to Microsoft Entra ID (Microsoft Entra ID).\n\n\nMigrate App1 and App2 to two Azure web apps named WebApp1 and WebApp2.\nTechnical Requirements -\nLitware must meet the following technical requirements:\nEnsure that WebApp1 can adjust the number of instances automatically based on the load and can scale up to five instances.\nEnsure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office.\nEnsure that routing information is exchanged automatically between Azure and the routers in the Montreal office.\nEnable Azure Multi-Factor Authentication (MFA) for the users in the finance department only.\nEnsure that webapp2.azurewebsites.net can be accessed by using the name app2.litware.com.\nConnect the New York office to VNet1 over the Internet by using an encrypted connection.\nCreate a workflow to send an email message when the settings of VM4 are modified.\nCreate a custom Azure role named Role1 that is based on the Reader role.\nMinimize costs whenever possible.\nQuestion\nYou need to ensure that VM1 can communicate with VM4. The solution must minimize the administrative effort.\nWhat should you do?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a consulting company that has a main office in Montreal and two branch offices in Seattle and New York.\nThe Montreal office has 2,000 employees. The Seattle office has 1,000 employees. The New York office has 200 employees.\nAll the resources used by Litware are hosted on-premises.\nLitware creates a new Azure subscription. The Microsoft Entra ID (Microsoft Entra ID) tenant uses a domain named litware.onmicrosoft.com. The\ntenant uses the\nPremium P1 pricing tier.\nExisting Environment -\nThe network contains an Active Directory forest named litware.com. All domain controllers are configured as DNS servers and host the\nlitware.com DNS zone.\nLitware has finance, human resources, sales, research, and information technology departments. Each department has an organizational unit (OU)\nthat contains all the accounts of that respective department. All the user accounts have the department attribute set to their respective\ndepartment. New users are added frequently.\nLitware.com contains a user named User1.\nAll the offices connect by using private connections.\nLitware has data centers in the Montreal and Seattle offices. Each office has a firewall that can be configured as a VPN device.\nAll infrastructure servers are virtualized. The virtualization environment contains the servers in the following table.\nLitware uses two web applications named App1 and App2. Each instance on each web application requires 1 GB of memory.\nThe Azure subscription contains the resources in the following table.\nThe network security team implements several network security groups (NSGs)\nRequirements -\nPlanned Changes -\nLitware plans to implement the following changes:\nDeploy Azure ExpressRoute to the Montreal office.\nMigrate the virtual machines hosted on Server1 and Server2 to Azure.\nSynchronize on-premises Active Directory to Microsoft Entra ID (Microsoft Entra ID).\n\nMigrate App1 and App2 to two Azure web apps named WebApp1 and WebApp2.\nTechnical Requirements -\nLitware must meet the following technical requirements:\nEnsure that WebApp1 can adjust the number of instances automatically based on the load and can scale up to five instances.\nEnsure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office.\nEnsure that routing information is exchanged automatically between Azure and the routers in the Montreal office.\nEnable Azure Multi-Factor Authentication (MFA) for the users in the finance department only.\nEnsure that webapp2.azurewebsites.net can be accessed by using the name app2.litware.com.\nConnect the New York office to VNet1 over the Internet by using an encrypted connection.\nCreate a workflow to send an email message when the settings of VM4 are modified.\nCreate a custom Azure role named Role1 that is based on the Reader role.\nMinimize costs whenever possible.\nQuestion\nYou need to ensure that VM1 can communicate with VM4. The solution must minimize the administrative effort.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. Create an NSG and associate the NSG to VM1 and VM4.",
@@ -5290,18 +5328,28 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** VM1 and VM4 are situated in different Virtual Networks (VNET1 and VNET3). By default, traffic cannot route between different VNets. An NSG only filters traffic; it does not route it. To enable communication between VMs in different VNets, you must establish VNet peering.\n\nOriginal: To allow communication between virtual machines while minimizing administrative effort, configuring a Network Security Group (NSG) with the appropriate allow rules is effective. Associating the NSG to both VM1 and VM4 centrally manages the traffic permissions.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Question #1 Topic 7"
+      ],
+      "rows": [
+        [
+          "Introductory Info Case study - This is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions included on this exam in the time provided. To answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might contain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is independent of the other questions in this case study. At the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to the next section of the exam. After you begin a new section, you cannot return to this section. To start the case study - To display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study before you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question. Overview - Contoso, Ltd. is a manufacturing company that has oces worldwide. Contoso works with partner organizations to bring products to market. Contoso products are manufactured by using blueprint files that the company authors and maintains. Existing Environment - Currently, Contoso uses multiple types of servers for business operations, including the following: File servers Domain controllers Microsoft SQL Server servers Your network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory. You have a public-facing application named App1. App1 is comprised of the following three tiers: A SQL database A web front end A processing middle tier - Each tier is comprised of five virtual machines. Users access the web front end by using HTTPS only. Requirements - Planned Changes - Contoso plans to implement the following changes to the infrastructure: Move all the tiers of App1 to Azure. Move the existing product blueprint files to Azure Blob storage. Create a hybrid directory to support an upcoming Microsoft 365 migration project. Technical Requirements - Contoso must meet the following technical requirements: Move all the virtual machines for App1 to Azure. Minimize the number of open ports between the App1 tiers. Ensure that all the virtual machines for App1 are protected by backups. Copy the blueprint files to Azure over the Internet. Ensure that the blueprint files are stored in the archive storage tier. Ensure that partner access to the blueprint files is secured and temporary. Prevent user passwords or hashes of passwords from being stored in Azure."
+        ]
+      ]
+    }
   },
   {
     "id": "topic14_q2",
     "number": "2",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a manufacturing company that has offices worldwide. Contoso works with partner organizations to bring products to market.\nContoso products are manufactured by using blueprint files that the company authors and maintains.\nExisting Environment -\nCurrently, Contoso uses multiple types of servers for business operations, including the following:\nFile servers\nDomain controllers\nMicrosoft SQL Server servers\nYour network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory.\nYou have a public-facing application named App1. App1 is comprised of the following three tiers:\nA SQL database\nA web front end\nA processing middle tier -\nEach tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes to the infrastructure:\nMove all the tiers of App1 to Azure.\nMove the existing product blueprint files to Azure Blob storage.\nCreate a hybrid directory to support an upcoming Microsoft 365 migration project.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nMove all the virtual machines for App1 to Azure.\nMinimize the number of open ports between the App1 tiers.\nEnsure that all the virtual machines for App1 are protected by backups.\nCopy the blueprint files to Azure over the Internet.\nEnsure that the blueprint files are stored in the archive storage tier.\nEnsure that partner access to the blueprint files is secured and temporary.\nPrevent user passwords or hashes of passwords from being stored in Azure.\nUse unmanaged standard storage for the hard disks of the virtual machines.\nEnsure that when users join devices to Microsoft Entra ID (Microsoft Entra ID), the users use a mobile phone to verify their identity.\nMinimize administrative effort whenever possible.\n\n\nUser Requirements -\nContoso identifies the following requirements for users:\nEnsure that only users who are part of a group named Pilot can join devices to Microsoft Entra ID.\nDesignate a new user named Admin1 as the service admin for the Azure subscription.\nAdmin1 must receive email alerts regarding service outages.\nEnsure that a new user named User3 can create network objects for the Azure subscription.\nQuestion\nYou are planning the move of App1 to Azure.\nYou create a network security group (NSG).\nYou need to recommend a solution to provide users with access to App1.\nWhat should you recommend?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a manufacturing company that has offices worldwide. Contoso works with partner organizations to bring products to market.\nContoso products are manufactured by using blueprint files that the company authors and maintains.\nExisting Environment -\nCurrently, Contoso uses multiple types of servers for business operations, including the following:\nFile servers\nDomain controllers\nMicrosoft SQL Server servers\nYour network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory.\nYou have a public-facing application named App1. App1 is comprised of the following three tiers:\nA SQL database\nA web front end\nA processing middle tier -\nEach tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes to the infrastructure:\nMove all the tiers of App1 to Azure.\nMove the existing product blueprint files to Azure Blob storage.\nCreate a hybrid directory to support an upcoming Microsoft 365 migration project.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nMove all the virtual machines for App1 to Azure.\nMinimize the number of open ports between the App1 tiers.\nEnsure that all the virtual machines for App1 are protected by backups.\nCopy the blueprint files to Azure over the Internet.\nEnsure that the blueprint files are stored in the archive storage tier.\nEnsure that partner access to the blueprint files is secured and temporary.\nPrevent user passwords or hashes of passwords from being stored in Azure.\nUse unmanaged standard storage for the hard disks of the virtual machines.\nEnsure that when users join devices to Microsoft Entra ID (Microsoft Entra ID), the users use a mobile phone to verify their identity.\nMinimize administrative effort whenever possible.\n\nUser Requirements -\nContoso identifies the following requirements for users:\nEnsure that only users who are part of a group named Pilot can join devices to Microsoft Entra ID.\nDesignate a new user named Admin1 as the service admin for the Azure subscription.\nAdmin1 must receive email alerts regarding service outages.\nEnsure that a new user named User3 can create network objects for the Azure subscription.\nQuestion\nYou are planning the move of App1 to Azure.\nYou create a network security group (NSG).\nYou need to recommend a solution to provide users with access to App1.\nWhat should you recommend?",
     "domain": "identity",
     "choices": [
       "A. Create an incoming security rule for port 443 from the Internet. Associate the NSG to the subnet that contains the web servers.",
       "B. Create an outgoing security rule for port 443 from the Internet. Associate the NSG to the subnet that contains the web servers.",
       "C. Create an incoming security rule for port 443 from the Internet. Associate the NSG to all the subnets.",
-      "D. Create an outgoing security rule for port 443 from the Internet. Associate the NSG to all the subnets.\n\n\nTopic 15 - Testlet 8"
+      "D. Create an outgoing security rule for port 443 from the Internet. Associate the NSG to all the subnets.\n\nTopic 15 - Testlet 8"
     ],
     "explanation": "To provide internet users access to web servers in App1 via HTTPS, you must allow inbound traffic on port 443. Creating an incoming security rule for port 443 and associating it with the web servers' subnet is the standard practice.",
     "correct": 0,
@@ -5310,7 +5358,7 @@ const QUESTIONS = [
   {
     "id": "topic15_q3",
     "number": "3",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nGeneral Overview -\nContoso, Ltd. is a consulting company that has a main office in Montreal and branch offices in Seattle and New York.\nEnvironment -\nExisting Environment -\nContoso has an Azure subscription named Sub1 that is linked to an Microsoft Entra ID (Microsoft Entra ID) tenant. The network contains an on-\npremises Active\nDirectory domain that syncs to the Microsoft Entra ID tenant.\nThe Microsoft Entra ID tenant contains the users shown in the following table.\nSub1 contains two resource groups named RG1 and RG2 and the virtual networks shown in the following table.\nUser1 manages the resources in RG1. User4 manages the resources in RG2.\nSub1 contains virtual machines that run Windows Server 2019 as shown in the following table\nNo network security groups (NSGs) are associated to the network interfaces or the subnets.\nSub1 contains the storage accounts shown in the following table.\n\n\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes:\nCreate a blob container named container1 and a file share named share1 that will use the Cool storage tier.\nCreate a storage account named storage5 and configure storage replication for the Blob service.\nCreate an NSG named NSG1 that will have the custom inbound security rules shown in the following table.\nAssociate NSG1 to the network interface of VM1.\nCreate an NSG named NSG2 that will have the custom outbound security rules shown in the following table.\nAssociate NSG2 to VNET1/Subnet2.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nCreate container1 and share1.\nUse the principle of least privilege.\nCreate an Microsoft Entra ID security group named Group4.\nBack up the Azure file shares and virtual machines by using Azure Backup.\nTrigger an alert if VM1 or VM2 has less than 20 GB of free space on volume C.\nEnable User1 to create Azure policy definitions and User2 to assign Azure policies to RG1.\nCreate an internal Basic Azure Load Balancer named LB1 and connect the load balancer to VNET1/Subnet1\nEnable flow logging for IP trafic from VM5 and retain the flow logs for a period of eight months.\nWhenever possible, grant Group4 Azure role-based access control (Azure RBAC) read-only permissions to the Azure file shares.\nQuestion\nYou need to add VM1 and VM2 to the backend pool of LB1.\nWhat should you do first?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nGeneral Overview -\nContoso, Ltd. is a consulting company that has a main office in Montreal and branch offices in Seattle and New York.\nEnvironment -\nExisting Environment -\nContoso has an Azure subscription named Sub1 that is linked to an Microsoft Entra ID (Microsoft Entra ID) tenant. The network contains an on-\npremises Active\nDirectory domain that syncs to the Microsoft Entra ID tenant.\nThe Microsoft Entra ID tenant contains the users shown in the following table.\nSub1 contains two resource groups named RG1 and RG2 and the virtual networks shown in the following table.\nUser1 manages the resources in RG1. User4 manages the resources in RG2.\nSub1 contains virtual machines that run Windows Server 2019 as shown in the following table\nNo network security groups (NSGs) are associated to the network interfaces or the subnets.\nSub1 contains the storage accounts shown in the following table.\n\nRequirements -\nPlanned Changes -\nContoso plans to implement the following changes:\nCreate a blob container named container1 and a file share named share1 that will use the Cool storage tier.\nCreate a storage account named storage5 and configure storage replication for the Blob service.\nCreate an NSG named NSG1 that will have the custom inbound security rules shown in the following table.\nAssociate NSG1 to the network interface of VM1.\nCreate an NSG named NSG2 that will have the custom outbound security rules shown in the following table.\nAssociate NSG2 to VNET1/Subnet2.\nTechnical Requirements -\nContoso must meet the following technical requirements:\nCreate container1 and share1.\nUse the principle of least privilege.\nCreate an Microsoft Entra ID security group named Group4.\nBack up the Azure file shares and virtual machines by using Azure Backup.\nTrigger an alert if VM1 or VM2 has less than 20 GB of free space on volume C.\nEnable User1 to create Azure policy definitions and User2 to assign Azure policies to RG1.\nCreate an internal Basic Azure Load Balancer named LB1 and connect the load balancer to VNET1/Subnet1\nEnable flow logging for IP trafic from VM5 and retain the flow logs for a period of eight months.\nWhenever possible, grant Group4 Azure role-based access control (Azure RBAC) read-only permissions to the Azure file shares.\nQuestion\nYou need to add VM1 and VM2 to the backend pool of LB1.\nWhat should you do first?",
     "domain": "identity",
     "choices": [
       "A. Connect VM2 to VNET1/Subnet1.",
@@ -5320,18 +5368,28 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** A Basic SKU Azure Load Balancer has strict restrictions for its backend pool: the virtual machines must belong to the same Availability Set or the same Virtual Machine Scale Set. Changing subnets alone is insufficient if they are not in the same Availability Set. Therefore, redeploying them into the same Availability Set is required first.\n\nOriginal: To add virtual machines to the backend pool of an internal Basic Azure Load Balancer, the VMs must reside in the same virtual network and subnet as the load balancer. Connecting VM2 to VNET1/Subnet1 is a necessary prerequisite.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Question #1 Topic 7"
+      ],
+      "rows": [
+        [
+          "Introductory Info Case study - This is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions included on this exam in the time provided. To answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might contain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is independent of the other questions in this case study. At the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to the next section of the exam. After you begin a new section, you cannot return to this section. To start the case study - To display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study before you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question. Overview - Contoso, Ltd. is a manufacturing company that has oces worldwide. Contoso works with partner organizations to bring products to market. Contoso products are manufactured by using blueprint files that the company authors and maintains. Existing Environment - Currently, Contoso uses multiple types of servers for business operations, including the following: File servers Domain controllers Microsoft SQL Server servers Your network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory. You have a public-facing application named App1. App1 is comprised of the following three tiers: A SQL database A web front end A processing middle tier - Each tier is comprised of five virtual machines. Users access the web front end by using HTTPS only. Requirements - Planned Changes - Contoso plans to implement the following changes to the infrastructure: Move all the tiers of App1 to Azure. Move the existing product blueprint files to Azure Blob storage. Create a hybrid directory to support an upcoming Microsoft 365 migration project. Technical Requirements - Contoso must meet the following technical requirements: Move all the virtual machines for App1 to Azure. Minimize the number of open ports between the App1 tiers. Ensure that all the virtual machines for App1 are protected by backups. Copy the blueprint files to Azure over the Internet. Ensure that the blueprint files are stored in the archive storage tier. Ensure that partner access to the blueprint files is secured and temporary. Prevent user passwords or hashes of passwords from being stored in Azure."
+        ]
+      ]
+    }
   },
   {
     "id": "topic15_q4",
     "number": "4",
-    "question": "You need to ensure that VM1 can communicate with VM4. The solution must minimize administrative effort.\nWhat should you do?",
+    "question": "You need to ensure that VM1 can communicate with VM4. The solution must minimize administrative effort.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Create a user-defined route from VNET1 to VNET3.",
       "B. Create an NSG and associate the NSG to VM1 and VM4.",
       "C. Assign VM4 an IP address of 10.0.1.5/24.",
-      "D. Establish peering between VNET1 and VNET3.\n\n\nTopic 16 - Testlet 9"
+      "D. Establish peering between VNET1 and VNET3.\n\nTopic 16 - Testlet 9"
     ],
     "explanation": "**Fact-Check Note:** This is a variation of `topic13_q1`. VM1 and VM4 reside in different VNets. The standard and most administratively efficient way to connect two Azure VNets is through VNet peering. A User-Defined Route (UDR) is generally used to force traffic through a network virtual appliance, which is not required here and does not establish the necessary connection on its own.\n\nOriginal: A user-defined route (UDR) allows you to explicitly define how traffic is routed between subnets or virtual networks. Creating a UDR from VNET1 to VNET3 ensures that traffic from VM1 can reach VM4 via the specified routing appliance or gateway.",
     "correct": 3,
@@ -5340,7 +5398,7 @@ const QUESTIONS = [
   {
     "id": "topic16_q2",
     "number": "2",
-    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a consulting company that has a main office in Montreal and two branch offices in Seattle and New York.\nThe Montreal office has 2,000 employees. The Seattle office has 1,000 employees. The New York office has 200 employees.\nAll the resources used by Litware are hosted on-premises.\nLitware creates a new Azure subscription. The Microsoft Entra ID (Microsoft Entra ID) tenant uses a domain named litware.onmicrosoft.com. The\ntenant uses the\nPremium P1 pricing tier.\nExisting Environment -\nThe network contains an Active Directory forest named litware.com. All domain controllers are configured as DNS servers and host the\nlitware.com DNS zone.\nLitware has finance, human resources, sales, research, and information technology departments. Each department has an organizational unit (OU)\nthat contains all the accounts of that respective department. All the user accounts have the department attribute set to their respective\ndepartment. New users are added frequently.\nLitware.com contains a user named User1.\nAll the offices connect by using private connections.\nLitware has data centers in the Montreal and Seattle offices. Each office has a firewall that can be configured as a VPN device.\nAll infrastructure servers are virtualized. The virtualization environment contains the servers in the following table.\nLitware uses two web applications named App1 and App2. Each instance on each web application requires 1 GB of memory.\nThe Azure subscription contains the resources in the following table.\nThe network security team implements several network security groups (NSGs)\nRequirements -\nPlanned Changes -\nLitware plans to implement the following changes:\nDeploy Azure ExpressRoute to the Montreal office.\nMigrate the virtual machines hosted on Server1 and Server2 to Azure.\nSynchronize on-premises Active Directory to Microsoft Entra ID (Microsoft Entra ID).\nMigrate App1 and App2 to two Azure web apps named WebApp1 and WebApp2.\n\n\nTechnical Requirements -\nLitware must meet the following technical requirements:\nEnsure that WebApp1 can adjust the number of instances automatically based on the load and can scale up to five instances.\nEnsure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office.\nEnsure that routing information is exchanged automatically between Azure and the routers in the Montreal office.\nEnable Azure Multi-Factor Authentication (MFA) for the users in the finance department only.\nEnsure that webapp2.azurewebsites.net can be accessed by using the name app2.litware.com.\nConnect the New York office to VNet1 over the Internet by using an encrypted connection.\nCreate a workflow to send an email message when the settings of VM4 are modified.\nCreate a custom Azure role named Role1 that is based on the Reader role.\nMinimize costs whenever possible.\nQuestion\nYou need to recommend a solution to automate the configuration for the finance department users. The solution must meet the technical\nrequirements.\nWhat should you include in the recommendation?",
+    "question": "Introductory Info\nCase study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However,\nthere may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions\nincluded on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to\nthe next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem\nstatements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the\nsubsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a consulting company that has a main office in Montreal and two branch offices in Seattle and New York.\nThe Montreal office has 2,000 employees. The Seattle office has 1,000 employees. The New York office has 200 employees.\nAll the resources used by Litware are hosted on-premises.\nLitware creates a new Azure subscription. The Microsoft Entra ID (Microsoft Entra ID) tenant uses a domain named litware.onmicrosoft.com. The\ntenant uses the\nPremium P1 pricing tier.\nExisting Environment -\nThe network contains an Active Directory forest named litware.com. All domain controllers are configured as DNS servers and host the\nlitware.com DNS zone.\nLitware has finance, human resources, sales, research, and information technology departments. Each department has an organizational unit (OU)\nthat contains all the accounts of that respective department. All the user accounts have the department attribute set to their respective\ndepartment. New users are added frequently.\nLitware.com contains a user named User1.\nAll the offices connect by using private connections.\nLitware has data centers in the Montreal and Seattle offices. Each office has a firewall that can be configured as a VPN device.\nAll infrastructure servers are virtualized. The virtualization environment contains the servers in the following table.\nLitware uses two web applications named App1 and App2. Each instance on each web application requires 1 GB of memory.\nThe Azure subscription contains the resources in the following table.\nThe network security team implements several network security groups (NSGs)\nRequirements -\nPlanned Changes -\nLitware plans to implement the following changes:\nDeploy Azure ExpressRoute to the Montreal office.\nMigrate the virtual machines hosted on Server1 and Server2 to Azure.\nSynchronize on-premises Active Directory to Microsoft Entra ID (Microsoft Entra ID).\nMigrate App1 and App2 to two Azure web apps named WebApp1 and WebApp2.\n\nTechnical Requirements -\nLitware must meet the following technical requirements:\nEnsure that WebApp1 can adjust the number of instances automatically based on the load and can scale up to five instances.\nEnsure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office.\nEnsure that routing information is exchanged automatically between Azure and the routers in the Montreal office.\nEnable Azure Multi-Factor Authentication (MFA) for the users in the finance department only.\nEnsure that webapp2.azurewebsites.net can be accessed by using the name app2.litware.com.\nConnect the New York office to VNet1 over the Internet by using an encrypted connection.\nCreate a workflow to send an email message when the settings of VM4 are modified.\nCreate a custom Azure role named Role1 that is based on the Reader role.\nMinimize costs whenever possible.\nQuestion\nYou need to recommend a solution to automate the configuration for the finance department users. The solution must meet the technical\nrequirements.\nWhat should you include in the recommendation?",
     "domain": "identity",
     "choices": [
       "A. Microsoft Entra ID B2C",
@@ -5350,25 +5408,35 @@ const QUESTIONS = [
     ],
     "explanation": "Microsoft Entra ID B2C provides customer identity and access management. For automating configuration for finance department users, integrating Microsoft Entra ID B2C or dynamic groups can help manage user access and multi-factor authentication requirements efficiently.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Question #1 Topic 7"
+      ],
+      "rows": [
+        [
+          "Introductory Info Case study - This is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case. However, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to complete all questions included on this exam in the time provided. To answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might contain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is independent of the other questions in this case study. At the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you move to the next section of the exam. After you begin a new section, you cannot return to this section. To start the case study - To display the first question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study before you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and problem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed on the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question. Overview - Contoso, Ltd. is a manufacturing company that has oces worldwide. Contoso works with partner organizations to bring products to market. Contoso products are manufactured by using blueprint files that the company authors and maintains. Existing Environment - Currently, Contoso uses multiple types of servers for business operations, including the following: File servers Domain controllers Microsoft SQL Server servers Your network contains an Active Directory forest named contoso.com. All servers and client computers are joined to Active Directory. You have a public-facing application named App1. App1 is comprised of the following three tiers: A SQL database A web front end A processing middle tier - Each tier is comprised of five virtual machines. Users access the web front end by using HTTPS only. Requirements - Planned Changes - Contoso plans to implement the following changes to the infrastructure: Move all the tiers of App1 to Azure. Move the existing product blueprint files to Azure Blob storage. Create a hybrid directory to support an upcoming Microsoft 365 migration project. Technical Requirements - Contoso must meet the following technical requirements: Move all the virtual machines for App1 to Azure. Minimize the number of open ports between the App1 tiers. Ensure that all the virtual machines for App1 are protected by backups. Copy the blueprint files to Azure over the Internet. Ensure that the blueprint files are stored in the archive storage tier. Ensure that partner access to the blueprint files is secured and temporary. Prevent user passwords or hashes of passwords from being stored in Azure."
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q5",
     "number": "372",
-    "question": "- (Topic 5) You need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an Azure subscription. Solution: You assign the Traffic Manager Contributor role at the subscription level to Admin1",
+    "question": "You need to ensure that an Microsoft Entra ID (Microsoft Entra ID) user named Admin1 is assigned the required role to enable Traffic Analytics for an Azure subscription.\n\nSolution: You assign the Traffic Manager Contributor role at the subscription level to Admin1",
     "domain": "identity",
     "choices": [
       "A. Yes",
       "B. NO"
     ],
-    "explanation": "The Traffic Manager Contributor role is not related to Traffic Analytics. Traffic Manager is a service that provides DNS-based load balancing and traffic routing across different regions and endpoints. Traffic Manager Contributor is a role that allows you to create and manage Traffic Manager profiles, endpoints, and geographies1. Traffic Analytics is a service that provides visibility into user and application activity in your cloud networks. Traffic Analytics analyzes Azure Network Watcher network security group (NSG) flow logs to provide insights into traffic flow in your Azure cloud. With Traffic Analytics, you can visualize network activity, identify hot spots, secure your network, optimize your network deployment, and pinpoint network misconfigurations2. To enable Traffic Analytics for an Azure subscription, you need to have a role that grants you the following permissions at the subscription level:   ? Microsoft.Network/applicationGateways/read ? Microsoft.Network/connections/read ? Microsoft.Network/loadBalancers/read ? Microsoft.Network/localNetworkGateways/read ? Microsoft.Network/networkInterfaces/read ? Microsoft.Network/networkSecurityGroups/read ? Microsoft.Network/publicIPAddresses/read ? Microsoft.Network/routeTables/read ? Microsoft.Network/virtualNetworkGateways/read ? Microsoft.Network/virtualNetworks/read ? Microsoft.OperationalInsights/workspaces/* Some of the built-in roles that have these permissions are Owner, Contributor, or Network Contributor3. However, these roles also grant other permissions that may not be necessary or desirable for enabling Traffic Analytics. Therefore, the best practice is to use the principle of least privilege and create a custom role that for enabling Traffic Analytics4. only has the required permissions Therefore, to meet the goal of ensuring that an Microsoft Entra ID user named Admin1 is assigned the required role to enable Traffic Analytics for an Azure subscription, you should create a custom role with the required permissions and assign it to Admin1 at the subscription level.",
+    "explanation": "The Traffic Manager Contributor role is not related to Traffic Analytics. Traffic Manager is a service that provides DNS-based load balancing and traffic routing across different regions and endpoints. Traffic Manager Contributor is a role that allows you to create and manage Traffic Manager profiles, endpoints, and geographies1. Traffic Analytics is a service that provides visibility into user and application activity in your cloud networks. Traffic Analytics analyzes Azure Network Watcher network security group (NSG) flow logs to provide insights into traffic flow in your Azure cloud. With Traffic Analytics, you can visualize network activity, identify hot spots, secure your network, optimize your network deployment, and pinpoint network misconfigurations2. To enable Traffic Analytics for an Azure subscription, you need to have a role that grants you the following permissions at the subscription level: ? Microsoft.Network/applicationGateways/read ? Microsoft.Network/connections/read ? Microsoft.Network/loadBalancers/read ? Microsoft.Network/localNetworkGateways/read ? Microsoft.Network/networkInterfaces/read ? Microsoft.Network/networkSecurityGroups/read ? Microsoft.Network/publicIPAddresses/read ? Microsoft.Network/routeTables/read ? Microsoft.Network/virtualNetworkGateways/read ? Microsoft.Network/virtualNetworks/read ? Microsoft.OperationalInsights/workspaces/* Some of the built-in roles that have these permissions are Owner, Contributor, or Network Contributor3. However, these roles also grant other permissions that may not be necessary or desirable for enabling Traffic Analytics. Therefore, the best practice is to use the principle of least privilege and create a custom role that for enabling Traffic Analytics4. only has the required permissions Therefore, to meet the goal of ensuring that an Microsoft Entra ID user named Admin1 is assigned the required role to enable Traffic Analytics for an Azure subscription, you should create a custom role with the required permissions and assign it to Admin1 at the subscription level.",
     "correct": 1,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q7",
     "number": "374",
-    "question": "- (Topic 3) You need to implement a backup solution for App1 after the application is moved. What should you create first?",
+    "question": "You need to implement a backup solution for App1 after the application is moved. What should you create first?",
     "domain": "storage",
     "choices": [
       "A. a recovery plan",
@@ -5383,7 +5451,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q8",
     "number": "375",
-    "question": "- (Topic 3) You need to meet the user requirement for Admin1. What should you do?",
+    "question": "You need to meet the user requirement for Admin1.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. From the Subscriptions blade, select the subscription, and then modify the Properties.",
@@ -5398,7 +5466,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q9",
     "number": "376",
-    "question": "- (Topic 3) You are planning the move of App1 to Azure. You create a network security group (NSG).  ) You need to recommend a solution to provide users with access to App1. What should you recommend?",
+    "question": "You are planning the move of App1 to Azure. You create a network security group (NSG). ) You need to recommend a solution to provide users with access to App1. What should you recommend?",
     "domain": "networking",
     "choices": [
       "A. Create an outgoing security rule for port 443 from the Interne",
@@ -5414,7 +5482,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q11",
     "number": "378",
-    "question": "- (Topic 2) Which blade should you instruct the finance department auditors to use?",
+    "question": "Which blade should you instruct the finance department auditors to use?",
     "domain": "compute",
     "choices": [
       "A. Partner information",
@@ -5429,7 +5497,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q12",
     "number": "379",
-    "question": "- (Topic 2) You need to prepare the environment to meet the authentication requirements. Which two actions should you perform? Each correct answer presents part of the solution. NOTE Each correct selection is worth one point.",
+    "question": "You need to prepare the environment to meet the authentication requirements. Which two actions should you perform? Each correct answer presents part of the solution. NOTE Each correct selection is worth one point.",
     "domain": "compute",
     "choices": [
       "A. Microsoft Entra ID (AD) Identity Protection and an Azure policy",
@@ -5444,7 +5512,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q13",
     "number": "380",
-    "question": "- (Topic 2) You need to define a custom domain name for Microsoft Entra ID to support the planned infrastructure. Which domain name should you use?",
+    "question": "You need to define a custom domain name for Microsoft Entra ID to support the planned infrastructure.\n\nWhich domain name should you use?",
     "domain": "identity",
     "choices": [
       "A. ad.humongousinsurance.com",
@@ -5452,14 +5520,14 @@ const QUESTIONS = [
       "C. humongousinsurance.local",
       "D. humongousinsurance.com"
     ],
-    "explanation": "Every Microsoft Entra ID directory comes with an initial domain name in the form of domainname.onmicrosoft.com. The initial domain name cannot be changed or deleted, but you can add your corporate domain name to Microsoft Entra ID as well. For example, your organization probably has other domain names used to do business and users who sign in using your corporate domain name. Adding custom domain names to Microsoft Entra ID allows you to assign user names in the directory that are familiar to your users, such as \u2018alice@contoso.com.\u2019 instead of 'alice@domain name.onmicrosoft.com'. Scenario: Network Infrastructure: Each office has a local data center that contains all the servers for that office. Each office has a dedicated connection to the Internet. Humongous Insurance has a single-domain Active Directory forest named humongousinsurance.com Planned Microsoft Entra ID Infrastructure: The on-premises Active Directory domain will be synchronized to Microsoft Entra ID. References: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain",
+    "explanation": "Every Microsoft Entra ID directory comes with an initial domain name in the form of domainname.onmicrosoft.com. The initial domain name cannot be changed or deleted, but you can add your corporate domain name to Microsoft Entra ID as well. For example, your organization probably has other domain names used to do business and users who sign in using your corporate domain name. Adding custom domain names to Microsoft Entra ID allows you to assign user names in the directory that are familiar to your users, such as 'alice@contoso.com.' instead of 'alice@domain name.onmicrosoft.com'. Scenario: Network Infrastructure: Each office has a local data center that contains all the servers for that office. Each office has a dedicated connection to the Internet. Humongous Insurance has a single-domain Active Directory forest named humongousinsurance.com Planned Microsoft Entra ID Infrastructure: The on-premises Active Directory domain will be synchronized to Microsoft Entra ID. References: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain",
     "correct": 3,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q15",
     "number": "382",
-    "question": "- (Topic 5) You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1. Subscription1 has a user named User1. User1 has the following roles; \u2022 Reader \u2022 Security Admin \u2022 Security Reader You need to ensure that User1 can assign the Reader role for VNet1 to other users. What should you do? Assign User1 the Contributor role for VNet1.",
+    "question": "You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1. Subscription1 has a user named User1. User1 has the following roles; - Reader - Security Admin - Security Reader You need to ensure that User1 can assign the Reader role for VNet1 to other users. What should you do? Assign User1 the Contributor role for VNet1.",
     "domain": "identity",
     "choices": [
       "A. Assign User1 the Network Contributor role for Subscription1.",
@@ -5474,7 +5542,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q16",
     "number": "383",
-    "question": "- (Topic 5)  ) You have an Azure subscription that contains an Azure Stream Analytics job named Job1. You need to monitor input events for Job1 to identify the number of events that were NOT processed. Which metric should you use?",
+    "question": "You have an Azure subscription that contains an Azure Stream Analytics job named Job1. You need to monitor input events for Job1 to identify the number of events that were NOT processed.\n\nWhich metric should you use?",
     "domain": "monitor",
     "choices": [
       "A. Output Events",
@@ -5489,7 +5557,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q17",
     "number": "384",
-    "question": "- (Topic 5) You have an Azure subscription that contains the resources shown in the following table. LB1 is configured as shown in the following table. You plan to create new inbound NAT rules that meet the following requirements: Provide Remote Desktop access to VM2 from the internet by using port 3389.",
+    "question": "You have an Azure subscription that contains the resources shown in the following table. LB1 is configured as shown in the following table. You plan to create new inbound NAT rules that meet the following requirements: Provide Remote Desktop access to VM2 from the internet by using port 3389.",
     "domain": "compute",
     "choices": [
       "A. A frontend IP address",
@@ -5504,12 +5572,12 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q23",
     "number": "390",
-    "question": "- (Topic 5) You have an Azure subscription that contains the storage accounts shown in the following table. You need to identify which storage account can be converted to zone-redundant storage (ZRS) replication by requesting a live migration from Azure support. What should you identify?",
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table. You need to identify\n\nwhich storage account can be converted to zone-redundant storage (ZRS) replication by requesting a live migration from Azure support. What should you identify?",
     "domain": "storage",
     "choices": [
       "A. Storage1",
       "B. Storage2",
-      "C. Storage3  Recommend!! Get the Full AZ-104 dumps in VCE and PDF From SurePassExam https://www.surepassexam.com/AZ-104-exam-dumps.html (232 New Questions)",
+      "C. Storage3 Recommend!! Get the Full AZ-104 dumps in VCE and PDF From SurePassExam https://www.surepassexam.com/AZ-104-exam-dumps.html (232 New Questions)",
       "D. Storage4"
     ],
     "explanation": "https://learn.microsoft.com/en-us/azure/storage/common/redundancy- migration?tabs=portal",
@@ -5519,7 +5587,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q28",
     "number": "395",
-    "question": "- (Topic 5) You sign up for Microsoft Entra ID (Microsoft Entra ID) Premium. You need to add a user named admin1@contoso.com as an administrator on all the computers that will be joined to the Microsoft Entra ID domain. What should you configure in Microsoft Entra ID?",
+    "question": "You sign up for Microsoft Entra ID (Microsoft Entra ID) Premium. You need to add a user named admin1@contoso.com as an administrator on all the computers that will be joined to the Microsoft Entra ID domain. What should you configure in Microsoft Entra ID?",
     "domain": "identity",
     "choices": [
       "A. Device settings from the Devices blade.",
@@ -5534,7 +5602,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q29",
     "number": "396",
-    "question": "- (Topic 5) You have an Azure subscription that contains an Azure Storage account. You plan to create an Azure container instance named container1 that will use a Docker image namedImage1. Image1 contains a Microsoft SQL Server instance that requires persistent storage. You need to configure a storage service for Container1. What should you use?",
+    "question": "You have an Azure subscription that contains an Azure Storage account. You plan to create an Azure container instance named container1 that will use a Docker image namedImage1. Image1 contains a Microsoft SQL Server instance that requires persistent storage. You need to configure a storage service for Container1.\n\nWhat should you use?",
     "domain": "storage",
     "choices": [
       "A. Azure Files",
@@ -5549,13 +5617,13 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q30",
     "number": "397",
-    "question": "- (Topic 5) You have a Recovery Service vault that you use to test backups. The test backups contain two protected virtual machines. You need to delete the Recovery Services vault. What should you do first?",
+    "question": "You have a Recovery Service vault that you use to test backups. The test backups contain two protected virtual machines. You need to delete the Recovery Services vault. What should you do first?",
     "domain": "storage",
     "choices": [
       "A. From the Recovery Service vault, stop the backup of each backup item.",
       "B. From the Recovery Service vault, delete the backup data.",
       "C. Modify the disaster recovery properties of each virtual machine.",
-      "D. Modify the locks of each virtual machine.  Recommend!! Get the Full AZ-104 dumps in VCE and PDF From SurePassExam https://www.surepassexam.com/AZ-104-exam-dumps.html (232 New Questions)"
+      "D. Modify the locks of each virtual machine. Recommend!! Get the Full AZ-104 dumps in VCE and PDF From SurePassExam https://www.surepassexam.com/AZ-104-exam-dumps.html (232 New Questions)"
     ],
     "explanation": "You can't delete a Recovery Services vault if it is registered to a server and holds backup data. If you try to delete a vault, but can't, the vault is still configured to receive backup data. Remove vault dependencies and delete vault In the vault dashboard menu, scroll down to the Protected Items section, and click Backup Items. In this menu, you can stop and delete Azure File Servers, SQL Servers in Azure VM, and Azure virtual machines. References: https://docs.microsoft.com/en-us/azure/backup/backup-azure-delete-vault",
     "correct": 0,
@@ -5564,7 +5632,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q31",
     "number": "398",
-    "question": "- (Topic 5) You plan to move a distributed on-premises app named App1 to an Azure subscription. After the planned move, App1 will be hosted on several Azure virtual machines. You need to ensure that App1 always runs on at least eight virtual machines during planned Azure maintenance. What should you create?  ) one virtual machine scale set that has 10 virtual machines instances",
+    "question": "You plan to move a distributed on-premises app named App1 to an Azure subscription. After the planned move, App1 will be hosted on several Azure virtual machines. You need to ensure that App1 always runs on at least eight virtual machines during planned Azure maintenance. What should you create? ) one virtual machine scale set that has 10 virtual machines instances",
     "domain": "compute",
     "choices": [
       "A. one Availability Set that has three fault domains and one update domain",
@@ -5579,7 +5647,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q33",
     "number": "400",
-    "question": "- (Topic 5) You have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups. Another administrator plans to create several network security groups (NSGs) in the subscription. You need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks. Solution: From the Resource providers blade, you unregister the Microsoft.ClassicNetwork provider. Does this meet the goal?",
+    "question": "You have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups. Another administrator plans to create several network security groups (NSGs) in the subscription. You need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\n\nSolution: From the Resource providers blade, you unregister the Microsoft.ClassicNetwork provider. Does this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -5592,7 +5660,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q36",
     "number": "403",
-    "question": "- (Topic 5) You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com. You have a CSV file that contains the names and email addresses of 500 external users. You need to create a quest user account in contoso.com for each of the 500 external users. Solution: from Microsoft Entra ID in the Azure portal, you use the Bulk create user operation. Does this meet the goal?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com. You have a CSV file that contains the names and email addresses of 500 external users. You need to create a quest user account in contoso.com for each of the 500 external users.\n\nSolution: from Microsoft Entra ID in the Azure portal, you use the Bulk create user operation. Does this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -5605,7 +5673,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q39",
     "number": "406",
-    "question": "- (Topic 5) You have an Azure subscription that contains the resources shown in the following table.  ) You need to perform the tasks shown in the following table. Which tasks can you perform by using Azure Storage Explorer?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table. ) You need to perform the tasks shown in the following table.\n\nWhich tasks can you perform by using Azure Storage Explorer?",
     "domain": "compute",
     "choices": [
       "A. Task1 and Task3 only",
@@ -5621,7 +5689,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q41",
     "number": "408",
-    "question": "- (Topic 5) You have an Azure App Service app named Appl that contains two running instances. You havean autoscale rule configured as shown in the following exhibit  ) For the instance limits stale condition setting, you set Maximum to 5. During a 30-minute period. Appl uses 60 percent of the available memory. What is the maximum number of instances tor Appl during the 30-minute pefiod:",
+    "question": "You have an Azure App Service app named Appl that contains two running instances. You havean autoscale rule configured as shown in the following exhibit ) For the instance limits stale condition setting, you set Maximum to 5. During a 30-minute period. Appl uses 60 percent of the available memory. What is the maximum number of instances tor Appl during the 30-minute pefiod:",
     "domain": "compute",
     "choices": [
       "A. 2",
@@ -5636,7 +5704,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q49",
     "number": "416",
-    "question": "- (Topic 5) You have an Microsoft Entra ID (Microsoft Entra ID) tenant. You plan to delete multiple users by using Bulk delete in the Microsoft Entra ID admin center. You need to create and upload a file for the bulk delete. Which user attributes should you include in the file? The user principal name and usage location of each user only",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant. You plan to delete multiple users by using Bulk delete in the Microsoft Entra ID admin center. You need to create and upload a file for the bulk delete. Which user attributes should you include in the file? The user principal name and usage location of each user only",
     "domain": "identity",
     "choices": [
       "A. The user principal name of each user only",
@@ -5651,7 +5719,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q52",
     "number": "419",
-    "question": "- (Topic 5) You have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using an Azure Load Balancer. The effective network security configurations for VM2 are shown in the following exhibit. You discover that connections to App1 from 131.107.100.50 over TCP port 443 fail. You verify that the Load Balancer rules are configured correctly. You need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443. Solution: You modify the priority of the Allow_131.107.100.50 inbound security rule. Does this meet the goal?",
+    "question": "You have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using an Azure Load Balancer. The effective network security configurations for VM2 are shown in the following exhibit. You discover that connections to App1 from 131.107.100.50 over TCP port 443 fail. You verify that the Load Balancer rules are configured correctly. You need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\n\nSolution: You modify the priority of the Allow_131.107.100.50 inbound security rule. Does this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -5664,7 +5732,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q54",
     "number": "421",
-    "question": "- (Topic 5) You have an Azure subscription named Subscription 1 and an on-premises deployment of Microsoft System Center Service Manager Subscription! contains a virtual machine named VM1. You need to ensure that an alert is set in Service Manager when the amount of available memory on VM1 is below 10 percent. What should you do first?",
+    "question": "You have an Azure subscription named Subscription 1 and an on-premises deployment of Microsoft System Center Service Manager Subscription! contains a virtual machine named VM1. You need to ensure that an alert is set in Service Manager when the amount of available memory on VM1 is below 10 percent. What should you do first?",
     "domain": "monitor",
     "choices": [
       "A. Create a notification.",
@@ -5679,7 +5747,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q56",
     "number": "423",
-    "question": "- (Topic 5) You have the Azure virtual networks shown in the following table.  ) To which virtual networks can you establish a peering connection from VNet1?",
+    "question": "You have the Azure virtual networks shown in the following table. ) To\n\nwhich virtual networks can you establish a peering connection from VNet1?",
     "domain": "networking",
     "choices": [
       "A. VNet2, VNet3, and VNet4",
@@ -5694,7 +5762,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q57",
     "number": "424",
-    "question": "- (Topic 4) You need to add VM1 and VM2 to the backend poo! of LB1. What should you do first?",
+    "question": "You need to add VM1 and VM2 to the backend poo! of LB1. What should you do first?",
     "domain": "compute",
     "choices": [
       "A. Create a new NSG and associate the NSG to VNET1/Subnet1.",
@@ -5709,7 +5777,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q59",
     "number": "426",
-    "question": "- (Topic 3) You need to recommend an identify solution that meets the technical requirements. What should you recommend?",
+    "question": "You need to recommend an identify solution that meets the technical requirements. What should you recommend?",
     "domain": "compute",
     "choices": [
       "A. federated single-on (SSO) and Active Directory Federation Services (AD FS)",
@@ -5717,14 +5785,14 @@ const QUESTIONS = [
       "C. cloud-only user accounts",
       "D. Pass-through Authentication and single sign-on (SSO)"
     ],
-    "explanation": "Active Directory Federation Services is a feature and web service in the Windows Server Operating System that allows sharing of identity information outside a company\u2019s network. Scenario: Technical Requirements include: Prevent user passwords or hashes of passwords from being stored in Azure. References: https://www.sherweb.com/blog/active-directory-federation-services/",
+    "explanation": "Active Directory Federation Services is a feature and web service in the Windows Server Operating System that allows sharing of identity information outside a company's network. Scenario: Technical Requirements include: Prevent user passwords or hashes of passwords from being stored in Azure. References: https://www.sherweb.com/blog/active-directory-federation-services/",
     "correct": 0,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q60",
     "number": "427",
-    "question": "- (Topic 2) You need to resolve the licensing issue before you attempt to assign the license again. What should you do?",
+    "question": "You need to resolve the licensing issue before you attempt to assign the license again.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. From the Groups blade, invite the user accounts to a new group.",
@@ -5738,7 +5806,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q63",
     "number": "430",
-    "question": "- (Topic 5) You have an Azure subscription that contains a storage account. The account stores website data. You need to ensure that inbound user traffic uses the Microsoft point-of-presence (POP) closest to the user's location. What should you configure?",
+    "question": "You have an Azure subscription that contains a storage account. The account stores website data. You need to ensure that inbound user traffic uses the Microsoft point-of-presence (POP) closest to the user's location.\n\nWhat should you configure?",
     "domain": "storage",
     "choices": [
       "A. load balancing",
@@ -5746,14 +5814,14 @@ const QUESTIONS = [
       "C. Azure Firewall rules",
       "D. Routing preference"
     ],
-    "explanation": "Routing preference is a feature that allows you to configure how network traffic is routed to your storage account from clients over the internet. By default, traffic from the internet is routed to the public endpoint of your storage account over the Microsoft global network, which is optimized for low-latency path selection and high reliability. Both inbound and outbound traffic are routed through the point of presence (POP) that is closest to the client. This ensures that traffic to and from your storage account traverses over the Microsoft global network for the bulk of its path, maximizing network performance. You can also change the routing preference to use internet routing, which minimizes the traversal of your traffic over the Microsoft global network, handing it off to the transit ISP at the earliest opportunity. This lowers networking costs, but may compromise network performance. Therefore, to ensure that inbound user traffic uses the Microsoft POP closest to the user\u2019s location, you should configure routing preference to use the Microsoft global network as the default routing option for your storage account. References: ? Network routing preference for Azure Storage ? Configure network routing preference for Azure Storage",
+    "explanation": "Routing preference is a feature that allows you to configure how network traffic is routed to your storage account from clients over the internet. By default, traffic from the internet is routed to the public endpoint of your storage account over the Microsoft global network, which is optimized for low-latency path selection and high reliability. Both inbound and outbound traffic are routed through the point of presence (POP) that is closest to the client. This ensures that traffic to and from your storage account traverses over the Microsoft global network for the bulk of its path, maximizing network performance. You can also change the routing preference to use internet routing, which minimizes the traversal of your traffic over the Microsoft global network, handing it off to the transit ISP at the earliest opportunity. This lowers networking costs, but may compromise network performance. Therefore, to ensure that inbound user traffic uses the Microsoft POP closest to the user's location, you should configure routing preference to use the Microsoft global network as the default routing option for your storage account. References: ? Network routing preference for Azure Storage ? Configure network routing preference for Azure Storage",
     "correct": 3,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q64",
     "number": "431",
-    "question": "- (Topic 5) You have an Azure virtual machine named VM1. Azure collects events from VM1. You are creating an alert rule in Azure Monitor to notify an administrator when an error is logged in the System event log of VM1. You need to specify which resource type to monitor. What should you specify?",
+    "question": "You have an Azure virtual machine named VM1. Azure collects events from VM1. You are creating an alert rule in Azure Monitor to notify an administrator when an error is logged in the System event log of VM1. You need to specify\n\nwhich resource type to monitor. What should you specify?",
     "domain": "monitor",
     "choices": [
       "A. metric alert",
@@ -5768,7 +5836,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q67",
     "number": "434",
-    "question": "- (Topic 5) You manage a virtual network named VNet1 that is hosted in the West US Azure region. VNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server. You need to inspect all the network traffic from VM1 to VM2 for a period of three hours. Solution: From Performance Monitor, you create a Data Collector Set (DCS). Does this meet the goal?",
+    "question": "You manage a virtual network named VNet1 that is hosted in the West US Azure region. VNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server. You need to inspect all the network traffic from VM1 to VM2 for a period of three hours.\n\nSolution: From Performance Monitor, you create a Data Collector Set (DCS). Does this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -5781,7 +5849,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q74",
     "number": "441",
-    "question": "- (Topic 5) You have an Azure subscription that contains 20 virtual machines, a network security group (NSG) named NSG1, and two virtual networks named VNET1 and VNET2 that are peered. You plan to deploy an Azure Bastion Basic SKU host named Bastion1 to VNET1. You need to configure NSG1 to allow inbound access from the internet to Bastion1. Which port should you configure for the inbound security rule?",
+    "question": "You have an Azure subscription that contains 20 virtual machines, a network security group (NSG) named NSG1, and two virtual networks named VNET1 and VNET2 that are peered. You plan to deploy an Azure Bastion Basic SKU host named Bastion1 to VNET1. You need to configure NSG1 to allow inbound access from the internet to Bastion1.\n\nWhich port should you configure for the inbound security rule?",
     "domain": "networking",
     "choices": [
       "A. 22",
@@ -5796,7 +5864,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q75",
     "number": "442",
-    "question": "- (Topic 5) You have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups. Another administrator plans to create several network security groups (NSGs) in the subscription. You need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks. Solution: You configure a custom policy definition, and then you assign the policy to the subscription. Does this meet the goal?",
+    "question": "You have an Azure subscription that contains 10 virtual networks. The virtual networks are hosted in separate resource groups. Another administrator plans to create several network security groups (NSGs) in the subscription. You need to ensure that when an NSG is created, it automatically blocks TCP port 8080 between the virtual networks.\n\nSolution: You configure a custom policy definition, and then you assign the policy to the subscription. Does this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -5809,7 +5877,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q79",
     "number": "446",
-    "question": "- (Topic 5) You have an Azure subscription named Subscription1 that contains virtual network named VNet1. VNet1 is in a resource group named RG1. A user named User1 has the following roles for Subscription1: \u2022 Reader \u2022 Security Admin \u2022 Security Reader You need to ensure that User1 can assign the Reader role for VNet1 to other users. What should you do?",
+    "question": "You have an Azure subscription named Subscription1 that contains virtual network named VNet1. VNet1 is in a resource group named RG1. A user named User1 has the following roles for Subscription1: - Reader - Security Admin - Security Reader You need to ensure that User1 can assign the Reader role for VNet1 to other users.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. Remove User1 from the Security Reader and Reader roles for Subscription1.",
@@ -5824,7 +5892,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q84",
     "number": "451",
-    "question": "- (Topic 5) You have an Azure subscription that contains the virtual machines shown in the following table. You deploy a load balancer that has the following configurations: \u2022Name: LB1 \u2022Type: Internal \u2022SKU: Standard \u2022Virtual network: VNET1 You need to ensure that you can add VM1 and VM2 to the backend pool of LB1. Solution: You create a Standard SKU public IP address, associate the address to the network interface of VM1, and then stop VM2. Does this meet the goal?",
+    "question": "You have an Azure subscription that contains the virtual machines shown in the following table. You deploy a load balancer that has the following configurations: -Name: LB1 -Type: Internal -SKU: Standard -Virtual network: VNET1 You need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\n\nSolution: You create a Standard SKU public IP address, associate the address to the network interface of VM1, and then stop VM2. Does this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -5837,7 +5905,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q86",
     "number": "453",
-    "question": "- (Topic 5) You have an Azure web app named App1. App1 has the deployment slots shown in the following table: In webapp1-test, you test several changes to App1. You back up App1. You swap webapp1-test for webapp1-prod and discover that App1 is experiencing performance issues. You need to revert to the previous version of App1 as quickly as possible. What should you do?",
+    "question": "You have an Azure web app named App1. App1 has the deployment slots shown in the following table: In webapp1-test, you test several changes to App1. You back up App1. You swap webapp1-test for webapp1-prod and discover that App1 is experiencing performance issues. You need to revert to the previous version of App1 as quickly as possible.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Redeploy App1",
@@ -5851,7 +5919,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q87",
     "number": "454",
-    "question": "- (Topic 5) You have an Microsoft Entra ID (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named Developers. Subscription1 contains a resource group named Dev. You need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group. Solution: On Dev, you assign the Contributor role to the Developers group. Does this meet the goal?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named Developers. Subscription1 contains a resource group named Dev. You need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.\n\nSolution: On Dev, you assign the Contributor role to the Developers group. Does this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -5864,12 +5932,12 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q89",
     "number": "456",
-    "question": "- (Topic 5) You have an Azure subscription that contains two Log Analytics workspaces named Workspace 1 and Workspace? and 100 virtual machines that run Windows Server. You need to collect performance data and events from the virtual machines. The solution must meet the following requirements: \u2022 Logs must be sent to Workspace! and Workspace? \u2022 All Windows events must be captured \u2022 All security events must be captured. What should you install and configure on each virtual machine?",
+    "question": "You have an Azure subscription that contains two Log Analytics workspaces named Workspace 1 and Workspace? and 100 virtual machines that run Windows Server. You need to collect performance data and events from the virtual machines. The solution must meet the following requirements: - Logs must be sent to Workspace! and Workspace? - All Windows events must be captured - All security events must be captured. What should you install and configure on each virtual machine?",
     "domain": "monitor",
     "choices": [
       "A. the Azure Monitor agent",
       "B. the Windows Azure diagnostics extension (WAD)",
-      "C. the Windows VM agent  Recommend!! Get the Full AZ-104 dumps in VCE and PDF From SurePassExam https://www.surepassexam.com/AZ-104-exam-dumps.html (232 New Questions)"
+      "C. the Windows VM agent Recommend!! Get the Full AZ-104 dumps in VCE and PDF From SurePassExam https://www.surepassexam.com/AZ-104-exam-dumps.html (232 New Questions)"
     ],
     "explanation": "https://learn.microsoft.com/en-us/azure/azure-monitor/agents/agents-overview Azure Monitor Agent (AMA) collects monitoring data from the guest operating system of Azure and hybrid virtual machines and delivers it to Azure Monitor for use by features, insights, and other services, such as Microsoft Sentinel and Microsoft Defender for Cloud. Azure Monitor Agent replaces all of Azure Monitor's legacy monitoring agents.",
     "correct": 0,
@@ -5878,7 +5946,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q93",
     "number": "460",
-    "question": "- (Topic 5) You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com. You have a CSV file that contains the names and email addresses of 500 external users. You need to create a guest user account in contoso.com for each of the 500 external users. Solution: You create a Power Shell script that runs the New-MgUser cmdlet for each user. Does this meet the goal?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com. You have a CSV file that contains the names and email addresses of 500 external users. You need to create a guest user account in contoso.com for each of the 500 external users.\n\nSolution: You create a Power Shell script that runs the New-MgUser cmdlet for each user. Does this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -5891,7 +5959,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q96",
     "number": "463",
-    "question": "- (Topic 5) You have an Azure subscription that contains the resources shown in the following table. You configure Azure Site Recovery to replicate VM1 between the East US and W\u00abt US regions. You perform a test failove of VM1 and specify VNET2 as the target v>riual network. When the test version of VM1 is created, to which subnet will the virtual machine be connected?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table. You configure Azure Site Recovery to replicate VM1 between the East US and W\u00abt US regions. You perform a test failove of VM1 and specify VNET2 as the target v>riual network. When the test version of VM1 is created, to\n\nwhich subnet will the virtual machine be connected?",
     "domain": "networking",
     "choices": [
       "A. Testsubnet1",
@@ -5906,7 +5974,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q99",
     "number": "466",
-    "question": "- (Topic 4) You need to identify which storage account to use for the flow logging of IP traffic from VM5. The solution must meet the retention requirements. Which storage account should you identify?",
+    "question": "You need to identify\n\nwhich storage account to use for the flow logging of IP traffic from VM5. The solution must meet the retention requirements. Which storage account should you identify?",
     "domain": "storage",
     "choices": [
       "A. storage4",
@@ -5921,7 +5989,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q100",
     "number": "467",
-    "question": "- (Topic 4) You need to ensure that you can grant Group4 Azure RBAC read-only permissions to all the A2ure file shares. What should you do?",
+    "question": "You need to ensure that you can grant Group4 Azure RBAC read-only permissions to all the Azure file shares.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. On storagel and storage4, change the Account kind type to StorageV2 (general purpose v2).",
@@ -5936,7 +6004,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q109",
     "number": "476",
-    "question": "- (Topic 5) You have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json. You receive a notification that VM1 will be affected by maintenance. You need to move VM1 to a different host immediately. Solution: From the Overview blade, you move the virtual machine to a different subscription. Does this meet the goal?",
+    "question": "You have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json. You receive a notification that VM1 will be affected by maintenance. You need to move VM1 to a different host immediately.\n\nSolution: From the Overview blade, you move the virtual machine to a different subscription. Does this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -5949,7 +6017,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q112",
     "number": "479",
-    "question": "- (Topic 5) You have an Azure subscription that has the public IP addresses shown in the following table.  ) You plan to deploy an instance of Azure Firewall Premium named FW1. Which IP addresses can you use?",
+    "question": "You have an Azure subscription that has the public IP addresses shown in the following table. ) You plan to deploy an instance of Azure Firewall Premium named FW1.\n\nWhich IP addresses can you use?",
     "domain": "networking",
     "choices": [
       "A. IP2 Only",
@@ -5964,7 +6032,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q114",
     "number": "481",
-    "question": ") - (Topic 5) You have a Recovery Service vault that you use to test backups. The test backups contain two protected virtual machines. You need to delete the Recovery Services vault. What should you do first?",
+    "question": "You have a Recovery Service vault that you use to test backups. The test backups contain two protected virtual machines. You need to delete the Recovery Services vault. What should you do first?",
     "domain": "storage",
     "choices": [
       "A. From the Recovery Service vault, stop the backup of each backup item.",
@@ -5979,7 +6047,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q120",
     "number": "487",
-    "question": "- (Topic 5) You have two Azure virtual networks named VNet1 and VNet2. VNet1 contains an Azure virtual machine named VM1. VNet2 contains an Azure virtual machine named VM2. VM1 hosts a frontend application that connects to VM2 to retrieve data. Users report that the frontend application is slower than usual. You need to view the average round-trip time (RTT) of the packets from VM1 to VM2. Which Azure Network Watcher feature should you use?",
+    "question": "You have two Azure virtual networks named VNet1 and VNet2. VNet1 contains an Azure virtual machine named VM1. VNet2 contains an Azure virtual machine named VM2. VM1 hosts a frontend application that connects to VM2 to retrieve data. Users report that the frontend application is slower than usual. You need to view the average round-trip time (RTT) of the packets from VM1 to VM2.\n\nWhich Azure Network Watcher feature should you use?",
     "domain": "networking",
     "choices": [
       "A. NSG flow logs",
@@ -5994,7 +6062,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q126",
     "number": "493",
-    "question": "- (Topic 5) You have an Azure subscription that contains the virtual machines shown in the following table. You deploy a load balancer that has the following configurations: \u2022Name: LB1 \u2022Type: Internal \u2022SKU: Standard \u2022Virtual network: VNET1 You need to ensure that you can add VM1 and VM2 to the backend pool of LB1. Solution: You create two Standard public IP addresses and associate a Standard SKU public IP address to the network interface of each virtual machine. Does this meet the goal?",
+    "question": "You have an Azure subscription that contains the virtual machines shown in the following table. You deploy a load balancer that has the following configurations: -Name: LB1 -Type: Internal -SKU: Standard -Virtual network: VNET1 You need to ensure that you can add VM1 and VM2 to the backend pool of LB1.\n\nSolution: You create two Standard public IP addresses and associate a Standard SKU public IP address to the network interface of each virtual machine. Does this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -6007,7 +6075,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q127",
     "number": "494",
-    "question": "- (Topic 5) You have an Azure subscription that hat Traffic Analytics configured. You deploy a new virtual machine named VM1 that has the following settings: \u2022 Region- East US \u2022 Virtual network: VNet1 \u2022 NIC network security group: NSG1 You need to monitor VM1 traffic by using Traffic Analytics. Which settings should you configure?",
+    "question": "You have an Azure subscription that has Traffic Analytics configured. You deploy a new virtual machine named VM1 that has the following settings: - Region- East US - Virtual network: VNet1 - NIC network security group: NSG1 You need to monitor VM1 traffic by using Traffic Analytics.\n\nWhich settings should you configure?",
     "domain": "networking",
     "choices": [
       "A. Diagnostic settings for VM1",
@@ -6022,7 +6090,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q131",
     "number": "498",
-    "question": "- (Topic 5) You have an Azure subscription that contains the resources in the following table. VM1 and VM2 are deployed from the same template and host line-of-business applications accessed by using Remote Desktop. You configure the network security group (NSG) shown in the exhibit. (Click the Exhibit button.)  ) You need to prevent users of VM1 and VM2 from accessing websites on the Internet. What should you do?",
+    "question": "You have an Azure subscription that contains the resources in the following table. VM1 and VM2 are deployed from the same template and host line-of-business applications accessed by using Remote Desktop. You configure the network security group (NSG) shown in the exhibit. (Click the Exhibit button.) ) You need to prevent users of VM1 and VM2 from accessing websites on the Internet.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Associate the NSG to Subnet1.",
@@ -6030,14 +6098,14 @@ const QUESTIONS = [
       "C. Change the DenyWebSites outbound security rule.",
       "D. Change the Port_80 inbound security rule"
     ],
-    "explanation": "Outbound rule \u201cDenyWebSites\u201d is setup correctly to block outbound internet traffic over port 80. In the screenshot it states, \"Associated with: 0 subnets, 0 NIC's\", so you need to associate the NSG to Subnet1.You can associate or dissociate a network security group from a NIC or Subnet. Reference: https://docs.microsoft.com/en-us/azure/virtual- network/manage-network-security-group",
+    "explanation": "Outbound rule \"DenyWebSites\" is setup correctly to block outbound internet traffic over port 80. In the screenshot it states, \"Associated with: 0 subnets, 0 NIC's\", so you need to associate the NSG to Subnet1.You can associate or dissociate a network security group from a NIC or Subnet. Reference: https://docs.microsoft.com/en-us/azure/virtual- network/manage-network-security-group",
     "correct": 0,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q132",
     "number": "499",
-    "question": ") - (Topic 5) You have an Microsoft Entra ID (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named Developers. Subscription1 contains a resource group named Dev. You need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group. Solution: On Subscription1, you assign the Logic App Operator role to the Developers group. Does this meet the goal?",
+    "question": "You have an Microsoft Entra ID (Microsoft Entra ID) tenant named Adatum and an Azure Subscription named Subscription1. Adatum contains a group named Developers. Subscription1 contains a resource group named Dev. You need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.\n\nSolution: On Subscription1, you assign the Logic App Operator role to the Developers group. Does this meet the goal?",
     "domain": "identity",
     "choices": [
       "A. Yes",
@@ -6050,7 +6118,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q133",
     "number": "500",
-    "question": "- (Topic 5) You have an Azure subscription that contains the resources shown in the following table.  ) The Not allowed resource types Azure policy that has policy enforcement enabled is assigned to RG1 and uses the following parameters: Microsoft.Network/virtualNetworks Microsoft.Compute/virtualMachines In RG1, you need to create a new virtual machine named VM2 which is connected toVNET1. What should you do first? Create an Azure Resource Manager template.",
+    "question": "You have an Azure subscription that contains the resources shown in the following table. ) The Not allowed resource types Azure policy that has policy enforcement enabled is assigned to RG1 and uses the following parameters: Microsoft.Network/virtualNetworks Microsoft.Compute/virtualMachines In RG1, you need to create a new virtual machine named VM2 which is connected toVNET1. What should you do first? Create an Azure Resource Manager template.",
     "domain": "identity",
     "choices": [
       "A. Add a subnet to VNET1.",
@@ -6064,7 +6132,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q134",
     "number": "501",
-    "question": "- (Topic 5) You have an Azure virtual machine named VM1. You use Azure Backup to create a backup of VM1 named Backup1. After creating Backup1, you perform the following changes to VM1: ? Modify the size of VM1. ? Copy a file named Budget.xls to a folder named Data. ? Reset the password for the built-in administrator account. ? Add a data disk to VM1. An administrator uses the Replace existing option to restore VM1 from Backup1. You need to ensure that all the changes to VM1 are restored. Which change should you perform again?",
+    "question": "You have an Azure virtual machine named VM1. You use Azure Backup to create a backup of VM1 named Backup1. After creating Backup1, you perform the following changes to VM1: ? Modify the size of VM1. ? Copy a file named Budget.xls to a folder named Data. ? Reset the password for the built-in administrator account. ? Add a data disk to VM1. An administrator uses the Replace existing option to restore VM1 from Backup1. You need to ensure that all the changes to VM1 are restored.\n\nWhich change should you perform again?",
     "domain": "storage",
     "choices": [
       "A. Modify the size of VM1.",
@@ -6079,7 +6147,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q136",
     "number": "503",
-    "question": "- (Topic 2) You need to resolve the Active Directory issue. What should you do?",
+    "question": "You need to resolve the Active Directory issue.\n\nWhat should you do?",
     "domain": "identity",
     "choices": [
       "A. From Active Directory Users and Computers, select the user accounts, and then modify the User Principal Name value.",
@@ -6087,14 +6155,14 @@ const QUESTIONS = [
       "C. From Active Directory Domains and Trusts, modify the list of UPN suffixes.",
       "D. From Microsoft Entra ID Connect, modify the outbound synchronization rule."
     ],
-    "explanation": "IdFix is used to perform discovery and remediation of identity objects and their attributes in an on-premises Active Directory environment in preparation for migration to Microsoft Entra ID. IdFix is intended for the Active Directory administrators responsible for directory synchronization with Microsoft Entra ID. Scenario: Active Directory Issue   Several users in humongousinsurance.com have UPNs that contain special characters. You suspect that some of the characters are unsupported in Microsoft Entra ID. References: https://www.microsoft.com/en-us/download/details.aspx?id=36832",
+    "explanation": "IdFix is used to perform discovery and remediation of identity objects and their attributes in an on-premises Active Directory environment in preparation for migration to Microsoft Entra ID. IdFix is intended for the Active Directory administrators responsible for directory synchronization with Microsoft Entra ID. Scenario: Active Directory Issue Several users in humongousinsurance.com have UPNs that contain special characters. You suspect that some of the characters are unsupported in Microsoft Entra ID. References: https://www.microsoft.com/en-us/download/details.aspx?id=36832",
     "correct": 1,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q138",
     "number": "505",
-    "question": "- (Topic 1) You discover that VM3 does NOT meet the technical requirements. You need to verify whether the issue relates to the NSGs. What should you use?",
+    "question": "You discover that VM3 does NOT meet the technical requirements. You need to verify whether the issue relates to the NSGs.\n\nWhat should you use?",
     "domain": "networking",
     "choices": [
       "A. Diagram in VNet1",
@@ -6103,14 +6171,14 @@ const QUESTIONS = [
       "D. Diagnose and solve problems in Traffic Manager Profiles",
       "E. IP flow verify in Azure Network Watcher"
     ],
-    "explanation": "Scenario: Litware must meet technical requirements including: Ensure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office. IP flow verify checks if a packet is allowed or denied to or from a virtual machine. The information consists of direction, protocol, local IP, remote IP, local port, and remote port. If the packet is denied by a security group, the name of the rule that denied the packet is returned. While any source or destination IP can be chosen, IP flow verify helps   administrators quickly diagnose connectivity issues from or to the internet and from or to the on-premises environment. References: https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-ip-flow-verify- overview",
+    "explanation": "Scenario: Litware must meet technical requirements including: Ensure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office. IP flow verify checks if a packet is allowed or denied to or from a virtual machine. The information consists of direction, protocol, local IP, remote IP, local port, and remote port. If the packet is denied by a security group, the name of the rule that denied the packet is returned. While any source or destination IP can be chosen, IP flow verify helps administrators quickly diagnose connectivity issues from or to the internet and from or to the on-premises environment. References: https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-ip-flow-verify- overview",
     "correct": 4,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q142",
     "number": "509",
-    "question": "- (Topic 5) You have an Azure subscription named Subscription1 that is used be several departments at your company. Subscription1 contains the resources in the following table: Another administrator deploys a virtual machine named VM1 and an Azure Storage account named Storage2 by using a single Azure Resource Manager template. You need to view the template used for the deployment.  ) From which blade can you view the template that was used for the deployment?",
+    "question": "You have an Azure subscription named Subscription1 that is used by several departments at your company. Subscription1 contains the resources in the following table: Another administrator deploys a virtual machine named VM1 and an Azure Storage account named Storage2 by using a single Azure Resource Manager template. You need to view the template used for the deployment. ) From\n\nwhich blade can you view the template that was used for the deployment?",
     "domain": "storage",
     "choices": [
       "A. RG1",
@@ -6125,7 +6193,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q143",
     "number": "510",
-    "question": "- (Topic 5) You have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json. You receive a notification that VM1 will be affected by maintenance. You need to move VM1 to a different host immediately. Solution: From the Update management blade, you click Enable. Does this meet the goal?",
+    "question": "You have an Azure virtual machine named VM1. VM1 was deployed by using a custom Azure Resource Manager template named ARM1.json. You receive a notification that VM1 will be affected by maintenance. You need to move VM1 to a different host immediately.\n\nSolution: From the Update management blade, you click Enable. Does this meet the goal?",
     "domain": "compute",
     "choices": [
       "A. Yes",
@@ -6138,7 +6206,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q153",
     "number": "520",
-    "question": ") - (Topic 5) You manage a virtual network named VNet1 that is hosted in the West US Azure region. VNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server. You need to inspect all the network traffic from VM1 to VM2 for a period of three hours. Solution: From Azure Monitor, you create a metric on Network in and Network Out. Does this meet the goal?",
+    "question": "You manage a virtual network named VNet1 that is hosted in the West US Azure region. VNet1 hosts two virtual machines named VM1 and VM2 that run Windows Server. You need to inspect all the network traffic from VM1 to VM2 for a period of three hours.\n\nSolution: From Azure Monitor, you create a metric on Network in and Network Out. Does this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -6151,7 +6219,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q156",
     "number": "523",
-    "question": "- (Topic 5) Your Partner of IT Exam visit - https://www.exambible.com We recommend you to try the PREMIUM AZ-104 Dumps From Exambible https://www.exambible.com/AZ-104-exam/ (232 Q&As) You have two Azure virtual machines named VM1 and VM2 that run Windows Server. The virtual machines are in a subnet named Subnet1. Subnet1 is in a virtual network named VNet1. You need to prevent VM1 from accessing VM2 on port 3389. What should you do?",
+    "question": "You have two Azure virtual machines named VM1 and VM2 that run Windows Server. The virtual machines are in a subnet named Subnet1. Subnet1 is in a virtual network named VNet1. You need to prevent VM1 from accessing VM2 on port 3389.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
       "A. Create a network security group (NSG) that has an outbound security rule to deny destination port 3389 and apply the NSG to the network interface of VM1.",
@@ -6166,7 +6234,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q161",
     "number": "528",
-    "question": "- (Topic 3) You need to move the blueprint files to Azure. What should you do?",
+    "question": "You need to move the blueprint files to Azure.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Generate a shared access signature (SAS). Map a drive, and then copy the files by using File Explorer.",
@@ -6175,14 +6243,14 @@ const QUESTIONS = [
       "D. Map a drive, and then copy the files by using File Explorer.",
       "E. Use Azure Storage Explorer to copy the files."
     ],
-    "explanation": "Azure Storage Explorer is a free tool from Microsoft that allows you to work with Azure Storage data on Windows, macOS, and Linux. You can use it to upload and download data from Azure blob storage. Your Partner of IT Exam visit - https://www.exambible.com We recommend you to try the PREMIUM AZ-104 Dumps From Exambible https://www.exambible.com/AZ-104-exam/ (232 Q&As) Scenario: Planned Changes include: move the existing product blueprint files to Azure Blob storage. Technical Requirements include: Copy the blueprint files to Azure over the Internet. References: https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science- process/move-data-to-azure-blob-using-azure-storage-explorer",
+    "explanation": "Azure Storage Explorer is a free tool from Microsoft that allows you to work with Azure Storage data on Windows, macOS, and Linux. You can use it to upload and download data from Azure blob storage. Scenario: Planned Changes include: move the existing product blueprint files to Azure Blob storage. Technical Requirements include: Copy the blueprint files to Azure over the Internet. References: https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science- process/move-data-to-azure-blob-using-azure-storage-explorer",
     "correct": 3,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q163",
     "number": "530",
-    "question": "- (Topic 2) You need to prepare the environment to meet the authentication requirements. Your Partner of IT Exam visit - https://www.exambible.com We recommend you to try the PREMIUM AZ-104 Dumps From Exambible https://www.exambible.com/AZ-104-exam/ (232 Q&As) Which two actions should you perform? Each correct answer presents part of the solution. NOTE Each correct selection is worth one point.",
+    "question": "You need to prepare the environment to meet the authentication requirements. Which two actions should you perform? Each correct answer presents part of the solution. NOTE Each correct selection is worth one point.",
     "domain": "compute",
     "choices": [
       "A. Microsoft Entra ID (AD) Identity Protection and an Azure policy",
@@ -6197,7 +6265,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q165",
     "number": "532",
-    "question": "- (Topic 1) You need to ensure that VM1 can communicate with VM4. The solution must minimize administrative effort. What should you do? Your Partner of IT Exam visit - https://www.exambible.com We recommend you to try the PREMIUM AZ-104 Dumps From Exambible https://www.exambible.com/AZ-104-exam/ (232 Q&As)",
+    "question": "You need to ensure that VM1 can communicate with VM4. The solution must minimize administrative effort.\n\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Create a user-defined route from VNET1 to VNET3.",
@@ -6212,7 +6280,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q173",
     "number": "540",
-    "question": "- (Topic 5) You have a Recovery Services vault named RSV1. RSV1 has a backup policy that retains instant snapshots for five days and daily backup for 14 days. RSV1 performs daily backups of VM1. VM1 hosts a static website that was updated eight days ago. You need to recover VM1 to a point eight days ago. The solution must minimize downtime. What should you do first?",
+    "question": "You have a Recovery Services vault named RSV1. RSV1 has a backup policy that retains instant snapshots for five days and daily backup for 14 days. RSV1 performs daily backups of VM1. VM1 hosts a static website that was updated eight days ago. You need to recover VM1 to a point eight days ago. The solution must minimize downtime. What should you do first?",
     "domain": "identity",
     "choices": [
       "A. Deallocate VM1.",
@@ -6220,14 +6288,14 @@ const QUESTIONS = [
       "C. Delete VM1.",
       "D. Restore VM1 by using the Create new restore configuration option."
     ],
-    "explanation": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#restore-options To recover VM1 to a point eight days ago, you need to use the Azure Backup service to restore the VM from a recovery point. A recovery point is a snapshot of the VM data at a specific point in time. Azure Backup creates recovery points according to the backup policy that you configure for the Recovery Services vault1. In this case, the Recovery Services vault named RSV1 has a backup policy that retains instant snapshots for five days and daily backup for 14 days. This means that you can restore the VM from any point in the last 14 days, as long as there is a recovery point available. Since you need to recover VM1 to a point eight days ago, you can use the daily backup recovery point that was created on that day2. Your Partner of IT Exam visit - https://www.exambible.com We recommend you to try the PREMIUM AZ-104 Dumps From Exambible https://www.exambible.com/AZ-104-exam/ (232 Q&As) To restore the VM from a recovery point, you have two options: Replace existing or Create new. The Replace existing option overwrites the existing VM with the restored data, while the Create new option creates a new VM with the restored data. The Replace existing option requires you to deallocate or delete the existing without affecting VM before restoring it, which can cause downtime and data loss. The Create new option allows you to restore the VM the existing VM, which minimizes downtime and data loss3. Therefore, the best option is to restore VM1 by using the Create new restore configuration option. This will create a new VM with the same name as VM1 and append a suffix to it, such as -Restored. You can then verify that the new VM has the correct data and configuration, and switch over to it when you are ready. You can also delete the original VM if you don\u2019t need it anymore3.",
+    "explanation": "https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#restore-options To recover VM1 to a point eight days ago, you need to use the Azure Backup service to restore the VM from a recovery point. A recovery point is a snapshot of the VM data at a specific point in time. Azure Backup creates recovery points according to the backup policy that you configure for the Recovery Services vault1. In this case, the Recovery Services vault named RSV1 has a backup policy that retains instant snapshots for five days and daily backup for 14 days. This means that you can restore the VM from any point in the last 14 days, as long as there is a recovery point available. Since you need to recover VM1 to a point eight days ago, you can use the daily backup recovery point that was created on that day2. To restore the VM from a recovery point, you have two options: Replace existing or Create new. The Replace existing option overwrites the existing VM with the restored data, while the Create new option creates a new VM with the restored data. The Replace existing option requires you to deallocate or delete the existing without affecting VM before restoring it, which can cause downtime and data loss. The Create new option allows you to restore the VM the existing VM, which minimizes downtime and data loss3. Therefore, the best option is to restore VM1 by using the Create new restore configuration option. This will create a new VM with the same name as VM1 and append a suffix to it, such as -Restored. You can then verify that the new VM has the correct data and configuration, and switch over to it when you are ready. You can also delete the original VM if you don't need it anymore3.",
     "correct": 3,
     "type": "pdf_expansion"
   },
   {
     "id": "new_pdf_q177",
     "number": "544",
-    "question": "- (Topic 5) You have an Azure subscription. The subscription contains a storage account named storage1 that has the lifecycle management rules shown in the following table. Your Partner of IT Exam visit - https://www.exambible.com We recommend you to try the PREMIUM AZ-104 Dumps From Exambible https://www.exambible.com/AZ-104-exam/ (232 Q&As) On June 1, you store a blob named File1 in the Hot access tier of storage1. What is the state of File1 on June 7? stored in the Archive access tier",
+    "question": "You have an Azure subscription. The subscription contains a storage account named storage1 that has the lifecycle management rules shown in the following table. On June 1, you store a blob named File1 in the Hot access tier of storage1. What is the state of File1 on June 7? stored in the Archive access tier",
     "domain": "storage",
     "choices": [
       "A. stored in the Hot access tier",
@@ -6242,7 +6310,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q180",
     "number": "547",
-    "question": "- (Topic 5) You have an Microsoft Entra ID tenant named adatum.com that contains the groups shown in the following table. Adatum.com contains the users shown in the following table. You assign the Microsoft Entra ID Premium P2 license to Group l and User4. Which users are assigned the Microsoft Entra ID Premium P2 license?",
+    "question": "You have an Microsoft Entra ID tenant named adatum.com that contains the groups shown in the following table. Adatum.com contains the users shown in the following table. You assign the Microsoft Entra ID Premium P2 license to Group l and User4.\n\nWhich users are assigned the Microsoft Entra ID Premium P2 license?",
     "domain": "identity",
     "choices": [
       "A. User4 only",
@@ -6257,7 +6325,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q188",
     "number": "555",
-    "question": "- (Topic 5) You plan to move a distributed on-premises app named App1 to an Azure subscription. After the planned move, App1 will be hosted on several Azure virtual machines. You need to ensure that App1 always runs on at least eight virtual machines during planned Azure maintenance. What should you create?",
+    "question": "You plan to move a distributed on-premises app named App1 to an Azure subscription. After the planned move, App1 will be hosted on several Azure virtual machines. You need to ensure that App1 always runs on at least eight virtual machines during planned Azure maintenance.\n\nWhat should you create?",
     "domain": "compute",
     "choices": [
       "A. one virtual machine scale set that has 10 virtual machines instances",
@@ -6272,7 +6340,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q209",
     "number": "576",
-    "question": "- (Topic 5) You have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using an Azure Load Balancer. The effective network security configurations for VM2 are shown in the following exhibit.  ) You discover that connections to App1 from 131.107.100.50 over TCP port 443 fail. You verify that the Load Balancer rules are configured correctly. You need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443. Solution: You create an inbound security rule that denies all traffic from the 131.107.100.50 source and has a cost of 64999. Does this meet the goal?",
+    "question": "You have an app named App1 that is installed on two Azure virtual machines named VM1 and VM2. Connections to App1 are managed by using an Azure Load Balancer. The effective network security configurations for VM2 are shown in the following exhibit. ) You discover that connections to App1 from 131.107.100.50 over TCP port 443 fail. You verify that the Load Balancer rules are configured correctly. You need to ensure that connections to App1 can be established successfully from 131.107.100.50 over TCP port 443.\n\nSolution: You create an inbound security rule that denies all traffic from the 131.107.100.50 source and has a cost of 64999. Does this meet the goal?",
     "domain": "networking",
     "choices": [
       "A. Yes",
@@ -6285,7 +6353,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q215",
     "number": "582",
-    "question": "- (Topic 5) You have an Azure subscription that contains the storage accounts shown in the following table.  ) You need to identify which storage account can be converted to zone-redundant storage (ZRS) replication by requesting a live migration from Azure support. What should you identify?",
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table. ) You need to identify\n\nwhich storage account can be converted to zone-redundant storage (ZRS) replication by requesting a live migration from Azure support. What should you identify?",
     "domain": "storage",
     "choices": [
       "A. Storage1",
@@ -6300,7 +6368,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q216",
     "number": "583",
-    "question": "- (Topic 5) You have an Azure subscription that contains a virtual network named VNET1. VNET1 contains the subnets shown in the following table. Each virtual machine uses a static IP address. You need to create network security groups (NSGs) to meet following requirements: ? Allow web requests from the internet to VM3, VM4, VM5, and VM6. ? Allow all connections between VM1 and VM2. ? Allow Remote Desktop connections to VM1. ? Prevent all other network traffic to VNET1. What is the minimum number of NSGs you should create?",
+    "question": "You have an Azure subscription that contains a virtual network named VNET1. VNET1 contains the subnets shown in the following table. Each virtual machine uses a static IP address. You need to create network security groups (NSGs) to meet following requirements: ? Allow web requests from the internet to VM3, VM4, VM5, and VM6. ? Allow all connections between VM1 and VM2. ? Allow Remote Desktop connections to VM1. ? Prevent all other network traffic to VNET1. What is the minimum number of NSGs you should create?",
     "domain": "networking",
     "choices": [
       "A. 1",
@@ -6314,7 +6382,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q218",
     "number": "585",
-    "question": "- (Topic 5) You have two Azure virtual networks named VNet1 and VNet2. VNet1 contains an Azure virtual machine named VM1. VNet2 contains an Azure virtual machine named VM2. VM1 hosts a frontend application that connects to VM2 to retrieve data.  ) Users report that the frontend application is slower than usual. You need to view the average round-trip time (RTT) of the packets from VM1 to VM2. Which Azure Network Watcher feature should you use?",
+    "question": "You have two Azure virtual networks named VNet1 and VNet2. VNet1 contains an Azure virtual machine named VM1. VNet2 contains an Azure virtual machine named VM2. VM1 hosts a frontend application that connects to VM2 to retrieve data. ) Users report that the frontend application is slower than usual. You need to view the average round-trip time (RTT) of the packets from VM1 to VM2.\n\nWhich Azure Network Watcher feature should you use?",
     "domain": "networking",
     "choices": [
       "A. NSG flow logs",

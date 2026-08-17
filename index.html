@@ -110,29 +110,8 @@
       <!-- Standard Choices Grid -->
       <div id="choices" class="choices"></div>
 
-      <!-- Confidence Tracker -->
-      <div id="confidence-container" class="confidence-container hidden">
-        <p class="section-title" style="margin-top:20px; font-size:1rem;">How confident are you?</p>
-        <div class="confidence-buttons">
-          <button class="conf-btn" data-conf="high">High</button>
-          <button class="conf-btn" data-conf="medium">Medium</button>
-          <button class="conf-btn" data-conf="low">Low</button>
-        </div>
-      </div>
-
-      <!-- Mistake Classification (Practice Mode only) -->
-      <div id="mistake-container" class="mistake-container hidden">
-        <p class="section-title" style="margin-top:20px; font-size:1rem;">Why did you get this wrong?</p>
-        <div class="mistake-reasons">
-          <button class="mistake-btn" data-reason="Knowledge gap">Knowledge gap</button>
-          <button class="mistake-btn" data-reason="Misunderstood concept">Misunderstood concept</button>
-          <button class="mistake-btn" data-reason="Misread question">Misread question</button>
-          <button class="mistake-btn" data-reason="Confused Azure services">Confused Azure services</button>
-          <button class="mistake-btn" data-reason="Configuration/detail mistake">Configuration/detail mistake</button>
-          <button class="mistake-btn" data-reason="Guess">Guess</button>
-          <button class="mistake-btn" data-reason="Careless mistake">Careless mistake</button>
-        </div>
-      </div>
+      <!-- Mistake Classification (Practice Mode only — dynamic) -->
+      <div id="mistake-container" class="mistake-container hidden"></div>
 
       <div id="feedback" class="feedback hidden"></div>
     </div>

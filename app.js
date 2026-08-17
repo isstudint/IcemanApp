@@ -28,6 +28,15 @@
   // ── DOM shorthand ──
   const $ = id => document.getElementById(id);
   const escapeHtml = str => String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+  const formatMarkdown = text => {
+    if (!text) return '';
+    let html = escapeHtml(text);
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    html = html.replace(/\n\n+/g, '</p><p>');
+    html = html.replace(/\n/g, '<br/>');
+    return `<p>${html}</p>`;
+  };
 
   // ── Init ──
   function init() {
@@ -313,31 +322,45 @@
         if (i === q.correct) cls += ' correct';
         else if (state.answers[state.index] === i && i !== q.correct) cls += ' wrong';
       }
-      return `<button class="${cls}" data-index="${i}">${c}</button>`;
+
+      let letter = String.fromCharCode(65 + i);
+      let text = c;
+      const match = c.match(/^([A-F])[\.\:\)]\s*(.*)$/i);
+      if (match) {
+        letter = match[1].toUpperCase();
+        text = match[2];
+      }
+
+      return `
+        <button class="${cls}" data-index="${i}">
+          <span class="choice-letter">${letter}</span>
+          <span class="choice-text">${escapeHtml(text)}</span>
+        </button>
+      `;
     }).join('');
 
-    // Always hide the old containers (they stay in HTML but we don't use them inline anymore)
-    $('confidence-container').classList.add('hidden');
-
-    // Mistake Classification: show ONLY if user already evaluated AND clicked Next on wrong AND hasn't classified yet
+    // Mistake Classification (Practice Mode only): show ONLY if user evaluated, got it wrong, clicked Next, and hasn't classified yet
     const mistakeContainer = $('mistake-container');
-    if (state.showMistakePrompt && state.mistakes[state.index] === null) {
-      mistakeContainer.classList.remove('hidden');
-      mistakeContainer.innerHTML = `
-        <p class="section-title" style="margin-top:20px; font-size:0.95rem; color:var(--red);">Why did you get this wrong? <span style="font-weight:400;color:var(--text-muted);">(optional — click Skip to continue)</span></p>
-        <div class="mistake-reasons">
-          <button class="mistake-btn" data-reason="Knowledge gap">Knowledge gap</button>
-          <button class="mistake-btn" data-reason="Misunderstood concept">Misunderstood concept</button>
-          <button class="mistake-btn" data-reason="Misread question">Misread question</button>
-          <button class="mistake-btn" data-reason="Confused Azure services">Confused Azure services</button>
-          <button class="mistake-btn" data-reason="Config/detail mistake">Config/detail mistake</button>
-          <button class="mistake-btn" data-reason="Guess">Guess</button>
-          <button class="mistake-btn" data-reason="Careless mistake">Careless mistake</button>
-          <button class="mistake-btn mistake-skip" data-reason="skip">Skip →</button>
-        </div>
-      `;
-    } else {
-      mistakeContainer.classList.add('hidden');
+    if (mistakeContainer) {
+      if (isPractice && state.showMistakePrompt && state.mistakes[state.index] === null) {
+        mistakeContainer.classList.remove('hidden');
+        mistakeContainer.innerHTML = `
+          <p class="section-title" style="margin-top:20px; font-size:0.95rem; color:var(--red);">Why did you get this wrong? <span style="font-weight:400;color:var(--text-muted);">(optional — click Skip to continue)</span></p>
+          <div class="mistake-reasons">
+            <button class="mistake-btn" data-reason="Knowledge gap">Knowledge gap</button>
+            <button class="mistake-btn" data-reason="Misunderstood concept">Misunderstood concept</button>
+            <button class="mistake-btn" data-reason="Misread question">Misread question</button>
+            <button class="mistake-btn" data-reason="Confused Azure services">Confused Azure services</button>
+            <button class="mistake-btn" data-reason="Config/detail mistake">Config/detail mistake</button>
+            <button class="mistake-btn" data-reason="Guess">Guess</button>
+            <button class="mistake-btn" data-reason="Careless mistake">Careless mistake</button>
+            <button class="mistake-btn mistake-skip" data-reason="skip">Skip →</button>
+          </div>
+        `;
+      } else {
+        mistakeContainer.innerHTML = '';
+        mistakeContainer.classList.add('hidden');
+      }
     }
 
     // Feedback
@@ -345,8 +368,15 @@
     if (isPractice && evaluated) {
       const isCorrect = state.answers[state.index] === q.correct;
       fb.className = `feedback ${isCorrect ? 'correct' : 'wrong'}`;
-      const explanationText = q.explanation ? q.explanation : (isCorrect ? 'Good job!' : 'Incorrect.');
-      fb.innerHTML = `<strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</strong><br/>${explanationText}`;
+      const explanationText = q.explanation ? formatMarkdown(q.explanation) : (isCorrect ? '<p>Good job!</p>' : '<p>Incorrect.</p>');
+      fb.innerHTML = `
+        <div class="feedback-badge ${isCorrect ? 'correct' : 'wrong'}">
+          ${isCorrect ? '✓ Correct' : '✗ Incorrect'}
+        </div>
+        <div class="feedback-body">
+          ${explanationText}
+        </div>
+      `;
     } else {
       fb.className = 'feedback hidden';
     }
@@ -918,7 +948,7 @@
           ${!isCorrect ? `<p class="review-answer correct-ans">
             <span class="label">Correct: </span><span class="value">${correctText}</span>
           </p>` : ''}
-          <p class="review-explanation">${q.explanation}</p>
+          <div class="review-explanation">${formatMarkdown(q.explanation)}</div>
         </div>`;
     }).join('');
   }
