@@ -68,6 +68,33 @@ body {
 .stat-card:hover { border-color: var(--border-hover); }
 .stat-value { display: block; font-size: 1.75rem; font-weight: 700; color: var(--azure); }
 .stat-label { display: block; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.stat-card-interactive {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.stat-card-interactive:hover {
+  border-color: var(--azure);
+  background: var(--bg-card-hover);
+}
+.stat-reset-btn {
+  background: var(--azure-glow);
+  border: 1px solid var(--azure);
+  color: var(--azure);
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  margin-left: 4px;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+.stat-card-interactive:hover .stat-reset-btn,
+.stat-reset-btn:hover {
+  background: var(--azure);
+  color: #ffffff;
+}
 
 /* Section headings */
 .section-title { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }

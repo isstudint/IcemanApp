@@ -597,7 +597,47 @@ const QUESTIONS = [
     ],
     "explanation": "Resources such as VMs, Storage Accounts, and Virtual Networks can generally be moved between subscriptions. However, Azure Recovery Services vaults often have specific limitations or cannot be moved if they contain certain types of protected items.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1",
+          "West US"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "RG1",
+          "West US"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "RG1",
+          "West US"
+        ],
+        [
+          "VM1Managed",
+          "Disk",
+          "RG1",
+          "West US"
+        ],
+        [
+          "RVAULT1",
+          "Recovery Services vault",
+          "RG2",
+          "West Europe"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q9",
@@ -686,7 +726,26 @@ const QUESTIONS = [
     ],
     "explanation": "You cannot delete a resource group if it contains a SQL database that is actively being backed up to a Recovery Services vault. You must first stop the backup and remove the backup data or retain it, which removes the lock preventing deletion.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Resource group",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RG26",
+          "N/A",
+          "West Europe"
+        ],
+        [
+          "Policy1",
+          "RG26",
+          "West Europe"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q16",
@@ -772,7 +831,23 @@ const QUESTIONS = [
     ],
     "explanation": "When moving a Web App to a new resource group, it continues to run in its existing App Service plan, which cannot change its physical location during a move. The target resource group's policies (like Policy2) will apply to the web app after the move.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Resource group",
+        "Resources"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "VM1, storage1, VNet1"
+        ],
+        [
+          "RG2",
+          "VM2, storage2, VNet2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q26",
@@ -991,7 +1066,31 @@ const QUESTIONS = [
     ],
     "explanation": "The policy applies an append tag if the tag does not exist. However, if the resource already has the tag with a different value, or if exclusions apply, the tag might not be appended. Based on the scenario, the statement is false.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Resource name",
+        "Resource type",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "East US"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "East US"
+        ],
+        [
+          "Policy1",
+          "Policy assignment",
+          "East US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q49",
@@ -1219,7 +1318,31 @@ const QUESTIONS = [
     ],
     "explanation": "Licenses are assigned to users either directly or through group-based licensing. If group-based licensing is used for Group1, only members of Group1 (and explicitly assigned users like User4) receive the license. Depending on the group's members in the scenario, only User4 might have retained it.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Group name",
+        "Group type",
+        "Membership type"
+      ],
+      "rows": [
+        [
+          "Group1",
+          "Security",
+          "Assigned"
+        ],
+        [
+          "Group2",
+          "Security",
+          "Dynamic User"
+        ],
+        [
+          "Group3",
+          "Microsoft 365",
+          "Assigned"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q71",
@@ -1264,7 +1387,41 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Private Endpoints allow you to access Azure PaaS services (like Azure Storage) privately from your virtual network. The traffic between your virtual network and the service travels entirely over the Microsoft backbone network, avoiding the public internet.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Virtual machine",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "East US",
+          "RG1"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "East US",
+          "RG2"
+        ],
+        [
+          "storage2",
+          "Storage account",
+          "West US",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q76",
@@ -1294,7 +1451,41 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** According to Microsoft documentation, before you can utilize Azure RBAC roles (such as Storage File Data SMB Share Contributor) for SMB access to Azure file shares, you must first enable identity-based authentication (like AD DS or Azure AD DS) on the storage account. Configuring IAM is the subsequent step.\n\nOriginal: To assign Azure RBAC roles such as Storage File Data SMB Share Contributor for a specific file share, you must use the Access control (IAM) blade for the storage account or file share. You must also ensure identity-based authentication is enabled first, but IAM is where the role is assigned.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "N/A",
+          "East US"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1",
+          "East US"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "RG1",
+          "East US"
+        ],
+        [
+          "VNet1",
+          "Virtual network",
+          "RG1",
+          "East US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q79",
@@ -1380,7 +1571,35 @@ const QUESTIONS = [
     ],
     "explanation": "The Storage Blob Data Contributor role explicitly grants data-plane access to read, write, and delete blob data within a storage account. The standard Contributor role only provides control-plane access, which cannot directly manipulate the contents of blob containers.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "N/A",
+          "East US"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1",
+          "East US"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "RG1",
+          "East US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q89",
@@ -1411,7 +1630,26 @@ const QUESTIONS = [
     ],
     "explanation": "Microsoft Entra ID Premium P2 licenses can only be assigned to valid security principals like Security groups and security-enabled Microsoft 365 groups. Direct license assignment to distribution groups or mail-enabled security groups is not supported.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Group name",
+        "Membership type",
+        "Assigned licenses"
+      ],
+      "rows": [
+        [
+          "Group1",
+          "Dynamic User",
+          "Microsoft 365 E5"
+        ],
+        [
+          "Group2",
+          "Assigned",
+          "Azure AD Premium P2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q94",
@@ -1452,7 +1690,41 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** To ensure traffic from a VM to an Azure Storage account remains on the Microsoft backbone network and does not traverse the public internet, you must use Azure Private Endpoints (or Service Endpoints). Azure AD Application Proxy is used to securely publish on-premises web applications, which is entirely irrelevant to VM-to-Storage traffic.\n\nOriginal: Service endpoints and private endpoints provide optimal routing by ensuring that traffic between the Azure virtual network and the storage account remains strictly on the Microsoft Azure backbone. This enhances security by preventing traffic from traversing the public internet.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Virtual machine",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "East US",
+          "RG1"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "East US",
+          "RG2"
+        ],
+        [
+          "storage2",
+          "Storage account",
+          "West US",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q97",
@@ -1467,7 +1739,41 @@ const QUESTIONS = [
     ],
     "explanation": "Configuring a service endpoint for Azure Storage creates a direct, optimized route over the Microsoft backbone network. This effectively secures the connection from the virtual machine by removing the need for public internet traversal.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Virtual machine",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "East US",
+          "RG1"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "East US",
+          "RG2"
+        ],
+        [
+          "storage2",
+          "Storage account",
+          "West US",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q98",
@@ -1482,7 +1788,41 @@ const QUESTIONS = [
     ],
     "explanation": "Implementing service endpoints restricts the storage account's network access to a specific virtual network subset. This guarantees that all communication from the VM to the storage account securely utilizes the Microsoft Azure backbone network.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Virtual machine",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "East US",
+          "RG1"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "East US",
+          "RG2"
+        ],
+        [
+          "storage2",
+          "Storage account",
+          "West US",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q99",
@@ -1497,7 +1837,35 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** The Co-Administrator role is a classic Azure subscription administrator role. It can only be assigned at the subscription scope. It cannot be scoped to a Resource Group (RG1) or a Management Group.\n\nOriginal: Classic Co-Administrator roles are legacy mechanisms that inherently apply to the entire subscription scope. Modern Azure management prefers assigning specific RBAC roles at narrower scopes like Resource Groups to restrict privileges.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "East US",
+          "N/A"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "East US",
+          "RG1"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "East US",
+          "RG1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic2_q101",
@@ -1512,7 +1880,35 @@ const QUESTIONS = [
     ],
     "explanation": "By configuring a private endpoint for the storage account, you assign it a private IP address from your virtual network. This guarantees that all data transfers between the VM and the storage account remain completely on the private Microsoft backbone network.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "N/A",
+          "East US"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1",
+          "East US"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "RG1",
+          "East US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q1",
@@ -1527,7 +1923,35 @@ const QUESTIONS = [
     ],
     "explanation": "The Azure Import/Export service exclusively supports general-purpose v2 and general-purpose v1 storage accounts for exporting data. It does not support exporting data directly from premium block blob or premium file storage accounts.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Storage account",
+        "Performance tier",
+        "Replication",
+        "Account kind"
+      ],
+      "rows": [
+        [
+          "storage1",
+          "Standard",
+          "RA-GRS",
+          "StorageV2 (general purpose v2)"
+        ],
+        [
+          "storage2",
+          "Premium",
+          "LRS",
+          "BlockBlobStorage"
+        ],
+        [
+          "storage3",
+          "Standard",
+          "LRS",
+          "Storage (general purpose v1)"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q3",
@@ -1558,7 +1982,26 @@ const QUESTIONS = [
     ],
     "explanation": "To synchronize files using Azure File Sync, you must first create a Storage Sync Service and a sync group. You then install the Azure File Sync agent on the on-premises server and register it with the Storage Sync Service to begin replication.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location"
+      ],
+      "rows": [
+        [
+          "Store1",
+          "Storage account",
+          "East US"
+        ],
+        [
+          "Container1",
+          "Blob container",
+          "Store1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q15",
@@ -1573,7 +2016,41 @@ const QUESTIONS = [
     ],
     "explanation": "Zone-redundant storage (ZRS) live migrations can be requested for standard general-purpose v2 storage accounts currently using LRS or GRS. Premium storage accounts or those with hierarchical namespaces typically require a manual data migration to achieve ZRS.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Performance tier",
+        "Redundancy",
+        "Account kind"
+      ],
+      "rows": [
+        [
+          "storage1",
+          "Standard",
+          "Geo-redundant storage (GRS)",
+          "StorageV2 (general purpose v2)"
+        ],
+        [
+          "storage2",
+          "Premium",
+          "Locally-redundant storage (LRS)",
+          "BlockBlobStorage"
+        ],
+        [
+          "storage3",
+          "Standard",
+          "Read-access geo-redundant storage (RA-GRS)",
+          "Storage (general purpose v1)"
+        ],
+        [
+          "storage4",
+          "Premium",
+          "Locally-redundant storage (LRS)",
+          "FileStorage"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q16",
@@ -1727,7 +2204,26 @@ const QUESTIONS = [
     ],
     "explanation": "Lifecycle management rules are fully supported on standard general-purpose v2 and premium block blob storage accounts. General-purpose v1 accounts lack the necessary tiering and lifecycle management capabilities.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Storage account",
+        "Replication",
+        "Account kind"
+      ],
+      "rows": [
+        [
+          "storage1",
+          "Geo-redundant storage (GRS)",
+          "StorageV2"
+        ],
+        [
+          "storage2",
+          "Locally-redundant storage (LRS)",
+          "StorageV2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q37",
@@ -1772,7 +2268,31 @@ const QUESTIONS = [
     ],
     "explanation": "AzCopy is a versatile cross-platform command-line utility available for Windows, Linux, and macOS. Therefore, it can be installed and executed from any of these operating systems to transfer data to Azure Storage.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Device name",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "Device1",
+          "Windows Server 2012 R2",
+          "On-premises"
+        ],
+        [
+          "Device2",
+          "Windows Server 2016",
+          "On-premises"
+        ],
+        [
+          "Device3",
+          "Windows 10",
+          "On-premises"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q41",
@@ -1894,7 +2414,31 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Storage Explorer is a comprehensive GUI tool that manages blobs, files, queues, and tables across storage accounts. It also allows managing storage account access using Shared Access Signatures (SAS) and interacting with Azure Data Lake Storage resources.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Task",
+        "Description"
+      ],
+      "rows": [
+        [
+          "Task1",
+          "Upload files to an Azure file share"
+        ],
+        [
+          "Task2",
+          "Configure lifecycle management rules for blob storage"
+        ],
+        [
+          "Task3",
+          "Attach to an individual storage account by using SAS"
+        ],
+        [
+          "Task4",
+          "View blob inventory reports"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q57",
@@ -1940,7 +2484,31 @@ const QUESTIONS = [
     ],
     "explanation": "If a lifecycle management rule is configured to delete a blob after a certain number of days, the evaluation timer starts from the blob's last modification or creation date. Therefore, if the blob meets the threshold condition of the rule on June 7, it will be permanently deleted.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Rule name",
+        "Rule action",
+        "Condition"
+      ],
+      "rows": [
+        [
+          "Rule1",
+          "Move to cool storage",
+          "Days after creation > 30"
+        ],
+        [
+          "Rule2",
+          "Move to archive storage",
+          "Days after creation > 90"
+        ],
+        [
+          "Rule3",
+          "Delete blob",
+          "Days after creation > 365"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q63",
@@ -2154,7 +2722,41 @@ const QUESTIONS = [
     ],
     "explanation": "Only General Purpose v2 (GPv2) storage accounts support conversion to Zone-Redundant Storage (ZRS) replication. Older account types like GPv1 or legacy Blob storage must first be upgraded to GPv2.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Performance tier",
+        "Redundancy",
+        "Account kind"
+      ],
+      "rows": [
+        [
+          "storage1",
+          "Standard",
+          "Geo-redundant storage (GRS)",
+          "StorageV2 (general purpose v2)"
+        ],
+        [
+          "storage2",
+          "Premium",
+          "Locally-redundant storage (LRS)",
+          "BlockBlobStorage"
+        ],
+        [
+          "storage3",
+          "Standard",
+          "Read-access geo-redundant storage (RA-GRS)",
+          "Storage (general purpose v1)"
+        ],
+        [
+          "storage4",
+          "Premium",
+          "Locally-redundant storage (LRS)",
+          "FileStorage"
+        ]
+      ]
+    }
   },
   {
     "id": "topic3_q85",
@@ -2170,7 +2772,36 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Storage Explorer is a versatile, cross-platform application. It can be successfully installed and run on Windows, macOS, and Linux operating systems.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "Device1",
+          "Windows Server 2012 R2",
+          "On-premises"
+        ],
+        [
+          "Device2",
+          "Windows Server 2016",
+          "On-premises"
+        ],
+        [
+          "Device3",
+          "Windows Server 2019",
+          "Azure VM"
+        ],
+        [
+          "Device4",
+          "Windows 10 Enterprise",
+          "On-premises"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q1",
@@ -2377,7 +3008,31 @@ const QUESTIONS = [
     ],
     "explanation": "Recreating the virtual machine allows you to attach a new network interface associated with the target virtual network (VNET2). Since a VM cannot be moved between virtual networks while it exists, deleting and recreating it with the same disks is a valid solution.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q22",
@@ -2390,7 +3045,31 @@ const QUESTIONS = [
     ],
     "explanation": "A virtual machine's network interfaces must all reside in the same virtual network that the VM was originally created in. You cannot simply add a new network interface connected to VNET2 while the VM remains logically attached to VNET1.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q25",
@@ -2405,7 +3084,27 @@ const QUESTIONS = [
     ],
     "explanation": "To provide external access to applications running in an AKS cluster, you must expose them through a public-facing service such as a LoadBalancer. The public IP address (131.107.2.1) is what internet users will use to resolve and reach the cluster.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Component",
+        "IP address"
+      ],
+      "rows": [
+        [
+          "Kubernetes service address range",
+          "10.0.0.0/16"
+        ],
+        [
+          "Kubernetes DNS service IP address",
+          "10.0.0.10"
+        ],
+        [
+          "Docker bridge address",
+          "172.17.0.1/16"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q26",
@@ -2452,7 +3151,26 @@ const QUESTIONS = [
     ],
     "explanation": "Deployment slots allow you to deploy and test updates in a staging environment before pushing them to production. Deploying to the webapp1-test slot ensures that users are unaffected while the developers validate the new application code.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Slot name",
+        "Status",
+        "Traffic percentage"
+      ],
+      "rows": [
+        [
+          "Production",
+          "Running",
+          "100%"
+        ],
+        [
+          "Staging",
+          "Running",
+          "0%"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q30",
@@ -2498,7 +3216,36 @@ const QUESTIONS = [
     ],
     "explanation": "Web apps running on different operating systems (Windows and Linux) cannot share the same App Service plan. Therefore, you must create at least two separate App Service plans to accommodate the different platform requirements.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Region",
+        "Runtime stack"
+      ],
+      "rows": [
+        [
+          "App1",
+          "East US",
+          ".NET Core 3.1"
+        ],
+        [
+          "App2",
+          "East US",
+          "Node.js 12 LTS"
+        ],
+        [
+          "App3",
+          "West US",
+          "PHP 7.4"
+        ],
+        [
+          "App4",
+          "West US",
+          "Python 3.8"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q34",
@@ -2524,7 +3271,31 @@ const QUESTIONS = [
     ],
     "explanation": "All network interfaces attached to an Azure virtual machine must belong to the same virtual network. You cannot connect a VM to VNET2 simply by adding a new network interface if the VM is already provisioned in VNET1.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q36",
@@ -2540,7 +3311,26 @@ const QUESTIONS = [
     ],
     "explanation": "When a device is joined to Microsoft Entra ID, the user who performs the join operation is automatically added to the local Administrators group. Additionally, users with the Global Administrator or Microsoft Entra ID Joined Device Local Administrator roles are also added to the group.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Group name",
+        "Membership type",
+        "Assigned licenses"
+      ],
+      "rows": [
+        [
+          "Group1",
+          "Dynamic User",
+          "Microsoft 365 E5"
+        ],
+        [
+          "Group2",
+          "Assigned",
+          "Azure AD Premium P2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q40",
@@ -2556,7 +3346,41 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Backup requires the Recovery Services vault to be in the same region as the virtual machines being backed up. Only the virtual machines residing in the exact same Azure region as Vault1 can be protected by it.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "N/A",
+          "East US"
+        ],
+        [
+          "RG2",
+          "Resource group",
+          "N/A",
+          "West US"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1",
+          "East US"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "RG2",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q41",
@@ -2602,7 +3426,29 @@ const QUESTIONS = [
     ],
     "explanation": "Proximity placement groups are region-specific Azure resources designed to minimize network latency between VMs. You can only assign a virtual machine scale set to a proximity placement group that is located in the same Azure region.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Rule condition",
+        "Metric",
+        "Threshold",
+        "Action"
+      ],
+      "rows": [
+        [
+          "CPU percentage > 70%",
+          "CPU",
+          "70%",
+          "Increase count by 1"
+        ],
+        [
+          "CPU percentage < 30%",
+          "CPU",
+          "30%",
+          "Decrease count by 1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q44",
@@ -2763,7 +3609,41 @@ const QUESTIONS = [
     ],
     "explanation": "ARM template deployments are tracked at the resource group level. By navigating to the Deployments blade of the Resource Group, you can view the history of deployments and inspect the exact ARM templates used.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "N/A",
+          "East US"
+        ],
+        [
+          "RG2",
+          "Resource group",
+          "N/A",
+          "West US"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1",
+          "East US"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "RG2",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q59",
@@ -2778,7 +3658,26 @@ const QUESTIONS = [
     ],
     "explanation": "Azure App Service deployment slots allow you to run different versions of your web app and swap them seamlessly. By swapping the slots again, you can instantly revert the production slot to the previous stable version.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Status"
+      ],
+      "rows": [
+        [
+          "webapp1",
+          "Production slot",
+          "Running"
+        ],
+        [
+          "webapp1-test",
+          "Deployment slot",
+          "Running"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q61",
@@ -2834,7 +3733,31 @@ const QUESTIONS = [
     ],
     "explanation": "An Azure App Service plan dictates the region where the web apps run. You can deploy a Linux App Service plan in any of the regions where you already have resources, provided the region supports Linux App Service plans.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "App Service plan",
+        "Region",
+        "Pricing tier"
+      ],
+      "rows": [
+        [
+          "Plan1",
+          "West US",
+          "Standard S1"
+        ],
+        [
+          "Plan2",
+          "Central US",
+          "Premium P1v2"
+        ],
+        [
+          "Plan3",
+          "East US",
+          "Standard S1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q67",
@@ -2903,7 +3826,27 @@ const QUESTIONS = [
     ],
     "explanation": "To restore files to a different server from an Azure Recovery Services vault, the target server must have the Microsoft Azure Recovery Services (MARS) agent installed. Once registered to the vault, you can use it to recover the backed-up folder.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Setting",
+        "Value"
+      ],
+      "rows": [
+        [
+          "Minimum instances",
+          "2"
+        ],
+        [
+          "Maximum instances",
+          "5"
+        ],
+        [
+          "Default instances",
+          "3"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q74",
@@ -2916,7 +3859,31 @@ const QUESTIONS = [
     ],
     "explanation": "A network interface (NIC) must be created in the same Azure region as the virtual network it connects to. If the region matches the virtual network's location, the NIC can be successfully attached.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q75",
@@ -2929,7 +3896,31 @@ const QUESTIONS = [
     ],
     "explanation": "Network interfaces (NICs) must reside in the same Azure region and subscription as the virtual network to which they are attached. Creating the NIC in a different region than the virtual network will prevent it from being connected.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q76",
@@ -2942,7 +3933,31 @@ const QUESTIONS = [
     ],
     "explanation": "When attaching a new network interface (NIC) to a virtual machine, the NIC must be created in the same Azure region as the virtual network. As long as the NIC and the virtual network share the same region, they can be associated.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q77",
@@ -3002,7 +4017,29 @@ const QUESTIONS = [
     ],
     "explanation": "A container group in Azure Container Instances can only contain containers that share the same host OS type and are deployed in the same region. You cannot mix Windows and Linux containers within the same container group.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Container group",
+        "Region",
+        "Operating system",
+        "IP address"
+      ],
+      "rows": [
+        [
+          "containergroup1",
+          "East US",
+          "Linux",
+          "Public"
+        ],
+        [
+          "containergroup2",
+          "East US",
+          "Windows",
+          "Public"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q89",
@@ -3032,7 +4069,31 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Firewall requires a standard SKU public IP address, and it must be configured as static. Basic SKU or dynamic public IP addresses are not supported for use with Azure Firewall.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "SKU",
+        "IP address assignment"
+      ],
+      "rows": [
+        [
+          "IP1",
+          "Basic",
+          "Dynamic"
+        ],
+        [
+          "IP2",
+          "Basic",
+          "Static"
+        ],
+        [
+          "IP3",
+          "Standard",
+          "Static"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q96",
@@ -3047,7 +4108,27 @@ const QUESTIONS = [
     ],
     "explanation": "Autoscale rules have a cooldown period and evaluate metrics over a time aggregation period. Based on the rule's scale-out action and time window constraints, the maximum number of instances added within 30 minutes is limited.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Setting",
+        "Value"
+      ],
+      "rows": [
+        [
+          "Minimum instances",
+          "2"
+        ],
+        [
+          "Maximum instances",
+          "5"
+        ],
+        [
+          "Default instances",
+          "3"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q98",
@@ -3077,7 +4158,41 @@ const QUESTIONS = [
     ],
     "explanation": "In an ARM template, resources must be deployed in the correct order. The virtual machine relies on its network interface (NIC), which in turn depends on the virtual network and IP components to be provisioned first.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VNET1",
+          "Virtual network",
+          "RG1"
+        ],
+        [
+          "Subnet1",
+          "Subnet",
+          "RG1"
+        ],
+        [
+          "NIC1",
+          "Network interface",
+          "RG1"
+        ],
+        [
+          "IP1",
+          "Public IP address",
+          "RG1"
+        ],
+        [
+          "NSG1",
+          "Network security group",
+          "RG1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic4_q100",
@@ -3152,7 +4267,21 @@ const QUESTIONS = [
     ],
     "explanation": "Inbound NAT rules in an Azure Load Balancer map a specific port on a frontend IP address to a backend virtual machine. Before configuring these rules, you must define the frontend IP address that will receive the incoming traffic.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Frontend IP configuration",
+        "Backend pool",
+        "Health probe"
+      ],
+      "rows": [
+        [
+          "LoadBalancerFrontEnd",
+          "BackendPool1",
+          "Probe1 (TCP 80)"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q7",
@@ -3167,7 +4296,41 @@ const QUESTIONS = [
     ],
     "explanation": "Virtual network peering allows you to connect VNets in the same or different regions. However, VNets must have non-overlapping IP address spaces to establish a successful peering connection.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual network",
+        "Address space",
+        "Region",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VNet1",
+          "10.1.0.0/16",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNet2",
+          "10.2.0.0/16",
+          "East US",
+          "RG2"
+        ],
+        [
+          "VNet3",
+          "10.3.0.0/16",
+          "West US",
+          "RG1"
+        ],
+        [
+          "VNet4",
+          "10.1.0.0/16",
+          "West Europe",
+          "RG3"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q8",
@@ -3214,7 +4377,41 @@ const QUESTIONS = [
     ],
     "explanation": "Network Security Groups (NSGs) can only be associated with subnets or network interfaces that reside within the same Azure region as the NSG. Therefore, the NSG can only be applied to resources in its designated region.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VNet1",
+          "Virtual network",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNet2",
+          "Virtual network",
+          "East US",
+          "RG2"
+        ],
+        [
+          "VNet3",
+          "Virtual network",
+          "West US",
+          "RG1"
+        ],
+        [
+          "NSG1",
+          "Network security group",
+          "East US",
+          "RG1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q14",
@@ -3313,7 +4510,27 @@ const QUESTIONS = [
     ],
     "explanation": "Network Security Groups (NSGs) can contain multiple inbound and outbound security rules and can be applied to multiple subnets. A single NSG with properly defined rules can meet all the network traffic filtering requirements.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Connected virtual machines"
+      ],
+      "rows": [
+        [
+          "Subnet1",
+          "VM1, VM2"
+        ],
+        [
+          "Subnet2",
+          "VM3, VM4"
+        ],
+        [
+          "Subnet3",
+          "VM5, VM6"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q22",
@@ -3328,7 +4545,31 @@ const QUESTIONS = [
     ],
     "explanation": "To create a virtual machine, the Azure policy must not block the creation of its associated resources. Removing Microsoft.Compute/virtualMachines from the Not Allowed resource types allows VM creation.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "N/A"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "RG1"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q24",
@@ -3358,7 +4599,47 @@ const QUESTIONS = [
     ],
     "explanation": "Network Security Groups (NSGs) can be associated with subnets or individual network interfaces. Associating the NSG to Subnet1 ensures the security rules are applied to all resources within the subnet, blocking HTTP traffic as intended.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Rule name",
+        "Priority",
+        "Port",
+        "Protocol",
+        "Source",
+        "Destination",
+        "Action"
+      ],
+      "rows": [
+        [
+          "Port_80",
+          "100",
+          "80",
+          "TCP",
+          "Any",
+          "Any",
+          "Allow"
+        ],
+        [
+          "Port_3389",
+          "110",
+          "3389",
+          "TCP",
+          "Any",
+          "Any",
+          "Allow"
+        ],
+        [
+          "DenyWebSites",
+          "120",
+          "80,443",
+          "TCP",
+          "Any",
+          "Internet",
+          "Deny"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q29",
@@ -3389,7 +4670,35 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** The question explicitly asks for **two** settings, but the PDF answer key only provides one (`A`). To create a VM in an Availability Zone, you must both use managed disks AND configure the \"Availability options\" setting during deployment to specify the desired Availability Zone. The PDF answer key is incomplete.\n\nOriginal: To deploy a virtual machine in an Availability Zone, you must use managed disks. Unmanaged disks do not support Availability Zones, making this a prerequisite.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Setting",
+        "Configuration"
+      ],
+      "rows": [
+        [
+          "Virtual machine name",
+          "VM1"
+        ],
+        [
+          "Region",
+          "East US"
+        ],
+        [
+          "Availability options",
+          "Availability zone (Zone 1)"
+        ],
+        [
+          "Image",
+          "Windows Server 2019 Datacenter - Gen 2"
+        ],
+        [
+          "Size",
+          "Standard_D2s_v3 (2 vcpus, 8 GiB memory)"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q33",
@@ -3458,7 +4767,36 @@ const QUESTIONS = [
     ],
     "explanation": "Virtual network peering enables seamless communication between resources in different VNets. Peering VNET1, VNET2, and VNET3 allows them to route DNS requests to the custom DNS server hosted on VM1.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "IP address",
+        "Connected virtual network"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "10.1.1.4",
+          "VNet1"
+        ],
+        [
+          "VM2",
+          "10.1.1.5",
+          "VNet1"
+        ],
+        [
+          "VM3",
+          "10.2.1.4",
+          "VNet2"
+        ],
+        [
+          "VM4",
+          "10.2.1.5",
+          "VNet2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q39",
@@ -3487,7 +4825,31 @@ const QUESTIONS = [
     ],
     "explanation": "Application Security Groups (ASGs) are used to group network interfaces. Associating NIC1 to ASG1 applies the security rules defined for the ASG to VM1.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Resource",
+        "Associated to"
+      ],
+      "rows": [
+        [
+          "NIC1",
+          "Subnet1"
+        ],
+        [
+          "Subnet1",
+          "VNet1"
+        ],
+        [
+          "ASG1",
+          "None"
+        ],
+        [
+          "NSG1",
+          "Subnet1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q41",
@@ -3518,7 +4880,36 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** A network interface must be created in the exact same region as the virtual network it connects to. The explanation itself states: \"Therefore, NIC1 must be created in East US to connect to VNet1.\" This contradicts the PDF's answer of \"East US and North Europe only\".\n\nOriginal: A network interface must be created in the same location as the virtual network it will connect to. Therefore, NIC1 must be created in East US to connect to VNet1.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Resource",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "East US"
+        ],
+        [
+          "VNet1",
+          "Virtual network (East US)",
+          "RG1"
+        ],
+        [
+          "VNet2",
+          "Virtual network (North Europe)",
+          "RG1"
+        ],
+        [
+          "VNet3",
+          "Virtual network (West Europe)",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q46",
@@ -3533,7 +4924,31 @@ const QUESTIONS = [
     ],
     "explanation": "The virtual network must be linked to the DNS zone to resolve its records. Modifying the virtual network link to enable auto-registration or linking to adatum.com at the domain registrar enables name resolution.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Connected virtual network",
+        "DNS suffix"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "VNet1",
+          "adatum.com"
+        ],
+        [
+          "VM2",
+          "VNet1",
+          "contoso.com"
+        ],
+        [
+          "VM3",
+          "VNet2",
+          "fabrikam.com"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q50",
@@ -3546,7 +4961,31 @@ const QUESTIONS = [
     ],
     "explanation": "A basic SKU public IP address cannot be associated with a backend pool of a Standard SKU internal load balancer. The SKUs of the public IP and the load balancer must match.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q51",
@@ -3559,7 +4998,31 @@ const QUESTIONS = [
     ],
     "explanation": "Stopping the VM does not resolve the issue of adding it to a backend pool. All resources in the backend pool must use a Standard SKU public IP if the load balancer is a Standard SKU.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q52",
@@ -3572,7 +5035,31 @@ const QUESTIONS = [
     ],
     "explanation": "You can add virtual machines to a Standard SKU internal load balancer regardless of their public IP addresses. Standard load balancers require all backend VMs to be in the same VNet and use Standard SKU IP configurations if applicable.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q53",
@@ -3626,7 +5113,31 @@ const QUESTIONS = [
     ],
     "explanation": "A deny rule with a priority of 64999 (which has lower precedence than standard rules) will not override an existing allow rule with a higher priority (lower number). Therefore, the traffic will not be blocked.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q58",
@@ -3639,7 +5150,31 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** The explanation states \"Deleting a block rule will not guarantee that the traffic is allowed unless an allow rule explicitly permits it or a default rule allows it. Azure's default inbound rules deny traffic from the Internet.\" Since the default is Deny, deleting the block rule will just fall through to the default Deny, meaning the goal is NOT met. The PDF's answer contradicts its own explanation.\n\nOriginal: Deleting a block rule will not guarantee that the traffic is allowed unless an allow rule explicitly permits it or a default rule allows it. Azure's default inbound rules deny traffic from the Internet.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q59",
@@ -3652,7 +5187,31 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** If an explicit allow rule is being blocked by a deny rule with a higher priority, modifying the allow rule's priority to evaluate before the deny rule would successfully allow the traffic. The explanation states \"Lowering the priority number of an allow rule ensures it is evaluated before any conflicting deny rules. This correctly prioritizes the connection\", which means it DOES meet the goal. The PDF's answer contradicts its own explanation.\n\nOriginal: Lowering the priority number of an allow rule ensures it is evaluated before any conflicting deny rules. This correctly prioritizes the connection from the specified IP address.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q60",
@@ -3693,7 +5252,31 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** The explanation states \"Disassociating a public IP address does not fulfill the requirement\", which would mean the answer is No. However, if VM2 had a Basic SKU public IP, it could not be added to a Standard Load Balancer. Disassociating it removes this blocker, allowing it to be added, so the answer is Yes. The explanation is incorrect and contradicts the correct answer.\n\nOriginal: Disassociating a public IP address does not fulfill the requirement of adding VMs to the backend pool. The public IP SKUs must align with the load balancer SKU.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q63",
@@ -3736,7 +5319,26 @@ const QUESTIONS = [
     ],
     "explanation": "Reverse DNS lookup in Azure for an internal IP address returns the internal FQDN assigned by Azure DNS, which typically ends in `internal.cloudapp.net`.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Public IP address",
+        "DNS name label"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "13.92.10.20",
+          "vm1.westeurope.cloudapp.azure.com"
+        ],
+        [
+          "VM2",
+          "13.92.10.21",
+          "vm2.westeurope.cloudapp.azure.com"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q68",
@@ -3749,7 +5351,31 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** Allowing traffic from the AzureLoadBalancer service tag only permits the load balancer health probes to reach the backend VMs. It does NOT permit actual application traffic from an external client IP (131.107.100.50) to reach the application. Therefore, it does not meet the goal.\n\nOriginal: Allowing traffic from the AzureLoadBalancer source is necessary for health probes but does not permit application traffic from an external IP like 131.107.100.50.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q69",
@@ -3830,7 +5456,31 @@ const QUESTIONS = [
     ],
     "explanation": "A deny rule explicitly blocks traffic. A priority of 64999 gives it low precedence, but since it is a deny rule, it contradicts the goal of allowing traffic.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q81",
@@ -3861,7 +5511,36 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Private DNS zones resolve records linked directly within the zone. VM1 can ping any A record explicitly defined in contoso.com, such as comp2.contoso.com.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Virtual network",
+        "Auto-registration enabled"
+      ],
+      "rows": [
+        [
+          "comp1",
+          "VNET1",
+          "Yes"
+        ],
+        [
+          "comp2",
+          "VNET1",
+          "No"
+        ],
+        [
+          "comp3",
+          "VNET2",
+          "Yes"
+        ],
+        [
+          "comp4",
+          "VNET2",
+          "No"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q84",
@@ -3904,7 +5583,31 @@ const QUESTIONS = [
     ],
     "explanation": "A Standard Load Balancer strictly requires Standard SKU public IP addresses. Basic SKU public IPs cannot be used with a Standard Load Balancer.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "SKU",
+        "IP address assignment"
+      ],
+      "rows": [
+        [
+          "IP1",
+          "Basic",
+          "Dynamic"
+        ],
+        [
+          "IP2",
+          "Basic",
+          "Static"
+        ],
+        [
+          "IP3",
+          "Standard",
+          "Static"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q87",
@@ -4023,7 +5726,41 @@ const QUESTIONS = [
     ],
     "explanation": "Virtual network service endpoints allow you to secure your critical Azure service resources to only your virtual networks. Traffic from your VNet to the Azure storage service always remains on the Microsoft Azure backbone network.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Virtual machine",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "East US",
+          "RG1"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "East US",
+          "RG2"
+        ],
+        [
+          "storage2",
+          "Storage account",
+          "West US",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q101",
@@ -4053,7 +5790,46 @@ const QUESTIONS = [
     ],
     "explanation": "During a test failover in Azure Site Recovery, you can specify a target virtual network and subnet isolated from production. The test VM is connected to this designated test subnet to avoid disrupting ongoing operations.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Resource",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VNet1 (East US)",
+          "East US",
+          "RG1"
+        ],
+        [
+          "Subnet1",
+          "East US",
+          "RG1"
+        ],
+        [
+          "TestVNet (West US)",
+          "West US",
+          "RG2"
+        ],
+        [
+          "TestSubnet1",
+          "West US",
+          "RG2"
+        ],
+        [
+          "RecoveryVNet (West US)",
+          "West US",
+          "RG2"
+        ],
+        [
+          "RecoverySubnetA",
+          "West US",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q103",
@@ -4144,7 +5920,41 @@ const QUESTIONS = [
     ],
     "explanation": "An Azure Firewall must be deployed in the same region as the virtual network it protects. Therefore, it can only be deployed to VNets that are physically located in the corresponding Azure region.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Region",
+        "Resource group",
+        "Contains AzureFirewallSubnet"
+      ],
+      "rows": [
+        [
+          "VNET1",
+          "West US",
+          "RG1",
+          "Yes"
+        ],
+        [
+          "VNET2",
+          "West US",
+          "RG2",
+          "No"
+        ],
+        [
+          "VNET3",
+          "East US",
+          "RG1",
+          "Yes"
+        ],
+        [
+          "VNET4",
+          "West US",
+          "RG1",
+          "No"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q110",
@@ -4159,7 +5969,35 @@ const QUESTIONS = [
     ],
     "explanation": "Connection Monitor requires agents on both the source and destination to accurately track connectivity metrics. Thus, you need a minimum of two monitors to effectively measure end-to-end round-trip connectivity.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual network",
+        "Address space",
+        "Gateway subnet",
+        "VPN gateway"
+      ],
+      "rows": [
+        [
+          "VNET1",
+          "10.1.0.0/16",
+          "10.1.255.0/27",
+          "GW1"
+        ],
+        [
+          "VNET2",
+          "10.2.0.0/16",
+          "None",
+          "None"
+        ],
+        [
+          "VNET3",
+          "10.3.0.0/16",
+          "None",
+          "None"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q112",
@@ -4309,7 +6147,26 @@ const QUESTIONS = [
     ],
     "explanation": "The Basic SKU of Azure Bastion has a limited number of concurrent connections. To support up to 100 concurrent SSH users, you must upgrade to the Standard SKU, which allows host scaling to handle higher capacities.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "SKU",
+        "Subnet prefix"
+      ],
+      "rows": [
+        [
+          "Bastion1",
+          "Basic",
+          "10.1.1.0/26"
+        ],
+        [
+          "VNet1",
+          "N/A",
+          "10.1.0.0/16"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q119",
@@ -4355,7 +6212,31 @@ const QUESTIONS = [
     ],
     "explanation": "An Azure Bastion Basic SKU requires a dedicated Public IP address that uses the Standard SKU and a Static allocation method. Only IP addresses meeting these specific criteria can be associated with the Bastion host.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "SKU",
+        "IP address assignment"
+      ],
+      "rows": [
+        [
+          "IP1",
+          "Basic",
+          "Dynamic"
+        ],
+        [
+          "IP2",
+          "Basic",
+          "Static"
+        ],
+        [
+          "IP3",
+          "Standard",
+          "Static"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q123",
@@ -4400,7 +6281,41 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** In Azure, a network interface (NIC) and the virtual network (VNet) it is attached to must exist in the same subscription and the same region. Therefore, you cannot move a VM and its NIC to a new subscription without also moving the associated virtual network. All four resources (VM, Disk, NIC, and VNet) must be moved together.\n\nOriginal: When moving an Azure VM to a different subscription, you must move the VM resource itself along with its dependent resources, such as its managed disks and network interfaces. The Virtual Network cannot easily be moved if it has other resources attached, and independent storage accounts can remain.",
     "correct": 3,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Resource",
+        "Resource type",
+        "Subscription"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Virtual machine",
+          "Sub1"
+        ],
+        [
+          "Disk1",
+          "Managed disk",
+          "Sub1"
+        ],
+        [
+          "NetInt1",
+          "Network interface",
+          "Sub1"
+        ],
+        [
+          "VNet1",
+          "Virtual network",
+          "Sub1"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "Sub1"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q126",
@@ -4503,7 +6418,31 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** The `AzureLoadBalancer` service tag only represents the IP address of Azure's infrastructure for health probes. Allowing traffic from this tag does not allow client traffic from a specific public IP address (like 131.107.100.50). To meet the goal, you must create a rule that allows inbound traffic from the source IP `131.107.100.50` on TCP port 443.\n\nOriginal: Allowing traffic from the AzureLoadBalancer service tag allows health probes to reach the backend VM. However, to allow client traffic from a specific external IP, an explicit rule allowing that specific source IP over port 443 is typically required.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Connected virtual network",
+        "IP forwarding enabled"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "VNet1",
+          "Yes"
+        ],
+        [
+          "VM2",
+          "VNet2",
+          "No"
+        ],
+        [
+          "VM3",
+          "VNet3",
+          "No"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q133",
@@ -4518,7 +6457,41 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** To ensure that traffic from an Azure VM to an Azure Storage account remains on the Microsoft backbone network, you should configure Virtual Network Service Endpoints (or Private Endpoints) for Azure Storage on the VM's subnet. Application Gateway is a layer 7 load balancer for web traffic and is not used for routing backend traffic to storage securely.\n\nOriginal: Virtual network service endpoints provide secure and direct connectivity to Azure services over an optimized route over the Azure backbone network, ensuring that traffic between the VM and storage account remains entirely on the Microsoft network.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Virtual machine",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "East US",
+          "RG1"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "East US",
+          "RG2"
+        ],
+        [
+          "storage2",
+          "Storage account",
+          "West US",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q136",
@@ -4533,7 +6506,31 @@ const QUESTIONS = [
     ],
     "explanation": "A single Azure Bastion deployment can support RDP and SSH connectivity to VMs across multiple peered virtual networks. Therefore, only one Bastion host is required to provide secure access to all the peered VNets.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual network",
+        "Region",
+        "Number of VMs"
+      ],
+      "rows": [
+        [
+          "VNet1",
+          "East US",
+          "9"
+        ],
+        [
+          "VNet2",
+          "East US",
+          "9"
+        ],
+        [
+          "VNet3",
+          "West US",
+          "9"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q139",
@@ -4593,7 +6590,31 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Bastion provides secure connectivity only to virtual machines located in the same virtual network as the Bastion host or in directly peered virtual networks. VMs in unconnected VNets cannot be accessed.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Connected virtual network",
+        "IP forwarding enabled"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "VNet1",
+          "Yes"
+        ],
+        [
+          "VM2",
+          "VNet2",
+          "No"
+        ],
+        [
+          "VM3",
+          "VNet3",
+          "No"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q145",
@@ -4638,7 +6659,41 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** Virtual network peering seamlessly connects two Azure virtual networks. Traffic between peered virtual networks is kept entirely on the Microsoft backbone network. A private endpoint is used for connecting to Azure PaaS services privately, not for general VNet-to-VNet connectivity.\n\nOriginal: Virtual network peering inherently routes traffic between VNets over the Microsoft backbone network. Alternatively, if connecting to PaaS services, a private endpoint securely routes traffic on the backbone without exposure to the internet.",
     "correct": 1,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual network",
+        "Address space",
+        "Region",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VNet1",
+          "10.1.0.0/16",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNet2",
+          "10.2.0.0/16",
+          "West Europe",
+          "RG2"
+        ],
+        [
+          "VNet3",
+          "10.3.0.0/16",
+          "West US",
+          "RG1"
+        ],
+        [
+          "VNet4",
+          "10.1.0.0/16",
+          "North Europe",
+          "RG3"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q149",
@@ -4653,7 +6708,41 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Virtual Network peering allows you to connect virtual networks across different subscriptions and regions. Unless there are overlapping IP address spaces, VNet1 can be successfully peered with all other available virtual networks.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Address space",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VNet1",
+          "10.1.0.0/16",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNet2",
+          "10.2.0.0/16",
+          "East US",
+          "RG2"
+        ],
+        [
+          "VNet3",
+          "10.3.0.0/16",
+          "West US",
+          "RG1"
+        ],
+        [
+          "VNet4",
+          "10.1.0.0/16",
+          "West Europe",
+          "RG3"
+        ]
+      ]
+    }
   },
   {
     "id": "topic5_q150",
@@ -4684,7 +6773,36 @@ const QUESTIONS = [
     ],
     "explanation": "Azure Backup requires the Recovery Services vault and the virtual machines being backed up to reside in the exact same Azure region. VMs located in different geographic regions cannot be protected by this specific local vault.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US"
+        ],
+        [
+          "VM3",
+          "Ubuntu Server 18.04",
+          "West US"
+        ],
+        [
+          "VM4",
+          "Red Hat Enterprise Linux 7.6",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "topic6_q2",
@@ -4714,7 +6832,41 @@ const QUESTIONS = [
     ],
     "explanation": "Recovery Services vaults are region-specific resources in Azure. If VM3 and VM4 are located in a different Azure region than VM1 and VM2, you must first create a new Recovery Services vault in that region before configuring backups.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "Operating system",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "Windows Server 2016",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VM2",
+          "Windows Server 2019",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VM3",
+          "Windows Server 2016",
+          "West US",
+          "RG2"
+        ],
+        [
+          "VM4",
+          "Windows Server 2019",
+          "West US",
+          "RG2"
+        ]
+      ]
+    }
   },
   {
     "id": "topic6_q5",
@@ -4729,7 +6881,31 @@ const QUESTIONS = [
     ],
     "explanation": "**Fact-Check Note:** The \"Email Azure Resource Manager Role\" notification in Azure Monitor only sends emails to user accounts directly assigned the role. Service Principals (like Principal1) do not have email addresses configured to receive these alerts and are excluded. Furthermore, the role assignment does not expand Azure AD groups, so only User1 will receive the notification.\n\nOriginal: When sending email notifications to Azure Resource Manager roles, Azure Monitor only emails individual user accounts that are directly assigned to the role. Service principals (Principal1) and groups (unless specifically mail-enabled and configured) do not receive these emails, meaning only User1 will be notified.",
     "correct": 2,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Email address"
+      ],
+      "rows": [
+        [
+          "User1",
+          "User",
+          "user1@adatum.com"
+        ],
+        [
+          "Principal1",
+          "Service principal",
+          "None"
+        ],
+        [
+          "Group1",
+          "Security group",
+          "group1@adatum.com"
+        ]
+      ]
+    }
   },
   {
     "id": "topic6_q8",
@@ -4922,7 +7098,41 @@ const QUESTIONS = [
     ],
     "explanation": "When backing up an Azure App Service, the target storage account must be an Azure Storage account. Using a storage account in the same region (storage1) ensures minimal latency and avoids outbound data transfer costs, minimizing overall expenses.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Performance tier",
+        "Location",
+        "Kind"
+      ],
+      "rows": [
+        [
+          "storage1",
+          "Standard",
+          "West US",
+          "StorageV2 (general purpose v2)"
+        ],
+        [
+          "storage2",
+          "Standard",
+          "East US",
+          "StorageV2 (general purpose v2)"
+        ],
+        [
+          "storage3",
+          "Premium",
+          "West US",
+          "BlockBlobStorage"
+        ],
+        [
+          "storage4",
+          "Standard",
+          "West US",
+          "Storage (general purpose v1)"
+        ]
+      ]
+    }
   },
   {
     "id": "topic6_q37",
@@ -4952,7 +7162,36 @@ const QUESTIONS = [
     ],
     "explanation": "Service endpoints provide secure and direct connectivity to Azure services over an optimized route on the Azure backbone network. You would need to add a service endpoint for each required Azure service (e.g., Azure Storage) accessed by the virtual machines in the VNet.",
     "correct": 0,
-    "type": "pdf"
+    "type": "pdf",
+    "table": {
+      "headers": [
+        "Name",
+        "Resource type",
+        "Subnet"
+      ],
+      "rows": [
+        [
+          "NSG1",
+          "Network security group",
+          "Subnet1"
+        ],
+        [
+          "NSG2",
+          "Network security group",
+          "Subnet2"
+        ],
+        [
+          "ASG1",
+          "Application security group",
+          "None"
+        ],
+        [
+          "ASG2",
+          "Application security group",
+          "None"
+        ]
+      ]
+    }
   },
   {
     "id": "topic6_q39",
@@ -5567,7 +7806,21 @@ const QUESTIONS = [
     ],
     "explanation": "To create an inbound NAT rule, you need to specify a frontend IP address and a frontend port for the load balancer to receive the traffic, and a backend IP address and a backend port for the load balancer to forward the traffic to1. According to the first table, LB1 has only one frontend IP address, which is 40.121.183.105. However, this frontend IP address is already used by the existing inbound NAT rule named rule1, which forwards port 80 to VM1 on port 802. Therefore, you cannot use the same frontend IP address and port for another inbound NAT rule. To solve this problem, you need to create a new frontend IP address for LB1 before you can create the new inbound NAT rules. You can do this by using the Azure portal, PowerShell, or CLI3. After you create a new frontend IP address, you can use it to create the new inbound NAT rules that meet your requirements.",
     "correct": 0,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Frontend IP configuration",
+        "Backend pool",
+        "Health probe"
+      ],
+      "rows": [
+        [
+          "LoadBalancerFrontEnd",
+          "BackendPool1",
+          "Probe1 (TCP 80)"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q23",
@@ -5582,7 +7835,41 @@ const QUESTIONS = [
     ],
     "explanation": "https://learn.microsoft.com/en-us/azure/storage/common/redundancy- migration?tabs=portal",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Performance tier",
+        "Redundancy",
+        "Account kind"
+      ],
+      "rows": [
+        [
+          "storage1",
+          "Standard",
+          "Geo-redundant storage (GRS)",
+          "StorageV2 (general purpose v2)"
+        ],
+        [
+          "storage2",
+          "Premium",
+          "Locally-redundant storage (LRS)",
+          "BlockBlobStorage"
+        ],
+        [
+          "storage3",
+          "Standard",
+          "Read-access geo-redundant storage (RA-GRS)",
+          "Storage (general purpose v1)"
+        ],
+        [
+          "storage4",
+          "Premium",
+          "Locally-redundant storage (LRS)",
+          "FileStorage"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q28",
@@ -5684,7 +7971,31 @@ const QUESTIONS = [
     ],
     "explanation": "No detailed explanation was provided.",
     "correct": 3,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Task",
+        "Description"
+      ],
+      "rows": [
+        [
+          "Task1",
+          "Upload files to an Azure file share"
+        ],
+        [
+          "Task2",
+          "Configure lifecycle management rules for blob storage"
+        ],
+        [
+          "Task3",
+          "Attach to an individual storage account by using SAS"
+        ],
+        [
+          "Task4",
+          "View blob inventory reports"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q41",
@@ -5699,7 +8010,27 @@ const QUESTIONS = [
     ],
     "explanation": "The exhibit shows that you have an autoscale rule configured for your App Service app named App1. The rule is based on the memory percentage metric, which measures the average amount of memory used by all the instances of your app. The rule has the following settings: ? Scale out action: Add 1 instance when the memory percentage is greater than or equal to 80% for a duration of 10 minutes. ? Scale in action: Remove 1 instance when the memory percentage is less than or equal to 60% for a duration of 10 minutes. ? Instance limits: The minimum number of instances is 2, and the maximum number of instances is 5. According to the question, during a 30-minute period, App1 uses 60% of the available memory. This means that the scale in action is triggered, but not the scale out action. Therefore, one instance is removed from App1 every 10 minutes, until the minimum number of instances is reached. Since App1 initially has two running instances, after the first 10 minutes, one instance is removed and App1 has one instance left. However, since the minimum number of instances is set to 2, another instance is added back to App1 to meet the minimum requirement. Therefore, after the first 10 minutes, App1 still has two instances. After the second 10 minutes, the same process repeats. One instance is removed due to the scale in action, and another instance is added back due to the minimum requirement. Therefore, after the second 10 minutes, App1 still has two instances. After the third 10 minutes, there is no change in the number of instances, because App1 already has the minimum number of instances. Therefore, after the third 10 minutes, App1 still has two instances. Therefore, during the 30-minute period, App1 never has more than two instances running at any given time. However, since one instance is removed and added back every 10 minutes, there are four different instances that are used by App1 during the period. Hence, the maximum number of instances for App1 during the period is four.",
     "correct": 2,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Setting",
+        "Value"
+      ],
+      "rows": [
+        [
+          "Minimum instances",
+          "2"
+        ],
+        [
+          "Maximum instances",
+          "5"
+        ],
+        [
+          "Default instances",
+          "3"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q49",
@@ -5727,7 +8058,29 @@ const QUESTIONS = [
     ],
     "explanation": "No detailed explanation was provided.",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "IP address",
+        "Subnet",
+        "NSG"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "10.0.1.4",
+          "Subnet1",
+          "NSG1"
+        ],
+        [
+          "VM2",
+          "10.0.1.5",
+          "Subnet1",
+          "NSG1"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q54",
@@ -5757,7 +8110,41 @@ const QUESTIONS = [
     ],
     "explanation": "No detailed explanation was provided.",
     "correct": 2,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Address space",
+        "Location",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "VNet1",
+          "10.1.0.0/16",
+          "East US",
+          "RG1"
+        ],
+        [
+          "VNet2",
+          "10.2.0.0/16",
+          "East US",
+          "RG2"
+        ],
+        [
+          "VNet3",
+          "10.3.0.0/16",
+          "West US",
+          "RG1"
+        ],
+        [
+          "VNet4",
+          "10.1.0.0/16",
+          "West Europe",
+          "RG3"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q57",
@@ -5900,7 +8287,41 @@ const QUESTIONS = [
     ],
     "explanation": "No detailed explanation was provided.",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Location",
+        "Virtual network",
+        "Availability zone"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "East US",
+          "VNet1",
+          "Zone 1"
+        ],
+        [
+          "VM2",
+          "East US",
+          "VNet1",
+          "Zone 2"
+        ],
+        [
+          "VM3",
+          "East US",
+          "VNet1",
+          "Zone 3"
+        ],
+        [
+          "VM4",
+          "East US",
+          "VNet2",
+          "None"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q86",
@@ -5914,7 +8335,26 @@ const QUESTIONS = [
     ],
     "explanation": "When you swap deployment slots, Azure swaps the Virtual IP addresses of the source and destination slots, thereby swapping the URLs of the slots. We can easily revert the deployment by swapping back. Deployment slots are live apps with their own host names. App content and configurations elements can be swapped between two deployment slots, including the production slot. Deploying your application to a non-production slot has the following benefits: 1. You can validate app changes in a staging deployment slot before swapping it with the production slot. 2. Deploying an app to a slot first and swapping it into production makes sure that all instances of the slot are warmed up before being swapped into production. Reference: https://docs.microsoft.com/en-us/azure/app- service/deploy- staging-slots",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Status"
+      ],
+      "rows": [
+        [
+          "webapp1",
+          "Production slot",
+          "Running"
+        ],
+        [
+          "webapp1-test",
+          "Deployment slot",
+          "Running"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q87",
@@ -5969,7 +8409,31 @@ const QUESTIONS = [
     ],
     "explanation": "https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-network-mapping The subnet of the target VM is selected based on the name of the subnet of the source VM. - If a subnet with the same name as the source VM subnet is available in the target network, that subnet is set for the target VM. - If a subnet with the same name doesn't exist in the target network, the first subnet in the alphabetical order is set as the target subnet.",
     "correct": 0,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RSV1",
+          "Recovery Services vault",
+          "East US"
+        ],
+        [
+          "RSV2",
+          "Recovery Services vault",
+          "West US"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "East US"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q99",
@@ -6027,7 +8491,31 @@ const QUESTIONS = [
     ],
     "explanation": "https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses#at- a-glance Azure Firewall - Dynamic IPv4: No - Static IPv4: Yes Dynamic IPv6: No - - Static IPv6: No https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/configure-public-ip- firewall Azure Firewall is a cloud-based network security service that protects your Azure Virtual Network resources. Azure Firewall requires at least one public static IP address to be configured. This IP or set of IPs are used as the external connection point to the firewall. Azure Firewall supports standard SKU public IP addresses. Basic SKU public IP address and public IP prefixes aren't supported.",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "SKU",
+        "IP address assignment"
+      ],
+      "rows": [
+        [
+          "IP1",
+          "Basic",
+          "Dynamic"
+        ],
+        [
+          "IP2",
+          "Basic",
+          "Static"
+        ],
+        [
+          "IP3",
+          "Standard",
+          "Static"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q114",
@@ -6070,7 +8558,41 @@ const QUESTIONS = [
     ],
     "explanation": "No detailed explanation was provided.",
     "correct": 0,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Location",
+        "Virtual network",
+        "Availability zone"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "East US",
+          "VNet1",
+          "Zone 1"
+        ],
+        [
+          "VM2",
+          "East US",
+          "VNet1",
+          "Zone 2"
+        ],
+        [
+          "VM3",
+          "East US",
+          "VNet1",
+          "Zone 3"
+        ],
+        [
+          "VM4",
+          "East US",
+          "VNet2",
+          "None"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q127",
@@ -6100,7 +8622,47 @@ const QUESTIONS = [
     ],
     "explanation": "Outbound rule \"DenyWebSites\" is setup correctly to block outbound internet traffic over port 80. In the screenshot it states, \"Associated with: 0 subnets, 0 NIC's\", so you need to associate the NSG to Subnet1.You can associate or dissociate a network security group from a NIC or Subnet. Reference: https://docs.microsoft.com/en-us/azure/virtual- network/manage-network-security-group",
     "correct": 0,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Rule name",
+        "Priority",
+        "Port",
+        "Protocol",
+        "Source",
+        "Destination",
+        "Action"
+      ],
+      "rows": [
+        [
+          "Port_80",
+          "100",
+          "80",
+          "TCP",
+          "Any",
+          "Any",
+          "Allow"
+        ],
+        [
+          "Port_3389",
+          "110",
+          "3389",
+          "TCP",
+          "Any",
+          "Any",
+          "Allow"
+        ],
+        [
+          "DenyWebSites",
+          "120",
+          "80,443",
+          "TCP",
+          "Any",
+          "Internet",
+          "Deny"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q132",
@@ -6127,7 +8689,31 @@ const QUESTIONS = [
     ],
     "explanation": "To create a new virtual machine named VM2 which is connected to VNET1 in RG1, you need to remove Microsoft.Network/virtualNetworks from the policy. This is because the Not allowed resource types Azure policy denies the deployment of the specified resource types in the scope of the assignment. In this case, the policy is assigned to RG1 and uses the parameters Microsoft.Network/virtualNetworks and Microsoft.Compute/virtualMachines. This means that you cannot create or update any virtual networks or virtual machines in RG1. Therefore, to create VM2 and connect it to VNET1, you need to remove Microsoft.Network/virtualNetworks from the policy parameters. This will allow you to create or update virtual networks in RG1, but still prevent you from creating or updating virtual machines. Alternatively, you can also exclude VNET1 from the policy assignment scope, but this will affect the compliance of the policy for the entire virtual network. References: ? Not allowed resource types (Deny) ? Create and manage policies to enforce compliance",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "N/A"
+        ],
+        [
+          "VNET1",
+          "Virtual network",
+          "RG1"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q134",
@@ -6188,7 +8774,41 @@ const QUESTIONS = [
     ],
     "explanation": "* 1. View template from deployment history Go to the resource group for your new resource group. Notice that the portal shows the result of the last deployment. Select this link. * 2. You see a history of deployments for the group. In your case, the portal probably lists only one deployment. Select this deployment. The portal displays a summary of the deployment. The summary includes the status of the deployment and its operations and the values that you provided for parameters. To see the template that you used for the deployment, select View template. References: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-export-template",
     "correct": 0,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Type",
+        "Resource group",
+        "Location"
+      ],
+      "rows": [
+        [
+          "RG1",
+          "Resource group",
+          "N/A",
+          "East US"
+        ],
+        [
+          "RG2",
+          "Resource group",
+          "N/A",
+          "West US"
+        ],
+        [
+          "VM1",
+          "Virtual machine",
+          "RG1",
+          "East US"
+        ],
+        [
+          "storage1",
+          "Storage account",
+          "RG2",
+          "West US"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q143",
@@ -6305,7 +8925,31 @@ const QUESTIONS = [
     ],
     "explanation": "If you define more than one action on the same blob, lifecycle management applies the least expensive action to the blob. For example, action delete is cheaper than action tierToArchive. Action tierToArchive is cheaper than action tierToCool. https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management- overview",
     "correct": 2,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Rule name",
+        "Rule action",
+        "Condition"
+      ],
+      "rows": [
+        [
+          "Rule1",
+          "Move to cool storage",
+          "Days after creation > 30"
+        ],
+        [
+          "Rule2",
+          "Move to archive storage",
+          "Days after creation > 90"
+        ],
+        [
+          "Rule3",
+          "Delete blob",
+          "Days after creation > 365"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q180",
@@ -6320,7 +8964,31 @@ const QUESTIONS = [
     ],
     "explanation": "? According to the Microsoft documentation, when you assign a license to a group, all members of that group are automatically assigned the license. However, if a user is already assigned the same license directly or through another group, the license is not duplicated. ? In your scenario, you assigned the Microsoft Entra ID Premium P2 license to Group1 and User4. This means that all members of Group1, which are User1 and User2, will also get the license. User4 will get the license directly. ? User3 will not get the license because they are not a member of Group1 or assigned the license directly. ? Therefore, the users who are assigned the Microsoft Entra ID Premium P2 license are User1, User2, and User4 only.",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Group name",
+        "Group type",
+        "Membership type"
+      ],
+      "rows": [
+        [
+          "Group1",
+          "Security",
+          "Assigned"
+        ],
+        [
+          "Group2",
+          "Security",
+          "Dynamic User"
+        ],
+        [
+          "Group3",
+          "Microsoft 365",
+          "Assigned"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q188",
@@ -6348,7 +9016,29 @@ const QUESTIONS = [
     ],
     "explanation": "No detailed explanation was provided.",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Virtual machine",
+        "IP address",
+        "Subnet",
+        "NSG"
+      ],
+      "rows": [
+        [
+          "VM1",
+          "10.0.1.4",
+          "Subnet1",
+          "NSG1"
+        ],
+        [
+          "VM2",
+          "10.0.1.5",
+          "Subnet1",
+          "NSG1"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q215",
@@ -6363,7 +9053,41 @@ const QUESTIONS = [
     ],
     "explanation": "https://learn.microsoft.com/en-us/azure/storage/common/redundancy- migration?tabs=portal",
     "correct": 1,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Performance tier",
+        "Redundancy",
+        "Account kind"
+      ],
+      "rows": [
+        [
+          "storage1",
+          "Standard",
+          "Geo-redundant storage (GRS)",
+          "StorageV2 (general purpose v2)"
+        ],
+        [
+          "storage2",
+          "Premium",
+          "Locally-redundant storage (LRS)",
+          "BlockBlobStorage"
+        ],
+        [
+          "storage3",
+          "Standard",
+          "Read-access geo-redundant storage (RA-GRS)",
+          "Storage (general purpose v1)"
+        ],
+        [
+          "storage4",
+          "Premium",
+          "Locally-redundant storage (LRS)",
+          "FileStorage"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q216",
@@ -6377,7 +9101,27 @@ const QUESTIONS = [
     ],
     "explanation": "Note: A network security group (NSG) contains a list of security rules that allow or deny network traffic to resources connected to Azure Virtual Networks (VNet). NSGs can be associated to subnets, individual VMs (classic), or individual network interfaces (NIC) attached to VMs (Resource Manager). Each network security group also contains default security rules. References: https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#default-security- rules",
     "correct": 2,
-    "type": "pdf_expansion"
+    "type": "pdf_expansion",
+    "table": {
+      "headers": [
+        "Name",
+        "Connected virtual machines"
+      ],
+      "rows": [
+        [
+          "Subnet1",
+          "VM1, VM2"
+        ],
+        [
+          "Subnet2",
+          "VM3, VM4"
+        ],
+        [
+          "Subnet3",
+          "VM5, VM6"
+        ]
+      ]
+    }
   },
   {
     "id": "new_pdf_q218",

@@ -185,11 +185,48 @@
     showToast(`📂 Opened attempt (${score.percent}%) from ${attempt.date}!`);
   }
 
+  function recomputeSeenAndStatsFromHistory() {
+    state.seenQuestions = new Set();
+    state.qstats = {};
+
+    state.history.forEach(attempt => {
+      if (Array.isArray(attempt.questions)) {
+        attempt.questions.forEach((q, i) => {
+          state.seenQuestions.add(q.id);
+          const isCorrect = attempt.answers && attempt.answers[i] === q.correct;
+          const conf = attempt.confidences && attempt.confidences[i];
+          const mistake = attempt.mistakes && attempt.mistakes[i];
+
+          if (!state.qstats[q.id]) {
+            state.qstats[q.id] = { correct: 0, wrong: 0, mistakeReasons: [] };
+          }
+          const stat = state.qstats[q.id];
+          if (isCorrect) stat.correct++;
+          else stat.wrong++;
+
+          if (conf) stat.lastConfidence = conf;
+          if (mistake) {
+            if (!stat.mistakeReasons) stat.mistakeReasons = [];
+            stat.mistakeReasons.push(mistake);
+          }
+        });
+      }
+    });
+  }
+
   function deleteHistoryAttempt(attemptId) {
     state.history = state.history.filter(h => String(h.id) !== String(attemptId));
+    recomputeSeenAndStatsFromHistory();
     saveHistory();
     renderDashboard();
-    showToast('Attempt removed from history');
+    showToast('🗑️ Attempt removed & questions seen pool updated!');
+  }
+
+  function resetSeenPool() {
+    state.seenQuestions.clear();
+    saveHistory();
+    renderDashboard();
+    showToast('🔄 Questions seen pool has been reset to 0!');
   }
 
   function getFilteredQuestions() {
@@ -219,6 +256,9 @@
     } else if (state.mode === 'exam') {
       limit = 50;
     }
+
+    // Safety: limit can never exceed available filtered questions
+    limit = Math.min(limit, filtered.length);
 
     let unseen = filtered.filter(q => !state.seenQuestions.has(q.id));
     
@@ -545,6 +585,9 @@
     }
 
     state.questions.forEach((q, i) => {
+      if (!domainScores[q.domain]) {
+        domainScores[q.domain] = { correct: 0, total: 0 };
+      }
       domainScores[q.domain].total++;
       if (state.answers[i] === q.correct) {
         correct++;
@@ -631,8 +674,8 @@
     const bars = $('domain-bars');
     bars.innerHTML = '';
     for (const [key, val] of Object.entries(DOMAINS)) {
-      const ds = score.domainScores[key];
-      if (ds.total === 0) continue;
+      const ds = score.domainScores && score.domainScores[key];
+      if (!ds || ds.total === 0) continue;
       const pct = Math.round((ds.correct / ds.total) * 100);
       const dp = pct >= 70;
       bars.innerHTML += `
@@ -657,8 +700,8 @@
 
     const domainsActive = [];
     for (const [key, val] of Object.entries(DOMAINS)) {
-      const ds = score.domainScores[key];
-      if (ds.total === 0) continue;
+      const ds = score.domainScores && score.domainScores[key];
+      if (!ds || ds.total === 0) continue;
       const pct = Math.round((ds.correct / ds.total) * 100);
       domainsActive.push({ key, name: val.name, short: val.short, correct: ds.correct, total: ds.total, pct });
     }
@@ -1129,6 +1172,27 @@
 
     // Review back
     $('back-results-btn').addEventListener('click', () => showScreen('results'));
+
+    // Reset seen pool button / card
+    const handleResetSeen = (e) => {
+      if (e) e.stopPropagation();
+      const currentSeen = state.seenQuestions.size;
+      const isConfirmed = confirm(
+        `⚠️ Reset Questions Seen Pool?\n\n` +
+        `You currently have ${currentSeen} question(s) marked as seen.\n\n` +
+        `Click "OK" to reset the pool back to 0 so all 430 questions become immediately available in new practice and exam sessions.\n\n` +
+        `Click "Cancel" to keep your current progress.`
+      );
+      if (isConfirmed) {
+        resetSeenPool();
+      }
+    };
+
+    const resetSeenBtn = $('reset-seen-btn');
+    if (resetSeenBtn) resetSeenBtn.addEventListener('click', handleResetSeen);
+
+    const statSeenCard = $('stat-seen-card');
+    if (statSeenCard) statSeenCard.addEventListener('click', handleResetSeen);
   }
 
   // ── Go ──
