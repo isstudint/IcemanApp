@@ -17,8 +17,12 @@
     totalTime: 6000,
     history: [],
     seenQuestions: new Set(),
+    qstats: {},          // global tracking per question id
     currentScore: null,
-    toastTimer: null
+    toastTimer: null,
+    confidences: [],     // 'high'|'medium'|'low'|null
+    mistakes: [],        // mistake reasons per question
+    showMistakePrompt: false,
   };
 
   // ── DOM shorthand ──
@@ -49,11 +53,18 @@
     } catch {
       state.seenQuestions = new Set();
     }
+    try {
+      const qs = JSON.parse(localStorage.getItem('az104_qstats') || '{}');
+      state.qstats = qs;
+    } catch {
+      state.qstats = {};
+    }
   }
 
   function saveHistory() {
     localStorage.setItem('az104_history', JSON.stringify(state.history.slice(-20)));
     localStorage.setItem('az104_seen', JSON.stringify(Array.from(state.seenQuestions)));
+    localStorage.setItem('az104_qstats', JSON.stringify(state.qstats));
   }
 
   // ── Screen switching ──
@@ -75,16 +86,32 @@
     }
 
     // Update stats
-    const filtered = getFilteredQuestions();
-    $('stat-total').textContent = filtered.length;
+    $('stat-total').textContent = QUESTIONS.length;
+    $('stat-seen').textContent = state.seenQuestions.size;
 
-    // Last score
-    if (state.history.length > 0) {
-      const last = state.history[state.history.length - 1];
-      $('stat-last').textContent = last.percent + '%';
-    } else {
-      $('stat-last').textContent = '--';
+    let totalAns = 0;
+    let correctAns = 0;
+    let mastered = 0;
+    let needsReview = 0;
+    let uncertain = 0;
+
+    for (const [qid, s] of Object.entries(state.qstats)) {
+      totalAns += (s.correct || 0) + (s.wrong || 0);
+      correctAns += (s.correct || 0);
+      
+      const isMostlyCorrect = (s.correct || 0) >= (s.wrong || 0) && (s.correct || 0) > 0;
+      const isMostlyWrong = (s.wrong || 0) > (s.correct || 0);
+      
+      if (s.lastConfidence === 'high' && isMostlyCorrect) mastered++;
+      else if (s.lastConfidence === 'high' && isMostlyWrong) needsReview++;
+      else if (s.lastConfidence === 'low' && isMostlyCorrect) uncertain++;
+      else if (isMostlyWrong || (s.mistakeReasons && s.mistakeReasons.length > 0)) needsReview++;
     }
+
+    $('stat-mastery').textContent = totalAns > 0 ? Math.round((correctAns / totalAns) * 100) + '%' : '0%';
+    $('stat-mastered').textContent = mastered;
+    $('stat-review').textContent = needsReview;
+    $('stat-uncertain').textContent = uncertain;
 
     renderHistory();
   }
@@ -201,6 +228,8 @@
     state.questions = filtered;
     state.index = 0;
     state.answers = new Array(state.questions.length).fill(null);
+    state.confidences = new Array(state.questions.length).fill(null);
+    state.mistakes = new Array(state.questions.length).fill(null);
     state.flagged = new Set();
     state.timeLeft = state.totalTime;
 
@@ -268,41 +297,76 @@
     }
 
     const choicesEl = $('choices');
-    const answered = state.answers[state.index] !== null;
     const isPractice = state.mode === 'practice' || state.mode === 'notes';
+    const isExam = state.mode === 'exam';
+    const hasAnswer = state.answers[state.index] !== null;
+    const hasConf = state.confidences[state.index] !== null;
+    const evaluated = isExam ? hasAnswer : (hasAnswer && hasConf);
 
     choicesEl.classList.remove('hidden');
-    
-    // Always hide flashcard elements (we will remove them from HTML later)
 
     choicesEl.innerHTML = q.choices.map((c, i) => {
       let cls = 'choice-btn';
-      if (answered && state.answers[state.index] === i) cls += ' selected';
-      if (isPractice && answered) {
+      if (hasAnswer && state.answers[state.index] === i) cls += ' selected';
+      if (isPractice && evaluated) {
         cls += ' disabled';
         if (i === q.correct) cls += ' correct';
         else if (state.answers[state.index] === i && i !== q.correct) cls += ' wrong';
       }
-      if (!isPractice && state.answers[state.index] === i) cls += ' selected';
       return `<button class="${cls}" data-index="${i}">${c}</button>`;
     }).join('');
 
+    // Always hide the old containers (they stay in HTML but we don't use them inline anymore)
+    $('confidence-container').classList.add('hidden');
+
+    // Mistake Classification: show ONLY if user already evaluated AND clicked Next on wrong AND hasn't classified yet
+    const mistakeContainer = $('mistake-container');
+    if (state.showMistakePrompt && state.mistakes[state.index] === null) {
+      mistakeContainer.classList.remove('hidden');
+      mistakeContainer.innerHTML = `
+        <p class="section-title" style="margin-top:20px; font-size:0.95rem; color:var(--red);">Why did you get this wrong? <span style="font-weight:400;color:var(--text-muted);">(optional — click Skip to continue)</span></p>
+        <div class="mistake-reasons">
+          <button class="mistake-btn" data-reason="Knowledge gap">Knowledge gap</button>
+          <button class="mistake-btn" data-reason="Misunderstood concept">Misunderstood concept</button>
+          <button class="mistake-btn" data-reason="Misread question">Misread question</button>
+          <button class="mistake-btn" data-reason="Confused Azure services">Confused Azure services</button>
+          <button class="mistake-btn" data-reason="Config/detail mistake">Config/detail mistake</button>
+          <button class="mistake-btn" data-reason="Guess">Guess</button>
+          <button class="mistake-btn" data-reason="Careless mistake">Careless mistake</button>
+          <button class="mistake-btn mistake-skip" data-reason="skip">Skip →</button>
+        </div>
+      `;
+    } else {
+      mistakeContainer.classList.add('hidden');
+    }
+
     // Feedback
     const fb = $('feedback');
-    if (isPractice && answered) {
+    if (isPractice && evaluated) {
       const isCorrect = state.answers[state.index] === q.correct;
       fb.className = `feedback ${isCorrect ? 'correct' : 'wrong'}`;
-      
-      // Handle missing explanations or display them
       const explanationText = q.explanation ? q.explanation : (isCorrect ? 'Good job!' : 'Incorrect.');
       fb.innerHTML = `<strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</strong><br/>${explanationText}`;
     } else {
       fb.className = 'feedback hidden';
     }
 
-    // Nav buttons
+    // Nav buttons — merge confidence into Next
     $('prev-btn').disabled = state.index === 0;
-    $('next-btn').textContent = state.index === state.questions.length - 1 ? 'Finish' : 'Next →';
+    const navRight = $('nav-right');
+    const isLast = state.index === state.questions.length - 1;
+    const finishLabel = isLast ? 'Finish' : 'Next →';
+
+    if (isPractice && hasAnswer && !hasConf && !state.showMistakePrompt) {
+      // Show confidence-aware next buttons
+      navRight.innerHTML = `
+        <button class="btn-conf-next conf-high" data-conf="high">Sure ✓</button>
+        <button class="btn-conf-next conf-med" data-conf="medium">Maybe ~</button>
+        <button class="btn-conf-next conf-low" data-conf="low">Guess ?</button>
+      `;
+    } else {
+      navRight.innerHTML = `<button id="next-btn" class="btn-secondary">${finishLabel}</button>`;
+    }
 
     // Flag button
     $('flag-btn').className = state.flagged.has(state.index) ? 'btn-flag flagged' : 'btn-flag';
@@ -312,24 +376,55 @@
 
   // ── Select Answer ──
   function selectAnswer(choiceIndex) {
-    const q = state.questions[state.index];
-    const alreadyAnswered = state.answers[state.index] !== null;
-
-    // In practice mode, lock after first answer
-    if (state.mode === 'practice' && alreadyAnswered) return;
+    const isPractice = state.mode === 'practice' || state.mode === 'notes';
+    const evaluated = isPractice ? (state.answers[state.index] !== null && state.confidences[state.index] !== null) : false;
+    if (evaluated) return;
 
     state.answers[state.index] = choiceIndex;
+    state.showMistakePrompt = false;
     renderQuestion();
   }
 
+  // Confidence is now captured via the Next buttons
+  function selectConfidenceAndEvaluate(level) {
+    if (state.confidences[state.index] !== null) return;
+    state.confidences[state.index] = level;
+    state.showMistakePrompt = false;
+    renderQuestion(); // re-render to show feedback
+  }
+
+  function selectMistake(reason) {
+    state.mistakes[state.index] = (reason === 'skip') ? null : reason;
+    state.showMistakePrompt = false;
+    advanceToNext();
+  }
+
   // ── Navigation ──
-  function goNext() {
+  function advanceToNext() {
     if (state.index < state.questions.length - 1) {
       state.index++;
+      state.showMistakePrompt = false;
       renderQuestion();
-    } else if (state.mode === 'practice') {
+    } else {
       finishQuiz();
     }
+  }
+
+  function goNext() {
+    const isPractice = state.mode === 'practice' || state.mode === 'notes';
+    const q = state.questions[state.index];
+    const hasConf = state.confidences[state.index] !== null;
+    const isWrong = state.answers[state.index] !== null && state.answers[state.index] !== q.correct;
+
+    // In practice mode, if we just evaluated a wrong answer and haven't shown mistake prompt yet, show it
+    if (isPractice && hasConf && isWrong && !state.showMistakePrompt && state.mistakes[state.index] === null) {
+      state.showMistakePrompt = true;
+      renderQuestion();
+      return;
+    }
+
+    state.showMistakePrompt = false;
+    advanceToNext();
   }
 
   function goPrev() {
@@ -454,11 +549,33 @@
         explanation: q.explanation || ''
       })),
       answers: [...state.answers],
+      confidences: [...state.confidences],
+      mistakes: [...state.mistakes],
       flagged: Array.from(state.flagged)
     };
     
-    // Add to seen questions
-    state.questions.forEach(q => state.seenQuestions.add(q.id));
+    // Add to seen questions and update global qstats
+    state.questions.forEach((q, i) => {
+      state.seenQuestions.add(q.id);
+      
+      const isCorrect = state.answers[i] === q.correct;
+      const conf = state.confidences[i];
+      const mistake = state.mistakes[i];
+      
+      if (!state.qstats[q.id]) {
+        state.qstats[q.id] = { correct: 0, wrong: 0, mistakeReasons: [] };
+      }
+      
+      const stat = state.qstats[q.id];
+      if (isCorrect) stat.correct++;
+      else stat.wrong++;
+      
+      if (conf) stat.lastConfidence = conf;
+      if (mistake) {
+        if (!stat.mistakeReasons) stat.mistakeReasons = [];
+        stat.mistakeReasons.push(mistake);
+      }
+    });
 
     state.history.push(attempt);
     saveHistory();
@@ -869,11 +986,33 @@
       selectAnswer(parseInt(btn.dataset.index));
     });
 
-    // Reveal Flashcard Answer
+    // Confidence Tracker (no longer used inline, kept for safety)
+    // Confidence is now handled via nav-right buttons
 
-    // Nav
+    // Mistake Classification (delegated since innerHTML is dynamic)
+    const mistakeContainer = $('mistake-container');
+    if (mistakeContainer) {
+      mistakeContainer.addEventListener('click', e => {
+        const btn = e.target.closest('.mistake-btn');
+        if (!btn) return;
+        selectMistake(btn.dataset.reason);
+      });
+    }
+
+    // Nav — delegated since nav-right innerHTML changes dynamically
     $('prev-btn').addEventListener('click', goPrev);
-    $('next-btn').addEventListener('click', goNext);
+    const navRight = $('nav-right');
+    navRight.addEventListener('click', e => {
+      const confBtn = e.target.closest('.btn-conf-next');
+      if (confBtn) {
+        selectConfidenceAndEvaluate(confBtn.dataset.conf);
+        return;
+      }
+      const nextBtn = e.target.closest('#next-btn');
+      if (nextBtn) {
+        goNext();
+      }
+    });
 
     // Flag
     $('flag-btn').addEventListener('click', () => {
