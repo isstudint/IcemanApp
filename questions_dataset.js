@@ -4194,7 +4194,16 @@ const QUESTIONS = [
   {
     "id": "topic5_q114",
     "number": "114",
-    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to manage outbound trafic from VNET1 by using Firewall1.\nWhat should you do first?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to manage outbound traffic from VNET1 by using Firewall1.\nWhat should you do first?",
+    "table": {
+      "headers": ["Name", "Type"],
+      "rows": [
+        ["ASP1", "App Service plan"],
+        ["App1", "Web app"],
+        ["Firewall1", "Azure Firewall"],
+        ["VNET1", "Virtual network"]
+      ]
+    },
     "domain": "networking",
     "choices": [
       "A. Configure the Hybrid Connection Manager.",
@@ -4210,6 +4219,14 @@ const QUESTIONS = [
     "id": "topic5_q115",
     "number": "115",
     "question": "You have an Azure subscription that contains the resources shown in the following table.\nAll the resources connect to a virtual network named VNet1.\nYou plan to deploy an Azure Bastion host named Bastion1 to VNet1.\nWhich resources can be protected by using Bastion1?",
+    "table": {
+      "headers": ["Name", "Type"],
+      "rows": [
+        ["VM1", "Virtual machine"],
+        ["App1", "Web app"],
+        ["contoso.com", "Custom domain"]
+      ]
+    },
     "domain": "networking",
     "choices": [
       "A. VM1 only",

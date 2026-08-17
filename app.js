@@ -15,11 +15,14 @@
     timer: null,
     timeLeft: 6000,      // 100 min in seconds
     totalTime: 6000,
-    history: []
+    history: [],
+    currentScore: null,
+    toastTimer: null
   };
 
   // ── DOM shorthand ──
   const $ = id => document.getElementById(id);
+  const escapeHtml = str => String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
 
   // ── Init ──
   function init() {
@@ -30,10 +33,19 @@
 
   // ── History (LocalStorage) ──
   function loadHistory() {
-    try { state.history = JSON.parse(localStorage.getItem('az104_history') || '[]'); } catch { state.history = []; }
+    try {
+      const raw = JSON.parse(localStorage.getItem('az104_history') || '[]');
+      state.history = raw.map((h, idx) => {
+        if (!h.id) h.id = 'attempt_' + (Date.now() - (raw.length - idx) * 1000);
+        return h;
+      });
+    } catch {
+      state.history = [];
+    }
   }
+
   function saveHistory() {
-    localStorage.setItem('az104_history', JSON.stringify(state.history.slice(-20))); // ponytail: keep last 20
+    localStorage.setItem('az104_history', JSON.stringify(state.history.slice(-20)));
   }
 
   // ── Screen switching ──
@@ -62,6 +74,8 @@
     if (state.history.length > 0) {
       const last = state.history[state.history.length - 1];
       $('stat-last').textContent = last.percent + '%';
+    } else {
+      $('stat-last').textContent = '--';
     }
 
     renderHistory();
@@ -69,20 +83,69 @@
 
   function renderHistory() {
     const list = $('history-list');
+    if (!list) return;
     if (state.history.length === 0) {
       list.innerHTML = '<p class="no-history">No attempts yet. Start your first quiz!</p>';
       return;
     }
     list.innerHTML = state.history.slice().reverse().slice(0, 10).map(h => {
       const pass = h.percent >= 70;
-      return `<div class="history-item">
-        <div>
+      const modeLabel = h.mode === 'exam' ? '⏱️ Exam' : (h.mode === 'notes' ? '📚 Notes' : '📝 Practice');
+      return `<div class="history-item" data-id="${h.id}">
+        <div class="history-item-left">
           <span class="history-score ${pass ? 'pass' : 'fail'}">${h.percent}%</span>
-          <span class="history-meta"> · ${h.correct}/${h.total} · ${h.mode}</span>
+          <div>
+            <div style="font-weight:600; color:var(--text); font-size:0.875rem;">${h.domain || 'All Modules'} · ${modeLabel}</div>
+            <div class="history-meta">${h.correct}/${h.total} correct · ${h.date}</div>
+          </div>
         </div>
-        <span class="history-meta">${h.date}</span>
+        <div class="history-item-right">
+          <span class="history-review-btn">🔍 Review →</span>
+          <button class="history-delete-btn" data-delete-id="${h.id}" title="Delete attempt">🗑️</button>
+        </div>
       </div>`;
     }).join('');
+  }
+
+  function loadHistoryAttempt(attemptId) {
+    const attempt = state.history.find(h => String(h.id) === String(attemptId));
+    if (!attempt) return;
+
+    if (Array.isArray(attempt.questions) && attempt.questions.length > 0) {
+      state.questions = attempt.questions;
+      state.answers = attempt.answers || [];
+      state.flagged = new Set(attempt.flagged || []);
+      state.mode = attempt.mode || 'exam';
+      state.domain = 'all';
+    } else {
+      // Reconstruct for older attempts
+      let pool = QUESTIONS.filter(q => q.type !== 'obsidian_mock');
+      if (attempt.domain && attempt.domain !== 'All' && attempt.domain !== 'All Modules') {
+        const dKey = Object.keys(DOMAINS).find(k => DOMAINS[k].short.toLowerCase() === String(attempt.domain).toLowerCase());
+        if (dKey) pool = pool.filter(q => q.domain === dKey);
+      }
+      const count = Math.min(attempt.total || 30, pool.length);
+      state.questions = pool.slice(0, count);
+      state.answers = state.questions.map((q, i) => i < (attempt.correct || 0) ? q.correct : ((q.correct + 1) % q.choices.length));
+      state.flagged = new Set();
+      state.mode = attempt.mode || 'practice';
+      state.domain = 'all';
+    }
+
+    const score = attempt.score || calculateScore();
+    if (!score.domainScores) {
+      score.domainScores = calculateScore().domainScores;
+    }
+
+    showResults(score);
+    showToast(`📂 Opened attempt (${score.percent}%) from ${attempt.date}!`);
+  }
+
+  function deleteHistoryAttempt(attemptId) {
+    state.history = state.history.filter(h => String(h.id) !== String(attemptId));
+    saveHistory();
+    renderDashboard();
+    showToast('Attempt removed from history');
   }
 
   function getFilteredQuestions() {
@@ -165,6 +228,26 @@
       } else {
         imgContainer.innerHTML = '';
         imgContainer.classList.add('hidden');
+      }
+    }
+
+    const tableContainer = $('q-table-container');
+    if (tableContainer) {
+      if (q.table && Array.isArray(q.table.headers) && Array.isArray(q.table.rows)) {
+        let tableHtml = '<table class="q-table"><thead><tr>';
+        q.table.headers.forEach(h => { tableHtml += `<th>${escapeHtml(h)}</th>`; });
+        tableHtml += '</tr></thead><tbody>';
+        q.table.rows.forEach(r => {
+          tableHtml += '<tr>';
+          r.forEach(cell => { tableHtml += `<td>${escapeHtml(cell)}</td>`; });
+          tableHtml += '</tr>';
+        });
+        tableHtml += '</tbody></table>';
+        tableContainer.innerHTML = tableHtml;
+        tableContainer.classList.remove('hidden');
+      } else {
+        tableContainer.innerHTML = '';
+        tableContainer.classList.add('hidden');
       }
     }
 
@@ -334,19 +417,36 @@
   }
 
   function saveAttempt(score) {
-    state.history.push({
-      date: new Date().toLocaleDateString(),
+    const attempt = {
+      id: 'attempt_' + Date.now(),
+      date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       mode: state.mode,
-      domain: state.domain === 'all' ? 'All' : DOMAINS[state.domain].short,
+      domain: state.domain === 'all' ? 'All Modules' : DOMAINS[state.domain].short,
+      score: score,
       correct: score.correct,
       total: score.total,
-      percent: score.percent
-    });
+      percent: score.percent,
+      questions: state.questions.map(q => ({
+        id: q.id,
+        number: q.number,
+        domain: q.domain,
+        question: q.question,
+        table: q.table || null,
+        image: q.image || null,
+        choices: q.choices,
+        correct: q.correct,
+        explanation: q.explanation || ''
+      })),
+      answers: [...state.answers],
+      flagged: Array.from(state.flagged)
+    };
+    state.history.push(attempt);
     saveHistory();
   }
 
   // ── Results ──
   function showResults(score) {
+    state.currentScore = score;
     showScreen('results');
     const pass = score.percent >= 70;
 
@@ -379,6 +479,270 @@
           </div>
         </div>`;
     }
+
+    renderDiagnosticCard(score);
+  }
+
+  // ── Diagnostic Assessment ──
+  function renderDiagnosticCard(score) {
+    const content = $('diagnostic-content');
+    if (!content) return;
+
+    const domainsActive = [];
+    for (const [key, val] of Object.entries(DOMAINS)) {
+      const ds = score.domainScores[key];
+      if (ds.total === 0) continue;
+      const pct = Math.round((ds.correct / ds.total) * 100);
+      domainsActive.push({ key, name: val.name, short: val.short, correct: ds.correct, total: ds.total, pct });
+    }
+
+    if (domainsActive.length === 0) {
+      content.innerHTML = '<p>No domain metrics available.</p>';
+      return;
+    }
+
+    domainsActive.sort((a, b) => b.pct - a.pct);
+    const strongest = domainsActive[0];
+    const weakest = domainsActive[domainsActive.length - 1];
+    const missedTotal = score.total - score.correct;
+
+    let badgeHtml = '<div class="diagnostic-badge-row">';
+    domainsActive.forEach(d => {
+      let statusClass = 'neutral';
+      let statusIcon = '➖';
+      if (d.pct >= 75) { statusClass = 'strong'; statusIcon = '✅'; }
+      else if (d.pct < 70) { statusClass = 'weak'; statusIcon = '⚠️'; }
+      badgeHtml += `<span class="diag-badge ${statusClass}">${statusIcon} ${d.short}: ${d.correct}/${d.total} (${d.pct}%)</span>`;
+    });
+    badgeHtml += '</div>';
+
+    let summaryText = '';
+    if (score.percent >= 70) {
+      summaryText = `Great job! You achieved a passing score of <strong>${score.percent}%</strong>. Your strongest area is <strong>${strongest.name}</strong> (${strongest.pct}%). `;
+      if (weakest.pct < 70) {
+        summaryText += `However, focus some targeted revision on <strong>${weakest.name}</strong> (${weakest.pct}%) to solidify your exam readiness.`;
+      } else {
+        summaryText += `All evaluated domains meet or exceed the 70% passing threshold!`;
+      }
+    } else {
+      summaryText = `You scored <strong>${score.percent}%</strong> (missed ${missedTotal} of ${score.total} questions). Your most critical area for improvement is <strong>${weakest.name}</strong> (${weakest.pct}%). Review the detailed explanations below to master the core concepts.`;
+    }
+
+    content.innerHTML = `
+      <p>${summaryText}</p>
+      ${badgeHtml}
+    `;
+  }
+
+  // ── Toast notification ──
+  function showToast(message) {
+    const toast = $('toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(state.toastTimer);
+    state.toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2800);
+  }
+
+  // ── Build Export Data ──
+  function getAssessmentExportData() {
+    const score = state.currentScore || calculateScore();
+    const dateStr = new Date().toISOString();
+    const localDateStr = new Date().toLocaleString();
+
+    const domainMetrics = {};
+    for (const [key, val] of Object.entries(DOMAINS)) {
+      const ds = score.domainScores[key];
+      if (ds.total === 0) continue;
+      const pct = Math.round((ds.correct / ds.total) * 100);
+      domainMetrics[key] = {
+        name: val.name,
+        short: val.short,
+        correct: ds.correct,
+        total: ds.total,
+        percentage: pct,
+        status: pct >= 75 ? 'Mastered' : pct >= 70 ? 'Proficient' : 'Needs Review'
+      };
+    }
+
+    const questionDetails = state.questions.map((q, i) => {
+      const userAns = state.answers[i];
+      const isCorrect = userAns === q.correct;
+      return {
+        id: q.id,
+        number: q.number || String(i + 1),
+        domain: q.domain,
+        domainName: DOMAINS[q.domain] ? DOMAINS[q.domain].name : q.domain,
+        question: q.question,
+        table: q.table || null,
+        choices: q.choices,
+        userAnswerIndex: userAns,
+        userAnswerText: userAns !== null ? q.choices[userAns] : null,
+        correctAnswerIndex: q.correct,
+        correctAnswerText: q.choices[q.correct],
+        isCorrect: isCorrect,
+        isFlagged: state.flagged.has(i),
+        explanation: q.explanation || ''
+      };
+    });
+
+    const missedQuestions = questionDetails.filter(q => !q.isCorrect);
+
+    // Formatted AI Prompt for LLM Assessment
+    const aiPrompt = [
+      `# AZ-104 Exam Simulation Assessment Report`,
+      `**Exam:** Microsoft Azure Administrator (AZ-104)`,
+      `**Overall Score:** ${score.correct} / ${score.total} (${score.percent}%) · Status: ${score.percent >= 70 ? 'PASSED' : 'FAILED'}`,
+      `**Date:** ${localDateStr}`,
+      ``,
+      `## Domain Mastery Breakdown:`,
+      ...Object.values(domainMetrics).map(d => `- **${d.name}**: ${d.correct}/${d.total} (${d.percentage}%) [${d.status}]`),
+      ``,
+      `## Instruction for AI Assessor:`,
+      `1. Analyze my performance across the domains above and identify my top conceptual weaknesses based on the questions I answered incorrectly.`,
+      `2. For each missed question listed below, clearly explain why my chosen answer was incorrect, the exact Azure architecture rule/principle involved, and a high-yield memory tip for the real exam.`,
+      `3. Recommend a targeted study plan focused on my weakest areas.`,
+      ``,
+      `## Detailed Missed Questions (${missedQuestions.length} Total):`,
+      ...missedQuestions.map((q, idx) => [
+        `### Missed Question ${idx + 1} (${q.domainName})`,
+        `**Question:** ${q.question}`,
+        q.table ? `**Resource Table:**\n\`\`\`json\n${JSON.stringify(q.table, null, 2)}\n\`\`\`` : '',
+        `**Choices:**`,
+        ...q.choices.map(c => `  - ${c}`),
+        `**My Selected Answer:** ${q.userAnswerText || 'Not Answered'} ❌`,
+        `**Correct Answer:** ${q.correctAnswerText} ✅`,
+        `**Explanation:** ${q.explanation}`,
+        `---`
+      ].filter(Boolean).join('\n'))
+    ].join('\n');
+
+    return {
+      version: '1.0',
+      exportedAt: dateStr,
+      localDate: localDateStr,
+      assessmentSummary: {
+        examTitle: 'Microsoft Azure Administrator (AZ-104)',
+        mode: state.mode,
+        domainFilter: state.domain,
+        totalQuestions: score.total,
+        correctCount: score.correct,
+        incorrectCount: score.total - score.correct,
+        percentage: score.percent,
+        passed: score.percent >= 70
+      },
+      domainBreakdown: domainMetrics,
+      aiAssessmentPrompt: aiPrompt,
+      questions: questionDetails
+    };
+  }
+
+  // ── Download Helper ──
+  function downloadFile(content, fileName, contentType) {
+    const a = document.createElement('a');
+    const file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(a.href);
+    }, 100);
+  }
+
+  // ── Export JSON ──
+  function exportAssessmentJSON() {
+    const data = getAssessmentExportData();
+    const safeDate = new Date().toISOString().slice(0, 10);
+    const fileName = `AZ104_Assessment_${safeDate}_${data.assessmentSummary.percentage}pct.json`;
+    downloadFile(JSON.stringify(data, null, 2), fileName, 'application/json');
+    showToast('📥 JSON Assessment downloaded!');
+  }
+
+  // ── Export Markdown Report ──
+  function exportAssessmentMarkdown() {
+    const data = getAssessmentExportData();
+    const safeDate = new Date().toISOString().slice(0, 10);
+    const fileName = `AZ104_Report_${safeDate}_${data.assessmentSummary.percentage}pct.md`;
+    downloadFile(data.aiAssessmentPrompt, fileName, 'text/markdown');
+    showToast('📄 Markdown Report downloaded!');
+  }
+
+  // ── Copy AI Prompt ──
+  function copyAIPromptToClipboard() {
+    const data = getAssessmentExportData();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(data.aiAssessmentPrompt).then(() => {
+        showToast('📋 AI Study Prompt copied to clipboard!');
+      }).catch(() => {
+        fallbackCopyText(data.aiAssessmentPrompt);
+      });
+    } else {
+      fallbackCopyText(data.aiAssessmentPrompt);
+    }
+  }
+
+  function fallbackCopyText(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      showToast('📋 AI Study Prompt copied to clipboard!');
+    } catch {
+      showToast('❌ Unable to copy automatically');
+    }
+    document.body.removeChild(textarea);
+  }
+
+  // ── Import Assessment JSON ──
+  function importAssessmentJSON(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (!data || !Array.isArray(data.questions) || data.questions.length === 0) {
+          alert('Invalid assessment file: missing questions array.');
+          return;
+        }
+
+        // Reconstruct questions and answers
+        state.questions = data.questions.map(q => ({
+          id: q.id,
+          number: q.number,
+          domain: q.domain,
+          question: q.question,
+          table: q.table || null,
+          image: q.image || null,
+          choices: q.choices,
+          correct: q.correctAnswerIndex !== undefined ? q.correctAnswerIndex : q.correct,
+          explanation: q.explanation || ''
+        }));
+
+        state.answers = data.questions.map(q => q.userAnswerIndex !== undefined ? q.userAnswerIndex : null);
+        state.flagged = new Set();
+        data.questions.forEach((q, i) => {
+          if (q.isFlagged) state.flagged.add(i);
+        });
+
+        state.mode = data.assessmentSummary ? (data.assessmentSummary.mode || 'exam') : 'exam';
+        state.domain = data.assessmentSummary ? (data.assessmentSummary.domainFilter || 'all') : 'all';
+
+        const score = calculateScore();
+        showResults(score);
+        showToast(`📂 Imported assessment (${score.percent}%) from ${data.localDate || 'file'}!`);
+      } catch (err) {
+        alert('Error parsing JSON file: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
   }
 
   // ── Review ──
@@ -391,10 +755,25 @@
       const userText = userAns !== null ? q.choices[userAns] : 'Not answered';
       const correctText = q.choices[q.correct];
       const imgHtml = q.image ? `<div class="q-image-container"><img src="${q.image}" alt="Diagram" class="q-image"></div>` : '';
+      
+      let tableHtml = '';
+      if (q.table && Array.isArray(q.table.headers) && Array.isArray(q.table.rows)) {
+        tableHtml = '<table class="q-table" style="margin:10px 0;"><thead><tr>';
+        q.table.headers.forEach(h => { tableHtml += `<th>${escapeHtml(h)}</th>`; });
+        tableHtml += '</tr></thead><tbody>';
+        q.table.rows.forEach(r => {
+          tableHtml += '<tr>';
+          r.forEach(cell => { tableHtml += `<td>${escapeHtml(cell)}</td>`; });
+          tableHtml += '</tr>';
+        });
+        tableHtml += '</tbody></table>';
+      }
+
       return `
         <div class="review-item ${isCorrect ? 'correct' : 'wrong'}">
-          <p class="review-q-num">Question ${i + 1} · ${DOMAINS[q.domain].short}</p>
+          <p class="review-q-num">Question ${i + 1} · ${DOMAINS[q.domain] ? DOMAINS[q.domain].short : q.domain}</p>
           <p class="review-q-text">${q.question}</p>
+          ${tableHtml}
           ${imgHtml}
           <p class="review-answer ${isCorrect ? 'match' : 'yours'}">
             <span class="label">Your answer: </span><span class="value">${userText}</span>
@@ -510,6 +889,54 @@
       showScreen('dashboard');
       renderDashboard();
     });
+
+    // Export & AI Prompt listeners
+    const exportJsonBtn = $('export-json-btn');
+    if (exportJsonBtn) exportJsonBtn.addEventListener('click', exportAssessmentJSON);
+
+    const exportJsonReviewBtn = $('export-json-review-btn');
+    if (exportJsonReviewBtn) exportJsonReviewBtn.addEventListener('click', exportAssessmentJSON);
+
+    const exportMdBtn = $('export-md-btn');
+    if (exportMdBtn) exportMdBtn.addEventListener('click', exportAssessmentMarkdown);
+
+    const copyPromptBtn = $('copy-prompt-btn');
+    if (copyPromptBtn) copyPromptBtn.addEventListener('click', copyAIPromptToClipboard);
+
+    // Import assessment listeners
+    const importBtnDash = $('import-btn-dash');
+    const importFileInput = $('import-file-input');
+    if (importBtnDash && importFileInput) {
+      importBtnDash.addEventListener('click', () => {
+        importFileInput.value = '';
+        importFileInput.click();
+      });
+      importFileInput.addEventListener('change', e => {
+        if (e.target.files && e.target.files[0]) {
+          importAssessmentJSON(e.target.files[0]);
+        }
+      });
+    }
+
+    // History item click (review or delete)
+    const historyList = $('history-list');
+    if (historyList) {
+      historyList.addEventListener('click', e => {
+        const delBtn = e.target.closest('.history-delete-btn');
+        if (delBtn) {
+          e.stopPropagation();
+          const delId = delBtn.dataset.deleteId;
+          if (delId) deleteHistoryAttempt(delId);
+          return;
+        }
+        const item = e.target.closest('.history-item');
+        if (!item) return;
+        const attemptId = item.dataset.id;
+        if (attemptId) {
+          loadHistoryAttempt(attemptId);
+        }
+      });
+    }
 
     // Review back
     $('back-results-btn').addEventListener('click', () => showScreen('results'));

@@ -65,7 +65,11 @@
     <button id="start-btn" class="btn-primary">Start Quiz</button>
 
     <div class="history-section">
-      <p class="section-title">Recent Attempts</p>
+      <div class="history-section-header">
+        <p class="section-title" style="margin-bottom:0">Recent Attempts</p>
+        <button id="import-btn-dash" class="btn-secondary btn-sm">📂 Import Assessment (.json)</button>
+        <input type="file" id="import-file-input" accept=".json" style="display:none">
+      </div>
       <div id="history-list"></div>
     </div>
   </div>
@@ -88,6 +92,7 @@
 
     <div class="question-card">
       <p id="q-text" class="question-text"></p>
+      <div id="q-table-container" class="q-table-container hidden"></div>
       <div id="q-image-container" class="q-image-container hidden"></div>
       
       <!-- Standard Choices Grid -->
@@ -119,12 +124,29 @@
     </div>
 
     <div class="domain-breakdown">
-      <h3>Domain Breakdown</h3>
+      <h3>Domain Mastery Breakdown</h3>
       <div id="domain-bars"></div>
     </div>
 
+    <!-- AI Diagnostic Assessment Card -->
+    <div id="ai-diagnostic-card" class="diagnostic-card">
+      <div class="diagnostic-header">
+        <span class="diagnostic-icon">🧠</span>
+        <div>
+          <h4>AI Performance Assessment</h4>
+          <p id="diagnostic-subtitle" class="diagnostic-subtitle">Diagnostic analysis of your strengths & gaps</p>
+        </div>
+      </div>
+      <div id="diagnostic-content" class="diagnostic-content"></div>
+      <div class="diagnostic-actions">
+        <button id="copy-prompt-btn" class="btn-accent btn-sm">📋 Copy Full AI Study Prompt</button>
+      </div>
+    </div>
+
     <div class="result-actions">
-      <button id="review-btn" class="btn-secondary">Review Answers</button>
+      <button id="review-btn" class="btn-secondary">🔍 Review Answers</button>
+      <button id="export-json-btn" class="btn-secondary">📥 Export JSON</button>
+      <button id="export-md-btn" class="btn-secondary">📄 Export Markdown</button>
       <button id="retry-btn" class="btn-primary">Try Again</button>
       <button id="home-btn" class="btn-secondary">Dashboard</button>
     </div>
@@ -134,10 +156,16 @@
   <div id="review" class="screen">
     <div class="review-header">
       <h2>Review Answers</h2>
-      <button id="back-results-btn" class="btn-secondary">← Back</button>
+      <div class="review-actions-top">
+        <button id="export-json-review-btn" class="btn-secondary btn-sm">📥 Export JSON</button>
+        <button id="back-results-btn" class="btn-secondary">← Back to Results</button>
+      </div>
     </div>
     <div id="review-list"></div>
   </div>
+
+  <!-- ═══ Toast Notification ═══ -->
+  <div id="toast" class="toast"></div>
 
   <!-- ═══ Questions Data ═══ -->
   <script src="questions_dataset.js"></script>
