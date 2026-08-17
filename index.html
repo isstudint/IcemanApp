@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AZ-104 Review Center</title>
+  <meta name="description" content="Practice exam for Microsoft Azure Administrator AZ-104 certification">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ═══ Dashboard ═══ -->
+  <div id="dashboard" class="screen active">
+    <header class="app-header">
+      <h1>AZ-104 Review Center</h1>
+      <p class="subtitle">Microsoft Azure Administrator</p>
+    </header>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-total">30</span>
+        <span class="stat-label">PDF Questions</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">1</span>
+        <span class="stat-label">Module (Identity)</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-last">--</span>
+        <span class="stat-label">Last Score</span>
+      </div>
+    </div>
+
+    <p class="section-title">Select Mode</p>
+    <div class="mode-cards">
+      <button class="mode-card selected" data-mode="practice" id="mode-practice">
+        <span class="mode-icon">📝</span>
+        <span class="mode-title">Practice</span>
+        <span class="mode-desc">Instant feedback per question</span>
+      </button>
+      <button class="mode-card" data-mode="exam" id="mode-exam">
+        <span class="mode-icon">⏱️</span>
+        <span class="mode-title">Exam Simulation</span>
+        <span class="mode-desc">Timed, results at end</span>
+      </button>
+      <button class="mode-card" data-mode="notes" id="mode-notes">
+        <span class="mode-icon">📚</span>
+        <span class="mode-title">Notes Review</span>
+        <span class="mode-desc">Flashcard-style review from Obsidian</span>
+      </button>
+    </div>
+
+    <p class="section-title">Question Count (Practice Mode)</p>
+    <div class="count-pills" id="count-pills">
+      <button class="domain-pill" data-count="10">10 (Quick Sprint)</button>
+      <button class="domain-pill" data-count="20">20</button>
+      <button class="domain-pill selected" data-count="40">40</button>
+      <button class="domain-pill" data-count="all">All</button>
+      <input type="number" id="custom-count" class="domain-pill custom-input" placeholder="Custom" min="1" max="999" style="width: 80px; padding: 8px; font-size: 14px;">
+    </div>
+
+    <p class="section-title">Module Filter</p>
+    <div class="domain-pills" id="domain-pills"></div>
+
+    <button id="start-btn" class="btn-primary">Start Quiz</button>
+
+    <div class="history-section">
+      <p class="section-title">Recent Attempts</p>
+      <div id="history-list"></div>
+    </div>
+  </div>
+
+  <!-- ═══ Quiz ═══ -->
+  <div id="quiz" class="screen">
+    <div class="quiz-header">
+      <div class="quiz-header-left">
+        <button id="quit-btn" class="btn-secondary btn-quit">← Menu</button>
+        <div class="quiz-progress">
+          <strong id="q-counter">1 / 50</strong>
+          <span id="q-domain" class="domain-badge"></span>
+        </div>
+      </div>
+      <div id="timer-container" class="timer-container hidden">
+        <span id="timer-display" class="timer-display">100:00</span>
+        <div class="timer-bar"><div id="timer-fill" class="timer-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <p id="q-text" class="question-text"></p>
+      <div id="q-image-container" class="q-image-container hidden"></div>
+      
+      <!-- Standard Choices Grid -->
+      <div id="choices" class="choices"></div>
+
+      <div id="feedback" class="feedback hidden"></div>
+    </div>
+
+    <div class="quiz-nav">
+      <button id="prev-btn" class="btn-secondary" disabled>← Prev</button>
+      <button id="flag-btn" class="btn-flag">🚩 Flag</button>
+      <button id="next-btn" class="btn-secondary">Next →</button>
+    </div>
+    <div class="submit-row">
+      <button id="submit-btn" class="btn-primary" style="display:none">Submit Exam</button>
+    </div>
+
+    <div id="question-grid" class="question-grid"></div>
+  </div>
+
+  <!-- ═══ Results ═══ -->
+  <div id="results" class="screen">
+    <div class="results-header">
+      <div id="score-circle" class="score-circle">
+        <span id="score-percent" class="score-percent">0%</span>
+      </div>
+      <h2 id="result-status" class="result-status"></h2>
+      <p id="result-summary" class="result-summary"></p>
+    </div>
+
+    <div class="domain-breakdown">
+      <h3>Domain Breakdown</h3>
+      <div id="domain-bars"></div>
+    </div>
+
+    <div class="result-actions">
+      <button id="review-btn" class="btn-secondary">Review Answers</button>
+      <button id="retry-btn" class="btn-primary">Try Again</button>
+      <button id="home-btn" class="btn-secondary">Dashboard</button>
+    </div>
+  </div>
+
+  <!-- ═══ Review ═══ -->
+  <div id="review" class="screen">
+    <div class="review-header">
+      <h2>Review Answers</h2>
+      <button id="back-results-btn" class="btn-secondary">← Back</button>
+    </div>
+    <div id="review-list"></div>
+  </div>
+
+  <!-- ═══ Questions Data ═══ -->
+  <script src="questions_dataset.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
