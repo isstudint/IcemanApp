@@ -2089,7 +2089,8 @@ const QUESTIONS = [
       "B. file shares only",
       "C. tables only",
       "D. queues only",
-      "E. containers and queues only\nF. files shares and tables only"
+      "E. containers and queues only",
+      "F. files shares and tables only"
     ],
     "explanation": "Azure Attribute-Based Access Control (ABAC) allows the addition of conditions to role assignments for finer-grained access control. Currently, this capability is only supported for Azure Storage blob containers and queues, not file shares or tables.",
     "correct": 4,
@@ -2135,7 +2136,8 @@ const QUESTIONS = [
       "B. containers only",
       "C. file shares and containers only",
       "D. containers and tables only",
-      "E. file shares, containers, and tables only\nF. file shares, containers, tables, and queues"
+      "E. file shares, containers, and tables only",
+      "F. file shares, containers, tables, and queues"
     ],
     "explanation": "In Azure Storage, an encryption scope is applied exclusively at the container level or the individual blob level. It cannot be used to encrypt file shares, tables, or queues directly.",
     "correct": 1,
@@ -2556,7 +2558,8 @@ const QUESTIONS = [
       "B. Add an Azure Network Watcher connection monitor.",
       "C. Register the MicrosoftLogAnalytics provider.",
       "D. Create an Azure Storage account.",
-      "E. Register the Microsoft.Insights resource provider.\nF. Enable Azure Network Watcher flow logs."
+      "E. Register the Microsoft.Insights resource provider.",
+      "F. Enable Azure Network Watcher flow logs."
     ],
     "explanation": "Azure Network Watcher is a regional service required for network-level monitoring and diagnostics. Enabling it in the East US region is the foundational step needed before you can configure features like NSG flow logs to track connection attempts.",
     "correct": 0,
@@ -3287,10 +3290,11 @@ const QUESTIONS = [
       "C. VNet3 and VNet4 only",
       "D. VNet2, VNet3, and VNet4"
     ],
-    "explanation": "Virtual network peering requires non-overlapping IP address spaces. VNet1 (`10.1.0.0/16`) and VNet4 (`10.1.0.0/16`) have identical overlapping address spaces, so peering between VNet1 and VNet4 cannot be established. VNet2 (`10.2.0.0/16`, regional) and VNet3 (`10.3.0.0/16`, global) have non-overlapping address spaces, so VNet1 can peer with VNet2 and VNet3.",
-    "correct": 0,
+    "explanation": "According to the table exhibit:\n- VNet1 address space is `10.11.0.0/16`\n- VNet2 address space is `10.11.0.0/17` (a subnet of 10.11.0.0/16, which overlaps with VNet1)\n- VNet3 address space is `10.10.0.0/22` (no overlap with VNet1)\n- VNet4 address space is `192.168.16.0/22` (no overlap with VNet1)\n\nVirtual network peering cannot be established between VNets with overlapping IP address ranges. Because VNet2 overlaps with VNet1, VNet1 can only peer with **VNet3 and VNet4 only**.",
+    "correct": 2,
     "type": "pdf",
-    "image": "images/topic5_q7_0.png"
+    "image": "images/topic5_q7_0.png",
+    "table": null
   },
   {
     "id": "topic5_q8",
@@ -3302,7 +3306,8 @@ const QUESTIONS = [
       "B. Deploy a standard load balancer",
       "C. Add two load balancing rules that have HA Ports and Floating IP enabled",
       "D. Add two load balancing rules that have HA Ports enabled and Floating IP disabled",
-      "E. Add a frontend IP configuration, a backend pool, and a health probe\nF. Add a frontend IP configuration, two backend pools, and a health probe"
+      "E. Add a frontend IP configuration, a backend pool, and a health probe",
+      "F. Add a frontend IP configuration, two backend pools, and a health probe"
     ],
     "explanation": "Standard Azure Load Balancers support High Availability (HA) ports, which load balance traffic across all ports and protocols. This is required for active-active NVA setups to ensure failover and symmetric routing.",
     "correct": 1,
@@ -3801,7 +3806,8 @@ const QUESTIONS = [
     "explanation": "**No, this does not meet the goal.**\n\nRule 100 (`Allow_131.107.100.50`) is already evaluated before rule 200 (`BlockAllOther443`). Modifying the priority of rule 100 does not fix the underlying issue: Load Balancer health probes from `AzureLoadBalancer` are being blocked by rule 200 (priority 200) before reaching default rule 65001. Because the health probes fail, the Load Balancer marks the VM as unhealthy and does not route traffic to it.",
     "correct": 1,
     "type": "pdf",
-    "image": "images/topic5_q59_0.png"
+    "image": "images/topic5_q59_0.png",
+    "table": null
   },
   {
     "id": "topic5_q60",
@@ -3903,7 +3909,8 @@ const QUESTIONS = [
     "explanation": "**Yes, this meets the goal.**\n\n**Step-by-Step Analysis:**\n1. **Root Cause:** Rule 200 (`BlockAllOther443`) blocks all incoming traffic on port 443. The default rule `AllowAzureLoadBalancerInBound` has a priority of 65001 (evaluated after rule 200). As a result, the Load Balancer's health probes on port 443 are blocked, causing the Load Balancer to mark backend VM2 as unhealthy and stop routing client connections.\n2. **Solution Impact:** Adding an inbound rule allowing traffic from the `AzureLoadBalancer` service tag at priority 150 is evaluated *before* rule 200 (since 150 < 200). This permits the Load Balancer health probes.\n3. **Result:** Once health probes pass, the Load Balancer marks the VM as healthy, and incoming client connections from `131.107.100.50` over TCP 443 are permitted by rule 100 (`Allow_131.107.100.50`).",
     "correct": 0,
     "type": "pdf",
-    "image": "images/topic5_q68_0.png"
+    "image": "images/topic5_q59_0.png",
+    "table": null
   },
   {
     "id": "topic5_q69",
@@ -3915,7 +3922,8 @@ const QUESTIONS = [
       "B. Reset GW1",
       "C. Create a route-based virtual network gateway",
       "D. Add a connection to GW1",
-      "E. Delete GW1\nF. Add a public IP address space to VNet1"
+      "E. Delete GW1",
+      "F. Add a public IP address space to VNet1"
     ],
     "explanation": "The JSON format restricts the answer to a single integer for a multi-select question, making the provided answer incomplete.",
     "correct": 2,
@@ -4632,7 +4640,8 @@ const QUESTIONS = [
     "explanation": "**Yes, this meets the goal.**\n\n**Step-by-Step Analysis:**\n1. **Root Cause:** Rule 200 (`BlockAllOther443`) blocks all incoming traffic on port 443. The default rule `AllowAzureLoadBalancerInBound` has a priority of 65001 (evaluated after rule 200). As a result, the Load Balancer's health probes on port 443 are blocked, causing the Load Balancer to mark backend VM2 as unhealthy and stop routing client connections.\n2. **Solution Impact:** Adding an inbound rule allowing traffic from the `AzureLoadBalancer` service tag at priority 150 is evaluated *before* rule 200 (since 150 < 200). This permits the Load Balancer health probes.\n3. **Result:** Once health probes pass, the Load Balancer marks the VM as healthy, and incoming client connections from `131.107.100.50` over TCP 443 are permitted by rule 100 (`Allow_131.107.100.50`).",
     "correct": 0,
     "type": "pdf",
-    "image": "images/topic5_q132_0.png"
+    "image": "images/topic5_q59_0.png",
+    "table": null
   },
   {
     "id": "topic5_q133",
@@ -5588,14 +5597,13 @@ const QUESTIONS = [
     "question": "You are planning the move of App1 to Azure. You create a network security group (NSG). ) You need to recommend a solution to provide users with access to App1. What should you recommend?",
     "domain": "networking",
     "choices": [
-      "A. Create an outgoing security rule for port 443 from the Interne",
-      "B. Associate the NSG to all the subnets.",
-      "C. Create an incoming security rule for port 443 from the Interne",
-      "D. Associate the NSG to all the subnets.",
-      "E. Create an incoming security rule for port 443 from the Interne F. Associate the NSG to the subnet that contains the web servers. G. Create an outgoing security rule for port 443 from the Interne H. Associate the NSG to the subnet that contains the web servers."
+      "A. Create an incoming security rule for port 443 from the Internet. Associate the NSG to the subnet that contains the web servers.",
+      "B. Create an outgoing security rule for port 443 from the Internet. Associate the NSG to the subnet that contains the web servers.",
+      "C. Create an incoming security rule for port 443 from the Internet. Associate the NSG to all the subnets.",
+      "D. Create an outgoing security rule for port 443 from the Internet. Associate the NSG to all the subnets."
     ],
-    "explanation": "As App1 is public-facing we need an incoming security rule, related to the access of the web servers. Scenario: You have a public-facing application named App1. App1 is comprised of the following three tiers: a SQL database, a web front end, and a processing middle tier. Each tier is comprised of five virtual machines. Users access the web front end by using HTTPS only.",
-    "correct": 2,
+    "explanation": "App1 is a public-facing web application where users connect to the web front end via HTTPS (port 443). To allow traffic, you need an **incoming security rule** for port 443 from the Internet, and associate the NSG to the subnet that contains the web servers (following least privilege / proper tier segmentation).",
+    "correct": 0,
     "type": "pdf_expansion"
   },
   {
@@ -5940,28 +5948,8 @@ const QUESTIONS = [
     "explanation": "**No, this does not meet the goal.**\n\nRule 100 (`Allow_131.107.100.50`) is already evaluated before rule 200 (`BlockAllOther443`). Modifying the priority of rule 100 does not fix the underlying issue: Load Balancer health probes from `AzureLoadBalancer` are being blocked by rule 200 (priority 200) before reaching default rule 65001. Because the health probes fail, the Load Balancer marks the VM as unhealthy and does not route traffic to it.",
     "correct": 1,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Virtual machine",
-        "IP address",
-        "Subnet",
-        "NSG"
-      ],
-      "rows": [
-        [
-          "VM1",
-          "10.0.1.4",
-          "Subnet1",
-          "NSG1"
-        ],
-        [
-          "VM2",
-          "10.0.1.5",
-          "Subnet1",
-          "NSG1"
-        ]
-      ]
-    }
+    "table": null,
+    "image": "images/topic5_q59_0.png"
   },
   {
     "id": "new_pdf_q54",
@@ -6904,29 +6892,8 @@ const QUESTIONS = [
     "explanation": "Creating a Deny rule for 131.107.100.50 at priority 64999 does not resolve the issue. Rule 100 already permits 131.107.100.50, but Rule 200 blocks Load Balancer health probes, causing the VM to be marked unhealthy. Adding another deny rule at priority 64999 does not unblock health probes.",
     "correct": 1,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Virtual machine",
-        "IP address",
-        "Subnet",
-        "NSG"
-      ],
-      "rows": [
-        [
-          "VM1",
-          "10.0.1.4",
-          "Subnet1",
-          "NSG1"
-        ],
-        [
-          "VM2",
-          "10.0.1.5",
-          "Subnet1",
-          "NSG1"
-        ]
-      ]
-    },
-    "image": "images/topic5_q68_0.png"
+    "table": null,
+    "image": "images/topic5_q59_0.png"
   },
   {
     "id": "new_pdf_q215",
