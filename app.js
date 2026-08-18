@@ -780,6 +780,13 @@
     const questionDetails = state.questions.map((q, i) => {
       const userAns = state.answers[i];
       const isCorrect = userAns === q.correct;
+      const conf = state.confidences[i];
+      let confLabel = 'Not Set';
+      if (conf === 'high') confLabel = 'High 🟢 (Confident)';
+      else if (conf === 'medium') confLabel = 'Medium 🟡 (Somewhat Confident)';
+      else if (conf === 'low') confLabel = 'Low 🔴 (Guess / Unsure)';
+      else if (conf) confLabel = String(conf);
+
       return {
         id: q.id,
         number: q.number || String(i + 1),
@@ -793,31 +800,59 @@
         correctAnswerIndex: q.correct,
         correctAnswerText: q.choices[q.correct],
         isCorrect: isCorrect,
+        confidence: conf,
+        confidenceLabel: confLabel,
         isFlagged: state.flagged.has(i),
         explanation: q.explanation || ''
       };
     });
 
+    const correctQuestions = questionDetails.filter(q => q.isCorrect);
     const missedQuestions = questionDetails.filter(q => !q.isCorrect);
 
-    // Formatted AI Prompt for LLM Assessment
+    // Confidence distribution
+    const confStats = {
+      high: { total: 0, correct: 0, missed: 0 },
+      medium: { total: 0, correct: 0, missed: 0 },
+      low: { total: 0, correct: 0, missed: 0 },
+      unrated: { total: 0, correct: 0, missed: 0 }
+    };
+
+    questionDetails.forEach(q => {
+      const c = (q.confidence === 'high' || q.confidence === 'medium' || q.confidence === 'low') ? q.confidence : 'unrated';
+      confStats[c].total++;
+      if (q.isCorrect) confStats[c].correct++;
+      else confStats[c].missed++;
+    });
+
+    // Formatted AI Prompt for LLM Assessment & Study Report
     const aiPrompt = [
       `# AZ-104 Exam Simulation Assessment Report`,
       `**Exam:** Microsoft Azure Administrator (AZ-104)`,
       `**Overall Score:** ${score.correct} / ${score.total} (${score.percent}%) · Status: ${score.percent >= 70 ? 'PASSED' : 'FAILED'}`,
       `**Date:** ${localDateStr}`,
       ``,
-      `## Domain Mastery Breakdown:`,
+      `## 📊 Domain Mastery Breakdown:`,
       ...Object.values(domainMetrics).map(d => `- **${d.name}**: ${d.correct}/${d.total} (${d.percentage}%) [${d.status}]`),
       ``,
-      `## Instruction for AI Assessor:`,
-      `1. Analyze my performance across the domains above and identify my top conceptual weaknesses based on the questions I answered incorrectly.`,
-      `2. For each missed question listed below, clearly explain why my chosen answer was incorrect, the exact Azure architecture rule/principle involved, and a high-yield memory tip for the real exam.`,
-      `3. Recommend a targeted study plan focused on my weakest areas.`,
+      `## 🎯 Confidence vs. Accuracy Calibration:`,
+      `- **High Confidence (🟢):** ${confStats.high.total} questions (${confStats.high.correct} Correct, ${confStats.high.missed} Missed)`,
+      `- **Medium Confidence (🟡):** ${confStats.medium.total} questions (${confStats.medium.correct} Correct, ${confStats.medium.missed} Missed)`,
+      `- **Low Confidence (🔴):** ${confStats.low.total} questions (${confStats.low.correct} Correct, ${confStats.low.missed} Missed)`,
+      confStats.unrated.total > 0 ? `- **Unrated Confidence:** ${confStats.unrated.total} questions (${confStats.unrated.correct} Correct, ${confStats.unrated.missed} Missed)` : '',
       ``,
-      `## Detailed Missed Questions (${missedQuestions.length} Total):`,
+      `## 💡 Instruction for AI Assessor:`,
+      `1. Analyze performance across all domains, highlighting any blind spots where questions were missed despite High Confidence.`,
+      `2. Review questions answered correctly with Low or Medium confidence to reinforce concepts that were guessed or uncertain.`,
+      `3. Provide targeted study recommendations for the real AZ-104 exam.`,
+      ``,
+      `---`,
+      ``,
+      `## ❌ Missed / Incorrect Questions (${missedQuestions.length} Total):`,
+      missedQuestions.length === 0 ? `*None! Perfect score on these questions.*` : '',
       ...missedQuestions.map((q, idx) => [
         `### Missed Question ${idx + 1} (${q.domainName})`,
+        `**Confidence Level:** ${q.confidenceLabel}`,
         `**Question:** ${q.question}`,
         q.table ? `**Resource Table:**\n\`\`\`json\n${JSON.stringify(q.table, null, 2)}\n\`\`\`` : '',
         `**Choices:**`,
@@ -826,8 +861,22 @@
         `**Correct Answer:** ${q.correctAnswerText} ✅`,
         `**Explanation:** ${q.explanation}`,
         `---`
+      ].filter(Boolean).join('\n')),
+      ``,
+      `## ✅ Correctly Answered Questions (${correctQuestions.length} Total):`,
+      correctQuestions.length === 0 ? `*No questions were answered correctly.*` : '',
+      ...correctQuestions.map((q, idx) => [
+        `### Correct Question ${idx + 1} (${q.domainName})`,
+        `**Confidence Level:** ${q.confidenceLabel}`,
+        `**Question:** ${q.question}`,
+        q.table ? `**Resource Table:**\n\`\`\`json\n${JSON.stringify(q.table, null, 2)}\n\`\`\`` : '',
+        `**Choices:**`,
+        ...q.choices.map(c => `  - ${c}`),
+        `**My Selected Answer:** ${q.userAnswerText} ✅`,
+        `**Explanation:** ${q.explanation}`,
+        `---`
       ].filter(Boolean).join('\n'))
-    ].join('\n');
+    ].filter(Boolean).join('\n');
 
     return {
       version: '1.0',
@@ -966,6 +1015,12 @@
       const correctText = q.choices[q.correct];
       const imgHtml = q.image ? `<div class="q-image-container"><img src="${q.image}" alt="Diagram" class="q-image"></div>` : '';
       
+      const conf = state.confidences ? state.confidences[i] : null;
+      let confBadge = '';
+      if (conf === 'high') confBadge = '<span class="conf-badge conf-high">🟢 High Confidence</span>';
+      else if (conf === 'medium') confBadge = '<span class="conf-badge conf-med">🟡 Medium Confidence</span>';
+      else if (conf === 'low') confBadge = '<span class="conf-badge conf-low">🔴 Low Confidence</span>';
+      
       let tableHtml = '';
       if (q.table && Array.isArray(q.table.headers) && Array.isArray(q.table.rows)) {
         tableHtml = '<table class="q-table" style="margin:10px 0;"><thead><tr>';
@@ -981,7 +1036,7 @@
 
       return `
         <div class="review-item ${isCorrect ? 'correct' : 'wrong'}">
-          <p class="review-q-num">Question ${i + 1} · ${DOMAINS[q.domain] ? DOMAINS[q.domain].short : q.domain}</p>
+          <p class="review-q-num">Question ${i + 1} · ${DOMAINS[q.domain] ? DOMAINS[q.domain].short : q.domain} ${confBadge}</p>
           <p class="review-q-text">${q.question}</p>
           ${tableHtml}
           ${imgHtml}
@@ -1006,8 +1061,6 @@
         state.mode = card.dataset.mode;
       });
     });
-
-    // Source pills (delegated)
 
     // Domain pills (delegated)
     $('domain-pills').addEventListener('click', e => {

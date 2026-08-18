@@ -571,7 +571,11 @@ body {
 }
 .review-item.correct { border-left: 3px solid var(--green); }
 .review-item.wrong { border-left: 3px solid var(--red); }
-.review-q-num { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.review-q-num { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.conf-badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; text-transform: none; letter-spacing: normal; }
+.conf-badge.conf-high { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+.conf-badge.conf-med { background: #fff8e1; color: #f9a825; border: 1px solid #f9a825; }
+.conf-badge.conf-low { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
 .review-q-text { font-size: 0.95rem; font-weight: 500; margin-bottom: 12px; line-height: 1.6; }
 .review-answer { font-size: 0.85rem; margin-bottom: 4px; }
 .review-answer .label { color: var(--text-muted); }
