@@ -38,6 +38,194 @@
     return `<p>${html}</p>`;
   };
 
+  const formatQuestionText = raw => {
+    if (!raw) return '';
+    let text = String(raw).trim();
+
+    // 1. Strip boilerplate intro text from case studies
+    const boilerplate = [
+      /Introductory Info\s*Case study\s*-\s*This is a case study\..*?When you are ready to answer a question, click the Question button to return to the question\.\s*/is,
+      /Introductory Info\s*Case study\s*-\s*This is a case study\..*?To start the case study\s*-\s*.*?(?=(?:Overview|Environment|Existing Environment|Requirements|Planned Changes))/is,
+      /This is a case study\..*?When you are ready to answer a question, click the Question button to return to the question\.\s*/is
+    ];
+    for (const bp of boilerplate) {
+      text = text.replace(bp, '');
+    }
+    text = text.trim();
+
+    // Helper to format bullets and paragraphs
+    const formatParagraphsAndBullets = content => {
+      const lines = content.split('\n').map(l => l.trim()).filter(Boolean);
+      let html = '';
+      let inUl = false;
+      for (const line of lines) {
+        if (/^(?:[\-\*\•\✑\?]|(?:\d+\.))\s+/.test(line)) {
+          if (!inUl) {
+            html += '<ul class="case-bullets">';
+            inUl = true;
+          }
+          const cleaned = line.replace(/^(?:[\-\*\•\✑\?]|(?:\d+\.))\s+/, '');
+          html += `<li>${escapeHtml(cleaned)}</li>`;
+        } else {
+          if (inUl) {
+            html += '</ul>';
+            inUl = false;
+          }
+          html += `<p class="case-p">${escapeHtml(line)}</p>`;
+        }
+      }
+      if (inUl) html += '</ul>';
+      return html;
+    };
+
+    // Check for Case Study
+    const isCaseStudy = /\b(Overview|Existing Environment|Planned Changes|Technical Requirements)\b/i.test(text) &&
+                        (/\bQuestion\b/i.test(text) || /Overview\s*-/i.test(text));
+
+    // Check for Series Question
+    const isSeries = /part of a series of questions/i.test(text);
+
+    if (isCaseStudy) {
+      let scenarioPart = text;
+      let questionPart = '';
+
+      const qMatch = text.match(/(?:\n|^)\s*Question\s*[\n\:\-]?\s*([\s\S]*)$/i);
+      if (qMatch) {
+        scenarioPart = text.slice(0, qMatch.index).trim();
+        questionPart = qMatch[1].trim();
+      }
+
+      // Parse case sections
+      const rawSections = scenarioPart.split(/\n(?=(?:General Overview|Overview|Existing Environment|Environment|Planned Changes|Technical Requirements|Requirements)\s*[-:])/i);
+
+      let sectionsHtml = '';
+      for (const s of rawSections) {
+        const trimmed = s.trim();
+        if (!trimmed) continue;
+        const headerMatch = trimmed.match(/^((?:General Overview|Overview|Existing Environment|Environment|Planned Changes|Technical Requirements|Requirements)\s*[-:]\s*)([\s\S]*)$/i);
+        if (headerMatch) {
+          let title = headerMatch[1].replace(/[-:]/g, '').trim();
+          const body = headerMatch[2].trim();
+          if (!body) continue; // Skip empty section header
+          title = title.replace(/^(?:General Overview|Overview)\s*(?:General Overview|Overview)?/i, '🏢 Overview');
+          title = title.replace(/^(?:Existing Environment|Environment)\s*(?:Existing Environment|Environment)?/i, '🌐 Existing Environment');
+          title = title.replace(/^(?:Planned Changes)\s*(?:Planned Changes)?/i, '📋 Planned Changes');
+          title = title.replace(/^(?:Technical Requirements|Requirements)\s*(?:Technical Requirements|Requirements)?/i, '⚙️ Technical Requirements');
+
+          sectionsHtml += `
+            <div class="case-section">
+              <div class="case-section-title">${title}</div>
+              <div class="case-section-content">${formatParagraphsAndBullets(body)}</div>
+            </div>
+          `;
+        } else {
+          sectionsHtml += `
+            <div class="case-section">
+              <div class="case-section-title">🏢 Overview</div>
+              <div class="case-section-content">${formatParagraphsAndBullets(trimmed)}</div>
+            </div>
+          `;
+        }
+      }
+
+      let resHtml = `
+        <div class="case-study-card">
+          <div class="case-study-header">
+            <div class="case-study-header-left">
+              <span class="case-study-badge">📑 Case Study</span>
+              <span class="case-study-title">Scenario Background</span>
+            </div>
+            <button class="case-toggle-btn" type="button" onclick="this.closest('.case-study-card').classList.toggle('collapsed')">
+              <span class="toggle-text-hide">Hide Scenario ▲</span>
+              <span class="toggle-text-show">Show Scenario ▼</span>
+            </button>
+          </div>
+          <div class="case-study-body">
+            ${sectionsHtml}
+          </div>
+        </div>
+      `;
+
+      if (questionPart) {
+        resHtml += `
+          <div class="case-question-box">
+            <div class="case-question-badge">❓ Question</div>
+            <div class="case-question-text">${escapeHtml(questionPart)}</div>
+          </div>
+        `;
+      }
+      return resHtml;
+    }
+
+    if (isSeries) {
+      let seriesNote = 'Note: This question is part of a series of questions that present the same scenario. Each question in the series contains a unique solution.';
+      let rest = text;
+
+      const noteMatch = text.match(/^(Note:\s*This question is part of a series of questions[\s\S]*?these questions will not appear in the review screen\.)\s*([\s\S]*)$/i);
+      if (noteMatch) {
+        seriesNote = noteMatch[1].trim();
+        rest = noteMatch[2].trim();
+      }
+
+      let scenarioText = rest;
+      let solutionText = '';
+
+      const solMatch = rest.match(/(Solution:\s*[\s\S]*?Does this meet the goal\?)\s*$/i);
+      if (solMatch) {
+        scenarioText = rest.slice(0, solMatch.index).trim();
+        solutionText = solMatch[1].trim();
+      }
+
+      let resHtml = `
+        <div class="series-note-banner">
+          <span class="series-note-icon">ℹ️</span>
+          <span class="series-note-text">${escapeHtml(seriesNote)}</span>
+        </div>
+        <div class="series-scenario-box">
+          ${formatParagraphsAndBullets(scenarioText)}
+        </div>
+      `;
+
+      if (solutionText) {
+        let solClean = solutionText.replace(/^Solution:\s*/i, '');
+        solClean = solClean.replace(/Does this meet the goal\?\s*$/i, '').trim();
+        resHtml += `
+          <div class="series-solution-card">
+            <div class="series-solution-header">
+              <span class="series-solution-badge">💡 Proposed Solution</span>
+            </div>
+            <div class="series-solution-body">${escapeHtml(solClean)}</div>
+            <div class="series-solution-prompt">Does this meet the goal?</div>
+          </div>
+        `;
+      }
+      return resHtml;
+    }
+
+    // Standard Question formatting
+    const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+    let html = '';
+    let inUl = false;
+    for (const line of lines) {
+      if (/^(?:[\-\*\•\✑\?]|(?:\d+\.))\s+/.test(line)) {
+        if (!inUl) {
+          html += '<ul class="q-bullet-list">';
+          inUl = true;
+        }
+        const cleaned = line.replace(/^(?:[\-\*\•\✑\?]|(?:\d+\.))\s+/, '');
+        html += `<li>${escapeHtml(cleaned)}</li>`;
+      } else {
+        if (inUl) {
+          html += '</ul>';
+          inUl = false;
+        }
+        html += `<p class="q-para">${escapeHtml(line)}</p>`;
+      }
+    }
+    if (inUl) html += '</ul>';
+    return html;
+  };
+
   // ── Init ──
   function init() {
     loadHistory();
@@ -312,7 +500,7 @@
     const q = state.questions[state.index];
     $('q-counter').textContent = `${state.index + 1} / ${state.questions.length}`;
     $('q-domain').textContent = DOMAINS[q.domain].short;
-    $('q-text').textContent = q.question;
+    $('q-text').innerHTML = formatQuestionText(q.question);
 
     const imgContainer = $('q-image-container');
     if (imgContainer) {
@@ -1037,7 +1225,7 @@
       return `
         <div class="review-item ${isCorrect ? 'correct' : 'wrong'}">
           <p class="review-q-num">Question ${i + 1} · ${DOMAINS[q.domain] ? DOMAINS[q.domain].short : q.domain} ${confBadge}</p>
-          <p class="review-q-text">${q.question}</p>
+          <div class="review-q-text">${formatQuestionText(q.question)}</div>
           ${tableHtml}
           ${imgHtml}
           <p class="review-answer ${isCorrect ? 'match' : 'yours'}">
@@ -1249,5 +1437,6 @@
   }
 
   // ── Go ──
+  window.formatQuestionText = formatQuestionText;
   document.addEventListener('DOMContentLoaded', init);
 })();
