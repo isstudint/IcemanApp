@@ -563,11 +563,10 @@ const QUESTIONS = [
     "question": "You have a Microsoft 365 tenant and an Microsoft Entra ID (Microsoft Entra ID) tenant named contoso.com.\nYou plan to grant three users named User1, User2, and User3 access to a temporary Microsoft SharePoint document library named Library1.\nYou need to create groups for the users. The solution must ensure that the groups are deleted automatically after 180 days.\nWhich two groups should you create?",
     "domain": "identity",
     "choices": [
-      "A. a Microsoft 365 group that uses the Assigned membership type",
-      "B. a Security group that uses the Assigned membership type",
-      "C. a Microsoft 365 group that uses the Dynamic User membership type",
-      "D. a Security group that uses the Dynamic User membership type",
-      "E. a Security group that uses the Dynamic Device membership type"
+      "A. a Microsoft 365 group that uses the Assigned membership type AND C. a Microsoft 365 group that uses the Dynamic User membership type",
+      "A. a Microsoft 365 group that uses the Assigned membership type AND B. a Security group that uses the Assigned membership type",
+      "B. a Security group that uses the Assigned membership type AND C. a Microsoft 365 group that uses the Dynamic User membership type",
+      "C. a Microsoft 365 group that uses the Dynamic User membership type AND D. a Security group that uses the Dynamic User membership type"
     ],
     "explanation": "The question explicitly states \"Which two groups should you create? Each correct answer presents a complete solution.\" The PDF only provides a single answer (index 0). Only Microsoft 365 groups support the expiration policy feature (which allows automatic deletion after 180 days). Therefore, both the \"Assigned\" and \"Dynamic User\" variations of the Microsoft 365 group are correct solutions.",
     "correct": 0,
@@ -1161,14 +1160,13 @@ const QUESTIONS = [
     "question": "You have an Azure Subscription that contains a storage account named storageacct1234 and two users named User1 and User2.\nYou assign User1 the roles shown in the following exhibit.\nWhich two actions can User1 perform?",
     "domain": "identity",
     "choices": [
-      "A. Assign roles to User2 for storageacct1234.",
-      "B. Upload blob data to storageacct1234.",
-      "C. Modify the firewall of storageacct1234.",
-      "D. View blob data in storageacct1234.",
-      "E. View file shares in storageacct1234."
+      "B. Upload blob data to storageacct1234. AND D. View blob data in storageacct1234.",
+      "A. Assign roles to User2 for storageacct1234. AND B. Upload blob data to storageacct1234.",
+      "B. Upload blob data to storageacct1234. AND E. View file shares in storageacct1234.",
+      "C. Modify the firewall of storageacct1234. AND D. View blob data in storageacct1234."
     ],
     "explanation": "The Storage Blob Data Contributor role allows a user to read, write, and delete Azure Storage containers and blobs. Therefore, User1 can upload blob data to the storage account.",
-    "correct": 1,
+    "correct": 0,
     "type": "pdf",
     "image": "images/topic2_q62_0.png"
   },
@@ -1621,11 +1619,10 @@ const QUESTIONS = [
     "question": "You have an Azure subscription that contains the resources in the following table.\nStore1 contains a file share named data. Data contains 5,000 files.\nYou need to synchronize the files in the file share named data to an on-premises server named Server1.\nWhich three actions should you perform?",
     "domain": "storage",
     "choices": [
-      "A. Create a container instance",
-      "B. Register Server1",
-      "C. Install the Azure File Sync agent on Server1",
-      "D. Download an automation script",
-      "E. Create a sync group"
+      "B. Register Server1 AND C. Install the Azure File Sync agent on Server1 AND E. Create a sync group",
+      "A. Create a container instance AND B. Register Server1 AND C. Install the Azure File Sync agent on Server1",
+      "C. Install the Azure File Sync agent on Server1 AND D. Download an automation script AND E. Create a sync group",
+      "A. Create a container instance AND D. Download an automation script AND E. Create a sync group"
     ],
     "explanation": "To synchronize files using Azure File Sync, you must first create a Storage Sync Service and a sync group. You then install the Azure File Sync agent on the on-premises server and register it with the Storage Sync Service to begin replication.",
     "correct": 0,
@@ -1654,11 +1651,10 @@ const QUESTIONS = [
     "question": "You have an Azure subscription that contains a storage account named account1.\nYou plan to upload the disk files of a virtual machine to account1 from your on-premises network. The on-premises network uses a public IP\naddress space of\n131.107.1.0/24.\nYou plan to use the disk files to provision an Azure virtual machine named VM1. VM1 will be attached to a virtual network named VNet1. VNet1\nuses an IP address space of 192.168.0.0/24.\nYou need to configure account1 to meet the following requirements:\nEnsure that you can upload the disk files to account1.\n-\nEnsure that you can attach the disks to VM1.\n-\nPrevent all other access to account1.\n-\nWhich two actions should you perform?",
     "domain": "storage",
     "choices": [
-      "A. From the Networking blade of account1, select Selected networks.",
-      "B. From the Networking blade of account1, select Allow trusted Microsoft services to access this storage account.",
-      "C. From the Networking blade of account1, add the 131.107.1.0/24 IP address range.",
-      "D. From the Networking blade of account1, add VNet1.",
-      "E. From the Service endpoints blade of VNet1, add a service endpoint."
+      "A. From the Networking blade of account1, select Selected networks. AND C. From the Networking blade of account1, add the 131.107.1.0/24 IP address range.",
+      "A. From the Networking blade of account1, select Selected networks. AND B. From the Networking blade of account1, select Allow trusted Microsoft services to access this storage account.",
+      "B. From the Networking blade of account1, select Allow trusted Microsoft services to access this storage account. AND C. From the Networking blade of account1, add the 131.107.1.0/24 IP address range.",
+      "D. From the Networking blade of account1, add VNet1. AND E. From the Service endpoints blade of VNet1, add a service endpoint."
     ],
     "explanation": "To secure the storage account while permitting on-premises uploads, you must restrict default network access and explicitly add the on-premises public IP range to the storage firewall. Permitting trusted Microsoft services allows seamless integration with Azure compute resources for VM attachment.",
     "correct": 0,
@@ -1670,11 +1666,10 @@ const QUESTIONS = [
     "question": "You plan to use the Azure Import/Export service to copy files to a storage account.\nWhich two files should you create before you prepare the drives for the import job?",
     "domain": "storage",
     "choices": [
-      "A. an XML manifest file",
-      "B. a dataset CSV file",
-      "C. a JSON configuration file",
-      "D. a PowerShell PS1 file",
-      "E. a driveset CSV file"
+      "B. a dataset CSV file AND E. a driveset CSV file",
+      "A. an XML manifest file AND B. a dataset CSV file",
+      "C. a JSON configuration file AND D. a PowerShell PS1 file",
+      "A. an XML manifest file AND E. a driveset CSV file"
     ],
     "explanation": "When preparing physical drives for the Azure Import/Export service using the WAImportExport tool, you must provide a dataset CSV file containing the list of files to transfer. Additionally, a driveset CSV file is required to map the target physical drives being shipped.",
     "correct": 0,
@@ -1870,14 +1865,13 @@ const QUESTIONS = [
     "question": "You are configuring Microsoft Entra ID (Microsoft Entra ID) authentication for an Azure Storage account named storage1.\nYou need to ensure that the members of a group named Group1 can upload files by using the Azure portal. The solution must use the principle of\nleast privilege.\nWhich two roles should you configure for storage1?",
     "domain": "identity",
     "choices": [
-      "A. Storage Account Contributor",
-      "B. Storage Blob Data Contributor",
-      "C. Reader",
-      "D. Contributor",
-      "E. Storage Blob Data Reader"
+      "B. Storage Blob Data Contributor AND C. Reader",
+      "A. Storage Account Contributor AND B. Storage Blob Data Contributor",
+      "C. Reader AND D. Contributor",
+      "A. Storage Account Contributor AND D. Contributor"
     ],
     "explanation": "The question explicitly asks for **two** roles, but the JSON only provides a single integer (`0`). Furthermore, `Storage Account Contributor` violates the principle of least privilege as it grants management-plane access over the entire storage account, not just data access. To upload files via the Azure portal using Azure AD authentication, users need the **Reader** role (to navigate the portal/management plane) and the **Storage Blob Data Contributor** role (to actually write/upload blobs in the data plane).",
-    "correct": 1,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -2165,14 +2159,13 @@ const QUESTIONS = [
     "question": "You have an Azure virtual machine named VM1 and an Azure key vault named Vault1.\nOn VM1, you plan to configure Azure Disk Encryption to use a key encryption key (KEK).\nYou need to prepare Vault1 for Azure Disk Encryption.\nWhich two actions should you perform on Vault1?",
     "domain": "compute",
     "choices": [
-      "A. Select Azure Virtual machines for deployment.",
-      "B. Create a new key.",
-      "C. Create a new secret.",
-      "D. Configure a key rotation policy.",
-      "E. Select Azure Disk Encryption for volume encryption."
+      "B. Create a new key. AND E. Select Azure Disk Encryption for volume encryption.",
+      "A. Select Azure Virtual machines for deployment. AND B. Create a new key.",
+      "C. Create a new secret. AND D. Configure a key rotation policy.",
+      "A. Select Azure Virtual machines for deployment. AND E. Select Azure Disk Encryption for volume encryption."
     ],
     "explanation": "The question asks for **two** actions, but the JSON only lists one correct index (`1`). To successfully use Azure Disk Encryption with a Key Encryption Key (KEK) in Azure Key Vault, you must enable the Key Vault for disk encryption (Choice E) and create the actual Key (Choice B) to be used as the KEK.",
-    "correct": 1,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -2211,14 +2204,13 @@ const QUESTIONS = [
     "question": "You need to create an Azure Storage account named storage1. The solution must meet the following requirements:\n- Support Azure Data Lake Storage.\n- Minimize costs for infrequently accessed data.\n- Automatically replicate data to a secondary Azure region.\nWhich three options should you configure for storage1?",
     "domain": "storage",
     "choices": [
-      "A. zone-redundant storage (ZRS)",
-      "B. the Cool access tire",
-      "C. geo-redundant storage (GRS)",
-      "D. the Hot access tier",
-      "E. hierarchical namespace"
+      "B. the Cool access tire AND C. geo-redundant storage (GRS) AND E. hierarchical namespace",
+      "A. zone-redundant storage (ZRS) AND B. the Cool access tire AND C. geo-redundant storage (GRS)",
+      "C. geo-redundant storage (GRS) AND D. the Hot access tier AND E. hierarchical namespace",
+      "A. zone-redundant storage (ZRS) AND D. the Hot access tier AND E. hierarchical namespace"
     ],
     "explanation": "The question asks for **three** options, but the JSON only provides one correct index (`1`). To meet the requirements: \"Support Azure Data Lake Storage\" requires enabling **hierarchical namespace** (E). \"Minimize costs for infrequently accessed data\" requires the **Cool access tier** (B). \"Automatically replicate data to a secondary Azure region\" requires **geo-redundant storage (GRS)** (C).",
-    "correct": 1,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -2331,11 +2323,10 @@ const QUESTIONS = [
     "question": "You plan to automate the deployment of a virtual machine scale set that uses the Windows Server 2016 Datacenter image.\nYou need to ensure that when the scale set virtual machines are provisioned, they have web server components installed.\nWhich two actions should you perform?",
     "domain": "compute",
     "choices": [
-      "A. Upload a configuration script",
-      "B. Create an automation account",
-      "C. Create an Azure policy",
-      "D. Modify the extensionProfile section of the Azure Resource Manager template",
-      "E. Create a new virtual machine scale set in the Azure portal"
+      "A. Upload a configuration script AND D. Modify the extensionProfile section of the Azure Resource Manager template",
+      "A. Upload a configuration script AND B. Create an automation account",
+      "C. Create an Azure policy AND D. Modify the extensionProfile section of the Azure Resource Manager template",
+      "B. Create an automation account AND E. Create a new virtual machine scale set in the Azure portal"
     ],
     "explanation": "The question requires **two** actions, but the JSON provides only one index (`0`). To install web server components automatically during VMSS provisioning, you must write/upload a configuration script (Choice A) and configure the Azure Resource Manager template to execute that script using the Custom Script Extension under the `extensionProfile` section (Choice D).",
     "correct": 0,
@@ -2538,14 +2529,13 @@ const QUESTIONS = [
     "question": "You have an app named App1 that runs on an Azure web app named webapp1.\nThe developers at your company upload an update of App1 to a Git repository named Git1.\nWebapp1 has the deployment slots shown in the following table.\nYou need to ensure that the App1 update is tested before the update is made available to users.\nWhich two actions should you perform?",
     "domain": "compute",
     "choices": [
-      "A. Swap the slots",
-      "B. Deploy the App1 update to webapp1-prod, and then test the update",
-      "C. Stop webapp1-prod",
-      "D. Deploy the App1 update to webapp1-test, and then test the update",
-      "E. Stop webapp1-test"
+      "A. Swap the slots AND D. Deploy the App1 update to webapp1-test, and then test the update",
+      "A. Swap the slots AND B. Deploy the App1 update to webapp1-prod, and then test the update",
+      "C. Stop webapp1-prod AND D. Deploy the App1 update to webapp1-test, and then test the update",
+      "B. Deploy the App1 update to webapp1-prod, and then test the update AND E. Stop webapp1-test"
     ],
     "explanation": "Deployment slots allow you to deploy and test updates in a staging environment before pushing them to production. Deploying to the webapp1-test slot ensures that users are unaffected while the developers validate the new application code.",
-    "correct": 3,
+    "correct": 0,
     "type": "pdf",
     "image": "images/topic4_q29_0.png"
   },
@@ -2555,12 +2545,10 @@ const QUESTIONS = [
     "question": "You have an Azure subscription named Subscription1 that has the following providers registered:\nAuthorization\n-\nAutomation\n-\nResources\n-\nCompute\n-\nKeyVault\n-\nNetwork\n-\nStorage\n-\nBilling\n-\nWeb\n-\nSubscription1 contains an Azure virtual machine named VM1 that has the following configurations:\nPrivate IP address: 10.0.0.4 (dynamic)\n-\nNetwork security group (NSG): NSG1\n-\nPublic IP address: None\n-\nAvailability set: AVSet\n-\nSubnet: 10.0.0.0/24\n-\nManaged disks: No\n-\nLocation: East US\n-\nYou need to record all the successful and failed connection attempts to VM1.\nWhich three actions should you perform?",
     "domain": "networking",
     "choices": [
-      "A. Enable Azure Network Watcher in the East US Azure region.",
-      "B. Add an Azure Network Watcher connection monitor.",
-      "C. Register the MicrosoftLogAnalytics provider.",
-      "D. Create an Azure Storage account.",
-      "E. Register the Microsoft.Insights resource provider.",
-      "F. Enable Azure Network Watcher flow logs."
+      "A. Enable Azure Network Watcher in the East US Azure region. AND D. Create an Azure Storage account. AND F. Enable Azure Network Watcher flow logs.",
+      "A. Enable Azure Network Watcher in the East US Azure region. AND B. Add an Azure Network Watcher connection monitor. AND C. Register the MicrosoftLogAnalytics provider.",
+      "C. Register the MicrosoftLogAnalytics provider. AND D. Create an Azure Storage account. AND E. Register the Microsoft.Insights resource provider.",
+      "B. Add an Azure Network Watcher connection monitor. AND E. Register the Microsoft.Insights resource provider. AND F. Enable Azure Network Watcher flow logs."
     ],
     "explanation": "Azure Network Watcher is a regional service required for network-level monitoring and diagnostics. Enabling it in the East US region is the foundational step needed before you can configure features like NSG flow logs to track connection attempts.",
     "correct": 0,
@@ -2665,14 +2653,13 @@ const QUESTIONS = [
     "question": "You have an Azure Kubernetes Service (AKS) cluster named AKS1.\nYou need to configure cluster autoscaler for AKS1.\nWhich two tools should you use?",
     "domain": "compute",
     "choices": [
-      "A. the kubectl command",
-      "B. the az aks command",
-      "C. the Set-AzVm cmdlet",
-      "D. the Azure portal",
-      "E. the Set-AzAks cmdlet"
+      "B. the az aks command AND D. the Azure portal",
+      "A. the kubectl command AND B. the az aks command",
+      "C. the Set-AzVm cmdlet AND D. the Azure portal",
+      "A. the kubectl command AND E. the Set-AzAks cmdlet"
     ],
     "explanation": "The question requires **two** tools, but the JSON provides only one index (`0`). Furthermore, the provided answer (`A. kubectl`) is completely incorrect for configuring the **cluster autoscaler**. The `kubectl` command is used for managing the Horizontal Pod Autoscaler (HPA) within the cluster. The **cluster autoscaler** manages the actual nodes/infrastructure of the AKS cluster and must be configured using Azure management tools, specifically the Azure portal (Choice D) or the Azure CLI via the `az aks` command (Choice B).",
-    "correct": 1,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -3303,15 +3290,13 @@ const QUESTIONS = [
     "question": "You have an Azure subscription that contains a virtual network named VNet1. VNet1 contains four subnets named Gateway, Perimeter, NVA, and\nProduction.\nThe NVA subnet contains two network virtual appliances (NVAs) that will perform network trafic inspection between the Perimeter subnet and the\nProduction subnet.\nYou need to implement an Azure load balancer for the NVAs. The solution must meet the following requirements:\nThe NVAs must run in an active-active configuration that uses automatic failover.\n-\nThe load balancer must load balance trafic to two services on the Production subnet. The services have different IP addresses.\n-\nWhich three actions should you perform?",
     "domain": "networking",
     "choices": [
-      "A. Deploy a basic load balancer",
-      "B. Deploy a standard load balancer",
-      "C. Add two load balancing rules that have HA Ports and Floating IP enabled",
-      "D. Add two load balancing rules that have HA Ports enabled and Floating IP disabled",
-      "E. Add a frontend IP configuration, a backend pool, and a health probe",
-      "F. Add a frontend IP configuration, two backend pools, and a health probe"
+      "B. Deploy a standard load balancer AND C. Add two load balancing rules that have HA Ports and Floating IP enabled AND E. Add a frontend IP configuration, a backend pool, and a health probe",
+      "A. Deploy a basic load balancer AND C. Add two load balancing rules that have HA Ports and Floating IP enabled AND F. Add a frontend IP configuration, two backend pools, and a health probe",
+      "B. Deploy a standard load balancer AND D. Add two load balancing rules that have HA Ports enabled and Floating IP disabled AND E. Add a frontend IP configuration, a backend pool, and a health probe",
+      "A. Deploy a basic load balancer AND D. Add two load balancing rules that have HA Ports enabled and Floating IP disabled AND F. Add a frontend IP configuration, two backend pools, and a health probe"
     ],
     "explanation": "Standard Azure Load Balancers support High Availability (HA) ports, which load balance traffic across all ports and protocols. This is required for active-active NVA setups to ensure failover and symmetric routing.",
-    "correct": 1,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -3518,11 +3503,10 @@ const QUESTIONS = [
     "question": "You plan to create an Azure virtual machine named VM1 that will be configured as shown in the following exhibit.\nThe planned disk configurations for VM1 are shown in the following exhibit.\n\nYou need to ensure that VM1 can be created in an Availability Zone.\nWhich two settings should you modify?",
     "domain": "compute",
     "choices": [
-      "A. Use managed disks",
-      "B. OS disk type",
-      "C. Availability options",
-      "D. Size",
-      "E. Image"
+      "A. Use managed disks AND C. Availability options",
+      "A. Use managed disks AND B. OS disk type",
+      "C. Availability options AND D. Size",
+      "B. OS disk type AND E. Image"
     ],
     "explanation": "The question explicitly asks for **two** settings, but the PDF answer key only provides one (`A`). To create a VM in an Availability Zone, you must both use managed disks AND configure the \"Availability options\" setting during deployment to specify the desired Availability Zone. The PDF answer key is incomplete.",
     "correct": 0,
@@ -3639,14 +3623,13 @@ const QUESTIONS = [
     "question": "You have an Azure subscription named Subscription1 that contains an Azure virtual network named VNet1. VNet1 connects to your on-premises\nnetwork by using\nAzure ExpressRoute.\nYou plan to prepare the environment for automatic failover in case of ExpressRoute failure.\nYou need to connect VNet1 to the on-premises network by using a site-to-site VPN. The solution must minimize cost.\nWhich three actions should you perform?",
     "domain": "networking",
     "choices": [
-      "A. Create a connection",
-      "B. Create a local site VPN gateway",
-      "C. Create a VPN gateway that uses the VpnGw1 SKU",
-      "D. Create a gateway subnet",
-      "E. Create a VPN gateway that uses the Basic SKU"
+      "A. Create a connection AND B. Create a local site VPN gateway AND C. Create a VPN gateway that uses the VpnGw1 SKU",
+      "A. Create a connection AND D. Create a gateway subnet AND E. Create a VPN gateway that uses the Basic SKU",
+      "B. Create a local site VPN gateway AND D. Create a gateway subnet AND E. Create a VPN gateway that uses the Basic SKU",
+      "C. Create a VPN gateway that uses the VpnGw1 SKU AND D. Create a gateway subnet AND E. Create a VPN gateway that uses the Basic SKU"
     ],
     "explanation": "The JSON format restricts the answer to a single integer for a multi-select question, making the provided answer incomplete.",
-    "correct": 2,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -3919,15 +3902,13 @@ const QUESTIONS = [
     "question": "You have an Azure subscription that contains a policy-based virtual network gateway named GW1 and a virtual network named VNet1.\nYou need to ensure that you can configure a point-to-site connection from an on-premises computer to VNet1.\nWhich two actions should you perform?",
     "domain": "networking",
     "choices": [
-      "A. Add a service endpoint to VNet1",
-      "B. Reset GW1",
-      "C. Create a route-based virtual network gateway",
-      "D. Add a connection to GW1",
-      "E. Delete GW1",
-      "F. Add a public IP address space to VNet1"
+      "C. Create a route-based virtual network gateway AND E. Delete GW1",
+      "A. Add a service endpoint to VNet1 AND B. Reset GW1",
+      "D. Add a connection to GW1 AND F. Add a public IP address space to VNet1",
+      "B. Reset GW1 AND C. Create a route-based virtual network gateway"
     ],
     "explanation": "The JSON format restricts the answer to a single integer for a multi-select question, making the provided answer incomplete.",
-    "correct": 2,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -4114,14 +4095,13 @@ const QUESTIONS = [
     "question": "You have an Azure subscription that contains two virtual machines named VM1 and VM2.\nYou create an Azure load balancer.\nYou plan to create a load balancing rule that will load balance HTTPS trafic between VM1 and VM2.\nWhich two additional load balancer resources should you create before you can create the load balancing rule?",
     "domain": "networking",
     "choices": [
-      "A. a frontend IP address",
-      "B. an inbound NAT rule",
-      "C. a virtual network",
-      "D. a backend pool",
-      "E. a health probe"
+      "D. a backend pool AND E. a health probe",
+      "A. a frontend IP address AND B. an inbound NAT rule",
+      "B. an inbound NAT rule AND C. a virtual network",
+      "A. a frontend IP address AND D. a backend pool"
     ],
     "explanation": "The JSON format restricts the answer to a single integer for a multi-select question, making the provided answer incomplete.",
-    "correct": 3,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -5228,14 +5208,13 @@ const QUESTIONS = [
     "question": "You deploy Azure virtual machines to three Azure regions\nEach region contains a virtual network. Each virtual network contains multiple subnets peered in a full mesh topology.\nEach subnet contains a network security group (NSG) that has defined rules.\nA user reports that he cannot use port 33000 to connect from a virtual machine in one region to a virtual machine in another region.\nWhich two options can you use to diagnose the issue?",
     "domain": "networking",
     "choices": [
-      "A. Azure Virtual Network Manager",
-      "B. IP flow verify",
-      "C. Azure Monitor Network Insights",
-      "D. Connection troubleshoot",
-      "E. elective security rules"
+      "B. IP flow verify AND E. elective security rules",
+      "A. Azure Virtual Network Manager AND B. IP flow verify",
+      "C. Azure Monitor Network Insights AND D. Connection troubleshoot",
+      "A. Azure Virtual Network Manager AND E. elective security rules"
     ],
     "explanation": "To diagnose why a specific port (33000) is blocked between two Azure virtual machines, you use Azure Network Watcher's diagnostic tools. \"IP flow verify\" checks if a packet is allowed or denied by an NSG, and viewing \"effective security rules\" shows all applied NSG rules for a network interface. Azure Virtual Network Manager is a management tool, not a diagnostic tool for checking specific port connectivity.",
-    "correct": 1,
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -5363,11 +5342,10 @@ const QUESTIONS = [
     "question": "You have an Azure subscription that contains multiple virtual machines in the West US Azure region.\nYou need to use Traffic Analytics in Azure Network Watcher to monitor virtual machine trafic.\nWhich two resources should you create?",
     "domain": "monitor",
     "choices": [
-      "A. a Log Analytics workspace",
-      "B. an Azure Monitor workbook",
-      "C. a storage account",
-      "D. a Microsoft Sentinel workspace",
-      "E. a Data Collection Rule (DCR) in Azure Monitor"
+      "A. a Log Analytics workspace AND C. a storage account",
+      "A. a Log Analytics workspace AND B. an Azure Monitor workbook",
+      "C. a storage account AND D. a Microsoft Sentinel workspace",
+      "B. an Azure Monitor workbook AND E. a Data Collection Rule (DCR) in Azure Monitor"
     ],
     "explanation": "The question explicitly asks to select two resources. The provided JSON key only includes one index (`0`). Traffic Analytics requires both a Log Analytics Workspace to store and analyze the data, and an Azure Storage account to capture the NSG flow logs. The correct answer should be an array `[0, 2]` corresponding to A and C.",
     "correct": 0,
@@ -5628,13 +5606,13 @@ const QUESTIONS = [
     "question": "You need to prepare the environment to meet the authentication requirements. Which two actions should you perform?",
     "domain": "identity",
     "choices": [
-      "A. Microsoft Entra ID (AD) Identity Protection and an Azure policy",
-      "B. a Recovery Services vault and a backup policy",
-      "C. an Azure Key Vault and an access policy",
-      "D. an Azure Storage account and an access policy"
+      "B. a Recovery Services vault and a backup policy AND D. an Azure Storage account and an access policy",
+      "A. Microsoft Entra ID (AD) Identity Protection and an Azure policy AND B. a Recovery Services vault and a backup policy",
+      "C. an Azure Key Vault and an access policy AND D. an Azure Storage account and an access policy",
+      "A. Microsoft Entra ID (AD) Identity Protection and an Azure policy AND C. an Azure Key Vault and an access policy"
     ],
     "explanation": "D: Seamless SSO works with any method of cloud authentication - Password Hash Synchronization or Pass-through Authentication, and can be enabled via Microsoft Entra ID Connect. B: You can gradually roll out Seamless SSO to your users. You start by adding the following Microsoft Entra ID URL to all or selected users' Intranet zone settings by using Group Policy in Active Directory: https://autologon.microsoftazuread-sso.com",
-    "correct": 2,
+    "correct": 0,
     "type": "pdf_expansion"
   },
   {
@@ -6402,13 +6380,13 @@ const QUESTIONS = [
     "question": "You need to prepare the environment to meet the authentication requirements. Which two actions should you perform?",
     "domain": "identity",
     "choices": [
-      "A. Microsoft Entra ID (AD) Identity Protection and an Azure policy",
-      "B. a Recovery Services vault and a backup policy",
-      "C. an Azure Key Vault and an access policy",
-      "D. an Azure Storage account and an access policy"
+      "B. a Recovery Services vault and a backup policy AND D. an Azure Storage account and an access policy",
+      "A. Microsoft Entra ID (AD) Identity Protection and an Azure policy AND B. a Recovery Services vault and a backup policy",
+      "C. an Azure Key Vault and an access policy AND D. an Azure Storage account and an access policy",
+      "A. Microsoft Entra ID (AD) Identity Protection and an Azure policy AND C. an Azure Key Vault and an access policy"
     ],
     "explanation": "D: Seamless SSO works with any method of cloud authentication - Password Hash Synchronization or Pass-through Authentication, and can be enabled via Microsoft Entra ID Connect. B: You can gradually roll out Seamless SSO to your users. You start by adding the following Microsoft Entra ID URL to all or selected users' Intranet zone settings by using Group Policy in Active Directory: https://autologon.microsoftazuread-sso.com",
-    "correct": 2,
+    "correct": 0,
     "type": "pdf_expansion"
   },
   {
