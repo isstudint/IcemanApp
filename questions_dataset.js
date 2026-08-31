@@ -3341,8 +3341,8 @@ const QUESTIONS = [
       "D. the subnets on VNet3 only",
       "E. the subnets on VNet1, VNet2, and VNet3"
     ],
-    "explanation": "A Network Security Group (NSG) can only be associated with subnets or network interfaces that reside in the same Azure region as the NSG. Since NSG1 is in East US, it can only be applied to subnets in East US (VNet1 and VNet2), not West US (VNet3).",
-    "correct": 0,
+    "explanation": "A Network Security Group (NSG) can only be associated with subnets or network interfaces that reside in the same Azure region as the NSG. Since NSG1 is in East US, it can only be applied to subnets in East US (VNet3). The original explanation incorrectly swapped the regions.",
+    "correct": 3,
     "type": "pdf",
     "image": "images/topic5_q11_0.png"
   },
