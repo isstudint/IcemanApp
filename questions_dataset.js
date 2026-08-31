@@ -5686,7 +5686,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q17",
     "number": "384",
-    "question": "You have an Azure subscription that contains the resources shown in the following table. LB1 is configured as shown in the following table. You plan to create new inbound NAT rules that meet the following requirements: Provide Remote Desktop access to VM2 from the internet by using port 3389.",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nLB1 is configured as shown in the following table.\nYou plan to create new inbound NAT rules that meet the following requirements:\n- Provide Remote Desktop access to VM1 from the internet by using port 3389.\n- Provide Remote Desktop access to VM2 from the internet by using port 3389.\n\nWhat should you create on LB1 before you can create the new inbound NAT rules?",
     "domain": "compute",
     "choices": [
       "A. A frontend IP address",
@@ -5697,25 +5697,12 @@ const QUESTIONS = [
     "explanation": "To create an inbound NAT rule, you need to specify a frontend IP address and a frontend port for the load balancer to receive the traffic, and a backend IP address and a backend port for the load balancer to forward the traffic to1. According to the first table, LB1 has only one frontend IP address, which is 40.121.183.105. However, this frontend IP address is already used by the existing inbound NAT rule named rule1, which forwards port 80 to VM1 on port 802. Therefore, you cannot use the same frontend IP address and port for another inbound NAT rule. To solve this problem, you need to create a new frontend IP address for LB1 before you can create the new inbound NAT rules. You can do this by using the Azure portal, PowerShell, or CLI3. After you create a new frontend IP address, you can use it to create the new inbound NAT rules that meet your requirements.",
     "correct": 0,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Frontend IP configuration",
-        "Backend pool",
-        "Health probe"
-      ],
-      "rows": [
-        [
-          "LoadBalancerFrontEnd",
-          "BackendPool1",
-          "Probe1 (TCP 80)"
-        ]
-      ]
-    }
+    "image": "images/topic5_q4_combined.png"
   },
   {
     "id": "new_pdf_q23",
     "number": "390",
-    "question": "You have an Azure subscription that contains the storage accounts shown in the following table. You need to identify\n\nwhich storage account can be converted to zone-redundant storage (ZRS) replication by requesting a live migration from Azure support. What should you identify?",
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nYou need to identify which storage account can be converted to zone-redundant storage (ZRS) replication by requesting a live migration from Azure support.\nWhat should you identify?",
     "domain": "storage",
     "choices": [
       "A. Storage1",
@@ -5726,40 +5713,7 @@ const QUESTIONS = [
     "explanation": "In the Azure portal, you can perform a direct self-service conversion from **Locally Redundant Storage (LRS) to Zone-Redundant Storage (ZRS)** for general-purpose v2 storage accounts without application downtime or data migration. Storage accounts configured with GRS or RA-GRS must first be switched to LRS before initiating the portal conversion to ZRS.",
     "correct": 1,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Name",
-        "Performance tier",
-        "Redundancy",
-        "Account kind"
-      ],
-      "rows": [
-        [
-          "storage1",
-          "Standard",
-          "Geo-redundant storage (GRS)",
-          "StorageV2 (general purpose v2)"
-        ],
-        [
-          "storage2",
-          "Premium",
-          "Locally-redundant storage (LRS)",
-          "BlockBlobStorage"
-        ],
-        [
-          "storage3",
-          "Standard",
-          "Read-access geo-redundant storage (RA-GRS)",
-          "Storage (general purpose v1)"
-        ],
-        [
-          "storage4",
-          "Premium",
-          "Locally-redundant storage (LRS)",
-          "FileStorage"
-        ]
-      ]
-    }
+    "image": "images/topic3_q84_0.png"
   },
   {
     "id": "new_pdf_q28",
@@ -5850,7 +5804,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q39",
     "number": "406",
-    "question": "You have an Azure subscription that contains the resources shown in the following table. ) You need to perform the tasks shown in the following table.\n\nWhich tasks can you perform by using Azure Storage Explorer?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou need to perform the tasks shown in the following table.\nWhich tasks can you perform by using Azure Storage Explorer?",
     "domain": "storage",
     "choices": [
       "A. Task1 and Task3 only",
@@ -5862,35 +5816,12 @@ const QUESTIONS = [
     "explanation": "Azure Storage Explorer is a standalone GUI tool for managing storage data. It supports uploading and downloading files to/from Azure File Shares (Task 1) and connecting directly to a storage account or container using a Shared Access Signature (SAS) URI (Task 3). Configuring blob lifecycle management policies (Task 2) and configuring blob inventory reports (Task 4) are control-plane management features configured in the Azure portal, PowerShell, or ARM/Bicep templates.",
     "correct": 0,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Task",
-        "Description"
-      ],
-      "rows": [
-        [
-          "Task1",
-          "Upload files to an Azure file share"
-        ],
-        [
-          "Task2",
-          "Configure lifecycle management rules for blob storage"
-        ],
-        [
-          "Task3",
-          "Attach to an individual storage account by using SAS"
-        ],
-        [
-          "Task4",
-          "View blob inventory reports"
-        ]
-      ]
-    }
+    "image": "images/topic3_q55_combined.png"
   },
   {
     "id": "new_pdf_q41",
     "number": "408",
-    "question": "You have an Azure App Service app named Appl that contains two running instances. You havean autoscale rule configured as shown in the following exhibit ) For the instance limits stale condition setting, you set Maximum to 5. During a 30-minute period. Appl uses 60 percent of the available memory. What is the maximum number of instances tor Appl during the 30-minute pefiod:",
+    "question": "You have an Azure App Service app named App1 that contains two running instances.\nYou have an autoscale rule configured as shown in the following exhibit.\nFor the Instance limits scale condition setting, you set Maximum to 5.\nDuring a 30-minute period, App1 uses 80 percent of the available memory.\nWhat is the maximum number of instances for App1 during the 30-minute period?",
     "domain": "compute",
     "choices": [
       "A. 2",
@@ -5901,26 +5832,7 @@ const QUESTIONS = [
     "explanation": "App1 starts with 2 running instances. The rule specifies Minimum = 2, Maximum = 5. Scale-out (+1 instance) requires memory >= 80% for 10 minutes. Scale-in (-1 instance) triggers when memory <= 60% for 10 minutes. Because memory is at 60%, scale-out is never triggered. The scale-in condition cannot drop below the minimum limit of 2 instances. Therefore, the maximum number of instances running during the 30-minute period is **2**.",
     "correct": 0,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Setting",
-        "Value"
-      ],
-      "rows": [
-        [
-          "Minimum instances",
-          "2"
-        ],
-        [
-          "Maximum instances",
-          "5"
-        ],
-        [
-          "Default instances",
-          "3"
-        ]
-      ]
-    }
+    "image": "images/topic4_q96_0.png"
   },
   {
     "id": "new_pdf_q49",
@@ -5970,7 +5882,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q56",
     "number": "423",
-    "question": "You have the Azure virtual networks shown in the following table. ) To\n\nwhich virtual networks can you establish a peering connection from VNet1?",
+    "question": "You have the Azure virtual networks shown in the following table.\nTo which virtual networks can you establish a peering connection from VNet1?",
     "domain": "networking",
     "choices": [
       "A. VNet2, VNet3, and VNet4",
@@ -5981,40 +5893,7 @@ const QUESTIONS = [
     "explanation": "Virtual network peering requires non-overlapping IP address spaces. VNet1 (10.1.0.0/16) and VNet4 (10.1.0.0/16) have identical overlapping address spaces, so peering between VNet1 and VNet4 cannot be established. VNet2 (10.2.0.0/16, regional peering) and VNet3 (10.3.0.0/16, global peering) have distinct, non-overlapping address spaces, so VNet1 can successfully peer with VNet2 and VNet3.",
     "correct": 3,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Name",
-        "Address space",
-        "Location",
-        "Resource group"
-      ],
-      "rows": [
-        [
-          "VNet1",
-          "10.1.0.0/16",
-          "East US",
-          "RG1"
-        ],
-        [
-          "VNet2",
-          "10.2.0.0/16",
-          "East US",
-          "RG2"
-        ],
-        [
-          "VNet3",
-          "10.3.0.0/16",
-          "West US",
-          "RG1"
-        ],
-        [
-          "VNet4",
-          "10.1.0.0/16",
-          "West Europe",
-          "RG3"
-        ]
-      ]
-    }
+    "image": "images/topic5_q7_0.png"
   },
   {
     "id": "new_pdf_q57",
@@ -6163,7 +6042,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q86",
     "number": "453",
-    "question": "You have an Azure web app named App1. App1 has the deployment slots shown in the following table: In webapp1-test, you test several changes to App1. You back up App1. You swap webapp1-test for webapp1-prod and discover that App1 is experiencing performance issues. You need to revert to the previous version of App1 as quickly as possible.\n\nWhat should you do?",
+    "question": "You have an Azure web app named App1. App1 has the deployment slots shown in the following table:\nIn webapp1-test, you test several changes to App1.\nYou back up App1.\nYou swap webapp1-test for webapp1-prod and discover that App1 is experiencing performance issues.\nYou need to revert to the previous version of App1 as quickly as possible.\nWhat should you do?",
     "domain": "compute",
     "choices": [
       "A. Redeploy App1",
@@ -6174,25 +6053,7 @@ const QUESTIONS = [
     "explanation": "When you swap deployment slots, Azure swaps the Virtual IP addresses of the source and destination slots, thereby swapping the URLs of the slots. We can easily revert the deployment by swapping back. Deployment slots are live apps with their own host names. App content and configurations elements can be swapped between two deployment slots, including the production slot. Deploying your application to a non-production slot has the following benefits: 1. You can validate app changes in a staging deployment slot before swapping it with the production slot. 2. Deploying an app to a slot first and swapping it into production makes sure that all instances of the slot are warmed up before being swapped into production. Reference: https://docs.microsoft.com/en-us/azure/app- service/deploy- staging-slots",
     "correct": 1,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Name",
-        "Type",
-        "Status"
-      ],
-      "rows": [
-        [
-          "webapp1",
-          "Production slot",
-          "Running"
-        ],
-        [
-          "webapp1-test",
-          "Deployment slot",
-          "Running"
-        ]
-      ]
-    }
+    "image": "images/topic4_q59_0.png"
   },
   {
     "id": "new_pdf_q87",
@@ -6237,7 +6098,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q96",
     "number": "463",
-    "question": "You have an Azure subscription that contains the resources shown in the following table. You configure Azure Site Recovery to replicate VM1 between the East US and W\u00abt US regions. You perform a test failove of VM1 and specify VNET2 as the target v>riual network. When the test version of VM1 is created, to\n\nwhich subnet will the virtual machine be connected?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou configure Azure Site Recovery to replicate VM1 between the East US and West US regions.\nYou perform a test failover of VM1 and specify VNET2 as the target virtual network.\nWhen the test version of VM1 is created, to which subnet will the virtual machine be connected?",
     "domain": "monitor",
     "choices": [
       "A. Testsubnet1",
@@ -6248,30 +6109,7 @@ const QUESTIONS = [
     "explanation": "https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-network-mapping The subnet of the target VM is selected based on the name of the subnet of the source VM. - If a subnet with the same name as the source VM subnet is available in the target network, that subnet is set for the target VM. - If a subnet with the same name doesn't exist in the target network, the first subnet in the alphabetical order is set as the target subnet.",
     "correct": 0,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Name",
-        "Type",
-        "Location"
-      ],
-      "rows": [
-        [
-          "RSV1",
-          "Recovery Services vault",
-          "East US"
-        ],
-        [
-          "RSV2",
-          "Recovery Services vault",
-          "West US"
-        ],
-        [
-          "VM1",
-          "Virtual machine",
-          "East US"
-        ]
-      ]
-    }
+    "image": "images/topic5_q102_0.png"
   },
   {
     "id": "new_pdf_q99",
@@ -6396,57 +6234,18 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q131",
     "number": "498",
-    "question": "You have an Azure subscription that contains the resources in the following table. VM1 and VM2 are deployed from the same template and host line-of-business applications accessed by using Remote Desktop. You configure the network security group (NSG) shown in the exhibit. (Click the Exhibit button.) ) You need to prevent users of VM1 and VM2 from accessing websites on the Internet.\n\nWhat should you do?",
+    "question": "You have an Azure subscription that contains the resources in the following table.\nVM1 and VM2 are deployed from the same template and host line-of-business applications.\nYou configure the network security group (NSG) shown in the exhibit. (Click the Exhibit tab.)\nYou need to prevent users of VM1 and VM2 from accessing websites on the Internet over TCP port 80.\n\nWhat should you do?",
     "domain": "networking",
     "choices": [
-      "A. Associate the NSG to Subnet1.",
-      "B. Disassociate the NSG from a network interface.",
-      "C. Change the DenyWebSites outbound security rule.",
-      "D. Change the Port_80 inbound security rule"
+      "A. Disassociate the NSG from a network interface",
+      "B. Change the Port_80 inbound security rule.",
+      "C. Associate the NSG to Subnet1.",
+      "D. Change the DenyWebSites outbound security rule."
     ],
-    "explanation": "Outbound rule \"DenyWebSites\" is setup correctly to block outbound internet traffic over port 80. In the screenshot it states, \"Associated with: 0 subnets, 0 NIC's\", so you need to associate the NSG to Subnet1.You can associate or dissociate a network security group from a NIC or Subnet. Reference: https://docs.microsoft.com/en-us/azure/virtual- network/manage-network-security-group",
-    "correct": 0,
+    "explanation": "Network Security Groups (NSGs) can be associated with subnets or individual network interfaces. In the exhibit, the NSG is 'Associated with: 0 subnets, 0 network interfaces'. Associating the NSG to Subnet1 ensures the security rules are applied to all resources within the subnet, blocking outbound HTTP traffic to the Internet as intended.",
+    "correct": 2,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Rule name",
-        "Priority",
-        "Port",
-        "Protocol",
-        "Source",
-        "Destination",
-        "Action"
-      ],
-      "rows": [
-        [
-          "Port_80",
-          "100",
-          "80",
-          "TCP",
-          "Any",
-          "Any",
-          "Allow"
-        ],
-        [
-          "Port_3389",
-          "110",
-          "3389",
-          "TCP",
-          "Any",
-          "Any",
-          "Allow"
-        ],
-        [
-          "DenyWebSites",
-          "120",
-          "80,443",
-          "TCP",
-          "Any",
-          "Internet",
-          "Deny"
-        ]
-      ]
-    }
+    "image": "images/topic5_q28_combined.png"
   },
   {
     "id": "new_pdf_q132",
@@ -6464,7 +6263,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q133",
     "number": "500",
-    "question": "You have an Azure subscription that contains the resources shown in the following table. ) The Not allowed resource types Azure policy that has policy enforcement enabled is assigned to RG1 and uses the following parameters: Microsoft.Network/virtualNetworks Microsoft.Compute/virtualMachines In RG1, you need to create a new virtual machine named VM2 which is connected toVNET1. What should you do first?",
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nThe Not allowed resource types Azure policy that has policy enforcement enabled is assigned to RG1 and uses the following parameters:\n- Microsoft.Network/virtualNetworks\n- Microsoft.Compute/virtualMachines\nIn RG1, you need to create a new virtual machine named VM2, and then connect VM2 to VNET1.\nWhat should you do first?",
     "domain": "identity",
     "choices": [
       "A. Remove Microsoft.Compute/virtualMachines from the policy.",
@@ -6475,30 +6274,7 @@ const QUESTIONS = [
     "explanation": "VNET1 already exists in RG1. To create a new virtual machine named VM2 in RG1, you must remove `Microsoft.Compute/virtualMachines` from the 'Not allowed resource types' policy parameters, as that is the resource provider namespace currently preventing VM creation.",
     "correct": 0,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Name",
-        "Type",
-        "Resource group"
-      ],
-      "rows": [
-        [
-          "RG1",
-          "Resource group",
-          "N/A"
-        ],
-        [
-          "VNET1",
-          "Virtual network",
-          "RG1"
-        ],
-        [
-          "VM1",
-          "Virtual machine",
-          "RG1"
-        ]
-      ]
-    }
+    "image": "images/topic5_q22_0.png"
   },
   {
     "id": "new_pdf_q134",
@@ -6685,7 +6461,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q180",
     "number": "547",
-    "question": "You have an Microsoft Entra ID tenant named adatum.com that contains the groups shown in the following table. Adatum.com contains the users shown in the following table. You assign the Microsoft Entra ID Premium P2 license to Group l and User4.\n\nWhich users are assigned the Microsoft Entra ID Premium P2 license?",
+    "question": "You have an Azure AD tenant named adatum.com that contains the groups shown in the following table.\nAdatum.com contains the users shown in the following table.\nYou assign the Azure Active Directory Premium Plan 2 license to Group1 and User4.\nWhich users are assigned the Azure Active Directory Premium Plan 2 license?",
     "domain": "identity",
     "choices": [
       "A. User4 only",
@@ -6696,30 +6472,7 @@ const QUESTIONS = [
     "explanation": "Assigning the Microsoft Entra ID Premium P2 license to Group1 (an assigned security group whose members are User1 and User2) automatically grants the license to User1 and User2. User4 is assigned the license directly. User3 is not in Group1 and not assigned directly, so User1, User2, and User4 receive the license.",
     "correct": 2,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Group name",
-        "Group type",
-        "Membership type"
-      ],
-      "rows": [
-        [
-          "Group1",
-          "Security",
-          "Assigned"
-        ],
-        [
-          "Group2",
-          "Security",
-          "Dynamic User"
-        ],
-        [
-          "Group3",
-          "Microsoft 365",
-          "Assigned"
-        ]
-      ]
-    }
+    "image": "images/topic2_q69_combined.png"
   },
   {
     "id": "new_pdf_q188",
@@ -6754,7 +6507,7 @@ const QUESTIONS = [
   {
     "id": "new_pdf_q215",
     "number": "582",
-    "question": "You have an Azure subscription that contains the storage accounts shown in the following table. ) You need to identify\n\nwhich storage account can be converted to zone-redundant storage (ZRS) replication by requesting a live migration from Azure support. What should you identify?",
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nWhich storage account can be converted to zone-redundant storage (ZRS) replication?",
     "domain": "storage",
     "choices": [
       "A. Storage1",
@@ -6765,40 +6518,7 @@ const QUESTIONS = [
     "explanation": "In the Azure portal, you can perform a direct self-service conversion from **Locally Redundant Storage (LRS) to Zone-Redundant Storage (ZRS)** for general-purpose v2 storage accounts without application downtime or data migration. Storage accounts configured with GRS or RA-GRS must first be switched to LRS before initiating the portal conversion to ZRS.",
     "correct": 1,
     "type": "pdf_expansion",
-    "table": {
-      "headers": [
-        "Name",
-        "Performance tier",
-        "Redundancy",
-        "Account kind"
-      ],
-      "rows": [
-        [
-          "storage1",
-          "Standard",
-          "Geo-redundant storage (GRS)",
-          "StorageV2 (general purpose v2)"
-        ],
-        [
-          "storage2",
-          "Premium",
-          "Locally-redundant storage (LRS)",
-          "BlockBlobStorage"
-        ],
-        [
-          "storage3",
-          "Standard",
-          "Read-access geo-redundant storage (RA-GRS)",
-          "Storage (general purpose v1)"
-        ],
-        [
-          "storage4",
-          "Premium",
-          "Locally-redundant storage (LRS)",
-          "FileStorage"
-        ]
-      ]
-    }
+    "image": "images/topic3_q84_0.png"
   },
   {
     "id": "new_pdf_q216",
