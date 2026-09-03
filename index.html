@@ -136,6 +136,7 @@
     <div class="quiz-nav">
       <button id="prev-btn" class="btn-secondary" disabled>← Prev</button>
       <button id="flag-btn" class="btn-flag">🚩 Flag</button>
+      <button id="ignore-btn" class="btn-ignore" title="Mark as outdated/relic to exclude from future quizzes">📦 Relic</button>
       <div id="nav-right" class="nav-right">
         <button id="next-btn" class="btn-secondary">Next →</button>
       </div>
@@ -204,6 +205,7 @@
     <div class="explorer-header">
       <button id="explorer-back-btn" class="btn-secondary btn-quit">← Dashboard</button>
       <h2>Question Bank</h2>
+      <button id="export-relics-btn" class="btn-secondary btn-sm" style="display:none;margin-left:auto">📥 Export Relics (JSON)</button>
     </div>
     <div class="explorer-controls">
       <input type="text" id="explorer-search" class="explorer-search" placeholder="Search questions, topics, keywords...">
@@ -214,6 +216,7 @@
           <button class="domain-pill" data-status="mastered">✅ Mastered</button>
           <button class="domain-pill" data-status="review">⚠️ Needs Review</button>
           <button class="domain-pill" data-status="unseen">❓ Unseen</button>
+          <button class="domain-pill" data-status="ignored">📦 Relics (<span id="relic-pill-count">0</span>)</button>
         </div>
       </div>
     </div>
@@ -226,7 +229,7 @@
   <div id="toast" class="toast"></div>
 
   <!-- ═══ Questions Data ═══ -->
-  <script src="questions_dataset.js?v=2.1.0"></script>
-  <script src="app.js?v=2.1.0"></script>
+  <script src="questions_dataset.js?v=2.2.0"></script>
+  <script src="app.js?v=2.2.0"></script>
 </body>
 </html>

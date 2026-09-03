@@ -24,6 +24,7 @@
     mistakes: [],        // mistake reasons per question
     showMistakePrompt: false,
     eliminations: {},    // { questionIndex: Set of eliminated choice indices }
+    ignoredQuestions: new Set(), // set of question IDs marked as relics / ignored
     explorerDomain: 'all',
     explorerStatus: 'all',
     explorerVisible: 50,
@@ -260,6 +261,12 @@
     } catch {
       state.qstats = {};
     }
+    try {
+      const ign = JSON.parse(localStorage.getItem('az104_ignored') || '[]');
+      state.ignoredQuestions = new Set(ign);
+    } catch {
+      state.ignoredQuestions = new Set();
+    }
 
     // Automatically sync and re-grade past history and stats against latest QUESTIONS dataset
     syncHistoryAndStatsWithDataset();
@@ -327,6 +334,7 @@
     localStorage.setItem('az104_history', JSON.stringify(state.history.slice(-20)));
     localStorage.setItem('az104_seen', JSON.stringify(Array.from(state.seenQuestions)));
     localStorage.setItem('az104_qstats', JSON.stringify(state.qstats));
+    localStorage.setItem('az104_ignored', JSON.stringify(Array.from(state.ignoredQuestions)));
   }
 
   // ── Screen switching ──
@@ -348,7 +356,8 @@
     }
 
     // Update stats
-    $('stat-total').textContent = QUESTIONS.length;
+    const activeTotal = Math.max(0, QUESTIONS.length - state.ignoredQuestions.size);
+    $('stat-total').textContent = activeTotal;
     $('stat-seen').textContent = state.seenQuestions.size;
 
     let totalAns = 0;
@@ -390,6 +399,7 @@
 
     for (const [qid, s] of Object.entries(state.qstats)) {
       if (!qMap[qid]) continue;
+      if (state.ignoredQuestions.has(qid)) continue;
       const isMostlyWrong = (s.wrong || 0) > (s.correct || 0);
       const isLuckyGuess = s.lastConfidence === 'low' && (s.correct || 0) > 0;
       const isOverconfidentMiss = s.lastConfidence === 'high' && (s.wrong || 0) > 0 && isMostlyWrong;
@@ -580,6 +590,8 @@
     } else {
       qs = qs.filter(q => q.type !== 'obsidian_mock');
     }
+    // Exclude ignored/relic questions from standard quizzes
+    qs = qs.filter(q => !state.ignoredQuestions.has(q.id));
     if (state.domain !== 'all') {
       qs = qs.filter(q => q.domain === state.domain);
     }
@@ -820,6 +832,16 @@
 
     // Flag button
     $('flag-btn').className = state.flagged.has(state.index) ? 'btn-flag flagged' : 'btn-flag';
+
+    // Ignore / Relic button
+    const curQ = state.questions[state.index];
+    const isIgnored = curQ && state.ignoredQuestions.has(curQ.id);
+    const ignBtn = $('ignore-btn');
+    if (ignBtn) {
+      ignBtn.className = isIgnored ? 'btn-ignore ignored' : 'btn-ignore';
+      ignBtn.innerHTML = isIgnored ? '📦 Relic (Ignored)' : '📦 Relic';
+      ignBtn.title = isIgnored ? 'Click to unmark and restore to active quizzes' : 'Mark as outdated/relic to exclude from quizzes and collect for updating';
+    }
 
     updateGrid();
   }
@@ -1492,6 +1514,7 @@
         if (state.explorerStatus === 'mastered' && !isMastered) return false;
         if (state.explorerStatus === 'review' && !isReview) return false;
         if (state.explorerStatus === 'unseen' && !isUnseen) return false;
+        if (state.explorerStatus === 'ignored' && !state.ignoredQuestions.has(q.id)) return false;
       }
 
       // Search query
@@ -1511,6 +1534,15 @@
     const resultsEl = $('explorer-results');
     const countEl = $('explorer-count');
     const loadMoreBtn = $('explorer-load-more');
+
+    // Update Relics count pill & Export button
+    const relicPillCount = $('relic-pill-count');
+    if (relicPillCount) relicPillCount.textContent = state.ignoredQuestions.size;
+    const exportRelicsBtn = $('export-relics-btn');
+    if (exportRelicsBtn) {
+      exportRelicsBtn.style.display = state.ignoredQuestions.size > 0 ? 'inline-block' : 'none';
+      exportRelicsBtn.textContent = `📥 Export Relics (${state.ignoredQuestions.size})`;
+    }
 
     if (countEl) {
       countEl.textContent = `Showing ${visibleCount} of ${totalMatches} questions`;
@@ -1534,9 +1566,11 @@
       const isMastered = s && s.lastConfidence === 'high' && (s.correct || 0) >= (s.wrong || 0) && (s.correct || 0) > 0;
       const isReview = s && ((s.wrong || 0) > (s.correct || 0) || (s.lastConfidence === 'high' && (s.wrong || 0) > 0) || (s.mistakeReasons && s.mistakeReasons.length > 0));
       const isUnseen = !state.seenQuestions.has(q.id) && !s;
+      const isRelic = state.ignoredQuestions.has(q.id);
 
       let statusBadge = '';
-      if (isMastered) statusBadge = '<span class="explorer-status-badge mastered">✅ Mastered</span>';
+      if (isRelic) statusBadge = '<span class="explorer-status-badge relic">📦 Relic</span>';
+      else if (isMastered) statusBadge = '<span class="explorer-status-badge mastered">✅ Mastered</span>';
       else if (isReview) statusBadge = '<span class="explorer-status-badge review">⚠️ Review</span>';
       else if (isUnseen) statusBadge = '<span class="explorer-status-badge unseen">❓ Unseen</span>';
       else if (s) statusBadge = '<span class="explorer-status-badge uncertain">🟡 In Progress</span>';
@@ -1596,6 +1630,11 @@
             <div class="explorer-detail-explanation">
               <strong>Explanation:</strong>
               ${formatMarkdown(q.explanation || '')}
+            </div>
+            <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:10px;display:flex;justify-content:flex-end;">
+              <button class="btn-secondary btn-sm btn-relic-toggle ${isRelic ? 'is-relic' : ''}" data-qid="${q.id}">
+                ${isRelic ? '✓ Restore from Relics' : '📦 Mark as Relic (Exclude)'}
+              </button>
             </div>
           </div>
         </div>
@@ -1731,6 +1770,25 @@
       $('flag-btn').className = state.flagged.has(state.index) ? 'btn-flag flagged' : 'btn-flag';
       updateGrid();
     });
+
+    // Ignore / Relic
+    const ignBtn = $('ignore-btn');
+    if (ignBtn) {
+      ignBtn.addEventListener('click', () => {
+        const curQ = state.questions[state.index];
+        if (!curQ) return;
+        if (state.ignoredQuestions.has(curQ.id)) {
+          state.ignoredQuestions.delete(curQ.id);
+          showToast('✓ Restored to active quiz pool!');
+        } else {
+          state.ignoredQuestions.add(curQ.id);
+          showToast('📦 Marked as Relic/Ignored! Excluded from future quizzes.');
+        }
+        saveHistory();
+        renderQuestion();
+        renderDashboard();
+      });
+    }
 
     // Submit exam
     $('submit-btn').addEventListener('click', () => {
@@ -1894,11 +1952,63 @@
     const expResults = $('explorer-results');
     if (expResults) {
       expResults.addEventListener('click', e => {
+        const relicBtn = e.target.closest('.btn-relic-toggle');
+        if (relicBtn) {
+          e.stopPropagation();
+          const qid = relicBtn.dataset.qid;
+          if (!qid) return;
+          if (state.ignoredQuestions.has(qid)) {
+            state.ignoredQuestions.delete(qid);
+            showToast('✓ Restored question to active pool!');
+          } else {
+            state.ignoredQuestions.add(qid);
+            showToast('📦 Marked as Relic/Ignored! Excluded from quizzes.');
+          }
+          saveHistory();
+          renderExplorer();
+          renderDashboard();
+          return;
+        }
+
         const card = e.target.closest('.explorer-card');
         if (!card) return;
         card.classList.toggle('expanded');
         const icon = card.querySelector('.explorer-toggle-icon');
         if (icon) icon.textContent = card.classList.contains('expanded') ? '▲' : '▼';
+      });
+    }
+
+    const exportRelicsBtn = $('export-relics-btn');
+    if (exportRelicsBtn) {
+      exportRelicsBtn.addEventListener('click', () => {
+        if (state.ignoredQuestions.size === 0) {
+          showToast('No questions marked as relics yet.');
+          return;
+        }
+        const relicQuestions = QUESTIONS.filter(q => state.ignoredQuestions.has(q.id));
+        const exportData = {
+          exportDate: new Date().toISOString(),
+          title: 'AZ-104 Outdated & Relic Questions for Modernization',
+          count: relicQuestions.length,
+          questions: relicQuestions.map(q => ({
+            id: q.id,
+            domain: q.domain,
+            question: q.question,
+            choices: q.choices,
+            correct: q.correct,
+            explanation: q.explanation,
+            image: q.image || null,
+            table: q.table || null
+          }))
+        };
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `az104_relic_questions_${Date.now()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast(`📥 Exported ${relicQuestions.length} relic question(s) to JSON!`);
       });
     }
   }
