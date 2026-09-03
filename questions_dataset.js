@@ -58,8 +58,8 @@ const QUESTIONS = [
       "A. Yes",
       "B. No"
     ],
-    "explanation": "Altering only the Grant Controls of a Conditional Access policy specifies what controls are enforced (e.g., require MFA), but fails to scope the policy to untrusted locations. To target untrusted networks, the Conditions -> Locations setting must be configured.",
-    "correct": 1,
+    "explanation": "Grant controls within a Conditional Access policy are the specific settings used to enforce access requirements, such as requiring Multi-Factor Authentication (MFA) and requiring an Azure AD-joined or compliant device. Therefore, configuring the grant controls meets the requirement.",
+    "correct": 0,
     "type": "pdf"
   },
   {
