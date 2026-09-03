@@ -583,8 +583,8 @@ const QUESTIONS = [
       "C. You are prevented from creating Azure SQL Servers in ContosoRG1 only.",
       "D. You can create Azure SQL servers in any resource group within Subscription 1."
     ],
-    "explanation": "When a Deny effect policy is assigned at the subscription level, it prevents the creation of the specified resource type across all resource groups within that subscription. Thus, you are prevented from creating Azure SQL servers anywhere in Subscription 1.",
-    "correct": 0,
+    "explanation": "The policy applies a Not Allowed Resource Types deny policy for Microsoft.Sql/servers at the Subscription 1 scope. However, ContosoRG1 is explicitly listed under **Exclusions**. Excluded scopes are exempt from policy enforcement, meaning SQL servers are blocked across all other resource groups in Subscription 1, but permitted in ContosoRG1.",
+    "correct": 1,
     "type": "pdf",
     "image": "images/topic2_q6_0.png"
   },
