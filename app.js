@@ -23,6 +23,10 @@
     confidences: [],     // 'high'|'medium'|'low'|null
     mistakes: [],        // mistake reasons per question
     showMistakePrompt: false,
+    eliminations: {},    // { questionIndex: Set of eliminated choice indices }
+    explorerDomain: 'all',
+    explorerStatus: 'all',
+    explorerVisible: 50,
   };
 
   // ── DOM shorthand ──
@@ -310,7 +314,98 @@
     $('stat-review').textContent = needsReview;
     $('stat-uncertain').textContent = uncertain;
 
+    // Update weakness count
+    const weakEl = $('weakness-count');
+    if (weakEl) weakEl.textContent = getWeaknessPool().length;
+
+    renderReadiness();
     renderHistory();
+  }
+
+  function getWeaknessPool() {
+    const pool = [];
+    const qMap = {};
+    QUESTIONS.forEach(q => { qMap[q.id] = q; });
+
+    for (const [qid, s] of Object.entries(state.qstats)) {
+      if (!qMap[qid]) continue;
+      const isMostlyWrong = (s.wrong || 0) > (s.correct || 0);
+      const isLuckyGuess = s.lastConfidence === 'low' && (s.correct || 0) > 0;
+      const isOverconfidentMiss = s.lastConfidence === 'high' && (s.wrong || 0) > 0 && isMostlyWrong;
+
+      // Graduation: 2+ consecutive correct with high confidence
+      if ((s.streak || 0) >= 2 && s.lastConfidence === 'high') continue;
+
+      if (isMostlyWrong || isLuckyGuess || isOverconfidentMiss) {
+        pool.push(qMap[qid]);
+      }
+    }
+    return pool;
+  }
+
+  function renderReadiness() {
+    const barsEl = $('readiness-bars');
+    const scoreEl = $('readiness-score');
+    const verdictEl = $('readiness-verdict');
+    if (!barsEl) return;
+
+    // AZ-104 official domain weights
+    const weights = { identity: 0.20, storage: 0.15, compute: 0.20, networking: 0.25, monitor: 0.20 };
+
+    // Build per-question domain map
+    const qDomainMap = {};
+    QUESTIONS.forEach(q => { qDomainMap[q.id] = q.domain; });
+
+    // Calculate per-domain accuracy from qstats
+    const domainStats = {};
+    for (const key of Object.keys(DOMAINS)) {
+      domainStats[key] = { correct: 0, total: 0 };
+    }
+
+    for (const [qid, s] of Object.entries(state.qstats)) {
+      const domain = qDomainMap[qid];
+      if (!domain || !domainStats[domain]) continue;
+      domainStats[domain].correct += (s.correct || 0);
+      domainStats[domain].total += (s.correct || 0) + (s.wrong || 0);
+    }
+
+    let html = '';
+    let weightedScore = 0;
+    let hasEnoughData = false;
+
+    for (const [key, val] of Object.entries(DOMAINS)) {
+      const ds = domainStats[key];
+      const pct = ds.total >= 5 ? Math.round((ds.correct / ds.total) * 100) : -1;
+      const cls = pct < 0 ? 'nodata' : pct >= 75 ? 'ready' : pct >= 60 ? 'borderline' : 'weak';
+      const pctText = pct < 0 ? '—' : pct + '%';
+      const barWidth = pct < 0 ? 0 : pct;
+
+      if (pct >= 0) {
+        weightedScore += (pct / 100) * (weights[key] || 0.20) * 1000;
+        hasEnoughData = true;
+      }
+
+      html += `<div class="readiness-bar-item">
+        <div class="readiness-bar-label">
+          <span class="readiness-bar-name">${val.name}</span>
+          <span class="readiness-bar-pct ${cls}">${pctText}${pct >= 0 ? ' (' + ds.correct + '/' + ds.total + ')' : ' (need 5+ answers)'}</span>
+        </div>
+        <div class="readiness-bar-track"><div class="readiness-bar-fill ${cls}" style="width:${barWidth}%"></div></div>
+      </div>`;
+    }
+
+    barsEl.innerHTML = html;
+
+    if (hasEnoughData) {
+      const estScore = Math.round(weightedScore);
+      scoreEl.textContent = '~' + estScore + ' / 1000';
+      verdictEl.textContent = estScore >= 700 ? '✅ Likely Pass' : estScore >= 620 ? '⚠️ Borderline' : '❌ Needs Work';
+      verdictEl.className = 'readiness-sublabel ' + (estScore >= 700 ? 'pass' : estScore >= 620 ? 'borderline' : 'fail');
+    } else {
+      scoreEl.textContent = '—';
+      verdictEl.textContent = 'Need more data';
+      verdictEl.className = 'readiness-sublabel';
+    }
   }
 
   function renderHistory() {
@@ -322,7 +417,7 @@
     }
     list.innerHTML = state.history.slice().reverse().slice(0, 10).map(h => {
       const pass = h.percent >= 70;
-      const modeLabel = h.mode === 'exam' ? '⏱️ Exam' : (h.mode === 'notes' ? '📚 Notes' : '📝 Practice');
+      const modeLabel = h.mode === 'exam' ? '⏱️ Exam' : (h.mode === 'notes' ? '📚 Notes' : (h.mode === 'weakness' ? '🎯 Weakness' : '📝 Practice'));
       return `<div class="history-item" data-id="${h.id}">
         <div class="history-item-left">
           <span class="history-score ${pass ? 'pass' : 'fail'}">${h.percent}%</span>
@@ -432,6 +527,32 @@
 
   // ── Start Quiz ──
   function startQuiz() {
+    // Weakness mode: pull directly from weakness pool
+    if (state.mode === 'weakness') {
+      const weakPool = getWeaknessPool();
+      if (weakPool.length === 0) {
+        showToast('🎉 No weak questions! Keep practicing to find new ones.');
+        return;
+      }
+      const shuffled = shuffle(weakPool);
+      state.questions = shuffled.slice(0, Math.min(20, shuffled.length));
+      state.index = 0;
+      state.answers = new Array(state.questions.length).fill(null);
+      state.confidences = new Array(state.questions.length).fill(null);
+      state.mistakes = new Array(state.questions.length).fill(null);
+      state.flagged = new Set();
+      state.eliminations = {};
+      state.timeLeft = state.totalTime;
+
+      showScreen('quiz');
+      renderQuestion();
+      renderGrid();
+      $('timer-container').classList.add('hidden');
+      $('submit-btn').style.display = 'none';
+      showToast('🎯 Weakness Drill: ' + state.questions.length + ' weak questions loaded!');
+      return;
+    }
+
     let filtered = getFilteredQuestions();
     if (filtered.length === 0) return;
 
@@ -468,6 +589,7 @@
     state.confidences = new Array(state.questions.length).fill(null);
     state.mistakes = new Array(state.questions.length).fill(null);
     state.flagged = new Set();
+    state.eliminations = {};
     state.timeLeft = state.totalTime;
 
     showScreen('quiz');
@@ -534,13 +656,15 @@
     }
 
     const choicesEl = $('choices');
-    const isPractice = state.mode === 'practice' || state.mode === 'notes';
+    const isPractice = state.mode === 'practice' || state.mode === 'notes' || state.mode === 'weakness';
     const isExam = state.mode === 'exam';
     const hasAnswer = state.answers[state.index] !== null;
     const hasConf = state.confidences[state.index] !== null;
     const evaluated = isExam ? hasAnswer : (hasAnswer && hasConf);
 
     choicesEl.classList.remove('hidden');
+
+    const elimSet = state.eliminations[state.index] || new Set();
 
     choicesEl.innerHTML = q.choices.map((c, i) => {
       let cls = 'choice-btn';
@@ -553,17 +677,24 @@
 
       let letter = String.fromCharCode(65 + i);
       let text = c;
-      const match = c.match(/^([A-F])[\.\:\)]\s*(.*)$/i);
+      const match = c.match(/^([A-F])[\.:\)]\s*(.*)$/i);
       if (match) {
         letter = match[1].toUpperCase();
         text = match[2];
       }
 
+      const isEliminated = elimSet.has(i);
+      const wrapCls = 'choice-btn-wrapper' + (isEliminated ? ' eliminated' : '');
+      const showX = !evaluated;
+
       return `
-        <button class="${cls}" data-index="${i}">
-          <span class="choice-letter">${letter}</span>
-          <span class="choice-text">${escapeHtml(text)}</span>
-        </button>
+        <div class="${wrapCls}" data-choice-index="${i}">
+          <button class="${cls}" data-index="${i}">
+            <span class="choice-letter">${letter}</span>
+            <span class="choice-text">${escapeHtml(text)}</span>
+          </button>
+          ${showX ? `<button class="eliminate-x" data-elim="${i}" title="Eliminate this choice">✕</button>` : ''}
+        </div>
       `;
     }).join('');
 
@@ -634,12 +765,35 @@
 
   // ── Select Answer ──
   function selectAnswer(choiceIndex) {
-    const isPractice = state.mode === 'practice' || state.mode === 'notes';
+    const isPractice = state.mode === 'practice' || state.mode === 'notes' || state.mode === 'weakness';
     const evaluated = isPractice ? (state.answers[state.index] !== null && state.confidences[state.index] !== null) : false;
     if (evaluated) return;
 
     state.answers[state.index] = choiceIndex;
     state.showMistakePrompt = false;
+    renderQuestion();
+  }
+
+  function toggleElimination(cIndex) {
+    const isPractice = state.mode === 'practice' || state.mode === 'notes' || state.mode === 'weakness';
+    const isExam = state.mode === 'exam';
+    const hasAnswer = state.answers[state.index] !== null;
+    const hasConf = state.confidences[state.index] !== null;
+    const evaluated = isExam ? false : (hasAnswer && hasConf);
+    if (evaluated) return;
+
+    if (!state.eliminations[state.index]) {
+      state.eliminations[state.index] = new Set();
+    }
+    const elimSet = state.eliminations[state.index];
+    if (elimSet.has(cIndex)) {
+      elimSet.delete(cIndex);
+    } else {
+      elimSet.add(cIndex);
+      if (state.answers[state.index] === cIndex) {
+        state.answers[state.index] = null;
+      }
+    }
     renderQuestion();
   }
 
@@ -669,7 +823,7 @@
   }
 
   function goNext() {
-    const isPractice = state.mode === 'practice' || state.mode === 'notes';
+    const isPractice = state.mode === 'practice' || state.mode === 'notes' || state.mode === 'weakness';
     const q = state.questions[state.index];
     const hasConf = state.confidences[state.index] !== null;
     const isWrong = state.answers[state.index] !== null && state.answers[state.index] !== q.correct;
@@ -828,8 +982,17 @@
       }
       
       const stat = state.qstats[q.id];
-      if (isCorrect) stat.correct++;
-      else stat.wrong++;
+      if (isCorrect) {
+        stat.correct++;
+        if (conf === 'high') {
+          stat.streak = (stat.streak || 0) + 1;
+        } else {
+          stat.streak = 0;
+        }
+      } else {
+        stat.wrong++;
+        stat.streak = 0;
+      }
       
       if (conf) stat.lastConfidence = conf;
       if (mistake) {
@@ -1239,6 +1402,146 @@
     }).join('');
   }
 
+  // ── Question Bank Explorer ──
+  function renderExplorer() {
+    const domainPillsEl = $('explorer-domain-pills');
+    if (domainPillsEl && domainPillsEl.children.length === 0) {
+      let dHtml = `<button class="domain-pill ${state.explorerDomain === 'all' ? 'selected' : ''}" data-exp-domain="all">All Modules</button>`;
+      for (const [key, val] of Object.entries(DOMAINS)) {
+        const isSel = state.explorerDomain === key ? 'selected' : '';
+        dHtml += `<button class="domain-pill ${isSel}" data-exp-domain="${key}">${val.short}</button>`;
+      }
+      domainPillsEl.innerHTML = dHtml;
+    }
+
+    const searchInput = $('explorer-search');
+    const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+    const matched = QUESTIONS.filter(q => {
+      // Domain filter
+      if (state.explorerDomain !== 'all' && q.domain !== state.explorerDomain) return false;
+
+      // Status filter
+      if (state.explorerStatus !== 'all') {
+        const s = state.qstats[q.id];
+        const isMastered = s && s.lastConfidence === 'high' && (s.correct || 0) >= (s.wrong || 0) && (s.correct || 0) > 0;
+        const isReview = s && ((s.wrong || 0) > (s.correct || 0) || (s.lastConfidence === 'high' && (s.wrong || 0) > 0) || (s.mistakeReasons && s.mistakeReasons.length > 0));
+        const isUnseen = !state.seenQuestions.has(q.id) && !s;
+
+        if (state.explorerStatus === 'mastered' && !isMastered) return false;
+        if (state.explorerStatus === 'review' && !isReview) return false;
+        if (state.explorerStatus === 'unseen' && !isUnseen) return false;
+      }
+
+      // Search query
+      if (query) {
+        const inId = (q.id || '').toLowerCase().includes(query);
+        const inQ = (q.question || '').toLowerCase().includes(query);
+        const inChoices = (q.choices || []).some(c => c.toLowerCase().includes(query));
+        const inExp = (q.explanation || '').toLowerCase().includes(query);
+        if (!inId && !inQ && !inChoices && !inExp) return false;
+      }
+
+      return true;
+    });
+
+    const totalMatches = matched.length;
+    const visibleCount = Math.min(state.explorerVisible || 50, totalMatches);
+    const resultsEl = $('explorer-results');
+    const countEl = $('explorer-count');
+    const loadMoreBtn = $('explorer-load-more');
+
+    if (countEl) {
+      countEl.textContent = `Showing ${visibleCount} of ${totalMatches} questions`;
+    }
+
+    if (loadMoreBtn) {
+      loadMoreBtn.style.display = visibleCount < totalMatches ? 'block' : 'none';
+    }
+
+    if (!resultsEl) return;
+
+    if (totalMatches === 0) {
+      resultsEl.innerHTML = '<p class="no-history">No questions match your filters or search query.</p>';
+      return;
+    }
+
+    const visibleQuestions = matched.slice(0, visibleCount);
+
+    resultsEl.innerHTML = visibleQuestions.map(q => {
+      const s = state.qstats[q.id];
+      const isMastered = s && s.lastConfidence === 'high' && (s.correct || 0) >= (s.wrong || 0) && (s.correct || 0) > 0;
+      const isReview = s && ((s.wrong || 0) > (s.correct || 0) || (s.lastConfidence === 'high' && (s.wrong || 0) > 0) || (s.mistakeReasons && s.mistakeReasons.length > 0));
+      const isUnseen = !state.seenQuestions.has(q.id) && !s;
+
+      let statusBadge = '';
+      if (isMastered) statusBadge = '<span class="explorer-status-badge mastered">✅ Mastered</span>';
+      else if (isReview) statusBadge = '<span class="explorer-status-badge review">⚠️ Review</span>';
+      else if (isUnseen) statusBadge = '<span class="explorer-status-badge unseen">❓ Unseen</span>';
+      else if (s) statusBadge = '<span class="explorer-status-badge uncertain">🟡 In Progress</span>';
+
+      const dName = DOMAINS[q.domain] ? DOMAINS[q.domain].short : q.domain;
+      const cleanSnippet = (q.question || '').replace(/\s+/g, ' ').substring(0, 95) + '...';
+
+      let tableHtml = '';
+      if (q.table && Array.isArray(q.table.headers) && Array.isArray(q.table.rows)) {
+        tableHtml = '<div class="q-table-container"><table class="q-table"><thead><tr>';
+        q.table.headers.forEach(h => { tableHtml += `<th>${escapeHtml(h)}</th>`; });
+        tableHtml += '</tr></thead><tbody>';
+        q.table.rows.forEach(r => {
+          tableHtml += '<tr>';
+          r.forEach(cell => { tableHtml += `<td>${escapeHtml(cell)}</td>`; });
+          tableHtml += '</tr>';
+        });
+        tableHtml += '</tbody></table></div>';
+      }
+
+      const imgHtml = q.image ? `<div class="q-image-container"><img src="${q.image}" alt="Diagram" class="q-image"></div>` : '';
+
+      const choicesHtml = (q.choices || []).map((c, ci) => {
+        const isCorrectChoice = ci === q.correct;
+        let letter = String.fromCharCode(65 + ci);
+        let text = c;
+        const match = c.match(/^([A-F])[\.:\)]\s*(.*)$/i);
+        if (match) {
+          letter = match[1].toUpperCase();
+          text = match[2];
+        }
+        return `<div class="explorer-choice ${isCorrectChoice ? 'correct' : ''}">
+          <strong>${letter}.</strong> ${escapeHtml(text)} ${isCorrectChoice ? '✓' : ''}
+        </div>`;
+      }).join('');
+
+      return `
+        <div class="explorer-card" data-qid="${q.id}">
+          <div class="explorer-card-header">
+            <div class="explorer-card-left">
+              <span class="explorer-card-id">${q.id}</span>
+              <span class="domain-badge" style="margin-left:0">${dName}</span>
+              <span class="explorer-card-preview">${escapeHtml(cleanSnippet)}</span>
+            </div>
+            <div class="explorer-card-badges">
+              ${statusBadge}
+              <span class="explorer-toggle-icon">▼</span>
+            </div>
+          </div>
+          <div class="explorer-card-detail">
+            <div class="explorer-detail-question">${formatQuestionText(q.question)}</div>
+            ${tableHtml}
+            ${imgHtml}
+            <div class="explorer-detail-choices">
+              ${choicesHtml}
+            </div>
+            <div class="explorer-detail-explanation">
+              <strong>Explanation:</strong>
+              ${formatMarkdown(q.explanation || '')}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
   // ── Event Binding ──
   function bindEvents() {
     // Mode selection
@@ -1247,6 +1550,16 @@
         document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         state.mode = card.dataset.mode;
+
+        const countPills = $('count-pills');
+        const countTitle = countPills ? countPills.previousElementSibling : null;
+        if (state.mode === 'exam' || state.mode === 'weakness') {
+          if (countPills) countPills.style.display = 'none';
+          if (countTitle && countTitle.classList.contains('section-title')) countTitle.style.display = 'none';
+        } else {
+          if (countPills) countPills.style.display = 'flex';
+          if (countTitle && countTitle.classList.contains('section-title')) countTitle.style.display = 'block';
+        }
       });
     });
 
@@ -1293,11 +1606,33 @@
       renderDashboard();
     });
 
-    // Choices (delegated)
+    // Choices (delegated) — handles answer selection and elimination X
     $('choices').addEventListener('click', e => {
+      const elimBtn = e.target.closest('.eliminate-x');
+      if (elimBtn) {
+        e.stopPropagation();
+        const cIndex = parseInt(elimBtn.dataset.elim, 10);
+        toggleElimination(cIndex);
+        return;
+      }
       const btn = e.target.closest('.choice-btn');
       if (!btn || btn.classList.contains('disabled')) return;
-      selectAnswer(parseInt(btn.dataset.index));
+      const cIndex = parseInt(btn.dataset.index, 10);
+      const elimSet = state.eliminations[state.index];
+      if (elimSet && elimSet.has(cIndex)) return; // Prevent selecting eliminated choice
+      selectAnswer(cIndex);
+    });
+
+    // Right-click to eliminate choice
+    $('choices').addEventListener('contextmenu', e => {
+      const btn = e.target.closest('.choice-btn') || e.target.closest('.choice-btn-wrapper');
+      if (!btn) return;
+      e.preventDefault();
+      const choiceBtn = btn.querySelector('.choice-btn') || btn;
+      const cIndex = parseInt(choiceBtn.dataset.index, 10);
+      if (!isNaN(cIndex)) {
+        toggleElimination(cIndex);
+      }
     });
 
     // Confidence Tracker (no longer used inline, kept for safety)
@@ -1434,6 +1769,77 @@
 
     const statSeenCard = $('stat-seen-card');
     if (statSeenCard) statSeenCard.addEventListener('click', handleResetSeen);
+
+    // Explorer events
+    const browseBtn = $('browse-btn');
+    if (browseBtn) {
+      browseBtn.addEventListener('click', () => {
+        showScreen('explorer');
+        state.explorerVisible = 50;
+        renderExplorer();
+      });
+    }
+
+    const explorerBackBtn = $('explorer-back-btn');
+    if (explorerBackBtn) {
+      explorerBackBtn.addEventListener('click', () => {
+        showScreen('dashboard');
+        renderDashboard();
+      });
+    }
+
+    const explorerSearch = $('explorer-search');
+    if (explorerSearch) {
+      explorerSearch.addEventListener('input', () => {
+        state.explorerVisible = 50;
+        renderExplorer();
+      });
+    }
+
+    const expDomainPills = $('explorer-domain-pills');
+    if (expDomainPills) {
+      expDomainPills.addEventListener('click', e => {
+        const pill = e.target.closest('.domain-pill');
+        if (!pill) return;
+        document.querySelectorAll('#explorer-domain-pills .domain-pill').forEach(p => p.classList.remove('selected'));
+        pill.classList.add('selected');
+        state.explorerDomain = pill.dataset.expDomain;
+        state.explorerVisible = 50;
+        renderExplorer();
+      });
+    }
+
+    const expStatusPills = $('explorer-status-pills');
+    if (expStatusPills) {
+      expStatusPills.addEventListener('click', e => {
+        const pill = e.target.closest('.domain-pill');
+        if (!pill) return;
+        document.querySelectorAll('#explorer-status-pills .domain-pill').forEach(p => p.classList.remove('selected'));
+        pill.classList.add('selected');
+        state.explorerStatus = pill.dataset.status;
+        state.explorerVisible = 50;
+        renderExplorer();
+      });
+    }
+
+    const expLoadMore = $('explorer-load-more');
+    if (expLoadMore) {
+      expLoadMore.addEventListener('click', () => {
+        state.explorerVisible = (state.explorerVisible || 50) + 50;
+        renderExplorer();
+      });
+    }
+
+    const expResults = $('explorer-results');
+    if (expResults) {
+      expResults.addEventListener('click', e => {
+        const card = e.target.closest('.explorer-card');
+        if (!card) return;
+        card.classList.toggle('expanded');
+        const icon = card.querySelector('.explorer-toggle-icon');
+        if (icon) icon.textContent = card.classList.contains('expanded') ? '▲' : '▼';
+      });
+    }
   }
 
   // ── Go ──

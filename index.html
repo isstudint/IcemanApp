@@ -14,6 +14,7 @@
     <header class="app-header">
       <h1>AZ-104 Review Center</h1>
       <p class="subtitle">Microsoft Azure Administrator</p>
+      <button id="browse-btn" class="btn-browse">🔍 Browse Questions</button>
     </header>
 
     <div class="stats-row">
@@ -60,6 +61,11 @@
         <span class="mode-title">Notes Review</span>
         <span class="mode-desc">Flashcard-style review from Obsidian</span>
       </button>
+      <button class="mode-card" data-mode="weakness" id="mode-weakness">
+        <span class="mode-icon">🎯</span>
+        <span class="mode-title">Weakness Drill</span>
+        <span class="mode-desc"><span id="weakness-count">0</span> weak questions</span>
+      </button>
     </div>
 
     <p class="section-title">Question Count (Practice Mode)</p>
@@ -75,6 +81,17 @@
     <div class="domain-pills" id="domain-pills"></div>
 
     <button id="start-btn" class="btn-primary">Start Quiz</button>
+
+    <!-- Domain Readiness Meter -->
+    <div class="readiness-section" id="readiness-section">
+      <p class="section-title">Exam Readiness</p>
+      <div id="readiness-bars"></div>
+      <div class="readiness-score-card" id="readiness-score-card">
+        <span class="readiness-label">Estimated Exam Score</span>
+        <span class="readiness-value" id="readiness-score">—</span>
+        <span class="readiness-sublabel" id="readiness-verdict">Need more data</span>
+      </div>
+    </div>
 
     <div class="history-section">
       <div class="history-section-header">
@@ -180,6 +197,29 @@
       </div>
     </div>
     <div id="review-list"></div>
+  </div>
+
+  <!-- ═══ Question Bank Explorer ═══ -->
+  <div id="explorer" class="screen">
+    <div class="explorer-header">
+      <button id="explorer-back-btn" class="btn-secondary btn-quit">← Dashboard</button>
+      <h2>Question Bank</h2>
+    </div>
+    <div class="explorer-controls">
+      <input type="text" id="explorer-search" class="explorer-search" placeholder="Search questions, topics, keywords...">
+      <div class="explorer-filters">
+        <div class="domain-pills" id="explorer-domain-pills"></div>
+        <div class="domain-pills" id="explorer-status-pills">
+          <button class="domain-pill selected" data-status="all">All</button>
+          <button class="domain-pill" data-status="mastered">✅ Mastered</button>
+          <button class="domain-pill" data-status="review">⚠️ Needs Review</button>
+          <button class="domain-pill" data-status="unseen">❓ Unseen</button>
+        </div>
+      </div>
+    </div>
+    <div class="explorer-count" id="explorer-count"></div>
+    <div id="explorer-results"></div>
+    <button id="explorer-load-more" class="btn-secondary" style="width:100%;margin-top:12px;display:none">Load More</button>
   </div>
 
   <!-- ═══ Toast Notification ═══ -->
