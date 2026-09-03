@@ -1000,11 +1000,13 @@ const QUESTIONS = [
     "question": "HOTSPOT: You have an Azure subscription named Sub1 that contains the Azure resources shown in the following table.\nYou assign an Azure policy that has the following settings:\nScope: Sub1\n-\nExclusions: Sub1/RG1/VNET1\n-\nPolicy definition: Append a tag and its value to resources\n-\nPolicy enforcement: Enabled\n-\nTag name: Tag4\n-\nTag value: value4\n-\nYou assign tags to the resources as shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.\nHot Area:",
     "domain": "identity",
     "choices": [
-      "A. Yes",
-      "B. No"
+      "A. Statement 1: Yes | Statement 2: No | Statement 3: No",
+      "B. Statement 1: Yes | Statement 2: Yes | Statement 3: No",
+      "C. Statement 1: No | Statement 2: Yes | Statement 3: Yes",
+      "D. Statement 1: No | Statement 2: No | Statement 3: No"
     ],
-    "explanation": "The policy applies an append tag if the tag does not exist. However, if the resource already has the tag with a different value, or if exclusions apply, the tag might not be appended. Based on the scenario, the statement is false.",
-    "correct": 1,
+    "explanation": "1. Statement 1 is Yes: The policy appends Tag4 to resources, not resource groups. RG1 has only Tag2:IT.\n2. Statement 2 is No: Azure tags are NOT inherited from subscriptions or resource groups. Storage1 does not inherit Tag1 or Tag2.\n3. Statement 3 is No: VNET1 is explicitly excluded from the policy and does not inherit Tag2 from RG1. It only has Tag3:value2.",
+    "correct": 0,
     "type": "pdf",
     "image": "images/topic2_q48_combined.png"
   },
@@ -3731,8 +3733,8 @@ const QUESTIONS = [
       "C. Modify Rule5 to Allow with priority 401.",
       "D. Create a new inbound security rule that allows TCP protocol 443."
     ],
-    "explanation": "To allow inbound HTTPS traffic over TCP port 443, you should create a new inbound security rule with Allow action, destination port 443, TCP protocol, and priority higher than any default deny rules.",
-    "correct": 3,
+    "explanation": "In Network Security Groups, rules are processed in priority order (lowest number first) and stop on the first match. Rule2 (priority 500) denies traffic on port 443. Modifying Rule5 to Allow with priority 401 ensures that inbound HTTPS traffic is permitted before Rule2 evaluates.",
+    "correct": 2,
     "type": "pdf",
     "image": "images/topic5_q54_0.png"
   },
