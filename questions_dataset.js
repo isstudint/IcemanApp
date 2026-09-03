@@ -3328,7 +3328,7 @@ const QUESTIONS = [
       "D. the subnets on VNet3 only",
       "E. the subnets on VNet1, VNet2, and VNet3"
     ],
-    "explanation": "A Network Security Group (NSG) can only be associated with subnets or network interfaces that reside in the same Azure region as the NSG. Since NSG1 is in East US, it can only be applied to subnets in East US (VNet3). The original explanation incorrectly swapped the regions.",
+    "explanation": "A Network Security Group (NSG) can only be associated with virtual networks and subnets that reside in the same Azure region. Because NSG1 is in East US, it can only be associated with subnets in East US (VNet3). Resource group boundaries do not restrict NSG association.",
     "correct": 3,
     "type": "pdf",
     "image": "images/topic5_q11_0.png"
@@ -3645,7 +3645,7 @@ const QUESTIONS = [
       "C. East US, West Europe, and North Europe",
       "D. East US and West Europe only"
     ],
-    "explanation": "A network interface must be created in the exact same region as the virtual network it connects to. The explanation itself states: \"Therefore, NIC1 must be created in East US to connect to VNet1.\" This contradicts the PDF's answer of \"East US and North Europe only\".",
+    "explanation": "A Network Interface (NIC) can only connect to a virtual network located in the exact same Azure region. Because VNET1 is deployed in East US, NIC1 must be created in East US only.",
     "correct": 1,
     "type": "pdf",
     "image": "images/topic5_q45_0.png"
@@ -3775,7 +3775,7 @@ const QUESTIONS = [
       "A. Yes",
       "B. No"
     ],
-    "explanation": "The explanation states \"Deleting a block rule will not guarantee that the traffic is allowed unless an allow rule explicitly permits it or a default rule allows it. Azure's default inbound rules deny traffic from the Internet.\" Since the default is Deny, deleting the block rule will just fall through to the default Deny, meaning the goal is NOT met. The PDF's answer contradicts its own explanation.",
+    "explanation": "In the exhibit, rule Allow_131.107.100.50 at Priority 100 already explicitly allows traffic from that source IP on port 443 before Rule 200 is evaluated. Deleting Rule 200 (BlockAllOther443) does not resolve the connection failure because rule 100 was already taking precedence.",
     "correct": 1,
     "type": "pdf",
     "image": "images/topic5_q58_0.png"
@@ -3978,7 +3978,7 @@ const QUESTIONS = [
       "A. Yes",
       "B. No"
     ],
-    "explanation": "A deny rule explicitly blocks traffic. A priority of 64999 gives it low precedence, but since it is a deny rule, it contradicts the goal of allowing traffic.",
+    "explanation": "A Deny security rule explicitly drops matching network traffic. Even with a lower priority value, configuring a Deny action cannot be used to permit traffic.",
     "correct": 1,
     "type": "pdf",
     "image": "images/topic5_q78_0.png"
