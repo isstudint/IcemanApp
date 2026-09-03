@@ -260,6 +260,67 @@
     } catch {
       state.qstats = {};
     }
+
+    // Automatically sync and re-grade past history and stats against latest QUESTIONS dataset
+    syncHistoryAndStatsWithDataset();
+  }
+
+  function syncHistoryAndStatsWithDataset() {
+    if (!state.history || !state.history.length || typeof QUESTIONS === 'undefined') return;
+    const qMap = new Map(QUESTIONS.map(q => [q.id, q]));
+    let updated = false;
+
+    state.history.forEach(attempt => {
+      if (!attempt.questions || !attempt.answers) return;
+      let newCorrectCount = 0;
+      attempt.questions.forEach((q, i) => {
+        const latest = qMap.get(q.id);
+        if (latest) {
+          if (q.correct !== latest.correct || q.explanation !== latest.explanation) {
+            q.correct = latest.correct;
+            q.explanation = latest.explanation;
+            q.choices = latest.choices;
+            updated = true;
+          }
+        }
+        const isCorrect = attempt.answers[i] === q.correct;
+        if (isCorrect) newCorrectCount++;
+
+        // Ensure qstats stays in sync with truth
+        if (!state.qstats[q.id]) {
+          state.qstats[q.id] = { correct: 0, wrong: 0, mistakeReasons: [] };
+        }
+        const stat = state.qstats[q.id];
+        if (isCorrect) {
+          if (stat.wrong > 0 && stat.correct === 0) {
+            // Repaired from false mistake
+            stat.correct = 1;
+            stat.wrong = 0;
+            updated = true;
+          }
+        } else {
+          if (stat.correct > 0 && stat.wrong === 0) {
+            // Caught genuine mistake that was previously marked correct by a bad key
+            stat.wrong = 1;
+            stat.correct = 0;
+            stat.streak = 0;
+            updated = true;
+          }
+        }
+      });
+
+      if (attempt.correct !== newCorrectCount) {
+        attempt.correct = newCorrectCount;
+        if (attempt.score) attempt.score.correct = newCorrectCount;
+        attempt.percent = Math.round((newCorrectCount / attempt.total) * 100);
+        if (attempt.score) attempt.score.percent = attempt.percent;
+        updated = true;
+      }
+    });
+
+    if (updated) {
+      saveHistory();
+    }
   }
 
   function saveHistory() {
