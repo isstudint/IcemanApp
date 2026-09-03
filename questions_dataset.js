@@ -4715,8 +4715,8 @@ const QUESTIONS = [
       "C. VM1 and VM3 only",
       "D. VM1, VM2, and VM3"
     ],
-    "explanation": "Azure Bastion provides secure connectivity only to virtual machines located in the same virtual network as the Bastion host or in directly peered virtual networks. VMs in unconnected VNets cannot be accessed.",
-    "correct": 0,
+    "explanation": "Azure Bastion can connect to virtual machines in the local VNet (VM1) and virtual machines in directly peered VNets (VM2 in VNet2). Because Azure virtual network peering is non-transitive, Bastion1 in VNet1 cannot communicate with VNet3 through VNet2. Therefore, you can connect to VM1 and VM2 only.",
+    "correct": 1,
     "type": "pdf",
     "image": "images/topic5_q144_combined.png"
   },
