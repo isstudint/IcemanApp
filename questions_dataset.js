@@ -58,8 +58,8 @@ const QUESTIONS = [
       "A. Yes",
       "B. No"
     ],
-    "explanation": "Grant controls in a Conditional Access policy specify the requirements that must be met to access resources. Setting the grant control is the proper way to enforce MFA and require a joined device.",
-    "correct": 0,
+    "explanation": "Altering only the Grant Controls of a Conditional Access policy specifies what controls are enforced (e.g., require MFA), but fails to scope the policy to untrusted locations. To target untrusted networks, the Conditions -> Locations setting must be configured.",
+    "correct": 1,
     "type": "pdf"
   },
   {
@@ -957,7 +957,7 @@ const QUESTIONS = [
       "A. Get-Event Event | where {$_.EventType == \"error\"}",
       "B. Event | search \"error\"",
       "C. select * from Event where EventType == \"error\"",
-      "D. search in (Event) * | where EventType \u05d2\u20ac\"eq \u05d2\u20acerror\u05d2\u20ac"
+      "D. search in (Event) * | where EventType ג€\"eq ג€errorג€"
     ],
     "explanation": "In KQL, you can use the search operator to find specific terms across all columns in a table. `Event | search \"error\"` effectively filters the Event table for any records containing the string 'error'.",
     "correct": 1,
@@ -2373,8 +2373,8 @@ const QUESTIONS = [
       "C. one Availability Set that has 10 update domains and one fault domain",
       "D. one virtual machine scale set that has 12 virtual machines instances"
     ],
-    "explanation": "Azure reboots virtual machines in an Availability Set one Update Domain at a time during maintenance. By deploying 10 VMs across 10 update domains, only one VM goes down at a time, leaving 9 operational VMs.",
-    "correct": 2,
+    "explanation": "A Virtual Machine Scale Set of 10 instances distributes VMs across update domains so that planned maintenance reboots no more than 20% (2 instances) simultaneously. This guarantees that at least 8 virtual machines remain continuously operational.",
+    "correct": 0,
     "type": "pdf"
   },
   {
@@ -2776,8 +2776,8 @@ const QUESTIONS = [
       "C. virtual machine size",
       "D. resource group"
     ],
-    "explanation": "When you save an Azure VM as an ARM template, secure information such as the administrator password and username are stripped out for security. Therefore, you must configure the administrator username and credentials when deploying a new VM from that template.",
-    "correct": 1,
+    "explanation": "When deploying a virtual machine from a template saved in the ARM template library, parameters such as the VM size, OS, and administrator credentials are predefined in the template. The administrator specifies the target Resource Group during deployment.",
+    "correct": 3,
     "type": "pdf"
   },
   {
@@ -3107,8 +3107,8 @@ const QUESTIONS = [
       "C. Instance1 and Instance2 only",
       "D. Instance3 and Instance4 only"
     ],
-    "explanation": "A container group in Azure Container Instances can only contain containers that share the same host OS type and are deployed in the same region. You cannot mix Windows and Linux containers within the same container group.",
-    "correct": 0,
+    "explanation": "Azure Container Instances (ACI) only supports multi-container groups for Linux containers. Windows containers can only be deployed as standalone single-container instances. Therefore, only the Linux instances (Instance3 and Instance4) can be deployed to a container group.",
+    "correct": 3,
     "type": "pdf",
     "image": "images/topic4_q88_0.png"
   },
@@ -3154,8 +3154,8 @@ const QUESTIONS = [
       "C. 4",
       "D. 5"
     ],
-    "explanation": "App1 starts with 2 running instances. The rule specifies Minimum = 2, Maximum = 5. Scale-out (+1 instance) requires memory >= 80% for 10 minutes. Scale-in (-1 instance) triggers when memory <= 60% for 10 minutes. Because memory is at 60%, scale-out is never triggered. The scale-in condition cannot drop below the minimum limit of 2 instances. Therefore, the maximum number of instances running during the 30-minute period is **2**.",
-    "correct": 0,
+    "explanation": "App1 starts with 2 instances. Because memory usage is at 80%, the scale-out condition (>= 80%) is satisfied. Over the 30-minute period with a 5-minute cool-down, App1 scales out by 1 instance repeatedly until reaching the Maximum limit of 5 instances.",
+    "correct": 3,
     "type": "pdf",
     "image": "images/topic4_q96_0.png"
   },
@@ -4774,8 +4774,8 @@ const QUESTIONS = [
       "C. VNet3 and VNet4 only",
       "D. VNet2 and VNet3 only"
     ],
-    "explanation": "Azure Virtual Network peering allows you to connect virtual networks across different subscriptions and regions. Unless there are overlapping IP address spaces, VNet1 can be successfully peered with all other available virtual networks.",
-    "correct": 0,
+    "explanation": "Virtual Network peering requires non-overlapping IP address spaces. VNet1 and VNet4 both use 10.1.0.0/16, so peering between them is disallowed. VNet1 can only establish peering with VNet2 (10.2.0.0/16) and VNet3 (10.3.0.0/16).",
+    "correct": 3,
     "type": "pdf",
     "image": "images/topic5_q149_0.png"
   },
@@ -5791,8 +5791,8 @@ const QUESTIONS = [
       "D. Task2, Task3, and Task4 only",
       "E. Task1, Task2, Task3, and Task4"
     ],
-    "explanation": "Azure Storage Explorer supports uploading and downloading files, and connecting via SAS URIs. Features like lifecycle management policies and inventory reports are configured in the Azure portal.",
-    "correct": 0,
+    "explanation": "Azure Storage Explorer supports uploading append blobs to containers (Task2), creating file shares in storage accounts (Task3), and adding data to tables (Task4). Creating a new storage account (Task1) requires the Azure portal, CLI, PowerShell, or ARM/Bicep.",
+    "correct": 3,
     "type": "pdf_expansion",
     "image": "images/topic3_q55_combined.png"
   },
@@ -5807,8 +5807,8 @@ const QUESTIONS = [
       "C. 4",
       "D. 5"
     ],
-    "explanation": "The scale-in condition drops one instance when memory is below 60%. However, instances cannot drop below the minimum limit of 2, so 2 instances remain running.",
-    "correct": 0,
+    "explanation": "App1 starts with 2 instances. Memory usage of 80% satisfies the scale-out condition (>= 80%). Over the 30-minute evaluation window with recurring cooldowns, App1 scales out repeatedly until reaching the configured Maximum limit of 5 instances.",
+    "correct": 3,
     "type": "pdf_expansion",
     "image": "images/topic4_q96_0.png"
   },
@@ -6084,8 +6084,8 @@ const QUESTIONS = [
       "C. DemoSubnet1",
       "D. RecoverySubnetA"
     ],
-    "explanation": "During a test failover in Azure Site Recovery, Azure attempts to map the source VM to a subnet in the target virtual network with the same name. If a subnet with the same name does not exist, it selects the first subnet in the target network in alphabetical order.",
-    "correct": 0,
+    "explanation": "In Azure Site Recovery, when a target subnet with the exact same name as the source VM subnet (Subnet2) does not exist in the failover VNet, ASR defaults to the first subnet in alphabetical order. In VNET2, DemoSubnet1 (D) precedes RecoverySubnet (R) and TestSubnet1 (T).",
+    "correct": 2,
     "type": "pdf_expansion",
     "image": "images/topic5_q102_0.png"
   },
