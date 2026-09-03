@@ -3278,7 +3278,7 @@ const QUESTIONS = [
       "C. VNet3 and VNet4 only",
       "D. VNet2, VNet3, and VNet4"
     ],
-    "explanation": "According to the table exhibit:\n- VNet1 address space is `10.11.0.0/16`\n- VNet2 address space is `10.11.0.0/17` (a subnet of 10.11.0.0/16, which overlaps with VNet1)\n- VNet3 address space is `10.10.0.0/22` (no overlap with VNet1)\n- VNet4 address space is `192.168.16.0/22` (no overlap with VNet1)\n\nVirtual network peering cannot be established between VNets with overlapping IP address ranges. Because VNet2 overlaps with VNet1, VNet1 can only peer with **VNet3 and VNet4 only**.",
+    "explanation": "Virtual network peering requires completely non-overlapping IP address spaces:\n- VNet1 address space is 10.11.0.0/16 (10.11.0.0 - 10.11.255.255)\n- VNet2 address space is 10.11.0.0/17 (10.11.0.0 - 10.11.127.255), which directly overlaps with VNet1. Peering cannot be established.\n- VNet3 (10.10.0.0/22) and VNet4 (192.168.16.0/22) have completely non-overlapping address spaces with VNet1.\n\nTherefore, VNet1 can peer with **VNet3 and VNet4 only**.",
     "correct": 2,
     "type": "pdf",
     "image": "images/topic5_q7_0.png",
@@ -4774,8 +4774,8 @@ const QUESTIONS = [
       "C. VNet3 and VNet4 only",
       "D. VNet2 and VNet3 only"
     ],
-    "explanation": "Virtual Network peering requires non-overlapping IP address spaces. VNet1 and VNet4 both use 10.1.0.0/16, so peering between them is disallowed. VNet1 can only establish peering with VNet2 (10.2.0.0/16) and VNet3 (10.3.0.0/16).",
-    "correct": 3,
+    "explanation": "Virtual network peering requires completely non-overlapping IP address spaces:\n- VNet1 address space is 10.11.0.0/16 (10.11.0.0 - 10.11.255.255)\n- VNet2 address space is 10.11.0.0/17 (10.11.0.0 - 10.11.127.255), which directly overlaps with VNet1. Peering cannot be established.\n- VNet3 (10.10.0.0/22) and VNet4 (192.168.16.0/22) have completely non-overlapping address spaces with VNet1.\n\nTherefore, VNet1 can peer with **VNet3 and VNet4 only**.",
+    "correct": 2,
     "type": "pdf",
     "image": "images/topic5_q149_0.png"
   },
@@ -5868,8 +5868,8 @@ const QUESTIONS = [
       "C. VNet3 and VNet4 only",
       "D. VNet2 and VNet3 only"
     ],
-    "explanation": "Virtual network peering requires non-overlapping IP address spaces. VNet1 (10.1.0.0/16) and VNet4 (10.1.0.0/16) have identical overlapping address spaces, so peering between VNet1 and VNet4 cannot be established. VNet2 (10.2.0.0/16, regional peering) and VNet3 (10.3.0.0/16, global peering) have distinct, non-overlapping address spaces, so VNet1 can successfully peer with VNet2 and VNet3.",
-    "correct": 3,
+    "explanation": "Virtual network peering requires completely non-overlapping IP address spaces:\n- VNet1 address space is 10.11.0.0/16 (10.11.0.0 - 10.11.255.255)\n- VNet2 address space is 10.11.0.0/17 (10.11.0.0 - 10.11.127.255), which directly overlaps with VNet1. Peering cannot be established.\n- VNet3 (10.10.0.0/22) and VNet4 (192.168.16.0/22) have completely non-overlapping address spaces with VNet1.\n\nTherefore, VNet1 can peer with **VNet3 and VNet4 only**.",
+    "correct": 2,
     "type": "pdf_expansion",
     "image": "images/topic5_q7_0.png"
   },
