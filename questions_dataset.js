@@ -4468,8 +4468,8 @@ const QUESTIONS = [
       "D. IP1, IP2, and IP3",
       "E. IP2 and IP3 only"
     ],
-    "explanation": "Azure Bastion (Basic and Standard SKU) requires a dedicated Standard SKU Public IP address with Static allocation (IP3). Basic SKU public IP addresses (IP1 and IP2) are not supported for Azure Bastion.",
-    "correct": 2,
+    "explanation": "Azure Bastion requires a public IP address that meets all three criteria: Standard SKU, Static allocation, and Regional tier. Looking at the table: IP1 (Standard, Regional, Static) meets all requirements. IP2 (Standard, Global, Static) fails because Global tier is unsupported. IP3 (Basic, Regional, Dynamic) fails on both Basic SKU and Dynamic allocation. IP4 and IP5 also fail due to Basic SKU. Therefore, only IP1 can be used.",
+    "correct": 0,
     "type": "pdf",
     "image": "images/topic5_q122_0.png"
   },
