@@ -1241,8 +1241,8 @@ const QUESTIONS = [
       "C. User1, User2, and User4 only",
       "D. User1, User2, User3, and User4"
     ],
-    "explanation": "Group1 is an assigned security group whose members are User1 and User2. When a license is assigned to Group1, both User1 and User2 automatically receive the license through group-based licensing. User4 receives the license via direct assignment. User3 is not in Group1 and not assigned directly, so only User1, User2, and User4 receive the license.",
-    "correct": 2,
+    "explanation": "In Microsoft Entra ID, group-based licensing **does NOT support nested groups**. Licenses assigned to a group are applied ONLY to direct first-level user members. User1 is a direct member of Group1. User2 is a member of Group2 (which is nested inside Group1), so User2 does NOT inherit the license. User4 is assigned the license directly. Therefore, only **User1 and User4** receive the license.",
+    "correct": 1,
     "type": "pdf",
     "image": "images/topic2_q69_combined.png"
   },
@@ -1567,8 +1567,8 @@ const QUESTIONS = [
       "C. storage3",
       "D. storage4"
     ],
-    "explanation": "The Azure Import/Export service exclusively supports general-purpose v2 and general-purpose v1 storage accounts for exporting data. It does not support exporting data directly from premium block blob or premium file storage accounts.",
-    "correct": 0,
+    "explanation": "The Azure Import/Export service supports importing data into Azure Blob storage and Azure Files, but supports **exporting data from Azure Blob storage only**. According to the exhibit, only **storage4** contains data in the Azure Blob service. Therefore, storage4 is the only account that can be used for the export job.",
+    "correct": 3,
     "type": "pdf",
     "table": {
       "headers": [
@@ -1597,7 +1597,8 @@ const QUESTIONS = [
           "Storage (general purpose v1)"
         ]
       ]
-    }
+    },
+    "image": "images/topic3_q1_0.png"
   },
   {
     "id": "topic3_q3",
@@ -6450,8 +6451,8 @@ const QUESTIONS = [
       "C. User1. User2. and User4 only",
       "D. User1, User2, User3, and User4"
     ],
-    "explanation": "Assigning the Microsoft Entra ID Premium P2 license to Group1 (an assigned security group whose members are User1 and User2) automatically grants the license to User1 and User2. User4 is assigned the license directly. User3 is not in Group1 and not assigned directly, so User1, User2, and User4 receive the license.",
-    "correct": 2,
+    "explanation": "In Microsoft Entra ID, group-based licensing **does NOT support nested groups**. Licenses assigned to a group are applied ONLY to direct first-level user members. User1 is a direct member of Group1. User2 is a member of Group2 (which is nested inside Group1), so User2 does NOT inherit the license. User4 is assigned the license directly. Therefore, only **User1 and User4** receive the license.",
+    "correct": 1,
     "type": "pdf_expansion",
     "image": "images/topic2_q69_combined.png"
   },
