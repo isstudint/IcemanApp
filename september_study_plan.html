@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZ-104 September Sprint Schedule | Final Stretch to Oct 12</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #1e293b;
+      --surface-hover: #283548;
+      --surface-card: #151f30;
+      --border: #334155;
+      --border-accent: rgba(0, 120, 212, 0.4);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --azure: #0078d4;
+      --azure-light: #38bdf8;
+      --purple: #a855f7;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+      min-height: 100vh;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, rgba(0, 120, 212, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .badge-sprint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(168, 85, 247, 0.2);
+      color: #d8b4fe;
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .countdown-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--azure-light);
+    }
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .header-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+    .progress-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .progress-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--azure), var(--purple));
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      border-color: var(--azure-light);
+      color: #fff;
+    }
+    .tab-btn.active {
+      background: var(--azure);
+      border-color: var(--azure);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(0, 120, 212, 0.4);
+    }
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 28px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: -12px;
+      margin-bottom: 16px;
+    }
+    .schedule-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .day-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .day-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: var(--surface-hover);
+    }
+    .day-card.school-day { border-left: 4px solid var(--yellow); }
+    .day-card.benchmark-day {
+      border: 1px solid var(--purple);
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(0, 120, 212, 0.05));
+      border-left: 4px solid var(--purple);
+    }
+    .day-card.dojo-day { border-left: 4px solid var(--azure-light); }
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .day-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .day-date {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .day-type-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .pill-drill { background: rgba(56, 189, 248, 0.15); color: var(--azure-light); }
+    .pill-school { background: rgba(234, 179, 8, 0.15); color: var(--yellow); }
+    .pill-benchmark { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; }
+    .pill-dojo { background: rgba(34, 197, 94, 0.15); color: var(--green); }
+    .day-time {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+      padding: 6px 10px;
+      background: var(--surface-card);
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .task-item input[type="checkbox"] {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: var(--azure);
+    }
+    .task-content { flex: 1; }
+    .task-item.completed .task-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .note-ref {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: rgba(0, 120, 212, 0.12);
+      color: var(--azure-light);
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+      font-family: monospace;
+    }
+    .rule-box {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 3px solid var(--purple);
+      padding: 8px 12px;
+      margin-top: 6px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+    }
+    .target-metric {
+      font-weight: 700;
+      color: var(--green);
+    }
+    .gateways-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .gateway-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .gateway-box.active {
+      border-color: var(--purple);
+      box-shadow: 0 0 16px rgba(168, 85, 247, 0.15);
+    }
+    .gateway-pill {
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: rgba(168, 85, 247, 0.15);
+      color: #d8b4fe;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .gateway-title { font-size: 1.1rem; font-weight: 700; color: #fff; }
+    .gateway-target { font-size: 0.9rem; font-weight: 600; color: var(--azure-light); }
+    .gateway-rules { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+    .app-nav-bar {
+      margin-top: 36px;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .btn-action {
+      background: var(--azure);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-action:hover {
+      background: #005a9e;
+      box-shadow: 0 0 12px rgba(0, 120, 212, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <span class="badge-sprint">⚡ September 2026 Master Battle Plan</span>
+        <div class="countdown-box" id="countdown">Exam Date: October 12, 2026</div>
+      </div>
+      <h1>AZ-104 September Last-Stretch Sprint</h1>
+      <p class="header-desc">
+        A strict, deadline-driven execution plan directly aligned with your <strong>Obsidian Vault notes</strong>. Designed specifically around your school schedule (light review on Wednesdays and Fridays; heavy tactical drilling on weekends and power days).
+      </p>
+    </header>
+
+    <div class="progress-card">
+      <div class="progress-info">
+        <span>Sprint Completion Progress</span>
+        <span id="progress-percent">0% Completed</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" data-filter="all">All Days (Sept 4 – Sept 30)</button>
+      <button class="tab-btn" data-filter="phase1">Phase 1: 2-Week Sprint (Sept 4–17)</button>
+      <button class="tab-btn" data-filter="phase2">Phase 2: Tutorials Dojo (Sept 18–30)</button>
+      <button class="tab-btn" data-filter="benchmarks">🎯 Benchmark Milestone Days</button>
+    </div>
+
+    <div class="section-title">🏆 The 3 Curated Benchmark Gates</div>
+    <div class="section-subtitle">You must hit the minimum target score on each 50-item curated exam in IcemanApp before graduating to the next pillar.</div>
+    
+    <div class="gateways-summary">
+      <div class="gateway-box active">
+        <span class="gateway-pill">GATEWAY 1 • SUNDAY, SEPT 6</span>
+        <div class="gateway-title">Benchmark 1: Identity & Storage</div>
+        <div class="gateway-target">Strict Target: ≥ 78% (39/50 Correct)</div>
+        <div class="gateway-rules">
+          <strong>Key Traps Tested:</strong> Nested group licensing, policy exclusions, tag non-inheritance, blob lifecycle archive rehydration, Import/Export Blob constraints, SMB file share RBAC.
+        </div>
+      </div>
+
+      <div class="gateway-box">
+        <span class="gateway-pill">GATEWAY 2 • SATURDAY, SEPT 12</span>
+        <div class="gateway-title">Benchmark 2: Compute & Automation</div>
+        <div class="gateway-target">Strict Target: ≥ 80% (40/50 Correct)</div>
+        <div class="gateway-rules">
+          <strong>Key Traps Tested:</strong> Availability Sets (UD vs FD reboot limits), VMSS autoscale rules, ACI Linux-only multi-container groups, App Service slot swaps, ARM template schemas (parameters/variables/resources).
+        </div>
+      </div>
+
+      <div class="gateway-box">
+        <span class="gateway-pill">GATEWAY 3 • THURSDAY, SEPT 17</span>
+        <div class="gateway-title">Benchmark 3: Networking & Operations</div>
+        <div class="gateway-target">Strict Target: ≥ 82% (41/50 Correct)</div>
+        <div class="gateway-rules">
+          <strong>Key Traps Tested:</strong> Overlapping CIDR peering, non-transitive Bastion hops, NSG priority evaluation, Load Balancer Basic vs Standard SKU rules, Log Analytics KQL, and ASR failover subnets.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">📅 Day-by-Day Strict Deliverables</div>
+
+    <div class="schedule-grid" id="schedule-grid">
+
+      <!-- Fri Sept 4 -->
+      <div class="day-card school-day" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Friday, Sept 4</span>
+            <span class="day-type-pill pill-school">🏫 School Day (Light Load)</span>
+          </div>
+          <span class="day-time">⏱️ 35–45 Mins</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-1">
+            <div class="task-content">
+              <span class="task-text">Review Obsidian Notes on Entra ID & Governance</span>
+              <div class="note-ref">📁 STEP 2\AZ-104 - Governance Azure Policy.md & AZ-104 - Azure RBAC.md</div>
+              <div class="rule-box"><strong>Invariant Rule:</strong> Azure Policy <code>Exclusions</code> bypass deny rules (e.g. SQL servers can be deployed in excluded RG). Tags are NEVER inherited from RGs or subscriptions.</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-2">
+            <div class="task-content">
+              <span class="task-text">Quick 15-question Practice Drill in IcemanApp (Identity only)</span>
+              <div class="target-metric">Target: Mark any confusing question as Flagged or note its trap.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sat Sept 5 -->
+      <div class="day-card" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Saturday, Sept 5</span>
+            <span class="day-type-pill pill-drill">⚡ Deep Drill Day</span>
+          </div>
+          <span class="day-time">⏱️ 2.5 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-3">
+            <div class="task-content">
+              <span class="task-text">Master Storage Architecture in Obsidian</span>
+              <div class="note-ref">📁 STEP 4\AZ-104 - Azure Blob Storage.md & Azure Storage Accounts & Replication.md</div>
+              <div class="rule-box"><strong>Invariant Rules:</strong><br>
+              1. Azure Import/Export can import to Blobs and Files, but can <strong>EXPORT from Azure Blob Storage ONLY</strong>.<br>
+              2. Group-based licensing in Microsoft Entra ID does <strong>NOT</strong> support nested groups.</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-4">
+            <div class="task-content">
+              <span class="task-text">Run 40-question Practice Session in IcemanApp (Storage Module)</span>
+              <div class="target-metric">Target Deliverable: ≥ 80% accuracy on Storage questions.</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-5">
+            <div class="task-content">
+              <span class="task-text">Clear Weakness Drill pool down to 0 missed questions before sleeping.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sun Sept 6 -->
+      <div class="day-card benchmark-day" data-phase="phase1" data-benchmark="true">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Sunday, Sept 6</span>
+            <span class="day-type-pill pill-benchmark">🏆 BENCHMARK 1 EXAM DAY</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours (100-Min Exam)</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-6">
+            <div class="task-content">
+              <span class="task-text"><strong>TAKE BENCHMARK 1 (50 Curated Traps: Identity & Storage)</strong> in IcemanApp</span>
+              <div class="target-metric">STRICT PASS TARGET: ≥ 78% (at least 39/50 correct)</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-7">
+            <div class="task-content">
+              <span class="task-text">Triage all misses: Re-read explanations for every wrong answer on the Review screen.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mon Sept 7 -->
+      <div class="day-card" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Monday, Sept 7</span>
+            <span class="day-type-pill pill-drill">⚡ Pillar 2 Kickoff (Compute)</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-8">
+            <div class="task-content">
+              <span class="task-text">Review VM Architecture & Availability Sets</span>
+              <div class="note-ref">📁 STEP 5\AZ-104 - Azure Virtual Machines Architecture.md & Availability and Scale Sets.md</div>
+              <div class="rule-box"><strong>Reboot Math:</strong> Availability Sets support up to 3 Fault Domains (hardware power failure) and up to 20 Update Domains (planned reboot maintenance). Only 1 update domain reboots at a time.</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-9">
+            <div class="task-content">
+              <span class="task-text">Drill 30 Compute/VM questions in Practice Mode.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tue Sept 8 -->
+      <div class="day-card" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Tuesday, Sept 8</span>
+            <span class="day-type-pill pill-drill">⚡ VMSS & Autoscale Deep Dive</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-10">
+            <div class="task-content">
+              <span class="task-text">Master VMSS autoscale metric rules & scale-in policies</span>
+              <div class="rule-box"><strong>Autoscale Rule:</strong> Scale-out rule: e.g. CPU &gt; 75% for 10 mins adds 1 instance up to Maximum. Scale-in rule: CPU &lt; 25% removes 1 instance down to Minimum. Default scale-in removes instances with highest instance ID.</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-11">
+            <div class="task-content">
+              <span class="task-text">Drill 30 VMSS & App Service questions in IcemanApp.</span>
+              <div class="target-metric">Target: ≥ 80% on compute autoscale questions.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Wed Sept 9 -->
+      <div class="day-card school-day" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Wednesday, Sept 9</span>
+            <span class="day-type-pill pill-school">🏫 School Day (Light Load)</span>
+          </div>
+          <span class="day-time">⏱️ 35–45 Mins</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-12">
+            <div class="task-content">
+              <span class="task-text">Review Containers & ARM Automation Notes</span>
+              <div class="note-ref">📁 STEP 5\AZ-104 - Azure Containers (ACI, Container Apps, ACR).md</div>
+              <div class="rule-box"><strong>Rigid Exam Invariant:</strong> ACI multi-container groups support <strong>Linux containers ONLY</strong>. Windows containers can only run in single-container groups.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Thu Sept 10 -->
+      <div class="day-card" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Thursday, Sept 10</span>
+            <span class="day-type-pill pill-drill">⚡ ARM Templates & Extensions</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-13">
+            <div class="task-content">
+              <span class="task-text">Learn the core ARM Template sections: parameters, variables, resources, outputs</span>
+              <div class="rule-box"><strong>DSC vs Custom Script:</strong> Use DSC (Desired State Configuration) extension for declarative OS/software state; use Custom Script for arbitrary script execution.</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-14">
+            <div class="task-content">
+              <span class="task-text">Run 30 ARM & Container questions in Practice Mode.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Fri Sept 11 -->
+      <div class="day-card school-day" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Friday, Sept 11</span>
+            <span class="day-type-pill pill-school">🏫 School Day (Light Load)</span>
+          </div>
+          <span class="day-time">⏱️ 30 Mins</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-15">
+            <div class="task-content">
+              <span class="task-text">Warmup for Benchmark 2: Run 15-question Weakness Drill in IcemanApp.</span>
+              <div class="target-metric">Target: 0 unmastered questions in Compute.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sat Sept 12 -->
+      <div class="day-card benchmark-day" data-phase="phase1" data-benchmark="true">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Saturday, Sept 12</span>
+            <span class="day-type-pill pill-benchmark">🏆 BENCHMARK 2 EXAM DAY</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours (100-Min Exam)</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-16">
+            <div class="task-content">
+              <span class="task-text"><strong>TAKE BENCHMARK 2 (50 Curated Traps: Compute & Automation)</strong> in IcemanApp</span>
+              <div class="target-metric">STRICT PASS TARGET: ≥ 80% (at least 40/50 correct)</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-17">
+            <div class="task-content">
+              <span class="task-text">Triage all misses and log any tricky ARM/VMSS questions to Weakness Drill.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sun Sept 13 -->
+      <div class="day-card" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Sunday, Sept 13</span>
+            <span class="day-type-pill pill-drill">⚡ Pillar 3: Networking Boss Fight</span>
+          </div>
+          <span class="day-time">⏱️ 2.5 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-18">
+            <div class="task-content">
+              <span class="task-text">Deep Dive into VNet Peering & CIDR Calculations</span>
+              <div class="note-ref">📁 STEP 3\AZ-104 - VNet Peering.md & Virtual Networks and IP Addressing.md</div>
+              <div class="rule-box"><strong>Subnet Math:</strong> Azure reserves 5 IP addresses in EVERY subnet (.0 network, .1 default gateway, .2/.3 Azure DNS, .255 broadcast). Peering CANNOT be established if address spaces overlap (even a /17 inside a /16).</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-19">
+            <div class="task-content">
+              <span class="task-text">Drill 40 Virtual Network & Peering questions in IcemanApp.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mon Sept 14 -->
+      <div class="day-card" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Monday, Sept 14</span>
+            <span class="day-type-pill pill-drill">⚡ NSGs, ASGs & Bastion Rules</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-20">
+            <div class="task-content">
+              <span class="task-text">Master NSG Priority & Bastion Connectivity</span>
+              <div class="note-ref">📁 STEP 3\AZ-104 - Network Security Groups and ASGs.md & Private Endpoints and Bastion.md</div>
+              <div class="rule-box"><strong>Bastion Rules:</strong> Bastion supports VNet peering (same or cross-region), but <strong>peering is non-transitive</strong> (Bastion in VNet1 cannot reach VNet3 through VNet2). Requires Standard SKU, Static allocation, Regional tier Public IP.</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-21">
+            <div class="task-content">
+              <span class="task-text">Drill 30 NSG, Bastion, and Load Balancer questions.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tue Sept 15 -->
+      <div class="day-card" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Tuesday, Sept 15</span>
+            <span class="day-type-pill pill-drill">⚡ Load Balancers & Network Watcher</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-22">
+            <div class="task-content">
+              <span class="task-text">Master Basic vs Standard Load Balancer & Network Watcher Tools</span>
+              <div class="note-ref">📁 STEP 3\AZ-104 - Azure Load Balancer.md & Azure Network Watcher.md</div>
+              <div class="rule-box"><strong>LB Invariant:</strong> Standard LB requires Standard Public IPs. Stopping a VM does NOT remove its Basic Public IP from the NIC! Network Watcher: <em>IP flow verify</em> checks NSG allows/denies; <em>Connection Monitor</em> tests end-to-end latency.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Wed Sept 16 -->
+      <div class="day-card school-day" data-phase="phase1">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Wednesday, Sept 16</span>
+            <span class="day-type-pill pill-school">🏫 School Day (Light Load)</span>
+          </div>
+          <span class="day-time">⏱️ 35–45 Mins</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-23">
+            <div class="task-content">
+              <span class="task-text">Skim Azure Backup & Log Analytics KQL Notes</span>
+              <div class="note-ref">📁 STEP 6\AZ-104 - Protect Virtual Machines by using Azure Backup.md</div>
+              <div class="rule-box"><strong>KQL Syntax:</strong> <code>Event | where TimeGenerated &gt; ago(1h) | summarize count() by EventID</code>. Azure Monitor Agent (AMA) uses Data Collection Rules (DCRs).</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Thu Sept 17 -->
+      <div class="day-card benchmark-day" data-phase="phase1" data-benchmark="true">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Thursday, Sept 17</span>
+            <span class="day-type-pill pill-benchmark">🏆 BENCHMARK 3 EXAM DAY (Sprint Finale)</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours (100-Min Exam)</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-24">
+            <div class="task-content">
+              <span class="task-text"><strong>TAKE BENCHMARK 3 (50 Curated Traps: Networking & Monitoring)</strong> in IcemanApp</span>
+              <div class="target-metric">STRICT PASS TARGET: ≥ 82% (at least 41/50 correct)</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-25">
+            <div class="task-content">
+              <span class="task-text">🎉 <strong>2-WEEK SPRINT COMPLETE!</strong> You have now proven mastery across all 5 Azure domains.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Fri Sept 18 -->
+      <div class="day-card school-day" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Friday, Sept 18</span>
+            <span class="day-type-pill pill-school">🏫 School Day (Dojo Prep)</span>
+          </div>
+          <span class="day-time">⏱️ 30 Mins</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-26">
+            <div class="task-content">
+              <span class="task-text">Setup Tutorials Dojo AZ-104 course and review the exam layout.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sat Sept 19 -->
+      <div class="day-card dojo-day" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Saturday, Sept 19</span>
+            <span class="day-type-pill pill-dojo">🚀 Tutorials Dojo Test 1</span>
+          </div>
+          <span class="day-time">⏱️ 2.5 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-27">
+            <div class="task-content">
+              <span class="task-text"><strong>Take Tutorials Dojo Practice Test 1 (Timed Mode)</strong></span>
+              <div class="target-metric">Target Score: ≥ 80% on first attempt.</div>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-28">
+            <div class="task-content">
+              <span class="task-text">Log every mistake into your Obsidian <code>Mistakes Review</code> folder.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sun Sept 20 -->
+      <div class="day-card" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Sunday, Sept 20</span>
+            <span class="day-type-pill pill-drill">⚡ Remediation & Weakness Drill</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-29">
+            <div class="task-content">
+              <span class="task-text">Review every explanation and diagram from TD Test 1.</span>
+            </div>
+          </li>
+          <li class="task-item">
+            <input type="checkbox" id="task-30">
+            <div class="task-content">
+              <span class="task-text">Run 30-question Weakness Drill in IcemanApp targeting missed concepts.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mon Sept 21 -->
+      <div class="day-card" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Monday, Sept 21</span>
+            <span class="day-type-pill pill-drill">⚡ Section-Based Drill</span>
+          </div>
+          <span class="day-time">⏱️ 1.5 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-31">
+            <div class="task-content">
+              <span class="task-text">Tutorials Dojo Section-Based Test: Focus on Networking & Compute.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tue Sept 22 -->
+      <div class="day-card dojo-day" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Tuesday, Sept 22</span>
+            <span class="day-type-pill pill-dojo">🚀 Tutorials Dojo Test 2</span>
+          </div>
+          <span class="day-time">⏱️ 2.5 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-32">
+            <div class="task-content">
+              <span class="task-text"><strong>Take Tutorials Dojo Practice Test 2 (Timed Mode)</strong></span>
+              <div class="target-metric">Target Score: ≥ 82%.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Wed Sept 23 -->
+      <div class="day-card school-day" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Wednesday, Sept 23</span>
+            <span class="day-type-pill pill-school">🏫 School Day (Light Review)</span>
+          </div>
+          <span class="day-time">⏱️ 30 Mins</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-33">
+            <div class="task-content">
+              <span class="task-text">Review Golden Rulebook (1-line invariant rules) in Obsidian.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Thu Sept 24 -->
+      <div class="day-card dojo-day" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Thursday, Sept 24</span>
+            <span class="day-type-pill pill-dojo">🚀 Tutorials Dojo Test 3</span>
+          </div>
+          <span class="day-time">⏱️ 2.5 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-34">
+            <div class="task-content">
+              <span class="task-text"><strong>Take Tutorials Dojo Practice Test 3 (Timed Mode)</strong></span>
+              <div class="target-metric">Target Score: ≥ 84%.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Fri Sept 25 -->
+      <div class="day-card school-day" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Friday, Sept 25</span>
+            <span class="day-type-pill pill-school">🏫 School Day (Light Load)</span>
+          </div>
+          <span class="day-time">⏱️ 30 Mins</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-35">
+            <div class="task-content">
+              <span class="task-text">Review Microsoft Learn open-book search navigation techniques.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sat Sept 26 -->
+      <div class="day-card" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Saturday, Sept 26</span>
+            <span class="day-type-pill pill-drill">⚡ Case Study Mastery</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-36">
+            <div class="task-content">
+              <span class="task-text">Review full case study scenarios (Contoso, Litware, Fabrikam) in IcemanApp.</span>
+              <div class="target-metric">Target: Know how to extract the planned changes table and match constraints.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sun Sept 27 -->
+      <div class="day-card dojo-day" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Sunday, Sept 27</span>
+            <span class="day-type-pill pill-dojo">🚀 Tutorials Dojo Test 4 (Final Mock)</span>
+          </div>
+          <span class="day-time">⏱️ 2.5 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-37">
+            <div class="task-content">
+              <span class="task-text"><strong>Take Tutorials Dojo Practice Test 4 (Timed Mode)</strong></span>
+              <div class="target-metric">Target Score: ≥ 85% (Passing with a large margin).</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mon Sept 28 -->
+      <div class="day-card" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Monday, Sept 28</span>
+            <span class="day-type-pill pill-drill">⚡ Full Weakness Flush</span>
+          </div>
+          <span class="day-time">⏱️ 2 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-38">
+            <div class="task-content">
+              <span class="task-text">Run final Weakness Drill in IcemanApp until all weak questions graduate (streak ≥ 2).</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tue Sept 29 -->
+      <div class="day-card" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Tuesday, Sept 29</span>
+            <span class="day-type-pill pill-drill">⚡ Final Review & Speed Runs</span>
+          </div>
+          <span class="day-time">⏱️ 1.5 Hours</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-39">
+            <div class="task-content">
+              <span class="task-text">Review all Flagged questions in Question Bank Explorer.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Wed Sept 30 -->
+      <div class="day-card school-day" data-phase="phase2">
+        <div class="day-header">
+          <div class="day-title-group">
+            <span class="day-date">Wednesday, Sept 30</span>
+            <span class="day-type-pill pill-school">🏫 School Day (September Closeout)</span>
+          </div>
+          <span class="day-time">⏱️ 30 Mins</span>
+        </div>
+        <ul class="task-list">
+          <li class="task-item">
+            <input type="checkbox" id="task-40">
+            <div class="task-content">
+              <span class="task-text">🎉 <strong>SEPTEMBER SPRINT COMPLETE!</strong> Readiness Meter score should be ≥ 850 / 1000.</span>
+              <div class="target-metric">You are now operating at an expert level 12 days before the exam.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="app-nav-bar">
+      <div>
+        <h4 style="margin-bottom:4px; color:#fff;">Ready to execute today's target?</h4>
+        <p style="color:var(--text-muted); font-size:0.85rem;">Open IcemanApp to start drilling or launch Benchmark 1.</p>
+      </div>
+      <a href="index.html" class="btn-action">🚀 Open IcemanApp Dashboard</a>
+    </div>
+
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const fill = document.getElementById('progress-fill');
+    const pctText = document.getElementById('progress-percent');
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      const state = {};
+
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          checkedCount++;
+          cb.closest('.task-item').classList.add('completed');
+        } else {
+          cb.closest('.task-item').classList.remove('completed');
+        }
+        state[cb.id] = cb.checked;
+      });
+
+      const pct = Math.round((checkedCount / total) * 100);
+      fill.style.width = pct + '%';
+      pctText.textContent = `${pct}% Completed (${checkedCount}/${total} Tasks)`;
+      localStorage.setItem('az104_sept_checklist', JSON.stringify(state));
+    }
+
+    try {
+      const saved = JSON.parse(localStorage.getItem('az104_sept_checklist') || '{}');
+      checkboxes.forEach(cb => {
+        if (saved[cb.id]) cb.checked = true;
+      });
+    } catch {}
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', updateProgress);
+    });
+    updateProgress();
+
+    const tabs = document.querySelectorAll('.tab-btn');
+    const cards = document.querySelectorAll('.day-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const f = tab.dataset.filter;
+
+        cards.forEach(card => {
+          if (f === 'all') {
+            card.style.display = 'block';
+          } else if (f === 'phase1') {
+            card.style.display = card.dataset.phase === 'phase1' ? 'block' : 'none';
+          } else if (f === 'phase2') {
+            card.style.display = card.dataset.phase === 'phase2' ? 'block' : 'none';
+          } else if (f === 'benchmarks') {
+            card.style.display = card.dataset.benchmark === 'true' ? 'block' : 'none';
+          }
+        });
+      });
+    });
+
+    const examDate = new Date('2026-10-12T09:00:00');
+    const today = new Date();
+    const diffTime = examDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const countdownEl = document.getElementById('countdown');
+    if (countdownEl && diffDays > 0) {
+      countdownEl.textContent = `🎯 ${diffDays} Days Remaining (Exam: Oct 12, 2026)`;
+    }
+  </script>
+</body>
+</html>
