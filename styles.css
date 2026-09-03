@@ -118,6 +118,111 @@ body {
 .mode-title { display: block; font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
 .mode-desc { display: block; font-size: 0.75rem; color: var(--text-muted); }
 
+/* ── Benchmark Gateways Card ── */
+.benchmark-card {
+  background: linear-gradient(135deg, rgba(0, 120, 212, 0.05), rgba(138, 99, 210, 0.08));
+  border: 1px solid rgba(138, 99, 210, 0.35);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 16px rgba(138, 99, 210, 0.06);
+}
+.benchmark-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.benchmark-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(138, 99, 210, 0.18);
+  color: #8a63d2;
+}
+.benchmark-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.benchmark-tab {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.benchmark-tab:hover {
+  border-color: #8a63d2;
+  color: #8a63d2;
+}
+.benchmark-tab.active {
+  background: #8a63d2;
+  color: #fff;
+  border-color: #8a63d2;
+}
+.benchmark-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.benchmark-info {
+  flex: 1;
+  min-width: 260px;
+}
+.benchmark-info h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+.benchmark-info p {
+  margin: 0 0 10px 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.benchmark-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.benchmark-meta-item {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+.benchmark-start-btn {
+  background: linear-gradient(135deg, #0078d4, #8a63d2) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 14px 22px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(138, 99, 210, 0.25);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.benchmark-start-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(138, 99, 210, 0.35);
+}
+
 /* Domain pills */
 .domain-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
 .domain-pill {

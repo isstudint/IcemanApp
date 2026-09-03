@@ -28,7 +28,40 @@
     explorerDomain: 'all',
     explorerStatus: 'all',
     explorerVisible: 50,
+    activeBenchmark: "benchmark_1",
   };
+
+  // ── Curated Benchmarks (2-Week Sprint Gateways) ──
+  const BENCHMARKS = {
+    benchmark_1: {
+      id: "benchmark_1",
+      title: "Benchmark 1: Identity & Storage (Pillar 1)",
+      desc: "50 hand-curated trap questions testing Entra ID group licensing, policy exclusions, RBAC scopes, blob lifecycle tiers, and storage replication.",
+      targetPercent: 78,
+      btnLabel: "🚀 Start Benchmark 1 (50 Qs)",
+      timeMinutes: 100,
+      questionIds: ["topic2_q6", "topic2_q48", "topic2_q62", "topic2_q69", "topic2_q71", "topic2_q73", "topic5_q22", "topic6_q10", "topic7_q2", "topic16_q2", "new_pdf_q133", "new_pdf_q180", "topic2_q78", "topic2_q90", "topic2_q58", "topic2_q59", "topic2_q60", "topic2_q94", "topic4_q36", "topic4_q55", "topic6_q13", "topic1_q2", "topic1_q3", "topic1_q4", "topic1_q9", "topic3_q1", "topic2_q88", "topic3_q3", "topic3_q15", "topic3_q61", "topic5_q62", "topic9_q2", "topic10_q2", "new_pdf_q23", "new_pdf_q177", "topic3_q84", "new_pdf_q215", "topic3_q6", "topic3_q36", "topic3_q55", "topic4_q58", "topic4_q77", "topic5_q125", "topic6_q35", "new_pdf_q39", "new_pdf_q99", "new_pdf_q142", "topic3_q22", "topic3_q28", "topic3_q38"]
+    },
+    benchmark_2: {
+      id: "benchmark_2",
+      title: "Benchmark 2: Compute & Automation (Pillar 2)",
+      desc: "50 hand-curated questions on VM sizing, fault/update domains, VMSS autoscale rules, ACI Linux constraints, and ARM template schemas.",
+      targetPercent: 80,
+      btnLabel: "🚀 Start Benchmark 2 (50 Qs)",
+      timeMinutes: 100,
+      questionIds: ["topic1_q1", "topic2_q24", "topic2_q95", "topic2_q101", "topic4_q12", "topic4_q25", "topic4_q29", "topic4_q56", "topic4_q59", "topic4_q66", "topic4_q96", "topic4_q99", "topic4_q100", "topic5_q4", "topic5_q15", "topic5_q30", "new_pdf_q17", "new_pdf_q41", "new_pdf_q86", "topic2_q99", "topic4_q32", "topic4_q43", "topic4_q88", "topic5_q67", "topic1_q5", "topic1_q16", "topic1_q17", "topic1_q19", "topic1_q36", "topic2_q9", "topic2_q12", "topic2_q27", "topic2_q38", "topic3_q27", "topic3_q70", "topic3_q78", "topic3_q79", "topic4_q1", "topic4_q2", "topic4_q9", "topic4_q13", "topic4_q14", "topic4_q16", "topic4_q17", "topic4_q18", "topic4_q26", "topic4_q34", "topic4_q42", "topic4_q44", "topic4_q45"]
+    },
+    benchmark_3: {
+      id: "benchmark_3",
+      title: "Benchmark 3: Networking & Operations (Pillar 3)",
+      desc: "50 hand-curated questions on CIDR overlap peering, NSG priorities, non-transitive Bastion, Load Balancers, and Log Analytics KQL.",
+      targetPercent: 82,
+      btnLabel: "🚀 Start Benchmark 3 (50 Qs)",
+      timeMinutes: 100,
+      questionIds: ["topic2_q74", "topic2_q96", "topic2_q97", "topic2_q98", "topic4_q21", "topic4_q22", "topic4_q35", "topic4_q74", "topic4_q75", "topic4_q76", "topic5_q18", "topic5_q21", "topic5_q28", "topic5_q36", "topic5_q37", "topic5_q46", "topic5_q50", "topic5_q51", "topic5_q52", "topic5_q54", "topic5_q57", "topic5_q58", "topic5_q59", "topic5_q68", "topic5_q78", "topic5_q81", "topic5_q82", "topic5_q84", "topic5_q100", "topic5_q109", "topic5_q110", "topic5_q115", "topic5_q118", "topic5_q132", "topic5_q133", "topic2_q8", "topic2_q15", "topic2_q39", "topic4_q40", "topic4_q72", "topic5_q102", "topic6_q3", "topic6_q5", "topic10_q1", "topic11_q3", "new_pdf_q96", "topic6_q1", "topic1_q34", "topic1_q35", "topic1_q37"]
+    }
+  };
+
 
   // ── DOM shorthand ──
   const $ = id => document.getElementById(id);
@@ -488,7 +521,7 @@
     }
     list.innerHTML = state.history.slice().reverse().slice(0, 10).map(h => {
       const pass = h.percent >= 70;
-      const modeLabel = h.mode === 'exam' ? '⏱️ Exam' : (h.mode === 'notes' ? '📚 Notes' : (h.mode === 'weakness' ? '🎯 Weakness' : '📝 Practice'));
+      const modeLabel = h.mode === 'benchmark' ? '⚡ Benchmark' : (h.mode === 'exam' ? '⏱️ Exam' : (h.mode === 'notes' ? '📚 Notes' : (h.mode === 'weakness' ? '🎯 Weakness' : '📝 Practice')));
       return `<div class="history-item" data-id="${h.id}">
         <div class="history-item-left">
           <span class="history-score ${pass ? 'pass' : 'fail'}">${h.percent}%</span>
@@ -596,6 +629,42 @@
       qs = qs.filter(q => q.domain === state.domain);
     }
     return qs;
+  }
+
+
+  // ── Start Benchmark Exam ──
+  function startBenchmark(bid) {
+    const b = BENCHMARKS[bid];
+    if (!b) return;
+
+    const qMap = {};
+    QUESTIONS.forEach(q => { qMap[q.id] = q; });
+    const bQuestions = b.questionIds.map(id => qMap[id]).filter(Boolean);
+
+    if (bQuestions.length === 0) {
+      showToast('Could not load benchmark questions.');
+      return;
+    }
+
+    state.mode = 'benchmark';
+    state.activeBenchmark = bid;
+    state.questions = bQuestions;
+    state.index = 0;
+    state.answers = new Array(state.questions.length).fill(null);
+    state.confidences = new Array(state.questions.length).fill(null);
+    state.mistakes = new Array(state.questions.length).fill(null);
+    state.flagged = new Set();
+    state.eliminations = {};
+    state.timeLeft = b.timeMinutes * 60;
+    state.totalTime = state.timeLeft;
+
+    showScreen('quiz');
+    renderQuestion();
+    renderGrid();
+    startTimer();
+    $('timer-container').classList.remove('hidden');
+    $('submit-btn').style.display = 'block';
+    showToast(`⚡ ${b.title} started! 50 curated questions.`);
   }
 
   // ── Start Quiz ──
@@ -1030,7 +1099,7 @@
       id: 'attempt_' + Date.now(),
       date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       mode: state.mode,
-      domain: state.domain === 'all' ? 'All Modules' : DOMAINS[state.domain].short,
+      domain: (state.mode === 'benchmark' && typeof BENCHMARKS !== 'undefined' && BENCHMARKS[state.activeBenchmark]) ? BENCHMARKS[state.activeBenchmark].title : (state.domain === 'all' ? 'All Modules' : DOMAINS[state.domain].short),
       score: score,
       correct: score.correct,
       total: score.total,
@@ -1092,17 +1161,29 @@
   function showResults(score) {
     state.currentScore = score;
     showScreen('results');
-    const pass = score.percent >= 70;
+    
+    let passThreshold = 70;
+    let targetLabel = 'need 70% to pass';
+    if (state.mode === 'benchmark' && typeof BENCHMARKS !== 'undefined' && BENCHMARKS[state.activeBenchmark]) {
+      const b = BENCHMARKS[state.activeBenchmark];
+      passThreshold = b.targetPercent;
+      targetLabel = `Benchmark target: ${b.targetPercent}%`;
+    }
+    const pass = score.percent >= passThreshold;
 
     const circle = $('score-circle');
     circle.className = `score-circle ${pass ? 'pass' : 'fail'}`;
     $('score-percent').textContent = score.percent + '%';
 
     const status = $('result-status');
-    status.textContent = pass ? 'PASSED' : 'NOT YET';
+    if (state.mode === 'benchmark') {
+      status.textContent = pass ? 'BENCHMARK PASSED 🚀' : 'BENCHMARK FAILED ⚠️';
+    } else {
+      status.textContent = pass ? 'PASSED' : 'NOT YET';
+    }
     status.className = `result-status ${pass ? 'pass' : 'fail'}`;
 
-    $('result-summary').textContent = `${score.correct} of ${score.total} correct (need 70% to pass)`;
+    $('result-summary').textContent = `${score.correct} of ${score.total} correct (${targetLabel})`;
 
     // Domain bars
     const bars = $('domain-bars');
@@ -1644,6 +1725,40 @@
 
   // ── Event Binding ──
   function bindEvents() {
+    // Curated Benchmark tabs
+    const bTabs = $('benchmark-tabs');
+    if (bTabs) {
+      bTabs.addEventListener('click', e => {
+        const tab = e.target.closest('.benchmark-tab');
+        if (!tab) return;
+        document.querySelectorAll('#benchmark-tabs .benchmark-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const bid = tab.dataset.bid;
+        state.activeBenchmark = bid;
+        const b = (typeof BENCHMARKS !== 'undefined') && BENCHMARKS[bid];
+        if (b) {
+          const titleEl = $('benchmark-title');
+          const descEl = $('benchmark-desc');
+          const startBtn = $('start-benchmark-btn');
+          if (titleEl) titleEl.textContent = b.title;
+          if (descEl) descEl.textContent = b.desc;
+          const metaItems = document.querySelectorAll('.benchmark-meta-item');
+          if (metaItems.length >= 2) {
+            metaItems[1].textContent = `🎯 Pass Target: ≥ ${b.targetPercent}%`;
+          }
+          if (startBtn) startBtn.textContent = b.btnLabel;
+        }
+      });
+    }
+
+    // Start Benchmark Button
+    const startBBtn = $('start-benchmark-btn');
+    if (startBBtn) {
+      startBBtn.addEventListener('click', () => {
+        startBenchmark(state.activeBenchmark || 'benchmark_1');
+      });
+    }
+
     // Mode selection
     document.querySelectorAll('.mode-card').forEach(card => {
       card.addEventListener('click', () => {
